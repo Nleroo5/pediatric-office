@@ -4,568 +4,482 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Village Pediatrics | Schedule Appointments in St. Augustine, FL</title>
-    <meta name="description" content="Contact Village Pediatrics in St. Augustine, FL. Call (904) 940-1577 for same-day appointments and 24/7 after-hours nursing support.">
+    <meta name="description" content="Contact Village Pediatrics in St. Augustine, FL. Call (904) 940-1577 for appointments. Located at 319 W Town Pl, STE 1. Same-day appointments available.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'village-navy': '#0D2673',
-                        'village-teal': '#3B9D84',
-                        'village-light-blue': '#50B3EE',
-                        'village-orange': '#F2B138',
-                        'village-light-gray': '#D6CDC6'
+                        'navy': '#0D2673',
+                        'teal': '#3B9D84',
+                        'lightblue': '#50B3EE',
+                        'orange': '#F2B138',
+                        'lightgray': '#D6CDC6'
                     },
                     fontFamily: {
-                        'roboto': ['Roboto', 'sans-serif']
-                    },
-                    animation: {
-                        'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
-                        'float': 'float 3s ease-in-out infinite',
-                        'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
-                        'slide-in-left': 'slide-in-left 0.6s ease-out forwards',
-                        'slide-in-right': 'slide-in-right 0.6s ease-out forwards',
+                        'inter': ['Inter', 'sans-serif']
                     }
                 }
             }
         }
     </script>
     <style>
-        @keyframes fade-in-up {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        body { font-family: 'Inter', sans-serif; }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #0D2673 0%, #3B9D84 70%, #50B3EE 100%);
         }
         
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        @keyframes pulse-soft {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(59, 157, 132, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 0 15px rgba(59, 157, 132, 0);
-            }
-        }
-        
-        @keyframes slide-in-left {
-            0% {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes slide-in-right {
-            0% {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #0D2673, #3B9D84);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .card-hover {
+        .contact-card {
             transition: all 0.3s ease;
         }
         
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-        }
-        
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(59, 157, 132, 0.1), rgba(80, 179, 238, 0.1));
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .shape-1 {
-            width: 120px;
-            height: 120px;
-            top: 15%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-        
-        .shape-2 {
-            width: 180px;
-            height: 180px;
-            top: 60%;
-            right: 15%;
-            animation-delay: 2s;
-        }
-        
-        .shape-3 {
-            width: 100px;
-            height: 100px;
-            top: 30%;
-            right: 25%;
-            animation-delay: 4s;
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
         
         .form-input, .form-textarea {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid rgba(59, 157, 132, 0.2);
-            border-radius: 1rem;
-            padding: 1rem 1.5rem;
             transition: all 0.3s ease;
-            font-family: 'Roboto', sans-serif;
         }
         
         .form-input:focus, .form-textarea:focus {
             outline: none;
             border-color: #3B9D84;
             box-shadow: 0 0 0 3px rgba(59, 157, 132, 0.1);
-            background: rgba(255, 255, 255, 1);
         }
         
-        .send-button {
-            background: linear-gradient(135deg, #3B9D84, #50B3EE);
-            color: white;
-            border: none;
-            padding: 1rem 3rem;
-            border-radius: 2rem;
-            font-size: 1.125rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .send-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 157, 132, 0.3);
-        }
-        
-        .send-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s;
-        }
-        
-        .send-button:hover::before {
-            left: 100%;
-        }
-        
-        .contact-info-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        .map-placeholder {
+            background: linear-gradient(135deg, #50B3EE 0%, #3B9D84 100%);
+            min-height: 300px;
         }
     </style>
 </head>
-<body class="font-roboto bg-gradient-to-br from-gray-50 to-white">
+<body class="bg-white text-gray-900">
+    
     <!-- Header -->
-    <header class="bg-white shadow-lg relative z-50">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
+    <header class="bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-12 w-auto">
+                    <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-10 w-auto">
+                    <div class="ml-3">
+                        <div class="text-lg font-semibold text-navy">Village Pediatrics</div>
+                        <div class="text-sm text-teal">St. Augustine, FL</div>
+                    </div>
                 </div>
+
                 <nav class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">Home</a>
-                    <a href="about.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">About</a>
-                    <a href="services.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">Services</a>
-                    <a href="new-patients.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">New Patients</a>
-                    <a href="contact.html" class="text-village-teal font-semibold relative">
-                        Contact
-                        <div class="absolute -bottom-1 left-0 w-full h-0.5 bg-village-teal"></div>
-                    </a>
+                    <a href="index.html" class="text-gray-600 hover:text-navy font-medium">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-navy font-medium">About</a>
+                    <a href="services.html" class="text-gray-600 hover:text-navy font-medium">Services</a>
+                    <a href="team.html" class="text-gray-600 hover:text-navy font-medium">Our Team</a>
+                    <a href="new-patients.html" class="text-gray-600 hover:text-navy font-medium">New Patients</a>
+                    <a href="contact.html" class="text-navy font-semibold border-b-2 border-teal">Contact</a>
                 </nav>
+
                 <div class="flex items-center space-x-4">
-                    <a href="tel:9049401577" class="bg-gradient-to-r from-village-teal to-green-400 text-white px-6 py-3 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105">
-                        Call (904) 940-1577
+                    <a href="tel:9049401577" class="bg-teal text-white px-4 py-2 rounded-lg font-medium hover:bg-navy transition-colors">
+                        (904) 940-1577
                     </a>
-                    <button class="md:hidden bg-village-teal text-white p-2 rounded-lg" onclick="toggleMobileMenu()">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button class="md:hidden p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
                 </div>
             </div>
-
-            <div id="mobile-menu" class="md:hidden pb-4 hidden">
-                <a href="index.html" class="block py-2 text-village-navy hover:text-village-teal">Home</a>
-                <a href="about.html" class="block py-2 text-village-navy hover:text-village-teal">About</a>
-                <a href="services.html" class="block py-2 text-village-navy hover:text-village-teal">Services</a>
-                <a href="new-patients.html" class="block py-2 text-village-navy hover:text-village-teal">New Patients</a>
-                <a href="contact.html" class="block py-2 text-village-teal font-medium">Contact</a>
-            </div>
         </div>
     </header>
 
-    <!-- Hero Section with Floating Shapes -->
-    <section class="relative bg-gradient-to-br from-village-teal via-village-light-blue to-village-navy text-white py-24 overflow-hidden">
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-        </div>
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <div class="animate-fade-in-up">
-                <h1 class="text-6xl md:text-7xl font-bold mb-8 tracking-tight">
-                    We're Here When You 
-                    <span class="text-village-orange">Need Us</span>
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl text-center mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    Contact Us
                 </h1>
-                <p class="text-xl md:text-2xl font-light max-w-4xl mx-auto leading-relaxed opacity-90">
-                    Ready to schedule an appointment or have questions? Our friendly team is here to help with same-day appointments and 24/7 after-hours support.
+                <p class="text-xl text-white/90 mb-6">
+                    Ready to schedule an appointment or have questions? We're here to help.
                 </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="tel:9049401577" class="bg-orange text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange/90 transition-colors">
+                        Call (904) 940-1577
+                    </a>
+                    <a href="#contact-form" class="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors">
+                        Send Message
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Information Cards -->
-    <section class="py-20 bg-gradient-to-br from-white to-gray-50 relative -mt-12">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+    <!-- Contact Methods -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-navy mb-4">Get In Touch</h2>
+                <p class="text-lg text-gray-600">Multiple ways to reach our team when you need us</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Phone -->
-                <div class="contact-info-card rounded-2xl p-8 shadow-xl text-center card-hover">
-                    <div class="w-16 h-16 bg-gradient-to-br from-village-orange to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="contact-card bg-white rounded-2xl p-6 shadow-lg text-center border-t-4 border-teal">
+                    <div class="w-16 h-16 bg-teal/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-village-navy mb-3">Phone</h3>
-                    <a href="tel:9049401577" class="text-2xl font-bold text-village-teal hover:text-village-orange transition-colors block mb-2">
+                    <h3 class="text-lg font-semibold text-navy mb-2">Phone</h3>
+                    <a href="tel:9049401577" class="text-2xl font-bold text-teal hover:text-navy transition-colors block mb-2">
                         (904) 940-1577
                     </a>
-                    <p class="text-gray-600 text-sm">24/7 After-Hours Nursing</p>
+                    <p class="text-gray-600 text-sm">24/7 After-Hours Nursing Available</p>
                 </div>
 
                 <!-- Location -->
-                <div class="contact-info-card rounded-2xl p-8 shadow-xl text-center card-hover">
-                    <div class="w-16 h-16 bg-gradient-to-br from-village-light-blue to-blue-400 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft" style="animation-delay: 0.5s;">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="contact-card bg-white rounded-2xl p-6 shadow-lg text-center border-t-4 border-orange">
+                    <div class="w-16 h-16 bg-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-village-navy mb-3">Location</h3>
-                    <div class="text-gray-700 text-center">
+                    <h3 class="text-lg font-semibold text-navy mb-2">Address</h3>
+                    <div class="text-gray-700">
                         <p class="font-semibold">319 W Town Pl, STE 1</p>
                         <p>St. Augustine, FL 32092</p>
                     </div>
                 </div>
 
                 <!-- Email -->
-                <div class="contact-info-card rounded-2xl p-8 shadow-xl text-center card-hover">
-                    <div class="w-16 h-16 bg-gradient-to-br from-village-teal to-green-400 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft" style="animation-delay: 1s;">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="contact-card bg-white rounded-2xl p-6 shadow-lg text-center border-t-4 border-lightblue">
+                    <div class="w-16 h-16 bg-lightblue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-lightblue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-village-navy mb-3">Email</h3>
-                    <a href="mailto:hello@myvillagepeds.com" class="text-lg text-village-teal hover:text-village-orange transition-colors font-semibold">
+                    <h3 class="text-lg font-semibold text-navy mb-2">Email</h3>
+                    <a href="mailto:hello@myvillagepeds.com" class="text-lightblue hover:text-navy transition-colors font-semibold">
                         hello@myvillagepeds.com
                     </a>
                 </div>
 
                 <!-- Fax -->
-                <div class="contact-info-card rounded-2xl p-8 shadow-xl text-center card-hover">
-                    <div class="w-16 h-16 bg-gradient-to-br from-village-navy to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft" style="animation-delay: 1.5s;">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="contact-card bg-white rounded-2xl p-6 shadow-lg text-center border-t-4 border-navy">
+                    <div class="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V3a1 1 0 011 1v8.5l-1 1-1-1V10h-2v3.5l-1 1-1-1V10H8v3.5l-1 1-1-1V4a1 1 0 011-1z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-village-navy mb-3">Fax</h3>
+                    <h3 class="text-lg font-semibold text-navy mb-2">Fax</h3>
                     <p class="text-lg font-semibold text-gray-700">(904) 940-1916</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Office Hours -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-navy mb-4">Office Hours</h2>
+                    <p class="text-lg text-gray-600">We're here when you need us most</p>
+                </div>
 
+                <div class="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-teal">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Regular Hours -->
+                        <div>
+                            <h3 class="text-xl font-semibold text-navy mb-4 flex items-center">
+                                <svg class="w-6 h-6 mr-2 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                Regular Hours
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span class="font-medium text-gray-900">Monday - Thursday</span>
+                                    <span class="text-gray-600">8:00 AM - 7:00 PM</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span class="font-medium text-gray-900">Friday</span>
+                                    <span class="text-gray-600">9:00 AM - 5:00 PM</span>
+                                </div>
+                                <div class="text-center py-1">
+                                    <span class="text-sm text-gray-500">Closed 1:00-2:00 PM for lunch</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span class="font-medium text-gray-900">Saturday</span>
+                                    <span class="text-gray-600">9:00 AM - 1:00 PM</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2">
+                                    <span class="font-medium text-gray-900">Sunday</span>
+                                    <span class="text-gray-600">Closed</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Special Services -->
+                        <div>
+                            <h3 class="text-xl font-semibold text-navy mb-4 flex items-center">
+                                <svg class="w-6 h-6 mr-2 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                                Available Services
+                            </h3>
+                            <div class="space-y-4">
+                                <div class="bg-orange/5 rounded-lg p-4">
+                                    <h4 class="font-semibold text-navy mb-2">Same-Day Appointments</h4>
+                                    <p class="text-gray-600 text-sm">Available Monday - Saturday for sick visits</p>
+                                </div>
+                                <div class="bg-teal/5 rounded-lg p-4">
+                                    <h4 class="font-semibold text-navy mb-2">Walk-Ins Welcome</h4>
+                                    <p class="text-gray-600 text-sm">Subject to provider availability</p>
+                                </div>
+                                <div class="bg-lightblue/5 rounded-lg p-4">
+                                    <h4 class="font-semibold text-navy mb-2">24/7 After-Hours</h4>
+                                    <p class="text-gray-600 text-sm">Call main number for nursing support</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Map -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-navy mb-4">Visit Our Office</h2>
+                <p class="text-lg text-gray-600">Conveniently located in the heart of St. Augustine</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10">
+                <!-- Map Placeholder -->
+                <div class="map-placeholder rounded-2xl flex items-center justify-center text-white text-center shadow-xl">
+                    <div>
+                        <svg class="w-16 h-16 mx-auto mb-4 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        </svg>
+                        <h3 class="text-xl font-bold mb-2">Interactive Map</h3>
+                        <p class="text-white/90">319 W Town Pl, STE 1</p>
+                        <p class="text-white/90">St. Augustine, FL 32092</p>
+                        <button class="mt-4 bg-white/20 backdrop-blur border border-white/30 text-white px-6 py-2 rounded-lg font-semibold hover:bg-white/30 transition-colors">
+                            Get Directions
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Location Details -->
+                <div class="space-y-6">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-orange/10 rounded-lg flex items-center justify-center flex-shrink-0 mr-4">
+                                <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-navy mb-2">Easy to Find</h3>
+                                <p class="text-gray-600">Located in the Town Plaza complex with ample free parking and convenient access from major roads.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-teal/10 rounded-lg flex items-center justify-center flex-shrink-0 mr-4">
+                                <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-navy mb-2">Parking</h3>
+                                <p class="text-gray-600">Plenty of free parking spaces available directly in front of our office entrance.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-lightblue/10 rounded-lg flex items-center justify-center flex-shrink-0 mr-4">
+                                <svg class="w-6 h-6 text-lightblue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-navy mb-2">Accessibility</h3>
+                                <p class="text-gray-600">Our office is fully accessible with ramp access and accommodations for families with special needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Form -->
-    <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-5xl font-bold gradient-text mb-6">Send Us a Message</h2>
-                    <p class="text-xl text-gray-600">Have a question or need to schedule an appointment? We'd love to hear from you.</p>
+    <section class="py-16" id="contact-form">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-navy mb-4">Send Us a Message</h2>
+                    <p class="text-lg text-gray-600">Have a question or need to schedule an appointment? We'd love to hear from you.</p>
                 </div>
 
-                <div class="glass-card rounded-3xl p-10 shadow-2xl">
-                    <form class="space-y-8" onsubmit="handleFormSubmit(event)">
-                        <!-- Name -->
+                <form class="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-teal" onsubmit="handleFormSubmit(event)">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label class="block text-gray-700 text-lg font-semibold mb-3">Full Name *</label>
-                            <input type="text" class="form-input w-full" placeholder="First and Last Name" required>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal">
                         </div>
-
-                        <!-- Email and Phone -->
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <label class="block text-gray-700 text-lg font-semibold mb-3">Email Address *</label>
-                                <input type="email" class="form-input w-full" placeholder="your@email.com" required>
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 text-lg font-semibold mb-3">Phone Number</label>
-                                <input type="tel" class="form-input w-full" placeholder="(904) 123-4567">
-                            </div>
-                        </div>
-
-                        <!-- Subject -->
                         <div>
-                            <label class="block text-gray-700 text-lg font-semibold mb-3">Subject</label>
-                            <select class="form-input w-full">
-                                <option value="">Select a subject</option>
-                                <option value="appointment">Schedule Appointment</option>
-                                <option value="new-patient">New Patient Inquiry</option>
-                                <option value="medical">Medical Question</option>
-                                <option value="insurance">Insurance Question</option>
-                                <option value="other">Other</option>
-                            </select>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal">
                         </div>
+                    </div>
 
-                        <!-- Message -->
-                        <div>
-                            <label class="block text-gray-700 text-lg font-semibold mb-3">Message *</label>
-                            <textarea rows="6" class="form-textarea w-full" placeholder="How can we help you today?" required></textarea>
-                        </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                        <input type="email" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal">
+                    </div>
 
-                        <!-- Submit Button -->
-                        <div class="text-center">
-                            <button type="submit" class="send-button">
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
+                        <select class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal">
+                            <option value="">Select a subject</option>
+                            <option value="appointment">Schedule Appointment</option>
+                            <option value="new-patient">New Patient Inquiry</option>
+                            <option value="medical">Medical Question</option>
+                            <option value="insurance">Insurance Question</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Message *</label>
+                        <textarea rows="5" required class="form-textarea w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal" placeholder="How can we help you today?"></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="bg-teal text-white px-8 py-3 rounded-lg font-semibold hover:bg-navy transition-colors">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- Map Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold gradient-text mb-6">Find Us</h2>
-                <p class="text-xl text-gray-600">Located in the heart of St. Augustine for your convenience</p>
-            </div>
-
-            <div class="max-w-6xl mx-auto">
-                <div class="grid lg:grid-cols-2 gap-10 items-center">
-                    <!-- Map placeholder -->
-                    <div class="glass-card rounded-3xl p-8 shadow-xl">
-                        <div class="bg-gradient-to-br from-village-light-blue to-village-teal h-96 rounded-2xl flex items-center justify-center text-white text-xl font-semibold">
-                            Interactive Map Coming Soon
-                            <br>
-                            <span class="text-sm opacity-80">319 W Town Pl, STE 1, St. Augustine, FL 32092</span>
-                        </div>
-                    </div>
-
-                    <!-- Location details -->
-                    <div class="space-y-8">
-                        <div class="glass-card rounded-2xl p-8 shadow-lg card-hover">
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-gradient-to-br from-village-orange to-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 animate-float">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-village-navy mb-2">Address</h3>
-                                    <p class="text-gray-700 text-lg">319 W Town Pl, STE 1<br>St. Augustine, FL 32092</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="glass-card rounded-2xl p-8 shadow-lg card-hover">
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-gradient-to-br from-village-teal to-green-400 rounded-full flex items-center justify-center flex-shrink-0 animate-float" style="animation-delay: 1s;">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-village-navy mb-2">Parking</h3>
-                                    <p class="text-gray-700 text-lg">Free parking available<br>Convenient location with easy access</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="glass-card rounded-2xl p-8 shadow-lg card-hover">
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-gradient-to-br from-village-light-blue to-blue-400 rounded-full flex items-center justify-center flex-shrink-0 animate-float" style="animation-delay: 2s;">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-village-navy mb-2">Getting Here</h3>
-                                    <p class="text-gray-700 text-lg">Easily accessible from I-95<br>Serving St. Augustine & surrounding areas</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Emergency Information -->
+    <section class="py-16 bg-red-50 border-t-4 border-red-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.998-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                    </svg>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="py-20 bg-gradient-to-r from-village-orange via-village-light-blue to-village-teal text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <h2 class="text-5xl font-bold mb-8">Ready to Get Started?</h2>
-            <p class="text-xl opacity-90 mb-12 max-w-4xl mx-auto leading-relaxed">
-                Whether you're a new family or an existing patient, we're here to provide the exceptional pediatric care your child deserves. Contact us today!
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="tel:9049401577" class="bg-white text-village-navy px-10 py-4 rounded-full font-bold text-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center">
-                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                    </svg>
-                    Call (904) 940-1577
-                </a>
-                <a href="new-patients.html" class="bg-village-navy text-white px-10 py-4 rounded-full font-bold text-xl hover:bg-opacity-80 transition-all duration-300 hover:scale-105 border-2 border-white flex items-center">
-                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                    New Patients
-                </a>
+                <h2 class="text-2xl font-bold text-red-800 mb-4">For Medical Emergencies</h2>
+                <p class="text-red-700 mb-6 leading-relaxed">
+                    If your child is experiencing a life-threatening emergency, call <strong>911</strong> immediately or go to the nearest emergency room. 
+                    For urgent but non-emergency concerns after hours, call our main number at <strong>(904) 940-1577</strong> to reach our 24/7 nursing line.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="tel:911" class="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                        Call 911 - Emergency
+                    </a>
+                    <a href="tel:9049401577" class="bg-red-100 text-red-800 px-8 py-3 rounded-lg font-semibold hover:bg-red-200 transition-colors border border-red-300">
+                        Call (904) 940-1577 - After Hours
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-village-navy text-white py-12">
-        <div class="container mx-auto px-6">
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-8">
-                <div class="col-span-2">
-                    <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-12 w-auto mb-4">
-                    <p class="text-gray-300 mb-4">Comprehensive pediatric care for the St. Augustine and World Golf Village community since 2008.</p>
-                    <div class="space-y-2">
-                        <p class="text-gray-300">319 W Town Pl, STE 1</p>
-                        <p class="text-gray-300">St. Augustine, FL 32092</p>
-                        <p class="text-gray-300">(904) 940-1577</p>
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-8 w-auto brightness-0 invert">
+                        <div class="ml-3">
+                            <div class="font-semibold">Village Pediatrics</div>
+                            <div class="text-sm text-gray-400">St. Augustine, FL</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm">Contact us today for expert pediatric care.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="index.html" class="hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white">About</a></li>
+                        <li><a href="services.html" class="hover:text-white">Services</a></li>
+                        <li><a href="team.html" class="hover:text-white">Our Team</a></li>
+                        <li><a href="new-patients.html" class="hover:text-white">New Patients</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Methods</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>Phone: (904) 940-1577</li>
+                        <li>Email: hello@myvillagepeds.com</li>
+                        <li>Fax: (904) 940-1916</li>
+                        <li>24/7 After-Hours Available</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Office</h4>
+                    <div class="text-sm text-gray-400 space-y-1">
+                        <p>319 W Town Pl, STE 1</p>
+                        <p>St. Augustine, FL 32092</p>
+                        <p class="mt-2">Mon-Thu: 8AM-7PM</p>
+                        <p>Fri: 9AM-5PM</p>
+                        <p>Sat: 9AM-1PM</p>
                     </div>
                 </div>
-                <div>
-                    <h4 class="font-semibold mb-4 text-village-orange">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-colors">About</a></li>
-                        <li><a href="services.html" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
-                        <li><a href="new-patients.html" class="text-gray-300 hover:text-white transition-colors">New Patients</a></li>
-                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4 text-village-orange">Services</h4>
-                    <ul class="space-y-2 text-sm text-gray-300">
-                        <li>Same-Day Appointments</li>
-                        <li>24/7 After-Hours Nursing</li>
-                        <li>Well-Child Visits</li>
-                        <li>Specialty Care</li>
-                        <li>Ages Newborn to 21</li>
-                    </ul>
-                </div>
             </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
                 <p>&copy; 2024 Village Pediatrics. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
         function handleFormSubmit(event) {
             event.preventDefault();
             
-            // Create success message
             const form = event.target;
             const formContainer = form.parentElement;
             
             // Replace form with success message
             formContainer.innerHTML = `
                 <div class="text-center py-12">
-                    <div class="w-20 h-20 bg-gradient-to-br from-village-teal to-green-400 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-20 h-20 bg-teal/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                     </div>
-                    <h3 class="text-3xl font-bold gradient-text mb-4">Message Sent Successfully!</h3>
-                    <p class="text-xl text-gray-600 mb-8">Thank you for contacting Village Pediatrics. We'll get back to you within 24 hours.</p>
-                    <a href="tel:9049401577" class="bg-gradient-to-r from-village-teal to-green-400 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-bold text-navy mb-4">Message Sent Successfully!</h3>
+                    <p class="text-gray-600 mb-8">Thank you for contacting Village Pediatrics. We'll get back to you within 24 hours.</p>
+                    <a href="tel:9049401577" class="bg-teal text-white px-8 py-3 rounded-lg font-semibold hover:bg-navy transition-colors">
                         Call (904) 940-1577 for Immediate Assistance
                     </a>
                 </div>
             `;
         }
-
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = entry.target.dataset.animation || 'fade-in-up 0.6s ease-out forwards';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all animated elements
-        document.querySelectorAll('.card-hover, .glass-card').forEach(el => {
-            observer.observe(el);
-        });
     </script>
+
 </body>
 </html>
