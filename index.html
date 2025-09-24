@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Pediatrics | Pediatric Care in St. Augustine, FL</title>
+    <meta name="description" content="Village Pediatrics provides comprehensive pediatric care for children newborn to 21 in St. Augustine, FL. Same-day appointments, after-hours care, and specialty services.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS with Village Pediatrics EXACT color palette -->
+    <style>
+        /* Village Pediatrics Exact Brand Colors */
+        :root {
+            --vp-navy: #0D2673;
+            --vp-teal: #3B9D84;
+            --vp-light-blue: #50B3EE;
+            --vp-orange: #F2B138;
+            --vp-light-gray: #D6CDC6;
+        }
+        
+        /* Custom color utility classes */
+        .bg-vp-navy { background-color: var(--vp-navy) !important; }
+        .bg-vp-teal { background-color: var(--vp-teal) !important; }
+        .bg-vp-light-blue { background-color: var(--vp-light-blue) !important; }
+        .bg-vp-orange { background-color: var(--vp-orange) !important; }
+        .bg-vp-light-gray { background-color: var(--vp-light-gray) !important; }
+        
+        .text-vp-navy { color: var(--vp-navy) !important; }
+        .text-vp-teal { color: var(--vp-teal) !important; }
+        .text-vp-light-blue { color: var(--vp-light-blue) !important; }
+        .text-vp-orange { color: var(--vp-orange) !important; }
+        .text-vp-light-gray { color: var(--vp-light-gray) !important; }
+        
+        .border-vp-teal { border-color: var(--vp-teal) !important; }
+        .border-vp-navy { border-color: var(--vp-navy) !important; }
+        
+        /* Hover states with your exact colors */
+        .hover-vp-navy:hover { background-color: var(--vp-navy) !important; }
+        .hover-vp-teal:hover { background-color: var(--vp-teal) !important; }
+        .hover-text-vp-teal:hover { color: var(--vp-teal) !important; }
+        
+        /* Gradient using your brand colors */
+        .vp-gradient-hero {
+            background: linear-gradient(135deg, #f8fafc 0%, rgba(59, 157, 132, 0.1) 25%, rgba(80, 179, 238, 0.1) 75%, rgba(242, 177, 56, 0.1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo and Practice Name -->
+                <div class="flex items-center">
+                    <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics Logo" class="h-10 w-auto mr-3">
+                    <h1 class="text-2xl font-bold text-vp-navy">Village Pediatrics</h1>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-vp-navy hover:text-vp-teal font-medium">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-vp-teal font-medium">About</a>
+                    <a href="services.html" class="text-gray-700 hover:text-vp-teal font-medium">Services</a>
+                    <a href="team.html" class="text-gray-700 hover:text-vp-teal font-medium">Our Team</a>
+                    <a href="new-patients.html" class="text-gray-700 hover:text-vp-teal font-medium">New Patients</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-vp-teal font-medium">Contact</a>
+                    <a href="patient-portal.html" class="bg-vp-teal text-white px-4 py-2 rounded-md hover:bg-vp-navy transition-colors">Patient Portal</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-700 hover:border-gray-700">
+                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="vp-gradient-hero py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold text-vp-navy sm:text-5xl md:text-6xl">
+                    Caring for Your Child's Health
+                </h2>
+                <p class="mt-3 max-w-md mx-auto text-base text-gray-600 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                    Comprehensive pediatric care for children newborn to 21 years old in St. Augustine, Florida. Same-day appointments available with 24/7 after-hours support.
+                </p>
+                <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+                    <div class="rounded-md shadow">
+                        <a href="tel:9049401577" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-vp-teal hover-vp-navy transition-all duration-300 md:py-4 md:text-lg md:px-10">
+                            Call (904) 940-1577
+                        </a>
+                    </div>
+                    <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                        <a href="#" class="w-full flex items-center justify-center px-8 py-3 border-2 text-base font-medium rounded-md text-vp-teal bg-white hover:bg-gray-50 border-vp-teal md:py-4 md:text-lg md:px-10">
+                            Schedule Online
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Info Bar -->
+    <section class="bg-vp-navy text-white py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center items-center space-y-2 md:space-y-0 md:space-x-8 text-center">
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Same-Day Appointments</span>
+                </div>
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                    </svg>
+                    <span>24/7 After-Hours Nursing Line</span>
+                </div>
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>St. Augustine Location</span>
+                </div>
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Ages Newborn to 21</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours & Emergency Contact -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Office Hours -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Office Hours</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span>Monday - Thursday:</span>
+                            <span class="font-medium">8:00 AM - 7:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Friday:</span>
+                            <span class="font-medium">9:00 AM - 5:00 PM</span>
+                        </div>
+                        <div class="flex justify-between text-gray-600">
+                            <span class="italic">(Closed 1:00 - 2:00 PM for lunch)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Saturday:</span>
+                            <span class="font-medium">9:00 AM - 1:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Sunday:</span>
+                            <span class="font-medium text-red-600">Closed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency Contact -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Emergency & After-Hours Care</h3>
+                    <div class="space-y-3">
+                        <p class="text-gray-600">We have an after-hours nursing line available 24/7, with a Village Pediatrics provider on-call every single night.</p>
+                        <div class="bg-red-50 border border-red-200 rounded-md p-4">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-red-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                                </svg>
+                                <span class="font-semibold text-red-800">Emergency: (904) 940-1577</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Our Pediatric Services
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600">
+                    Comprehensive care for your child from newborn through young adulthood
+                </p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Well-Child Care -->
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-vp-light-blue bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-vp-light-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-vp-navy mb-2">Well-Child Visits</h3>
+                    <p class="text-gray-600">Regular check-ups, immunizations, and developmental screenings to keep your child healthy.</p>
+                </div>
+
+                <!-- Sick Visits -->
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-vp-teal bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-vp-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-vp-navy mb-2">Sick Care</h3>
+                    <p class="text-gray-600">Same-day appointments available for when your child isn't feeling well.</p>
+                </div>
+
+                <!-- Specialty Care -->
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-vp-orange bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-vp-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-vp-navy mb-2">Specialty Services</h3>
+                    <p class="text-gray-600">ADHD management, asthma care, mental health support, and chronic disease management.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="services.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-vp-teal hover-vp-navy transition-all duration-300">
+                    View All Services
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Team Preview -->
+    <section class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Meet Our Caring Team
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600">
+                    Experienced pediatric professionals dedicated to your child's health and wellbeing
+                </p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Dr. Austin Dupont -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-64 bg-gray-200 flex items-center justify-center">
+                        <span class="text-gray-400">Photo Coming Soon</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-vp-navy">Dr. Austin Dupont, MD</h3>
+                        <p class="text-vp-teal font-medium mb-2">Lead Pediatrician</p>
+                        <p class="text-gray-600 text-sm">University of Toledo College of Medicine</p>
+                        <p class="text-gray-600 text-sm mb-3">Specializing in ADHD, Anxiety & Depression, Asthma Management</p>
+                    </div>
+                </div>
+
+                <!-- Dr. Patricia Elvir -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-64 bg-gray-200 flex items-center justify-center">
+                        <span class="text-gray-400">Photo Coming Soon</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-vp-navy">Dr. Patricia Elvir, MD</h3>
+                        <p class="text-vp-teal font-medium mb-2">FAAP, ABIHM</p>
+                        <p class="text-gray-600 text-sm">20+ years experience</p>
+                        <p class="text-gray-600 text-sm mb-3">Fluent in Spanish • Integrative Medicine Specialist</p>
+                    </div>
+                </div>
+
+                <!-- Trudy English -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-64 bg-gray-200 flex items-center justify-center">
+                        <span class="text-gray-400">Photo Coming Soon</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-vp-navy">Trudy English, ARNP</h3>
+                        <p class="text-vp-teal font-medium mb-2">Advanced Registered Nurse Practitioner</p>
+                        <p class="text-gray-600 text-sm mb-3">Comprehensive pediatric care specialist</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="team.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-vp-teal hover-vp-navy transition-all duration-300">
+                    Meet Our Full Team
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-vp-teal py-16">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                Ready to Schedule Your Child's Appointment?
+            </h2>
+            <p class="mt-4 text-xl text-white text-opacity-90">
+                Call us today or schedule online for same-day appointments when your child needs care.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row sm:justify-center sm:space-x-4 space-y-4 sm:space-y-0">
+                <a href="tel:9049401577" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-vp-teal bg-white hover:bg-gray-50 transition-all duration-300 sm:w-auto">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                    </svg>
+                    Call (904) 940-1577
+                </a>
+                <a href="new-patients.html" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white hover-vp-navy transition-all duration-300 sm:w-auto">
+                    Schedule Online
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Practice Info -->
+                <div class="md:col-span-2">
+                    <h3 class="text-lg font-semibold mb-4">Village Pediatrics</h3>
+                    <div class="space-y-2">
+                        <p>319 W Town Pl, STE 1</p>
+                        <p>St. Augustine, FL 32092</p>
+                        <p class="font-medium">Phone: (904) 940-1577</p>
+                        <p>Fax: (904) 940-1916</p>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="hover:text-blue-300">Services</a></li>
+                        <li><a href="new-patients.html" class="hover:text-blue-300">New Patients</a></li>
+                        <li><a href="patient-portal.html" class="hover:text-blue-300">Patient Portal</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Patient Resources -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Patient Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-300">MyPrivia Portal</a></li>
+                        <li><a href="#" class="hover:text-blue-300">Insurance Plans</a></li>
+                        <li><a href="#" class="hover:text-blue-300">Forms & Documents</a></li>
+                        <li><a href="tel:9049401577" class="hover:text-blue-300">24/7 Nursing Line</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">&copy; 2025 Village Pediatrics. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <p class="text-gray-400 text-sm">Serving children newborn to 21 years old</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

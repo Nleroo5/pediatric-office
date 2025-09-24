@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Village Pediatrics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'village-navy': '#0D2673',
+                        'village-teal': '#3B9D84',
+                        'village-light-blue': '#50B3EE',
+                        'village-orange': '#F2B138',
+                        'village-light-gray': '#D6CDC6'
+                    },
+                    fontFamily: {
+                        'roboto': ['Roboto', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
+                        'slide-in-left': 'slide-in-left 0.6s ease-out forwards',
+                        'slide-in-right': 'slide-in-right 0.6s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes pulse-soft {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(59, 157, 132, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 15px rgba(59, 157, 132, 0);
+            }
+        }
+        
+        @keyframes slide-in-left {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slide-in-right {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #0D2673, #3B9D84);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .timeline-item:hover::before {
+            left: 100%;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(59, 157, 132, 0.1), rgba(80, 179, 238, 0.1));
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape-1 {
+            width: 120px;
+            height: 120px;
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 180px;
+            height: 180px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            right: 25%;
+            animation-delay: 4s;
+        }
+        
+        .leadership-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="font-roboto bg-gradient-to-br from-gray-50 to-white">
+    <!-- Header -->
+    <header class="bg-white shadow-lg relative z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-12 w-auto">
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">Home</a>
+                    <a href="about.html" class="text-village-teal font-semibold relative">
+                        About
+                        <div class="absolute -bottom-1 left-0 w-full h-0.5 bg-village-teal"></div>
+                    </a>
+                    <a href="services.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">Services</a>
+                    <a href="providers.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">Providers</a>
+                    <a href="patient-portal.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">Patient Portal</a>
+                    <a href="contact.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">Contact</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="tel:9049401577" class="bg-gradient-to-r from-village-teal to-green-400 text-white px-6 py-3 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105">
+                        Call (904) 940-1577
+                    </a>
+                    <button class="md:hidden bg-village-teal text-white p-2 rounded-lg">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Floating Shapes -->
+    <section class="relative bg-gradient-to-br from-village-navy via-village-light-blue to-village-orange text-white py-24 overflow-hidden">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="animate-fade-in-up">
+                <h1 class="text-6xl md:text-7xl font-bold mb-8 tracking-tight">
+                    A Legacy of Care 
+                    <span class="text-village-orange">Continues</span>
+                </h1>
+                <p class="text-xl md:text-2xl font-light max-w-5xl mx-auto leading-relaxed opacity-90">
+                    Dr. Austin Dupont now leads Village Pediatrics, building on the foundation Dr. Patricia Elvir created in 2008 for the World Golf Village and St. Augustine community
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-20 bg-gradient-to-br from-white to-gray-50 relative -mt-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 animate-fade-in-up">
+                <h2 class="text-5xl font-bold gradient-text mb-6">Our Story</h2>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">From a dream in 2008 to a trusted pediatric home - here's how Village Pediatrics grew into the practice families love today</p>
+            </div>
+
+            <!-- Enhanced Timeline -->
+            <div class="relative max-w-6xl mx-auto">
+                <!-- Timeline line with gradient -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-village-orange via-village-teal to-village-navy h-full rounded-full"></div>
+                
+                <div class="space-y-16">
+                    <!-- 2008: The Beginning -->
+                    <div class="relative flex items-center animate-slide-in-left">
+                        <div class="flex-1 pr-12 text-right">
+                            <div class="timeline-item glass-card rounded-2xl p-8 shadow-xl">
+                                <h3 class="text-3xl font-bold text-village-navy mb-4">2008 - The Beginning</h3>
+                                <p class="text-gray-700 text-lg leading-relaxed">Dr. Patricia Elvir, a native New Yorker and Chief Resident from Schneider Children's Hospital, founded Village Pediatrics with a vision to serve St. Augustine families with comprehensive, compassionate care.</p>
+                            </div>
+                        </div>
+                        <div class="w-6 h-6 bg-gradient-to-br from-village-orange to-yellow-400 rounded-full border-4 border-white shadow-xl z-10 animate-pulse-soft"></div>
+                        <div class="flex-1 pl-12"></div>
+                    </div>
+
+                    <!-- 17 Years of Growth -->
+                    <div class="relative flex items-center animate-slide-in-right">
+                        <div class="flex-1 pr-12"></div>
+                        <div class="w-6 h-6 bg-gradient-to-br from-village-teal to-green-400 rounded-full border-4 border-white shadow-xl z-10 animate-pulse-soft" style="animation-delay: 1s;"></div>
+                        <div class="flex-1 pl-12">
+                            <div class="timeline-item glass-card rounded-2xl p-8 shadow-xl">
+                                <h3 class="text-3xl font-bold text-village-navy mb-4">2008-2025 - Building Trust</h3>
+                                <p class="text-gray-700 text-lg leading-relaxed">Over 17 years, Dr. Elvir grew Village Pediatrics into a well-loved pediatric practice, establishing same-day appointments, 24/7 after-hours nursing, and comprehensive care from newborn to age 21.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2025: New Leadership -->
+                    <div class="relative flex items-center animate-slide-in-left">
+                        <div class="flex-1 pr-12 text-right">
+                            <div class="timeline-item glass-card rounded-2xl p-8 shadow-xl">
+                                <h3 class="text-3xl font-bold text-village-navy mb-4">September 2025 - New Chapter</h3>
+                                <p class="text-gray-700 text-lg leading-relaxed">Dr. Austin Dupont becomes the new owner, bringing fresh leadership while maintaining the same compassionate care and trusted team families have come to love.</p>
+                            </div>
+                        </div>
+                        <div class="w-6 h-6 bg-gradient-to-br from-village-navy to-purple-600 rounded-full border-4 border-white shadow-xl z-10 animate-pulse-soft" style="animation-delay: 2s;"></div>
+                        <div class="flex-1 pl-12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team Section -->
+    <section class="py-20 bg-gradient-to-br from-village-light-blue via-village-teal to-village-navy text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-6">Our Leadership Team</h2>
+                <p class="text-xl opacity-90">Meet the doctors who make Village Pediatrics a trusted home for your family's health</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto mb-16">
+                <!-- Dr. Austin Dupont -->
+                <div class="leadership-card rounded-3xl shadow-2xl overflow-hidden card-hover">
+                    <div class="p-10 text-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-village-orange to-yellow-400 rounded-full mx-auto mb-6 flex items-center justify-center shadow-xl animate-float">
+                            <span class="text-4xl font-bold text-white">AD</span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-village-navy mb-3">Dr. Austin Dupont, MD</h3>
+                        <p class="text-village-teal font-semibold text-xl mb-2">Owner & Lead Pediatrician</p>
+                        <p class="text-gray-600 mb-6">University of Toledo College of Medicine</p>
+                        
+                        <div class="space-y-6 text-left">
+                            <p class="text-gray-700 text-lg leading-relaxed">As the new owner of Village Pediatrics, Dr. Dupont brings a fresh vision while honoring the foundation Dr. Elvir built. His expertise includes ADHD diagnosis and management, anxiety and depression care, asthma management, and pediatric weight management.</p>
+                            
+                            <div class="bg-gradient-to-r from-village-orange to-yellow-400 bg-opacity-10 border-l-4 border-village-orange rounded-lg p-6">
+                                <h4 class="font-bold text-village-navy text-xl mb-3">Specialties:</h4>
+                                <ul class="text-gray-700 space-y-2">
+                                    <li class="flex items-center">
+                                        <div class="w-2 h-2 bg-village-orange rounded-full mr-3"></div>
+                                        ADHD Diagnosis & Management
+                                    </li>
+                                    <li class="flex items-center">
+                                        <div class="w-2 h-2 bg-village-orange rounded-full mr-3"></div>
+                                        Anxiety & Depression
+                                    </li>
+                                    <li class="flex items-center">
+                                        <div class="w-2 h-2 bg-village-orange rounded-full mr-3"></div>
+                                        Asthma Management
+                                    </li>
+                                    <li class="flex items-center">
+                                        <div class="w-2 h-2 bg-village-orange rounded-full mr-3"></div>
+                                        Healthy Habits Weight Management Program
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dr. Patricia Elvir -->
+                <div class="leadership-card rounded-3xl shadow-2xl overflow-hidden card-hover">
+                    <div class="p-10 text-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-village-teal to-green-400 rounded-full mx-auto mb-6 flex items-center justify-center shadow-xl animate-float" style="animation-delay: 1s;">
+                            <span class="text-4xl font-bold text-white">PE</span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-village-navy mb-3">Dr. Patricia Elvir, MD</h3>
+                        <p class="text-village-teal font-semibold text-xl mb-2">Founding Pediatrician</p>
+                        <p class="text-gray-600 mb-6">FAAP, ABIHM • 20+ Years Experience</p>
+                        
+                        <div class="space-y-6 text-left">
+                            <p class="text-gray-700 text-lg leading-relaxed">The visionary who founded Village Pediatrics in 2008, Dr. Elvir continues to provide the compassionate care that families have trusted for years. A native New Yorker who served as Chief Resident at Schneider Children's Hospital, she's dual board certified and fluent in Spanish.</p>
+                            
+                            <div class="bg-gradient-to-r from-village-teal to-green-400 bg-opacity-10 border-l-4 border-village-teal rounded-lg p-6">
+                                <h4 class="font-bold text-village-navy text-xl mb-3">Heart for Service:</h4>
+                                <ul class="text-gray-700 space-y-2">
+                                    <li class="flex items-center">
+                                        <div class="w-2 h-2 bg-village-teal rounded-full mr-3"></div>
+                                        Ordained minister with medical missions background
+                                    </li>
+                                    <li class="flex items-center">
+                                        <div class="w-2 h-2 bg-village-teal rounded-full mr-3"></div>
+                                        Founder of Amigos de Juanita
+                                    </li>
+                                    <li class="flex items-center">
+                                        <div class="w-2 h-2 bg-village-teal rounded-full mr-3"></div>
+                                        Medical missions to Guatemala, Nicaragua, Haiti
+                                    </li>
+                                    <li class="flex items-center">
+                                        <div class="w-2 h-2 bg-village-teal rounded-full mr-3"></div>
+                                        Fluent Spanish speaker
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trudy English -->
+            <div class="max-w-2xl mx-auto">
+                <div class="leadership-card rounded-3xl shadow-2xl overflow-hidden card-hover">
+                    <div class="p-10 text-center">
+                        <div class="w-24 h-24 bg-gradient-to-br from-village-light-blue to-blue-400 rounded-full mx-auto mb-6 flex items-center justify-center shadow-xl animate-float" style="animation-delay: 2s;">
+                            <span class="text-2xl font-bold text-white">TE</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-village-navy mb-3">Trudy English, ARNP</h3>
+                        <p class="text-village-teal font-semibold text-xl mb-4">Nurse Practitioner</p>
+                        <p class="text-gray-700 text-lg leading-relaxed">An integral part of our care team, providing comprehensive pediatric care with expertise and compassion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission & What Makes Us Unique -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+                <!-- Mission -->
+                <div class="animate-fade-in-up">
+                    <h2 class="text-5xl font-bold gradient-text mb-8">Our Mission</h2>
+                    <div class="glass-card rounded-3xl p-10 shadow-2xl border-l-4 border-village-orange">
+                        <p class="text-xl text-gray-700 leading-relaxed mb-8">
+                            To provide comprehensive, compassionate pediatric care from newborn to age 21, building lasting relationships with families in the St. Augustine and World Golf Village community through evidence-based medicine and personalized attention.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-1 bg-gradient-to-r from-village-orange to-yellow-400 rounded"></div>
+                            <span class="text-village-navy font-bold text-lg">Established 2007 • Growing since 2008</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What Makes Us Unique -->
+                <div class="animate-fade-in-up">
+                    <h2 class="text-5xl font-bold gradient-text mb-8">What Makes Us Unique</h2>
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-6 p-4 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300">
+                            <div class="w-4 h-4 bg-gradient-to-br from-village-orange to-yellow-400 rounded-full mt-2 flex-shrink-0 animate-pulse-soft"></div>
+                            <div>
+                                <h3 class="font-bold text-village-navy text-xl mb-3">Same-Day Appointments Available</h3>
+                                <p class="text-gray-700 text-lg leading-relaxed">When your child is sick, we understand you can't wait. We offer same-day appointments for urgent needs.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 p-4 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300">
+                            <div class="w-4 h-4 bg-gradient-to-br from-village-teal to-green-400 rounded-full mt-2 flex-shrink-0 animate-pulse-soft" style="animation-delay: 0.5s;"></div>
+                            <div>
+                                <h3 class="font-bold text-village-navy text-xl mb-3">24/7 After-Hours Nursing</h3>
+                                <p class="text-gray-700 text-lg leading-relaxed">A Village Pediatrics provider is on-call every single night for urgent medical questions and concerns.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 p-4 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300">
+                            <div class="w-4 h-4 bg-gradient-to-br from-village-light-blue to-blue-400 rounded-full mt-2 flex-shrink-0 animate-pulse-soft" style="animation-delay: 1s;"></div>
+                            <div>
+                                <h3 class="font-bold text-village-navy text-xl mb-3">Comprehensive Age Range</h3>
+                                <p class="text-gray-700 text-lg leading-relaxed">From newborn care to young adult health, we're here for your family's entire pediatric journey.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 p-4 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300">
+                            <div class="w-4 h-4 bg-gradient-to-br from-village-navy to-purple-600 rounded-full mt-2 flex-shrink-0 animate-pulse-soft" style="animation-delay: 1.5s;"></div>
+                            <div>
+                                <h3 class="font-bold text-village-navy text-xl mb-3">Bilingual Care</h3>
+                                <p class="text-gray-700 text-lg leading-relaxed">Dr. Elvir provides fluent Spanish-speaking care for our diverse community families.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 p-4 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300">
+                            <div class="w-4 h-4 bg-gradient-to-br from-purple-500 to-pink-400 rounded-full mt-2 flex-shrink-0 animate-pulse-soft" style="animation-delay: 2s;"></div>
+                            <div>
+                                <h3 class="font-bold text-village-navy text-xl mb-3">Specialty Services</h3>
+                                <p class="text-gray-700 text-lg leading-relaxed">Specialized care for ADHD, asthma, anxiety, depression, and childhood obesity management.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Remains the Same -->
+    <section class="py-20 bg-gradient-to-br from-village-navy via-village-teal to-village-light-blue text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-6">What Remains the Same</h2>
+                <p class="text-xl opacity-90 max-w-4xl mx-auto">Your trusted care team continues with the same excellence and dedication you've come to expect</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="text-center glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-village-orange to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-village-navy">Same Location</h3>
+                    <p class="opacity-80">319 W Town Pl, STE 1<br>St. Augustine, FL</p>
+                </div>
+
+                <div class="text-center glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300" style="animation-delay: 0.2s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-village-teal to-green-400 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-village-navy">Same Number</h3>
+                    <p class="opacity-80">(904) 940-1577<br>24/7 availability</p>
+                </div>
+
+                <div class="text-center glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300" style="animation-delay: 0.4s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-village-light-blue to-blue-400 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-village-navy">Same Team</h3>
+                    <p class="opacity-80">Dr. Elvir continues<br>providing care</p>
+                </div>
+
+                <div class="text-center glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300" style="animation-delay: 0.6s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-village-navy to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-village-navy">Same Values</h3>
+                    <p class="opacity-80">Compassionate,<br>comprehensive care</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-gradient-to-r from-village-orange via-village-light-blue to-village-teal text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-5xl font-bold mb-8">Experience Our Continued Excellence</h2>
+            <p class="text-xl opacity-90 mb-12 max-w-4xl mx-auto leading-relaxed">
+                Whether you're a current family or new to our practice, we're here to provide the same trusted, comprehensive care with fresh leadership and continued dedication.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-10">
+                <a href="tel:9049401577" class="bg-white text-village-navy px-10 py-4 rounded-full font-bold text-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                    Call (904) 940-1577
+                </a>
+                <a href="contact.html" class="bg-village-navy text-white px-10 py-4 rounded-full font-bold text-xl hover:bg-opacity-80 transition-all duration-300 hover:scale-105 border-2 border-white">
+                    Schedule Online
+                </a>
+            </div>
+            
+            <div class="opacity-90">
+                <p class="text-xl font-bold mb-2">New patients welcome!</p>
+                <p class="text-lg">Same-day appointments available • 24/7 after-hours nursing</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-village-navy text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-12 w-auto mb-4">
+                    <p class="text-gray-300 mb-4">Comprehensive pediatric care for the St. Augustine and World Golf Village community since 2008.</p>
+                    <div class="space-y-2">
+                        <p class="text-gray-300">319 W Town Pl, STE 1</p>
+                        <p class="text-gray-300">St. Augustine, FL 32092</p>
+                        <p class="text-gray-300">(904) 940-1577</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-village-orange">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="providers.html" class="text-gray-300 hover:text-white transition-colors">Providers</a></li>
+                        <li><a href="patient-portal.html" class="text-gray-300 hover:text-white transition-colors">Patient Portal</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-village-orange">Office Hours</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li>Mon-Thu: 8:00 AM - 7:00 PM</li>
+                        <li>Friday: 9:00 AM - 5:00 PM</li>
+                        <li>Saturday: 9:00 AM - 1:00 PM</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Village Pediatrics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = entry.target.dataset.animation || 'fade-in-up 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-fade-in-up, .animate-slide-in-left, .animate-slide-in-right, .card-hover').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

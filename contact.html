@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Village Pediatrics | Schedule Appointments in St. Augustine, FL</title>
+    <meta name="description" content="Contact Village Pediatrics in St. Augustine, FL. Call (904) 940-1577 or email hello@myvillagepeds.com">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; }
+        .bg-navy { background-color: #0D2673; }
+        .bg-teal { background-color: #3B9D84; }
+        .bg-light-blue { background-color: #50B3EE; }
+        .bg-orange { background-color: #F2B138; }
+        .bg-light-gray { background-color: #D6CDC6; }
+        .text-navy { color: #0D2673; }
+        .text-teal { color: #3B9D84; }
+        .text-light-blue { color: #50B3EE; }
+        .text-orange { color: #F2B138; }
+        .border-orange { border-color: #F2B138; }
+        .hover\:bg-orange:hover { background-color: #F2B138; }
+        
+        .form-input, .form-textarea {
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem 1.25rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #3B9D84;
+            box-shadow: 0 0 0 3px rgba(59, 157, 132, 0.1);
+        }
+        
+        .send-button {
+            background-color: #3B9D84;
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 2rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .send-button:hover {
+            background-color: #2d7a68;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 157, 132, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-navy shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center">
+                    <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics Logo" class="h-12 w-auto mr-4">
+                    <div>
+                        <h1 class="text-white text-xl font-bold">Village Pediatrics</h1>
+                        <p class="text-gray-300 text-sm">St. Augustine, FL</p>
+                    </div>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-white hover:text-orange transition-colors duration-300">Home</a>
+                    <a href="about.html" class="text-white hover:text-orange transition-colors duration-300">About</a>
+                    <a href="services.html" class="text-white hover:text-orange transition-colors duration-300">Services</a>
+                    <a href="contact.html" class="text-orange font-medium">Contact</a>
+                </nav>
+
+                <button class="md:hidden text-white hover:text-orange" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="md:hidden pb-4 hidden">
+                <a href="index.html" class="block py-2 text-white hover:text-orange">Home</a>
+                <a href="about.html" class="block py-2 text-white hover:text-orange">About</a>
+                <a href="services.html" class="block py-2 text-white hover:text-orange">Services</a>
+                <a href="contact.html" class="block py-2 text-orange font-medium">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="py-20 bg-gray-50 min-h-screen">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <p class="text-teal text-sm font-semibold uppercase tracking-wide mb-2">PEDIATRIC CARE IN ST. AUGUSTINE</p>
+                    <h1 class="text-4xl md:text-5xl font-bold text-light-blue mb-8">We're Here When You Need Us</h1>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="text-center mb-12 space-y-4">
+                    <div>
+                        <a href="tel:9049401577" class="text-3xl font-bold text-orange hover:text-yellow-500 transition-colors">
+                            (904) 940-1577
+                        </a>
+                    </div>
+                    <div>
+                        <a href="mailto:hello@myvillagepeds.com" class="text-xl text-teal hover:text-green-500 transition-colors">
+                            hello@myvillagepeds.com
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white p-8 md:p-12 rounded-2xl shadow-lg">
+                    <form class="space-y-6">
+                        <!-- Name -->
+                        <div>
+                            <input type="text" class="form-input w-full" placeholder="First and Last Name" required>
+                        </div>
+
+                        <!-- Email and Phone -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <input type="email" class="form-input w-full" placeholder="Email Address" required>
+                            </div>
+                            <div>
+                                <input type="tel" class="form-input w-full" placeholder="Phone Number" required>
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div>
+                            <label class="block text-gray-700 mb-2 font-medium">How can we help you? *</label>
+                            <textarea rows="6" class="form-textarea w-full" placeholder="Please tell us how we can help you..." required></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button type="submit" class="send-button">
+                                SEND EMAIL
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics Logo" class="h-12 w-auto mb-4">
+                    <h3 class="text-xl font-bold mb-4">Village Pediatrics</h3>
+                    <p class="text-gray-300">Comprehensive pediatric care in St. Augustine, Florida.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-orange">Contact Info</h4>
+                    <div class="space-y-2">
+                        <p>(904) 940-1577</p>
+                        <p>hello@myvillagepeds.com</p>
+                        <p>St. Augustine, FL</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-orange">Our Providers</h4>
+                    <div class="space-y-2">
+                        <p>Dr. Austin Dupont, MD</p>
+                        <p>Dr. Patricia Elvir, MD, FAAP, ABIHM</p>
+                        <p>Trudy English, ARNP</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-orange">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block hover:text-orange transition-colors">Home</a>
+                        <a href="about.html" class="block hover:text-orange transition-colors">About</a>
+                        <a href="services.html" class="block hover:text-orange transition-colors">Services</a>
+                        <a href="contact.html" class="block hover:text-orange transition-colors">Contact</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-8 pt-8 text-center">
+                <p>&copy; 2024 Village Pediatrics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will respond soon.');
+        });
+    </script>
+</body>
+</html>

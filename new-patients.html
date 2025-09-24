@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Patients - Village Pediatrics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'village-navy': '#0D2673',
+                        'village-teal': '#3B9D84',
+                        'village-light-blue': '#50B3EE',
+                        'village-orange': '#F2B138',
+                        'village-light-gray': '#D6CDC6'
+                    },
+                    fontFamily: {
+                        'roboto': ['Roboto', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes pulse-soft {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(59, 157, 132, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 15px rgba(59, 157, 132, 0);
+            }
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #0D2673, #3B9D84);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .step-card:hover::before {
+            left: 100%;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(59, 157, 132, 0.1), rgba(80, 179, 238, 0.1));
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            top: 30%;
+            right: 30%;
+            animation-delay: 4s;
+        }
+    </style>
+</head>
+<body class="font-roboto bg-gradient-to-br from-gray-50 to-white">
+    <!-- Header -->
+    <header class="bg-white shadow-lg relative z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-12 w-auto">
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">Home</a>
+                    <a href="about.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">About</a>
+                    <a href="services.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">Services</a>
+                    <a href="new-patients.html" class="text-village-teal font-semibold relative">
+                        New Patients
+                        <div class="absolute -bottom-1 left-0 w-full h-0.5 bg-village-teal"></div>
+                    </a>
+                    <a href="contact.html" class="text-village-navy hover:text-village-teal transition-all duration-300 hover:scale-105">Contact</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-village-navy">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Floating Shapes -->
+    <section class="relative bg-gradient-to-br from-village-light-blue via-village-teal to-village-navy text-white py-24 overflow-hidden">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="animate-fade-in-up">
+                <h1 class="text-5xl md:text-7xl font-bold mb-8 tracking-tight">
+                    Welcome New 
+                    <span class="text-village-orange">Families</span>
+                </h1>
+                <p class="text-xl md:text-2xl font-light max-w-4xl mx-auto leading-relaxed mb-8 opacity-90">
+                    We're excited to welcome you to Village Pediatrics, where compassionate care meets clinical excellence for children from newborn to 21 years.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="tel:9049401577" class="bg-village-orange hover:bg-opacity-90 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                        Call (904) 940-1577
+                    </a>
+                    <button class="bg-transparent border-2 border-white hover:bg-white hover:text-village-navy text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105">
+                        Schedule Online
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions with Enhanced Cards -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50 relative -mt-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="glass-card rounded-2xl p-10 shadow-2xl text-center card-hover">
+                    <div class="bg-gradient-to-br from-village-orange to-yellow-400 text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold gradient-text mb-4">Schedule by Phone</h3>
+                    <p class="text-gray-600 mb-6 text-lg">Call our friendly staff to schedule your child's first appointment</p>
+                    <a href="tel:9049401577" class="inline-block bg-gradient-to-r from-village-navy to-village-teal text-white px-8 py-4 rounded-full hover:shadow-xl transition-all duration-300 font-semibold text-lg hover:scale-105">
+                        (904) 940-1577
+                    </a>
+                </div>
+                <div class="glass-card rounded-2xl p-10 shadow-2xl text-center card-hover">
+                    <div class="bg-gradient-to-br from-village-light-blue to-blue-400 text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft" style="animation-delay: 1s;">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h6a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold gradient-text mb-4">Online Scheduling</h3>
+                    <p class="text-gray-600 mb-6 text-lg">Use our Yosi system to book appointments at your convenience</p>
+                    <button class="inline-block bg-gradient-to-r from-village-teal to-green-400 text-white px-8 py-4 rounded-full hover:shadow-xl transition-all duration-300 font-semibold text-lg hover:scale-105">
+                        Schedule Online
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Hours with Modern Design -->
+    <section class="py-20 bg-gradient-to-br from-village-navy to-village-teal text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-12">Office Hours</h2>
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-10 border border-white border-opacity-20">
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-center py-3 border-b border-white border-opacity-20">
+                            <span class="font-semibold text-xl">Monday - Thursday</span>
+                            <span class="text-lg opacity-90">8:00 AM - 7:00 PM</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b border-white border-opacity-20">
+                            <span class="font-semibold text-xl">Friday</span>
+                            <span class="text-lg opacity-90">9:00 AM - 5:00 PM</span>
+                        </div>
+                        <div class="text-center py-2">
+                            <span class="text-sm opacity-75">(Closed 1:00-2:00 PM for lunch)</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b border-white border-opacity-20">
+                            <span class="font-semibold text-xl">Saturday</span>
+                            <span class="text-lg opacity-90">9:00 AM - 1:00 PM</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3">
+                            <span class="font-semibold text-xl">Sunday</span>
+                            <span class="text-lg opacity-90">Closed</span>
+                        </div>
+                        <div class="bg-village-orange bg-opacity-90 text-white p-6 rounded-2xl mt-8">
+                            <p class="font-bold text-xl mb-2">24/7 After-Hours Nursing Line</p>
+                            <p class="text-lg">(904) 940-1577</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Expect with Enhanced Step Cards -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text text-center mb-16">What to Expect at Your First Visit</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    <div class="step-card bg-white rounded-2xl p-8 shadow-xl card-hover">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-gradient-to-br from-village-orange to-yellow-400 text-white w-12 h-12 rounded-full flex items-center justify-center mr-6 flex-shrink-0 font-bold text-lg">
+                                1
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-village-navy mb-3">Warm Welcome</h3>
+                                <p class="text-gray-600 text-lg leading-relaxed">Our friendly front desk team will greet you and help you complete any remaining paperwork in our comfortable waiting area.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-card bg-white rounded-2xl p-8 shadow-xl card-hover" style="animation-delay: 0.2s;">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-gradient-to-br from-village-light-blue to-blue-400 text-white w-12 h-12 rounded-full flex items-center justify-center mr-6 flex-shrink-0 font-bold text-lg">
+                                2
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-village-navy mb-3">Comprehensive Exam</h3>
+                                <p class="text-gray-600 text-lg leading-relaxed">Your provider will conduct a thorough examination and review your child's medical history with attention to detail.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-card bg-white rounded-2xl p-8 shadow-xl card-hover" style="animation-delay: 0.4s;">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-gradient-to-br from-village-teal to-green-400 text-white w-12 h-12 rounded-full flex items-center justify-center mr-6 flex-shrink-0 font-bold text-lg">
+                                3
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-village-navy mb-3">Care Planning</h3>
+                                <p class="text-gray-600 text-lg leading-relaxed">We'll discuss any concerns and create a personalized care plan for your child's ongoing health and development.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-card bg-white rounded-2xl p-8 shadow-xl card-hover" style="animation-delay: 0.6s;">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-gradient-to-br from-village-navy to-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center mr-6 flex-shrink-0 font-bold text-lg">
+                                4
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-village-navy mb-3">Portal Setup</h3>
+                                <p class="text-gray-600 text-lg leading-relaxed">We'll help you set up your MyPrivia patient portal account for convenient online access to records and scheduling.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Bring - Enhanced Visual Design -->
+    <section class="py-20 bg-gradient-to-br from-village-light-blue via-village-teal to-village-navy text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">What to Bring</h2>
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-10 border border-white border-opacity-20">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="flex items-center group">
+                                <div class="bg-village-orange p-2 rounded-full mr-4 group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-lg font-medium">Current insurance cards</span>
+                            </div>
+                            <div class="flex items-center group">
+                                <div class="bg-village-orange p-2 rounded-full mr-4 group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-lg font-medium">Photo identification</span>
+                            </div>
+                            <div class="flex items-center group">
+                                <div class="bg-village-orange p-2 rounded-full mr-4 group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-lg font-medium">List of current medications</span>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="flex items-center group">
+                                <div class="bg-village-orange p-2 rounded-full mr-4 group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-lg font-medium">Previous medical records</span>
+                            </div>
+                            <div class="flex items-center group">
+                                <div class="bg-village-orange p-2 rounded-full mr-4 group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-lg font-medium">Immunization records</span>
+                            </div>
+                            <div class="flex items-center group">
+                                <div class="bg-village-orange p-2 rounded-full mr-4 group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-lg font-medium">List of questions or concerns</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insurance & Payment with Modern Cards -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text text-center mb-16">Insurance & Payment Information</h2>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="bg-white rounded-3xl p-10 shadow-2xl card-hover border-t-4 border-village-teal">
+                        <h3 class="text-2xl font-bold text-village-navy mb-6 flex items-center">
+                            <svg class="w-8 h-8 mr-3 text-village-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Accepted Insurance Plans
+                        </h3>
+                        <div class="grid grid-cols-2 gap-3 text-gray-700 mb-6">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-village-teal rounded-full mr-3"></div>
+                                Aetna
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-village-teal rounded-full mr-3"></div>
+                                CIGNA
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-village-teal rounded-full mr-3"></div>
+                                Florida Blue
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-village-teal rounded-full mr-3"></div>
+                                Humana
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-village-teal rounded-full mr-3"></div>
+                                United Healthcare
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-village-teal rounded-full mr-3"></div>
+                                And 11+ more plans
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-village-orange rounded-lg p-4">
+                            <p class="text-village-orange font-semibold flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                </svg>
+                                Important: We do not accept Medicaid
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-3xl p-10 shadow-2xl card-hover border-t-4 border-village-orange">
+                        <h3 class="text-2xl font-bold text-village-navy mb-6 flex items-center">
+                            <svg class="w-8 h-8 mr-3 text-village-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                            Payment Options
+                        </h3>
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center">
+                                <div class="bg-village-orange p-1 rounded-full mr-4">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700">Cash payments accepted</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-village-orange p-1 rounded-full mr-4">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700">All major credit cards</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-village-orange p-1 rounded-full mr-4">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700">Personal checks</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-village-orange p-1 rounded-full mr-4">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700">Card-on-file system</span>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-r from-blue-50 to-village-light-blue bg-opacity-20 border-l-4 border-village-light-blue rounded-lg p-4">
+                            <p class="text-village-navy font-semibold">
+                                <strong>Deposits Required:</strong><br>
+                                <span class="text-sm">New patients: $200+ | Established: $150+</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Portal with Modern Design -->
+    <section class="py-20 bg-gradient-to-br from-village-navy via-village-teal to-village-light-blue text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-12">Patient Portal Access</h2>
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl p-12 border border-white border-opacity-20">
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-bold mb-4">MyPrivia Portal</h3>
+                        <p class="text-xl leading-relaxed opacity-90">
+                            Access your child's medical records, schedule appointments, and communicate with our providers through our secure patient portal.
+                        </p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6 mb-10">
+                        <div class="text-center">
+                            <div class="bg-village-orange w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                            <span class="text-lg">Complete your first visit</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-village-orange w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                            <span class="text-lg">Receive portal invitation email</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-village-orange w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                            <span class="text-lg">Create your account and access</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="https://8042-1.portal.athenahealth.com/" target="_blank" class="inline-block bg-white text-village-navy px-10 py-4 rounded-full hover:shadow-2xl transition-all duration-300 font-bold text-lg hover:scale-105">
+                            Access Portal
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Policies with Enhanced Cards -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text text-center mb-16">Important Office Policies</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-xl card-hover text-center border-t-4 border-village-orange">
+                        <div class="bg-gradient-to-br from-village-orange to-yellow-400 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-village-navy mb-4">Appointment Changes</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Please provide 24-hour notice for cancellations. Late cancellations and no-shows may incur fees.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-xl card-hover text-center border-t-4 border-village-light-blue" style="animation-delay: 0.2s;">
+                        <div class="bg-gradient-to-br from-village-light-blue to-blue-400 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-village-navy mb-4">Payment Policy</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Payment is due at time of service. We offer convenient card-on-file options for your convenience.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-xl card-hover text-center border-t-4 border-village-teal" style="animation-delay: 0.4s;">
+                        <div class="bg-gradient-to-br from-village-teal to-green-400 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-village-navy mb-4">Ages Served</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            We provide comprehensive care for children from newborn through 21 years of age.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-village-navy text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-12 w-auto mb-4">
+                    <p class="text-gray-300 mb-4">Providing exceptional pediatric care to families in St. Augustine and surrounding areas.</p>
+                    <div class="space-y-2">
+                        <p class="text-gray-300">319 W Town Pl, STE 1</p>
+                        <p class="text-gray-300">St. Augustine, FL 32092</p>
+                        <p class="text-gray-300">(904) 940-1577</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-village-orange">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="new-patients.html" class="text-gray-300 hover:text-white transition-colors">New Patients</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-village-orange">Office Hours</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li>Mon-Thu: 8:00 AM - 7:00 PM</li>
+                        <li>Friday: 9:00 AM - 5:00 PM</li>
+                        <li>Saturday: 9:00 AM - 1:00 PM</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Village Pediatrics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fade-in-up 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card-hover, .step-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
