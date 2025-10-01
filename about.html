@@ -6,7 +6,7 @@
     <title>About Us - Village Pediatrics | St. Augustine, FL</title>
     <meta name="description" content="Learn about Village Pediatrics' history, mission, and commitment to providing exceptional pediatric care in St. Augustine, FL since 2008.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -16,328 +16,1394 @@
                         'teal': '#3B9D84',
                         'lightblue': '#50B3EE',
                         'orange': '#F2B138',
-                        'lightgray': '#D6CDC6'
+                        'lightgray': '#D6CDC6',
+                        'lionbrown': '#b05717',
+                        'liongold': '#ffb82c',
+                        'lionlight': '#fedc8d'
                     },
                     fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
+                        'inter': ['Inter', 'sans-serif'],
+                        'fredoka': ['Fredoka', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif']
                     }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        
-        .hero-bg {
-            background: linear-gradient(135deg, #0D2673 0%, #3B9D84 70%, #50B3EE 100%);
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0D2673 0%, #0D2673 25%, #3B9D84 35%, #50B3EE 50%, #87ceeb 65%, #ffffff 80%, #ffffff 100%);
+            background-size: 500% 500%;
+            animation: gradientShift 8s ease-in-out infinite;
+            position: relative;
+            overflow-x: hidden;
         }
-        
-        .timeline-item {
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Animated Background Elements */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: floatAround 20s ease-in-out infinite;
+        }
+
+        .bg-shape:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(242, 177, 56, 0.15) 0%, rgba(242, 177, 56, 0.05) 60%, transparent 100%);
+            border-radius: 50%;
+            top: 10%;
+            left: 8%;
+            animation-delay: 0s;
+            animation-duration: 30s;
+        }
+
+        .bg-shape:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, rgba(242, 177, 56, 0.12), rgba(59, 157, 132, 0.08));
+            border-radius: 60% 40% 40% 60%;
+            top: 25%;
+            right: 12%;
+            animation-delay: -8s;
+            animation-duration: 35s;
+        }
+
+        .bg-shape:nth-child(3) {
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(ellipse, rgba(242, 177, 56, 0.1) 0%, rgba(242, 177, 56, 0.03) 50%, transparent 100%);
+            border-radius: 70% 30% 30% 70%;
+            bottom: 25%;
+            left: 15%;
+            animation-delay: -15s;
+            animation-duration: 40s;
+        }
+
+        .bg-shape:nth-child(4) {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, rgba(59, 157, 132, 0.1), rgba(242, 177, 56, 0.08));
+            border-radius: 40% 60% 60% 40%;
+            bottom: 15%;
+            right: 20%;
+            animation-delay: -22s;
+            animation-duration: 33s;
+        }
+
+        .bg-shape:nth-child(5) {
+            width: 110px;
+            height: 110px;
+            background: radial-gradient(circle, rgba(242, 177, 56, 0.08) 0%, rgba(80, 179, 238, 0.05) 70%, transparent 100%);
+            border-radius: 50% 50% 20% 80%;
+            top: 55%;
+            left: 3%;
+            animation-delay: -30s;
+            animation-duration: 38s;
+        }
+
+        .bg-shape:nth-child(6) {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, rgba(242, 177, 56, 0.1), rgba(13, 38, 115, 0.06));
+            border-radius: 30% 70% 70% 30%;
+            top: 35%;
+            right: 8%;
+            animation-delay: -37s;
+            animation-duration: 26s;
+        }
+
+        @keyframes floatAround {
+            0%, 100% {
+                transform: translate(0px, 0px) rotate(0deg) scale(1);
+                opacity: 0.1;
+            }
+            25% {
+                transform: translate(30px, -20px) rotate(90deg) scale(1.1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: translate(-20px, 30px) rotate(180deg) scale(0.9);
+                opacity: 0.15;
+            }
+            75% {
+                transform: translate(40px, 10px) rotate(270deg) scale(1.05);
+                opacity: 0.25;
+            }
+        }
+
+
+
+
+        .clean-hero {
+            background: linear-gradient(135deg, #b05717 0%, #ffb82c 50%, #fedc8d 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clean-hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 15%;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            animation: subtleFloat 8s ease-in-out infinite;
+        }
+
+        .clean-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 25%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            animation: subtleFloat 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+            50% { transform: translateY(-15px) rotate(5deg); opacity: 0.2; }
+        }
+
+        .modern-card {
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.98) 0%,
+                rgba(255, 255, 255, 0.95) 50%,
+                rgba(248, 250, 252, 0.98) 100%);
+            border: 2px solid #feb92c;
+            border-radius: 20px;
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.1),
+                0 5px 15px rgba(59, 157, 132, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            backdrop-filter: blur(10px);
+        }
+
+        .modern-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                rgba(59, 157, 132, 0.05) 0%,
+                rgba(80, 179, 238, 0.05) 50%,
+                rgba(242, 177, 56, 0.05) 100%);
+            border-radius: 18px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .modern-card:hover::before {
+            opacity: 1;
+        }
+
+        .modern-card:hover {
+            transform: translateY(-15px) scale(1.02) rotateX(5deg) rotateY(2deg) translateZ(20px);
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, 0.15),
+                0 15px 35px rgba(59, 157, 132, 0.2),
+                inset 0 2px 5px rgba(255, 255, 255, 0.9);
+            border-color: #feb92c;
+        }
+
+        .modern-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg) translateX(-100%) translateY(-100%);
+            transition: transform 0.6s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .modern-card:hover::after {
+            transform: rotate(45deg) translateX(100%) translateY(100%);
+            opacity: 1;
+        }
+
+        .accent-line {
+            height: 3px;
+            background: linear-gradient(90deg, #b05717, #ffb82c, #fedc8d);
+            border-radius: 2px;
+            margin: 1rem 0;
+        }
+
+        .color-badge {
+            background: linear-gradient(45deg, #3B9D84, #50B3EE);
+            color: white;
+            border-radius: 12px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 500;
+        }
+
+        .timeline-line {
+            background: linear-gradient(to bottom, #b05717, #ffb82c, #fedc8d);
+            width: 6px;
+            border-radius: 3px;
+            box-shadow:
+                0 0 20px rgba(176, 87, 23, 0.4),
+                inset 0 0 10px rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent);
+            border-radius: 1px;
+        }
+
+        .timeline-dot {
+            background: linear-gradient(135deg, #b05717, #ffb82c);
+            border: 6px solid white;
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 4px rgba(176, 87, 23, 0.3),
+                0 8px 25px rgba(0, 0, 0, 0.15),
+                inset 0 2px 5px rgba(255, 255, 255, 0.3);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(0.3) rotateZ(-180deg);
+            opacity: 0;
+            cursor: pointer;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .timeline-dot:hover::before {
+            opacity: 1;
+        }
+
+        .timeline-dot.animate {
+            transform: scale(1.2) rotateZ(0deg);
+            opacity: 1;
+        }
+
+        .timeline-dot:hover {
+            transform: scale(1.4) rotateZ(10deg) !important;
+            box-shadow:
+                0 0 0 6px rgba(176, 87, 23, 0.4),
+                0 15px 40px rgba(0, 0, 0, 0.25),
+                inset 0 2px 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .timeline-card {
+            opacity: 0;
+            transform: translateX(-80px) rotateY(-15deg) translateZ(-50px);
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 184, 44, 0.15) 0%, rgba(176, 87, 23, 0.1) 50%, rgba(255, 184, 44, 0.05) 100%);
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .timeline-card:hover::before {
+            opacity: 1;
+        }
+
+        .timeline-card.animate {
+            opacity: 1;
+            transform: translateX(0) rotateY(0deg) translateZ(0px);
+        }
+
+        .timeline-card.right {
+            transform: translateX(80px) rotateY(15deg) translateZ(-50px);
+        }
+
+        .timeline-card.right.animate {
+            transform: translateX(0) rotateY(0deg) translateZ(0px);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-10px) scale(1.02) rotateX(2deg) rotateY(1deg) translateZ(20px) !important;
+            box-shadow:
+                0 25px 50px rgba(255, 184, 44, 0.3),
+                0 15px 40px rgba(176, 87, 23, 0.2),
+                0 0 30px rgba(255, 184, 44, 0.4);
+        }
+
+        .timeline-card .modern-card {
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.95) 0%,
+                rgba(255, 255, 255, 0.98) 50%,
+                rgba(248, 250, 252, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border: 2px solid #feb92c;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-card .modern-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: transform 0.6s ease;
+            opacity: 0;
+        }
+
+        .timeline-card:hover .modern-card::before {
+            transform: rotate(45deg) translateX(100%) translateY(100%);
+            opacity: 1;
+        }
+
+        .pulse-ring {
+            position: absolute;
+            border: 3px solid #feb92c;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+
+        .timeline-content-reveal {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .timeline-card:hover .timeline-content-reveal {
+            max-height: 200px;
+        }
+
+
+        .watercolor-badge {
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.8), rgba(255, 218, 185, 0.8), rgba(221, 160, 221, 0.8));
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px 15px 18px 22px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .watercolor-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+
+        .watercolor-border {
+            border: 3px solid rgba(255, 182, 193, 0.3);
+            border-radius: 22px 18px 25px 20px;
+            position: relative;
+        }
+
+        .watercolor-border::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.4), rgba(173, 216, 230, 0.4), rgba(221, 160, 221, 0.4), rgba(255, 182, 193, 0.4));
+            border-radius: 25px 21px 28px 23px;
+            z-index: -1;
+            animation: colorFlow 6s ease-in-out infinite;
+        }
+
+        @keyframes colorFlow {
+            0%, 100% { opacity: 0.3; transform: rotate(0deg); }
+            50% { opacity: 0.6; transform: rotate(2deg); }
+        }
+
+        .watercolor-button {
+            background: linear-gradient(145deg, rgba(255, 182, 193, 0.9) 0%, rgba(255, 218, 185, 0.9) 50%, rgba(221, 160, 221, 0.9) 100%);
+            color: white;
+            border: 2px solid rgba(255, 182, 193, 0.3);
+            border-radius: 25px 20px 22px 18px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .watercolor-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .watercolor-button:hover::before {
+            left: 100%;
+        }
+
+        .watercolor-button:hover {
+            transform: translateY(-2px) rotate(0.5deg);
+            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.3);
+            border-color: rgba(255, 182, 193, 0.6);
+        }
+
+        .watercolor-timeline {
+            position: relative;
+        }
+
+        .watercolor-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 182, 193, 0.6), rgba(173, 216, 230, 0.6), rgba(221, 160, 221, 0.6));
+            border-radius: 10px;
+        }
+
+        .timeline-dot {
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.9) 0%, rgba(173, 216, 230, 0.9) 100%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50% 45% 55% 50%;
+            border: 4px solid white;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.3);
+        }
+
+
+        .watercolor-section {
+            background: linear-gradient(135deg, rgba(252, 247, 248, 0.8) 0%, rgba(248, 232, 231, 0.9) 100%);
+            position: relative;
+        }
+
+        .watercolor-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, rgba(255, 182, 193, 0.4), rgba(173, 216, 230, 0.4), rgba(221, 160, 221, 0.4), rgba(255, 182, 193, 0.4));
+            background-size: 300% 100%;
+            animation: gentleFlow 8s ease-in-out infinite;
+            border-radius: 0 0 10px 10px;
+        }
+
+        @keyframes gentleFlow {
+            0%, 100% { background-position: 0% 0%; opacity: 0.4; }
+            50% { background-position: 100% 0%; opacity: 0.7; }
+        }
+
+        .watercolor-value-badge {
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.9) 0%, rgba(173, 216, 230, 0.9) 100%);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50% 45% 55% 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            position: absolute;
+            top: -22px;
+            left: -22px;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.2);
+        }
+
+
+        .watercolor-accent {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.7), rgba(221, 160, 221, 0.7));
+            border-radius: 50% 40% 60% 50%;
+        }
+
+
+        /* Enhanced 3D Interactive Benefit Cards */
+        .interactive-benefit-card {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            perspective: 1200px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+        }
+
+        .interactive-benefit-card .card-front,
+        .interactive-benefit-card .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: all 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 20px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow:
+                0 20px 40px rgba(0,0,0,0.1),
+                0 10px 20px rgba(59, 157, 132, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .interactive-benefit-card .card-front {
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.98) 0%,
+                rgba(255, 255, 255, 0.95) 50%,
+                rgba(248, 250, 252, 0.98) 100%);
+            border: 2px solid #feb92c;
+            transform: rotateY(0deg) translateZ(0px);
+            backdrop-filter: blur(10px);
+        }
+
+        .interactive-benefit-card .card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                rgba(59, 157, 132, 0.05) 0%,
+                rgba(80, 179, 238, 0.05) 100%);
+            border-radius: 18px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .interactive-benefit-card:hover .card-front::before {
+            opacity: 1;
+        }
+
+        .interactive-benefit-card .card-back {
+            background: linear-gradient(135deg, #3B9D84, #50B3EE);
+            transform: rotateY(180deg) translateZ(0px);
+            color: white;
+            box-shadow:
+                0 25px 50px rgba(0,0,0,0.2),
+                0 15px 30px rgba(59, 157, 132, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .interactive-benefit-card .card-back::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 60%);
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        .interactive-benefit-card:hover .card-front {
+            transform: rotateY(-180deg) translateZ(20px) scale(1.02);
+        }
+
+        .interactive-benefit-card:hover .card-back {
+            transform: rotateY(0deg) translateZ(20px) scale(1.02);
+        }
+
+        .interactive-benefit-card:nth-child(odd) .card-back {
+            background: linear-gradient(135deg, #50B3EE, #F2B138);
+        }
+
+        .interactive-benefit-card:nth-child(3n) .card-back {
+            background: linear-gradient(135deg, #0D2673, #3B9D84);
+        }
+
+        .interactive-benefit-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .interactive-benefit-card .card-front:hover {
+            border-color: #feb92c;
+        }
+
+        /* Add floating animation to card icons */
+        .interactive-benefit-card .card-front .w-16 {
             transition: all 0.3s ease;
         }
-        
-        .timeline-item:hover {
-            transform: translateY(-2px);
+
+        .interactive-benefit-card:hover .card-front .w-16 {
+            transform: translateY(-5px) rotateY(10deg);
         }
-        
-        .value-card {
+
+        @media (max-width: 768px) {
+            .watercolor-timeline::before {
+                left: 20px;
+                transform: none;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+
+            .interactive-benefit-card {
+                height: 240px;
+            }
+
+            .interactive-benefit-card .card-front,
+            .interactive-benefit-card .card-back {
+                padding: 20px;
+            }
+        }
+        /* Interactive Elements */
+        .fun-button {
+            position: relative;
+            overflow: hidden;
+            transform: perspective(1px) translateZ(0);
             transition: all 0.3s ease;
         }
-        
-        .value-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+        .fun-button:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 10px 30px rgba(59, 157, 132, 0.3);
         }
+
+        .fun-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .fun-button:hover::before {
+            left: 100%;
+        }
+
+        /* Navy gradient animation for hero buttons */
+        .navy-gradient-button {
+            background: linear-gradient(135deg, rgba(13, 38, 115, 0.3), rgba(13, 38, 115, 0.1), rgba(13, 38, 115, 0.3));
+            background-size: 200% 200%;
+            animation: navyGradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes navyGradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hover-grow {
+            transition: all 0.3s ease;
+        }
+
+        .hover-grow:hover {
+            transform: scale(1.02) translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .parallax-element {
+            transition: transform 0.1s ease-out;
+        }
+
+
+        .text-shimmer {
+            background: linear-gradient(45deg, #3B9D84, #50B3EE, #F2B138, #0D2673);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .click-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .click-ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .click-ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* 3D Hero Buttons */
+        .hero-button-3d-primary {
+            background: linear-gradient(145deg, #b05717, #8a4413);
+            box-shadow:
+                8px 8px 16px rgba(176, 87, 23, 0.4),
+                -8px -8px 16px rgba(255, 184, 44, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: perspective(1000px) translateZ(10px);
+            border: 1px solid rgba(255, 184, 44, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-button-3d-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .hero-button-3d-primary:hover::before {
+            left: 100%;
+        }
+
+        .hero-button-3d-primary:hover {
+            box-shadow:
+                12px 12px 24px rgba(176, 87, 23, 0.5),
+                -12px -12px 24px rgba(255, 184, 44, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.2);
+            transform: perspective(1000px) translateZ(15px) translateY(-2px);
+        }
+
+        .hero-button-3d-primary:active {
+            box-shadow:
+                4px 4px 8px rgba(176, 87, 23, 0.6),
+                -4px -4px 8px rgba(255, 184, 44, 0.05),
+                inset 0 1px 0 rgba(0, 0, 0, 0.1);
+            transform: perspective(1000px) translateZ(5px);
+        }
+
+        .hero-button-3d-secondary {
+            background: linear-gradient(145deg, #fedc8d, #e5c67d);
+            color: #b05717;
+            box-shadow:
+                inset 8px 8px 16px rgba(254, 220, 141, 0.8),
+                inset -8px -8px 16px rgba(176, 87, 23, 0.1),
+                0 4px 8px rgba(176, 87, 23, 0.1);
+            border: 1px solid #feb92c;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-button-3d-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(176, 87, 23, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .hero-button-3d-secondary:hover::before {
+            left: 100%;
+        }
+
+        .hero-button-3d-secondary:hover {
+            box-shadow:
+                inset 12px 12px 24px rgba(254, 220, 141, 0.9),
+                inset -12px -12px 24px rgba(176, 87, 23, 0.15),
+                0 8px 16px rgba(176, 87, 23, 0.2);
+            transform: perspective(1000px) translateY(-2px);
+            color: #8a4413;
+        }
+
+        .hero-button-3d-secondary:active {
+            box-shadow:
+                inset 4px 4px 8px rgba(254, 220, 141, 0.6),
+                inset -4px -4px 8px rgba(176, 87, 23, 0.05),
+                0 2px 4px rgba(176, 87, 23, 0.1);
+            transform: perspective(1000px) translateY(0px);
+        }
+
+
+        /* Animal animation styles */
+        .animal-nav-item {
+            opacity: 0;
+            transform: translateY(-100px) scale(0.8);
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .animal-nav-item.animate-in {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .animal-nav-item:nth-child(1) { animation-delay: 0.1s; }
+        .animal-nav-item:nth-child(2) { animation-delay: 0.3s; }
+        .animal-nav-item:nth-child(3) { animation-delay: 0.5s; }
+        .animal-nav-item:nth-child(4) { animation-delay: 0.7s; }
+        .animal-nav-item:nth-child(5) { animation-delay: 0.9s; }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1) translateX(0px);
+                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            }
+            25% {
+                transform: translateY(-6px) rotate(1deg) scale(1.01) translateX(-2px);
+                filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+            }
+            50% {
+                transform: translateY(-12px) rotate(2deg) scale(1.02) translateX(0px);
+                filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+            }
+            75% {
+                transform: translateY(-6px) rotate(1deg) scale(1.01) translateX(2px);
+                filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+            }
+        }
+
+        .animal-nav-item.animate-in img {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Hero Lion Animations */
+        .lion-container {
+            animation: lionEntry 2.3s ease-out forwards;
+            transform: translateX(120px);
+            opacity: 0;
+        }
+
+        @keyframes lionEntry {
+            0% {
+                transform: translateX(120px);
+                opacity: 0;
+            }
+            65% {
+                transform: translateX(-10px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .lion-container img {
+            animation: lionMajesticRock 4.2s ease-in-out infinite 2.8s;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes lionMajesticRock {
+            0%, 100% {
+                transform: scale(1) rotate(0deg) translateX(0px);
+            }
+            25% {
+                transform: scale(1.01) rotate(0.8deg) translateX(-2px);
+            }
+            50% {
+                transform: scale(1.025) rotate(1.5deg) translateX(0px);
+            }
+            75% {
+                transform: scale(1.01) rotate(0.8deg) translateX(2px);
+            }
+        }
+
+        .lion-container:hover img {
+            animation: lionRoar 1.4s ease-in-out;
+            transform: scale(1.06);
+        }
+
+        @keyframes lionRoar {
+            0%, 100% { transform: scale(1.06) rotate(0deg); }
+            25% { transform: scale(1.09) rotate(-3deg) scaleY(1.02); }
+            75% { transform: scale(1.09) rotate(3deg) scaleY(1.02); }
+        }
+
+        /* Lion mane shimmer */
+        .lion-mane {
+            position: absolute;
+            top: 15%;
+            left: 15%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(
+                circle at 40% 30%,
+                rgba(242, 177, 56, 0.4) 0%,
+                transparent 25%
+            ),
+            radial-gradient(
+                circle at 60% 35%,
+                rgba(242, 177, 56, 0.3) 0%,
+                transparent 20%
+            ),
+            radial-gradient(
+                circle at 50% 50%,
+                rgba(242, 177, 56, 0.2) 0%,
+                transparent 30%
+            );
+            border-radius: 50%;
+            opacity: 0;
+            animation: maneShimmer 6s ease-in-out infinite 4s;
+        }
+
+        @keyframes maneShimmer {
+            0%, 85%, 100% { opacity: 0; transform: scale(1); }
+            25%, 65% { opacity: 0.8; transform: scale(1.05); }
+            45% { opacity: 1; transform: scale(1.1); }
+        }
+
+
+
     </style>
 </head>
 <body class="bg-white text-gray-900">
+
+    <!-- Animated Background Shapes -->
+    <div class="bg-shapes">
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+    </div>
+
     
-    <!-- Header -->
-    <header class="bg-white shadow-sm border-b border-gray-100">
+    <!-- Animal Navigation Over Hero -->
+    <nav class="absolute top-20 left-0 right-0 z-30" id="animal-nav">
+        <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8">
+            <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-gray-800 group-hover:border-gray-800 transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Home</span><span class="hidden sm:inline">Home</span></span>
+                </div>
+            </a>
+            <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-orange group-hover:bg-orange group-hover:border-orange transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">About</span><span class="hidden sm:inline">About Us</span></span>
+                </div>
+            </a>
+            <a href="services.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/zebra.png" alt="Services" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-lightblue group-hover:border-lightblue transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Care</span><span class="hidden sm:inline">Services</span></span>
+                </div>
+            </a>
+            <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-teal group-hover:border-teal transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Team</span><span class="hidden sm:inline">Our Team</span></span>
+                </div>
+            </a>
+            <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-navy group-hover:border-navy transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">New</span><span class="hidden sm:inline">New Patients</span></span>
+                </div>
+            </a>
+            <a href="patient-portal.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/giraffe.png" alt="Patient Portal" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-orange group-hover:border-orange transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Portal</span><span class="hidden sm:inline">Patient Portal</span></span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Logo positioned in top left -->
+    <div class="absolute top-8 left-8 z-20">
+        <a href="index.html">
+            <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain filter drop-shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
+        </a>
+    </div>
+
+    <!-- Contact Us Button in top right -->
+    <div class="absolute top-8 right-8 z-20">
+        <a href="contact.html" class="bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-inter text-lg hover:bg-orange hover:scale-105 transition-all duration-300 shadow-lg">
+            Contact Us
+        </a>
+    </div>
+
+    <!-- Clean Hero Section -->
+    <section class="clean-hero text-white py-20 pt-80 relative overflow-hidden" style="background: linear-gradient(135deg, #b05717 0%, #d4691a 20%, #e6881f 40%, #ffb82c 60%, #ffb82c 100%); background-size: 500% 500%; animation: gradientShift 12s ease-in-out infinite;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-10 w-auto">
-                    <div class="ml-3">
-                        <div class="text-lg font-semibold text-navy">Village Pediatrics</div>
-                        <div class="text-sm text-teal">St. Augustine, FL</div>
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                <div class="text-right lg:text-right ml-auto">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 sm:mb-12 font-fredoka text-white">
+                        Our Story
+                    </h1>
+                    <p class="text-base sm:text-lg md:text-xl text-white/90 mb-8">
+                        Discover the heart behind Village Pediatrics and our commitment to exceptional pediatric care.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
+                        <a href="services.html" class="navy-gradient-button backdrop-blur-sm border-2 border-white text-white px-8 py-3 rounded-lg font-semibold transition-colors fun-button click-ripple">
+                            Our Services
+                        </a>
+                        <a href="contact.html" class="navy-gradient-button backdrop-blur-sm border-2 border-white text-white px-8 py-3 rounded-lg font-semibold transition-colors fun-button click-ripple">
+                            Contact Us
+                        </a>
                     </div>
                 </div>
-
-                <nav class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-600 hover:text-navy font-medium">Home</a>
-                    <a href="about.html" class="text-navy font-semibold border-b-2 border-teal">About</a>
-                    <a href="services.html" class="text-gray-600 hover:text-navy font-medium">Services</a>
-                    <a href="team.html" class="text-gray-600 hover:text-navy font-medium">Our Team</a>
-                    <a href="new-patients.html" class="text-gray-600 hover:text-navy font-medium">New Patients</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-navy font-medium">Contact</a>
-                </nav>
-
-                <div class="flex items-center space-x-4">
-                    <a href="tel:9049401577" class="bg-teal text-white px-4 py-2 rounded-lg font-medium hover:bg-navy transition-colors">
-                        (904) 940-1577
-                    </a>
-                    <button class="md:hidden p-2">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
+                <div class="flex justify-center lg:justify-end">
+                    <div class="lion-container relative">
+                        <img src="images/animals/lion.png" alt="Friendly Lion" class="w-80 h-80 object-contain">
+                        <div class="lion-mane"></div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero-bg text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">
-                    Our Story
-                </h1>
-                <p class="text-xl text-white/90 mb-6">
-                    From a vision in 2008 to a trusted pediatric home for St. Augustine families - 
-                    discover what makes Village Pediatrics special.
-                </p>
             </div>
         </div>
     </section>
 
-    <!-- Mission Statement -->
-    <section class="py-16">
+    <!-- Combined Mission, Journey & Why Choose Us -->
+    <section class="py-20 relative overflow-hidden" style="background: linear-gradient(to bottom right, #fdfcfa, #f5ead5, #efe0c4);">
+        <!-- Mission Statement -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold text-navy mb-8">Our Mission</h2>
-                <div class="bg-gray-50 rounded-2xl p-8 border-l-4 border-teal">
-                    <p class="text-xl text-gray-700 leading-relaxed mb-4">
-                        To provide comprehensive, compassionate pediatric care from newborn to age 21, 
-                        building lasting relationships with families in the St. Augustine and World Golf Village 
-                        community through evidence-based medicine and personalized attention.
+                <div class="flex items-center justify-center mb-10">
+                    <div class="accent-line flex-1 mr-6"></div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-fredoka text-lionbrown">Our Mission</h2>
+                    <div class="accent-line flex-1 ml-6"></div>
+                </div>
+                <div class="modern-card p-10 hover-grow">
+                    <p class="text-lg sm:text-xl text-black leading-relaxed mb-8">
+                        To provide <span class="text-black">exceptional pediatric care</span>,
+                        delivering compassionate, comprehensive healthcare for children from newborn to age 21.
+                        We build <span class="text-black">lasting relationships</span> with families in the
+                        St. Augustine community through <span class="text-black">evidence-based medicine</span>
+                        and <span class="text-black">personalized attention</span>.
                     </p>
                     <div class="flex items-center justify-center">
-                        <div class="w-16 h-1 bg-gradient-to-r from-teal to-lightblue rounded mr-4"></div>
-                        <span class="text-navy font-semibold">Serving families since 2008</span>
-                        <div class="w-16 h-1 bg-gradient-to-r from-lightblue to-teal rounded ml-4"></div>
+                        <div class="accent-line w-24 mr-6"></div>
+                        <span class="text-black text-base sm:text-lg">Proudly serving families since 2008</span>
+                        <div class="accent-line w-24 ml-6"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Practice Timeline -->
-    <section class="py-16 bg-gray-50">
+        <!-- Our Journey -->
+        <div class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-navy mb-4">Our Journey</h2>
-                <p class="text-lg text-gray-600">How Village Pediatrics grew into the practice families trust today</p>
+                <div class="flex items-center justify-center mb-8">
+                    <div class="accent-line flex-1 mr-6"></div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-fredoka text-lionbrown">Our Journey</h2>
+                    <div class="accent-line flex-1 ml-6"></div>
+                </div>
+                <p class="text-base sm:text-lg text-black">The growth of our pediatric practice through the years</p>
             </div>
 
             <div class="max-w-4xl mx-auto">
                 <!-- Timeline Line -->
                 <div class="relative">
-                    <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-orange via-teal to-navy h-full rounded-full"></div>
-                    
-                    <div class="space-y-12">
-                        <!-- 2008: The Beginning -->
-                        <div class="relative flex items-center">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 timeline-line h-full"></div>
+
+                    <div class="space-y-16">
+                        <!-- 2008: The Foundation -->
+                        <div class="relative flex items-center timeline-item" data-year="2008">
                             <div class="flex-1 pr-8 text-right">
-                                <div class="timeline-item bg-white rounded-xl p-6 shadow-lg">
-                                    <div class="text-2xl font-bold text-navy mb-2">2008</div>
-                                    <h3 class="text-lg font-semibold text-teal mb-3">The Beginning</h3>
-                                    <p class="text-gray-600">Dr. Patricia Elvir founded Village Pediatrics with a vision to serve 
-                                    St. Augustine families with comprehensive, compassionate care. Starting with a commitment to 
-                                    excellence and community service.</p>
+                                <div class="modern-card p-12 timeline-card">
+                                    <div class="text-3xl font-bold text-orange mb-4 font-fredoka">2008</div>
+                                    <h3 class="text-2xl font-semibold text-lionbrown mb-4">The Foundation</h3>
+                                    <p class="text-base sm:text-lg text-black">Dr. Patricia Elvir established <span class="text-black">Village Pediatrics</span> with a
+                                    vision to serve St. Augustine families with <span class="text-black">compassionate care</span> and
+                                    <span class="text-black">medical excellence</span>.</p>
                                 </div>
                             </div>
-                            <div class="w-6 h-6 bg-orange rounded-full border-4 border-white shadow-lg z-10 flex-shrink-0"></div>
+                            <div class="timeline-dot w-6 h-6 absolute left-1/2 transform -translate-x-1/2" data-year="2008">
+                                <div class="pulse-ring w-full h-full absolute top-0 left-0"></div>
+                            </div>
                             <div class="flex-1 pl-8"></div>
                         </div>
 
-                        <!-- 2008-2025: Growth -->
-                        <div class="relative flex items-center">
+                        <!-- 2008-2025: Building Trust -->
+                        <div class="relative flex items-center timeline-item" data-year="2008-2025">
                             <div class="flex-1 pr-8"></div>
-                            <div class="w-6 h-6 bg-teal rounded-full border-4 border-white shadow-lg z-10 flex-shrink-0"></div>
+                            <div class="timeline-dot w-6 h-6 absolute left-1/2 transform -translate-x-1/2" data-year="2008-2025">
+                                <div class="pulse-ring w-full h-full absolute top-0 left-0"></div>
+                            </div>
                             <div class="flex-1 pl-8">
-                                <div class="timeline-item bg-white rounded-xl p-6 shadow-lg">
-                                    <div class="text-2xl font-bold text-navy mb-2">2008-2025</div>
-                                    <h3 class="text-lg font-semibold text-teal mb-3">Building Trust</h3>
-                                    <p class="text-gray-600">Over 17 years, Village Pediatrics grew into a beloved pediatric practice, 
-                                    establishing same-day appointments, 24/7 after-hours nursing, and comprehensive care that families could rely on.</p>
+                                <div class="modern-card p-8 timeline-card right">
+                                    <div class="text-3xl font-bold text-orange mb-4 font-fredoka">2008-2025</div>
+                                    <h3 class="text-2xl font-semibold text-lionbrown mb-4">Building Trust & Excellence</h3>
+                                    <p class="text-base sm:text-lg text-black">For 17 years, our practice flourished! We established
+                                    <span class="text-black">same-day appointments</span>,
+                                    <span class="text-black">24/7 nursing support</span>, and
+                                    <span class="text-black">comprehensive care</span> that families could rely upon.</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- 2025: New Leadership -->
-                        <div class="relative flex items-center">
+                        <div class="relative flex items-center timeline-item" data-year="2025">
                             <div class="flex-1 pr-8 text-right">
-                                <div class="timeline-item bg-white rounded-xl p-6 shadow-lg">
-                                    <div class="text-2xl font-bold text-navy mb-2">September 2025</div>
-                                    <h3 class="text-lg font-semibold text-teal mb-3">New Chapter</h3>
-                                    <p class="text-gray-600">Dr. Austin Dupont becomes the new owner, bringing fresh leadership 
-                                    while maintaining the same compassionate care and trusted team that families have come to love.</p>
+                                <div class="modern-card p-12 timeline-card">
+                                    <div class="text-3xl font-bold text-orange mb-4 font-fredoka">September 2025</div>
+                                    <h3 class="text-2xl font-semibold text-lionbrown mb-4">New Leadership</h3>
+                                    <p class="text-base sm:text-lg text-black">Dr. Austin Dupont joins the practice, bringing
+                                    <span class="text-black">fresh perspectives</span> while preserving the
+                                    <span class="text-black">established traditions</span> and
+                                    <span class="text-black">trusted care</span> that families have grown to cherish.</p>
                                 </div>
                             </div>
-                            <div class="w-6 h-6 bg-navy rounded-full border-4 border-white shadow-lg z-10 flex-shrink-0"></div>
+                            <div class="timeline-dot w-6 h-6 absolute left-1/2 transform -translate-x-1/2" data-year="2025">
+                                <div class="pulse-ring w-full h-full absolute top-0 left-0"></div>
+                            </div>
                             <div class="flex-1 pl-8"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Our Values -->
-    <section class="py-16">
+        <!-- Interactive Why Choose Us -->
+        <div class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-navy mb-4">What Makes Us Different</h2>
-                <p class="text-lg text-gray-600">The values and principles that guide everything we do</p>
+            <div class="text-center mb-16">
+                <div class="flex items-center justify-center mb-8">
+                    <div class="accent-line flex-1 mr-6"></div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-fredoka text-lionbrown">Why Families Choose Us</h2>
+                    <div class="accent-line flex-1 ml-6"></div>
+                </div>
+                <p class="text-base sm:text-lg text-gray-600 font-fredoka italic">Hover over each benefit to learn more</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Comprehensive Care -->
-                <div class="value-card bg-white rounded-xl p-6 shadow-lg border-t-4 border-teal">
-                    <div class="w-12 h-12 bg-teal/10 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
+                <!-- Interactive Card 1 -->
+                <div class="interactive-benefit-card group">
+                    <div class="card-front">
+                        <div class="w-16 h-16 bg-teal rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-2">Same-Day Appointments</h3>
+                        <p class="text-gray-600">When your child is sick, we're here</p>
                     </div>
-                    <h3 class="text-lg font-semibold text-navy mb-3">Comprehensive Care</h3>
-                    <p class="text-gray-600">Complete pediatric services from newborn to age 21, all under one roof with continuity you can trust.</p>
+                    <div class="card-back">
+                        <p class="text-white leading-relaxed">Available every day, including weekends. No waiting when your child needs care. Call before 3 PM for same-day availability.</p>
+                    </div>
                 </div>
 
-                <!-- Family-Centered -->
-                <div class="value-card bg-white rounded-xl p-6 shadow-lg border-t-4 border-orange">
-                    <div class="w-12 h-12 bg-orange/10 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
+                <!-- Interactive Card 2 -->
+                <div class="interactive-benefit-card group">
+                    <div class="card-front">
+                        <div class="w-16 h-16 bg-lightblue rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-2">24/7 Support</h3>
+                        <p class="text-gray-600">A provider is always on-call</p>
                     </div>
-                    <h3 class="text-lg font-semibold text-navy mb-3">Family-Centered</h3>
-                    <p class="text-gray-600">We believe in caring for the whole family, building lasting relationships based on trust and understanding.</p>
+                    <div class="card-back">
+                        <p class="text-white leading-relaxed">Real Village Pediatrics providers answer after-hours calls - not a call center. Get medical advice from doctors who know your child.</p>
+                    </div>
                 </div>
 
-                <!-- Accessibility -->
-                <div class="value-card bg-white rounded-xl p-6 shadow-lg border-t-4 border-lightblue">
-                    <div class="w-12 h-12 bg-lightblue/10 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-lightblue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
+                <!-- Interactive Card 3 -->
+                <div class="interactive-benefit-card group">
+                    <div class="card-front">
+                        <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-2">Know Your Child</h3>
+                        <p class="text-gray-600">Personal relationships with families</p>
                     </div>
-                    <h3 class="text-lg font-semibold text-navy mb-3">Always Accessible</h3>
-                    <p class="text-gray-600">Same-day appointments, walk-ins welcome, and 24/7 after-hours support because healthcare can't wait.</p>
+                    <div class="card-back">
+                        <p class="text-white leading-relaxed">We remember your child's name, preferences, and history. Building trust through consistent, personalized care relationships.</p>
+                    </div>
                 </div>
 
-                <!-- Evidence-Based -->
-                <div class="value-card bg-white rounded-xl p-6 shadow-lg border-t-4 border-navy">
-                    <div class="w-12 h-12 bg-navy/10 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                        </svg>
+                <!-- Interactive Card 4 -->
+                <div class="interactive-benefit-card group">
+                    <div class="card-front">
+                        <div class="w-16 h-16 bg-navy rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-2">Local Community</h3>
+                        <p class="text-gray-600">Rooted in St. Augustine</p>
                     </div>
-                    <h3 class="text-lg font-semibold text-navy mb-3">Evidence-Based Medicine</h3>
-                    <p class="text-gray-600">Our treatment decisions are grounded in the latest medical research and best practices in pediatric care.</p>
+                    <div class="card-back">
+                        <p class="text-white leading-relaxed">Family-owned practice serving St. Augustine and World Golf Village. We understand our community's unique needs.</p>
+                    </div>
                 </div>
 
-                <!-- Community Focused -->
-                <div class="value-card bg-white rounded-xl p-6 shadow-lg border-t-4 border-green-500">
-                    <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                        </svg>
+                <!-- Interactive Card 5 -->
+                <div class="interactive-benefit-card group">
+                    <div class="card-front">
+                        <div class="w-16 h-16 bg-teal rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-2">Complete Care</h3>
+                        <p class="text-gray-600">Newborn to age 21</p>
                     </div>
-                    <h3 class="text-lg font-semibold text-navy mb-3">Community Focused</h3>
-                    <p class="text-gray-600">Proudly serving St. Augustine and World Golf Village with deep roots and genuine commitment to our neighbors.</p>
+                    <div class="card-back">
+                        <p class="text-white leading-relaxed">One practice for your child's entire journey. From first shots to college physicals - consistent care through every stage.</p>
+                    </div>
                 </div>
 
-                <!-- Bilingual Care -->
-                <div class="value-card bg-white rounded-xl p-6 shadow-lg border-t-4 border-purple-500">
-                    <div class="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
-                        </svg>
+                <!-- Interactive Card 6 -->
+                <div class="interactive-benefit-card group">
+                    <div class="card-front">
+                        <div class="w-16 h-16 bg-lightblue rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-2">Bilingual Care</h3>
+                        <p class="text-gray-600">Spanish speaking providers</p>
                     </div>
-                    <h3 class="text-lg font-semibold text-navy mb-3">Bilingual Care</h3>
-                    <p class="text-gray-600">Fluent Spanish-speaking care available to serve our diverse community with cultural understanding.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What Remains the Same -->
-    <section class="py-16 bg-navy text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">What Remains the Same</h2>
-                <p class="text-xl text-white/90">Your trusted care continues with the same excellence you've come to expect</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="text-center bg-white/10 backdrop-blur rounded-xl p-6">
-                    <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                        </svg>
+                    <div class="card-back">
+                        <p class="text-white leading-relaxed">Fluent Spanish services to serve our diverse community with cultural understanding and clear communication.</p>
                     </div>
-                    <h3 class="font-semibold mb-2">Same Location</h3>
-                    <p class="text-white/80 text-sm">319 W Town Pl, STE 1<br>St. Augustine, FL</p>
-                </div>
-
-                <div class="text-center bg-white/10 backdrop-blur rounded-xl p-6">
-                    <div class="w-16 h-16 bg-teal rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold mb-2">Same Number</h3>
-                    <p class="text-white/80 text-sm">(904) 940-1577<br>24/7 availability</p>
-                </div>
-
-                <div class="text-center bg-white/10 backdrop-blur rounded-xl p-6">
-                    <div class="w-16 h-16 bg-lightblue rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold mb-2">Same Team</h3>
-                    <p class="text-white/80 text-sm">Dr. Elvir continues<br>providing care</p>
-                </div>
-
-                <div class="text-center bg-white/10 backdrop-blur rounded-xl p-6">
-                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold mb-2">Same Values</h3>
-                    <p class="text-white/80 text-sm">Compassionate,<br>comprehensive care</p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Meet Our Team CTA -->
-    <section class="py-16">
+        <!-- Meet Our Team CTA -->
+        <div class="py-4 mt-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="bg-gray-50 rounded-2xl p-8">
-                <h2 class="text-3xl font-bold text-navy mb-4">Ready to Meet Our Team?</h2>
-                <p class="text-lg text-gray-600 mb-8">Learn more about the dedicated providers who make Village Pediatrics special.</p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="team.html" class="bg-teal text-white px-8 py-3 rounded-lg font-semibold hover:bg-navy transition-colors">
+            <div class="bg-white rounded-2xl shadow-lg border-2 border-feb92c p-12 transition-all duration-300 hover:translateY(-12px) hover:scale-105 hover:shadow-2xl">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-fredoka text-lionbrown mb-6">Ready to Meet Our Team?</h2>
+                <p class="text-lg sm:text-xl text-gray-600 mb-10 font-inter">Learn more about the dedicated providers who make Village Pediatrics special.</p>
+
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="team.html" class="bg-gradient-to-r from-lionbrown to-liongold text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-lg">
                         Meet Our Providers
                     </a>
-                    <a href="contact.html" class="bg-orange text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange/90 transition-colors">
+                    <a href="contact.html" class="bg-gradient-to-r from-liongold to-lionlight text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-lg">
                         Schedule a Visit
                     </a>
                 </div>
             </div>
         </div>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Privia Medical Group Partnership - Top Section -->
+            <div class="mb-12 pb-8 border-b border-gray-700">
+                <div class="flex flex-col lg:flex-row items-center justify-center gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-gray-800/50 rounded-lg p-3">
+                            <img src="images/footer.png" alt="My Privia Medical Group" class="h-20 w-auto" onerror="this.style.display='none'">
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <h4 class="font-semibold text-xl text-white mb-2">Proud Partner of Privia Medical Group</h4>
+                            <p class="text-sm text-gray-300 leading-relaxed max-w-4xl">
+                                My Village Pediatrics is a proud member of Privia Medical Group. The best doctors in our community have joined together to form Privia Medical Group (PMG), a multi-specialty, high-performance medical group that puts patients first. Our physicians are united by the mission of providing better, more coordinated care for their patients.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Footer Content -->
             <div class="grid md:grid-cols-4 gap-8">
+                <!-- Practice Info -->
                 <div>
                     <div class="flex items-center mb-4">
                         <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-8 w-auto brightness-0 invert">
@@ -346,45 +1412,350 @@
                             <div class="text-sm text-gray-400">St. Augustine, FL</div>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm">Compassionate pediatric care since 2008.</p>
+                    <p class="text-gray-400 text-sm">Trusted pediatric care since 2008.</p>
                 </div>
 
+                <!-- Quick Links -->
                 <div>
                     <h4 class="font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li><a href="index.html" class="hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white">About</a></li>
                         <li><a href="services.html" class="hover:text-white">Services</a></li>
-                        <li><a href="team.html" class="hover:text-white">Our Team</a></li>
                         <li><a href="contact.html" class="hover:text-white">Contact</a></li>
                     </ul>
                 </div>
 
+                <!-- Our Providers -->
                 <div>
-                    <h4 class="font-semibold mb-4">Services</h4>
+                    <h4 class="font-semibold mb-4">Our Providers</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li>Well-Child Visits</li>
-                        <li>Same-Day Sick Visits</li>
-                        <li>Immunizations</li>
-                        <li>Specialty Care</li>
+                        <li>Dr. Austin Dupont, MD</li>
+                        <li>Dr. Patricia Elvir, MD</li>
+                        <li>Trudy English, ARNP</li>
                     </ul>
                 </div>
 
+                <!-- Contact -->
                 <div>
                     <h4 class="font-semibold mb-4">Contact</h4>
                     <div class="text-sm text-gray-400 space-y-1">
                         <p>319 W Town Pl, STE 1</p>
                         <p>St. Augustine, FL 32092</p>
                         <p>(904) 940-1577</p>
-                        <p>Ages: Newborn to 21</p>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
-                <p>&copy; 2024 Village Pediatrics. All rights reserved.</p>
+            <!-- Copyright and Legal -->
+            <div class="border-t border-gray-700 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                    <p>&copy; 2025 Village Pediatrics. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="accessibility.html" class="hover:text-white transition-colors">Accessibility</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
+
+
+    <script>
+        // Enhanced Timeline Animation and Interactivity
+        function animateTimeline() {
+            const timelineDots = document.querySelectorAll('.timeline-dot');
+            const timelineCards = document.querySelectorAll('.timeline-card');
+            const timelineItems = document.querySelectorAll('.timeline-item');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+
+                        // Add staggered animation delay
+                        if (entry.target.classList.contains('timeline-dot')) {
+                            setTimeout(() => {
+                                entry.target.style.transform = 'scale(1.2) rotateZ(0deg)';
+                                createParticleEffect(entry.target);
+                            }, 300);
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.5,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            timelineDots.forEach(dot => observer.observe(dot));
+            timelineCards.forEach(card => observer.observe(card));
+
+            // Add click interactions
+            timelineDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    highlightTimelineItem(index);
+                    createRippleEffect(dot);
+                });
+            });
+
+            // Add hover sound effects (visual feedback)
+            timelineCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.02) rotateX(2deg) rotateY(1deg) translateZ(20px)';
+                    createGlowEffect(card);
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                    removeGlowEffect(card);
+                });
+            });
+        }
+
+        function createParticleEffect(element) {
+            const particles = 8;
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: linear-gradient(45deg, #3B9D84, #50B3EE);
+                    border-radius: 50%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    animation: particleExplode 1s ease-out forwards;
+                    animation-delay: ${i * 0.1}s;
+                    pointer-events: none;
+                    z-index: 1000;
+                `;
+
+                element.appendChild(particle);
+
+                setTimeout(() => particle.remove(), 1000);
+            }
+        }
+
+        function createRippleEffect(element) {
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                background: rgba(59, 157, 132, 0.3);
+                transform: translate(-50%, -50%);
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+                z-index: 999;
+            `;
+
+            element.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        }
+
+        function createGlowEffect(card) {
+            const glow = document.createElement('div');
+            glow.className = 'timeline-glow';
+            glow.style.cssText = `
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                right: -10px;
+                bottom: -10px;
+                background: linear-gradient(45deg, rgba(255, 184, 44, 0.1), rgba(176, 87, 23, 0.08));
+                border-radius: 20px;
+                filter: blur(15px);
+                z-index: -1;
+                animation: pulse 2s infinite;
+                pointer-events: none;
+            `;
+            card.appendChild(glow);
+        }
+
+        function removeGlowEffect(card) {
+            const glow = card.querySelector('.timeline-glow');
+            if (glow) glow.remove();
+        }
+
+        function highlightTimelineItem(index) {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach((item, i) => {
+                if (i === index) {
+                    item.style.filter = 'brightness(1.1) saturate(1.2)';
+                    item.style.transform = 'scale(1.02)';
+                } else {
+                    item.style.filter = 'brightness(0.8) saturate(0.8)';
+                    item.style.transform = 'scale(0.98)';
+                }
+            });
+
+            // Reset after 3 seconds
+            setTimeout(() => {
+                items.forEach(item => {
+                    item.style.filter = '';
+                    item.style.transform = '';
+                });
+            }, 3000);
+        }
+
+        // Add CSS animations for particles and ripples
+        const timelineAnimations = document.createElement('style');
+        timelineAnimations.textContent = `
+            @keyframes particleExplode {
+                0% {
+                    transform: translate(-50%, -50%) scale(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(-50%, -50%) translate(${Math.random() * 60 - 30}px, ${Math.random() * 60 - 30}px) scale(1);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes ripple {
+                0% {
+                    width: 0;
+                    height: 0;
+                    opacity: 1;
+                }
+                100% {
+                    width: 100px;
+                    height: 100px;
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(timelineAnimations);
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            animateTimeline();
+            initInteractiveElements();
+        });
+
+        // Fun Interactive Elements
+        function initInteractiveElements() {
+            // Parallax effect on mouse move
+            document.addEventListener('mousemove', function(e) {
+                const shapes = document.querySelectorAll('.bg-shape');
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+
+                shapes.forEach((shape, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const x = (mouseX - 0.5) * speed * 10;
+                    const y = (mouseY - 0.5) * speed * 10;
+                    shape.style.transform += ` translate(${x}px, ${y}px)`;
+                });
+            });
+
+
+            // Enhanced click effects to interactive cards
+            document.querySelectorAll('.interactive-benefit-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'translateY(-10px) scale(0.98) rotateX(5deg)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-10px) scale(1.02)';
+                    }, 150);
+                });
+            });
+
+            // Add 3D tilt effect to all modern cards
+            document.querySelectorAll('.modern-card').forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+
+                    this.style.transform = `translateY(-15px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
+
+            // Add random sparkle effects
+            setInterval(createSparkle, 3000);
+        }
+
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            const colors = [
+                'radial-gradient(circle, rgba(242, 177, 56, 0.8), rgba(242, 177, 56, 0.4))',
+                'radial-gradient(circle, rgba(255, 215, 0, 0.7), rgba(242, 177, 56, 0.3))',
+                'radial-gradient(circle, rgba(255, 184, 44, 0.6), rgba(176, 87, 23, 0.4))'
+            ];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+            sparkle.style.cssText = `
+                position: fixed;
+                width: 6px;
+                height: 6px;
+                background: ${randomColor};
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1000;
+                left: ${Math.random() * window.innerWidth}px;
+                top: ${Math.random() * window.innerHeight}px;
+                animation: sparkleFloat 3s ease-out forwards;
+                box-shadow: 0 0 8px rgba(242, 177, 56, 0.5);
+            `;
+
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+
+        // Add sparkle animation
+        const sparkleKeyframes = `
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 1;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.2) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) rotate(360deg) translateY(-50px);
+            }
+        }`;
+
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = sparkleKeyframes;
+        document.head.appendChild(sparkleStyle);
+    </script>
+
+    <!-- Animal Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait a moment for page to settle, then animate animals in
+            setTimeout(() => {
+                const animals = document.querySelectorAll('.animal-nav-item');
+                animals.forEach((animal, index) => {
+                    setTimeout(() => {
+                        animal.classList.add('animate-in');
+                    }, index * 200); // Stagger each animal by 200ms
+                });
+            }, 500); // Start animations 500ms after page load
+
+        });
+    </script>
 
     <!-- Lion Animation Script -->
     <script src="js/lion-animations.js"></script>

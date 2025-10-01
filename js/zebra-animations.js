@@ -9,6 +9,8 @@ class ZebraAnimations {
         this.isInitialized = false;
         this.scrollPosition = 0;
         this.animationFrame = null;
+        this.hasPassedHero = false;
+        this.heroScrollThreshold = 0;
 
         this.init();
     }
@@ -23,9 +25,10 @@ class ZebraAnimations {
     }
 
     setup() {
+        this.calculateHeroThreshold();
         this.createZebraElement();
         this.bindEvents();
-        this.startPageLoadAnimation();
+        this.checkInitialScroll();
         this.isInitialized = true;
     }
 
@@ -43,13 +46,15 @@ class ZebraAnimations {
         style.textContent = `
             .zebra-animation {
                 position: fixed;
-                bottom: 20px;
-                right: -200px;
-                width: 150px;
-                height: 150px;
+                top: 70vh;
+                right: -250px;
+                width: 240px;
+                height: 240px;
                 z-index: 100;
                 pointer-events: none;
-                transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+                transform: translateY(-50%);
+                opacity: 0;
+                transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
             .zebra-image {
@@ -111,9 +116,9 @@ class ZebraAnimations {
 
             @media (max-width: 768px) {
                 .zebra-animation {
-                    width: 100px;
-                    height: 100px;
-                    bottom: 10px;
+                    width: 120px;
+                    height: 120px;
+                    top: 70vh;
                 }
                 .zebra-visible {
                     right: 10px;
@@ -125,17 +130,51 @@ class ZebraAnimations {
         document.body.appendChild(this.zebra);
     }
 
+    calculateHeroThreshold() {
+        // Calculate when hero section ends
+        const heroElement = document.querySelector('section[class*="hero"]');
+        if (heroElement) {
+            this.heroScrollThreshold = heroElement.offsetHeight * 0.8;
+        } else {
+            this.heroScrollThreshold = window.innerHeight * 0.8;
+        }
+    }
+
+    checkInitialScroll() {
+        // Check if user has already scrolled past hero on page load
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScroll > this.heroScrollThreshold) {
+            this.hasPassedHero = true;
+            this.startPageLoadAnimation();
+        }
+    }
+
     startPageLoadAnimation() {
+        // Only start animation if we've passed the hero section
+        if (!this.hasPassedHero) return;
+
         // Initial entrance animation
         setTimeout(() => {
-            this.zebra.classList.add('zebra-visible');
-            this.zebra.classList.add('zebra-walking');
+            this.showAnimal();
 
             // Point to services after entrance
             setTimeout(() => {
                 this.pointToServices();
             }, 1500);
         }, 500);
+    }
+
+    showAnimal() {
+        this.zebra.style.opacity = '1';
+        this.zebra.style.right = '20px';
+        this.zebra.classList.add('zebra-visible');
+        this.zebra.classList.add('zebra-walking');
+    }
+
+    hideAnimal() {
+        this.zebra.style.opacity = '0';
+        this.zebra.style.right = '-250px';
+        this.zebra.classList.remove('zebra-visible', 'zebra-walking', 'zebra-pointing');
     }
 
     pointToServices() {
@@ -174,6 +213,27 @@ class ZebraAnimations {
 
     handleScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Check if we're back in hero section and hide animal
+        if (scrollTop <= this.heroScrollThreshold) {
+            if (this.hasPassedHero) {
+                this.hideAnimal();
+            }
+            return;
+        }
+
+        // Check if we've passed the hero section (first time or returning)
+        if (scrollTop > this.heroScrollThreshold) {
+            if (!this.hasPassedHero) {
+                this.hasPassedHero = true;
+                this.startPageLoadAnimation();
+                return;
+            } else {
+                // Already been past hero, just show the animal again
+                this.showAnimal();
+            }
+        }
+
         const scrollPercent = scrollTop / (document.documentElement.scrollHeight - window.innerHeight);
 
         // Move zebra based on scroll
@@ -212,5 +272,7 @@ class ZebraAnimations {
     }
 }
 
-// Initialize zebra animations when script loads
-const zebraAnimations = new ZebraAnimations();
+// Only initialize zebra animations on services page
+if (window.location.pathname.includes('services.html') || document.title.includes('Services')) {
+    new ZebraAnimations();
+}

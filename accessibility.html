@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Statement - Village Pediatrics | Web Accessibility Commitment</title>
+    <meta name="description" content="Village Pediatrics accessibility statement and commitment to providing an inclusive web experience for all users, including those with disabilities.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#0D2673',
+                        'teal': '#3B9D84',
+                        'lightblue': '#50B3EE',
+                        'orange': '#F2B138',
+                        'lightgray': '#D6CDC6'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'fredoka': ['Fredoka', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8fdf5 0%, #e8f5d8 50%, #d4e8b8 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 20s ease-in-out infinite;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Enhanced Glass Morphism */
+        .glass-card {
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.98) 0%,
+                rgba(254, 252, 245, 0.95) 50%,
+                rgba(249, 245, 230, 0.98) 100%);
+            border: 2px solid rgba(59, 157, 132, 0.2);
+            border-radius: 20px;
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.1),
+                0 5px 15px rgba(59, 157, 132, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+        }
+
+        .accessibility-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            border-left: 4px solid #3B9D84;
+        }
+
+        @media (min-width: 640px) {
+            .accessibility-section {
+                padding: 1.5rem;
+            }
+        }
+
+        .accessibility-section h2 {
+            color: #0D2673;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .accessibility-section h3 {
+            color: #3B9D84;
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .accessibility-section p, .accessibility-section li {
+            line-height: 1.7;
+            color: #374151;
+            margin-bottom: 0.75rem;
+        }
+
+        .accessibility-section ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .accessibility-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(13, 38, 115, 0.1), rgba(59, 157, 132, 0.1));
+            border: 2px solid rgba(13, 38, 115, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, rgba(242, 177, 56, 0.1), rgba(80, 179, 238, 0.1));
+            border: 2px solid rgba(242, 177, 56, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-box {
+            background: linear-gradient(135deg, rgba(59, 157, 132, 0.1), rgba(80, 179, 238, 0.1));
+            border: 2px solid rgba(59, 157, 132, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        /* Animal navigation styles */
+        .animal-nav-item {
+            opacity: 0;
+            transform: translateY(-100px) scale(0.8);
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .animal-nav-item.animate-in {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .animal-nav-item:nth-child(1) { animation-delay: 0.1s; }
+        .animal-nav-item:nth-child(2) { animation-delay: 0.3s; }
+        .animal-nav-item:nth-child(3) { animation-delay: 0.5s; }
+        .animal-nav-item:nth-child(4) { animation-delay: 0.7s; }
+        .animal-nav-item:nth-child(5) { animation-delay: 0.9s; }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .accessibility-section {
+                background: rgba(255, 255, 255, 0.95);
+                border-left-width: 6px;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-navy text-white px-4 py-2 rounded-md z-50">
+        Skip to main content
+    </a>
+
+    <!-- Animal Navigation Over Hero -->
+    <nav class="absolute top-20 left-0 right-0 z-30" id="animal-nav" role="navigation" aria-label="Main navigation">
+        <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8">
+            <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300" aria-label="Home page">
+                <img src="images/animals/elephant.png" alt="" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg" role="presentation">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-teal group-hover:bg-gray-800 group-hover:border-gray-800 transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Home</span><span class="hidden sm:inline">Home</span></span>
+                </div>
+            </a>
+            <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300" aria-label="About us page">
+                <img src="images/animals/lion.png" alt="" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg" role="presentation">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-teal group-hover:bg-orange group-hover:border-orange transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">About</span><span class="hidden sm:inline">About Us</span></span>
+                </div>
+            </a>
+            <a href="services.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300" aria-label="Services page">
+                <img src="images/animals/zebra.png" alt="" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg" role="presentation">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-teal group-hover:bg-lightblue group-hover:border-lightblue transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Care</span><span class="hidden sm:inline">Services</span></span>
+                </div>
+            </a>
+            <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300" aria-label="Our team page">
+                <img src="images/animals/alligator.png" alt="" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg" role="presentation">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-orange group-hover:bg-teal group-hover:border-teal transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Team</span><span class="hidden sm:inline">Our Team</span></span>
+                </div>
+            </a>
+            <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300" aria-label="New patients page">
+                <img src="images/animals/monkey.png" alt="" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg" role="presentation">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-teal group-hover:bg-navy group-hover:border-navy transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">New</span><span class="hidden sm:inline">New Patients</span></span>
+                </div>
+            </a>
+            <a href="patient-portal.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300" aria-label="Patient portal page">
+                <img src="images/animals/giraffe.png" alt="" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg" role="presentation">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-teal group-hover:bg-orange group-hover:border-orange transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Portal</span><span class="hidden sm:inline">Patient Portal</span></span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Logo positioned in top left -->
+    <div class="absolute top-8 left-8 z-20">
+        <a href="index.html" aria-label="Village Pediatrics home page">
+            <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics logo" class="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain filter drop-shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
+        </a>
+    </div>
+
+    <!-- Contact Us Button in top right -->
+    <div class="absolute top-8 right-8 z-20">
+        <a href="contact.html" class="bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-inter text-lg hover:bg-orange hover:scale-105 transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2">
+            Contact Us
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="text-white py-20 pt-80 relative overflow-hidden" style="background: linear-gradient(135deg, #0D2673 0%, #3B9D84 50%, #50B3EE 100%);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 sm:mb-12 font-fredoka text-white drop-shadow-lg">
+                    Accessibility Statement
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                    Village Pediatrics is committed to ensuring digital accessibility for all users, including individuals with disabilities. We strive to provide an inclusive experience for everyone.
+                </p>
+                <div class="text-sm text-white/80">
+                    <p><strong>Effective Date:</strong> January 1, 2025</p>
+                    <p><strong>Last Updated:</strong> January 1, 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content" class="py-20 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Our Commitment -->
+            <div class="accessibility-section">
+                <h2>Our Accessibility Commitment</h2>
+                <div class="highlight-box">
+                    <p><strong>Village Pediatrics is committed to ensuring that our website is accessible to all users, including individuals with disabilities.</strong> We believe that everyone should have equal access to information and functionality on our website.</p>
+                </div>
+                <p>We are continuously working to improve the accessibility and usability of our website to ensure we provide equal access to information and functionality for all our users. This commitment extends to our online services, patient portal, and all digital communications.</p>
+            </div>
+
+            <!-- Standards and Guidelines -->
+            <div class="accessibility-section">
+                <h2>Accessibility Standards</h2>
+
+                <h3>WCAG 2.1 Compliance</h3>
+                <p>Our website aims to conform with the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. These guidelines explain how to make web content more accessible for people with disabilities and create a better user experience for everyone.</p>
+
+                <h3>ADA Compliance</h3>
+                <p>We strive to ensure our website complies with the Americans with Disabilities Act (ADA) by:</p>
+                <ul>
+                    <li>Providing alternative text for images and graphics</li>
+                    <li>Ensuring proper color contrast ratios</li>
+                    <li>Making all content accessible via keyboard navigation</li>
+                    <li>Using semantic HTML structure and proper headings</li>
+                    <li>Providing clear and consistent navigation</li>
+                </ul>
+            </div>
+
+            <!-- Accessibility Features -->
+            <div class="accessibility-section">
+                <h2>Accessibility Features</h2>
+
+                <div class="feature-box">
+                    <h3>Current Accessibility Features</h3>
+                    <p>Our website includes the following accessibility features:</p>
+                </div>
+
+                <h3>Keyboard Navigation</h3>
+                <ul>
+                    <li>All interactive elements are accessible via keyboard</li>
+                    <li>Logical tab order throughout the website</li>
+                    <li>Visible focus indicators for keyboard users</li>
+                    <li>Skip navigation links for screen reader users</li>
+                </ul>
+
+                <h3>Screen Reader Support</h3>
+                <ul>
+                    <li>Semantic HTML markup for proper content structure</li>
+                    <li>Descriptive headings organized in a logical hierarchy</li>
+                    <li>Alternative text for all meaningful images</li>
+                    <li>ARIA labels and descriptions where appropriate</li>
+                    <li>Form labels clearly associated with input fields</li>
+                </ul>
+
+                <h3>Visual Accessibility</h3>
+                <ul>
+                    <li>High contrast color schemes for better readability</li>
+                    <li>Readable fonts and appropriate font sizes</li>
+                    <li>Scalable text that can be enlarged up to 200% without loss of functionality</li>
+                    <li>Support for high contrast mode preferences</li>
+                    <li>Clear visual hierarchy and spacing</li>
+                </ul>
+
+                <h3>Motor Accessibility</h3>
+                <ul>
+                    <li>Large, easily clickable buttons and links</li>
+                    <li>Sufficient spacing between interactive elements</li>
+                    <li>Support for reduced motion preferences</li>
+                    <li>Alternative input methods supported</li>
+                </ul>
+            </div>
+
+            <!-- Assistive Technologies -->
+            <div class="accessibility-section">
+                <h2>Supported Assistive Technologies</h2>
+                <p>Our website is designed to be compatible with various assistive technologies, including:</p>
+
+                <h3>Screen Readers</h3>
+                <ul>
+                    <li>JAWS (Job Access With Speech)</li>
+                    <li>NVDA (NonVisual Desktop Access)</li>
+                    <li>VoiceOver (macOS and iOS)</li>
+                    <li>TalkBack (Android)</li>
+                    <li>Dragon NaturallySpeaking</li>
+                </ul>
+
+                <h3>Browser Features</h3>
+                <ul>
+                    <li>Browser zoom functionality (up to 200%)</li>
+                    <li>High contrast mode</li>
+                    <li>Reduced motion settings</li>
+                    <li>Font size adjustments</li>
+                </ul>
+
+                <h3>Mobile Accessibility</h3>
+                <ul>
+                    <li>Mobile screen reader compatibility</li>
+                    <li>Touch target sizing for motor accessibility</li>
+                    <li>Responsive design for various screen sizes</li>
+                    <li>Voice control support</li>
+                </ul>
+            </div>
+
+            <!-- Known Limitations -->
+            <div class="accessibility-section">
+                <h2>Known Limitations and Ongoing Improvements</h2>
+
+                <h3>Areas of Ongoing Improvement</h3>
+                <p>We are continuously working to enhance our website's accessibility. Current areas of focus include:</p>
+                <ul>
+                    <li>Enhancing video content with captions and transcripts</li>
+                    <li>Improving form error messaging and validation</li>
+                    <li>Optimizing complex interactive elements</li>
+                    <li>Regular accessibility audits and testing</li>
+                </ul>
+
+                <h3>Third-Party Content</h3>
+                <p>Some third-party content and services on our website may not fully meet our accessibility standards. We are working with our vendors to improve accessibility of:</p>
+                <ul>
+                    <li>Online appointment scheduling systems</li>
+                    <li>Patient portal functionality</li>
+                    <li>Payment processing interfaces</li>
+                    <li>Social media integrations</li>
+                </ul>
+            </div>
+
+            <!-- Alternative Access Methods -->
+            <div class="accessibility-section">
+                <h2>Alternative Access Methods</h2>
+
+                <h3>Phone and In-Person Services</h3>
+                <p>If you encounter barriers on our website or need information in an alternative format, we offer these options:</p>
+                <ul>
+                    <li><strong>Phone Support:</strong> Call us at (904) 940-1577 during business hours</li>
+                    <li><strong>In-Person Assistance:</strong> Visit our office for help with online services</li>
+                    <li><strong>Alternative Formats:</strong> Request information in large print, audio, or other accessible formats</li>
+                    <li><strong>Appointment Scheduling:</strong> Schedule appointments over the phone with our staff</li>
+                </ul>
+
+                <h3>Communication Accommodations</h3>
+                <p>We provide various communication options:</p>
+                <ul>
+                    <li>TTY/TDD services available upon request</li>
+                    <li>Sign language interpreters (with advance notice)</li>
+                    <li>Written materials in accessible formats</li>
+                    <li>Email communication for written documentation</li>
+                </ul>
+            </div>
+
+            <!-- Testing and Feedback -->
+            <div class="accessibility-section">
+                <h2>Accessibility Testing and Maintenance</h2>
+
+                <h3>Regular Testing</h3>
+                <p>We conduct regular accessibility testing using:</p>
+                <ul>
+                    <li>Automated accessibility scanning tools</li>
+                    <li>Manual testing with keyboard navigation</li>
+                    <li>Screen reader testing</li>
+                    <li>User testing with individuals with disabilities</li>
+                    <li>Professional accessibility audits</li>
+                </ul>
+
+                <h3>Continuous Improvement</h3>
+                <p>Our accessibility efforts include:</p>
+                <ul>
+                    <li>Regular staff training on accessibility best practices</li>
+                    <li>Incorporating accessibility into our design and development process</li>
+                    <li>Staying current with accessibility standards and guidelines</li>
+                    <li>Responding promptly to accessibility feedback and issues</li>
+                </ul>
+            </div>
+
+            <!-- Feedback and Contact -->
+            <div class="accessibility-section">
+                <div class="contact-box">
+                    <h2>Accessibility Feedback and Support</h2>
+
+                    <h3>We Welcome Your Feedback</h3>
+                    <p>Your feedback is important to us. If you experience any accessibility barriers on our website or have suggestions for improvement, please contact us:</p>
+
+                    <h3>Accessibility Contact Information</h3>
+                    <p><strong>Village Pediatrics Accessibility Coordinator</strong><br>
+                    319 W Town Pl, STE 1<br>
+                    St. Augustine, FL 32092<br>
+                    Phone: (904) 940-1577<br>
+                    Email: accessibility@villagepediatrics.com</p>
+
+                    <h3>Response Timeline</h3>
+                    <p>We strive to respond to accessibility inquiries within:</p>
+                    <ul>
+                        <li><strong>Urgent accessibility issues:</strong> Within 24 hours</li>
+                        <li><strong>General accessibility feedback:</strong> Within 2-3 business days</li>
+                        <li><strong>Accessibility improvement suggestions:</strong> Within 1 week</li>
+                    </ul>
+
+                    <h3>What to Include in Your Feedback</h3>
+                    <p>When reporting accessibility issues, please include:</p>
+                    <ul>
+                        <li>Description of the accessibility barrier</li>
+                        <li>The web page or section where you encountered the issue</li>
+                        <li>The device and browser you were using</li>
+                        <li>Any assistive technology you were using</li>
+                        <li>Steps to reproduce the issue</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Legal Information -->
+            <div class="accessibility-section">
+                <h2>Legal and Compliance Information</h2>
+
+                <h3>Applicable Laws and Standards</h3>
+                <p>Our accessibility efforts are guided by:</p>
+                <ul>
+                    <li>Americans with Disabilities Act (ADA)</li>
+                    <li>Section 508 of the Rehabilitation Act</li>
+                    <li>Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</li>
+                    <li>Florida accessibility laws and regulations</li>
+                </ul>
+
+                <h3>Ongoing Compliance</h3>
+                <p>We are committed to maintaining and improving accessibility compliance. This includes:</p>
+                <ul>
+                    <li>Regular accessibility audits and assessments</li>
+                    <li>Staff training on accessibility requirements</li>
+                    <li>Integration of accessibility into our development processes</li>
+                    <li>Timely remediation of identified accessibility issues</li>
+                </ul>
+            </div>
+
+            <!-- Updates and Changes -->
+            <div class="accessibility-section">
+                <h2>Updates to This Statement</h2>
+                <p>We review and update this accessibility statement regularly to reflect our current accessibility efforts and any changes to our website. Updates may be made to reflect:</p>
+                <ul>
+                    <li>New accessibility features implemented</li>
+                    <li>Changes in accessibility standards</li>
+                    <li>Feedback from users and accessibility audits</li>
+                    <li>Updates to third-party services and content</li>
+                </ul>
+
+                <h3>Change Notifications</h3>
+                <p>Significant updates to this accessibility statement will be communicated through:</p>
+                <ul>
+                    <li>Updates to the "Last Updated" date at the top of this page</li>
+                    <li>Notifications on our website homepage</li>
+                    <li>Email notifications to users who have requested accessibility updates</li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16" role="contentinfo">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Privia Medical Group Partnership - Top Section -->
+            <div class="mb-12 pb-8 border-b border-gray-700">
+                <div class="flex flex-col lg:flex-row items-center justify-center gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-gray-800/50 rounded-lg p-3">
+                            <img src="images/footer.png" alt="My Privia Medical Group logo" class="h-20 w-auto" onerror="this.style.display='none'">
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <h4 class="font-semibold text-xl text-white mb-2">Proud Partner of Privia Medical Group</h4>
+                            <p class="text-sm text-gray-300 leading-relaxed max-w-4xl">
+                                My Village Pediatrics is a proud member of Privia Medical Group. The best doctors in our community have joined together to form Privia Medical Group (PMG), a multi-specialty, high-performance medical group that puts patients first. Our physicians are united by the mission of providing better, more coordinated care for their patients.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Footer Content -->
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Practice Info -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-8 w-auto brightness-0 invert">
+                        <div class="ml-3">
+                            <div class="font-semibold">Village Pediatrics</div>
+                            <div class="text-sm text-gray-400">St. Augustine, FL</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm">Trusted pediatric care since 2008.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="index.html" class="hover:text-white focus:text-white focus:outline-none focus:underline">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white focus:text-white focus:outline-none focus:underline">About</a></li>
+                        <li><a href="services.html" class="hover:text-white focus:text-white focus:outline-none focus:underline">Services</a></li>
+                        <li><a href="contact.html" class="hover:text-white focus:text-white focus:outline-none focus:underline">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Our Providers -->
+                <div>
+                    <h4 class="font-semibold mb-4">Our Providers</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>Dr. Austin Dupont, MD</li>
+                        <li>Dr. Patricia Elvir, MD</li>
+                        <li>Trudy English, ARNP</li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <div class="text-sm text-gray-400 space-y-1">
+                        <p>319 W Town Pl, STE 1</p>
+                        <p>St. Augustine, FL 32092</p>
+                        <p><a href="tel:+19049401577" class="hover:text-white focus:text-white focus:outline-none focus:underline">(904) 940-1577</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright and Legal -->
+            <div class="border-t border-gray-700 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                    <p>&copy; 2025 Village Pediatrics. All rights reserved.</p>
+                    <nav class="flex space-x-6 mt-4 md:mt-0" aria-label="Legal pages">
+                        <a href="privacy.html" class="hover:text-white focus:text-white focus:outline-none focus:underline transition-colors">Privacy Policy</a>
+                        <a href="terms.html" class="hover:text-white focus:text-white focus:outline-none focus:underline transition-colors">Terms of Service</a>
+                        <a href="accessibility.html" class="hover:text-white focus:text-white focus:outline-none focus:underline transition-colors">Accessibility</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Animal Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait a moment for page to settle, then animate animals in
+            setTimeout(() => {
+                const animals = document.querySelectorAll('.animal-nav-item');
+                animals.forEach((animal, index) => {
+                    setTimeout(() => {
+                        animal.classList.add('animate-in');
+                    }, index * 200); // Stagger each animal by 200ms
+                });
+            }, 500); // Start animations 500ms after page load
+        });
+    </script>
+
+</body>
+</html>

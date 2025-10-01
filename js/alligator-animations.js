@@ -10,6 +10,8 @@ class AlligatorAnimations {
         this.scrollPosition = 0;
         this.animationFrame = null;
         this.tailWagInterval = null;
+        this.hasPassedHero = false;
+        this.heroScrollThreshold = 0;
 
         this.init();
     }
@@ -24,9 +26,10 @@ class AlligatorAnimations {
     }
 
     setup() {
+        this.calculateHeroThreshold();
         this.createAlligatorElement();
         this.bindEvents();
-        this.startPageLoadAnimation();
+        this.checkInitialScroll();
         this.startTailWagging();
         this.isInitialized = true;
     }
@@ -36,10 +39,7 @@ class AlligatorAnimations {
         this.alligator = document.createElement('div');
         this.alligator.className = 'alligator-animation';
         this.alligator.innerHTML = `
-            <div class="alligator-ripples"></div>
             <img src="images/animals/alligator.png" alt="Alligator" class="alligator-image">
-            <div class="alligator-tail"></div>
-            <div class="alligator-bubbles"></div>
         `;
 
         // Add CSS styles
@@ -47,12 +47,14 @@ class AlligatorAnimations {
         style.textContent = `
             .alligator-animation {
                 position: fixed;
-                bottom: -200px;
-                left: 20px;
-                width: 200px;
-                height: 120px;
+                top: 70vh;
+                right: -250px;
+                width: 240px;
+                height: 240px;
                 z-index: 100;
                 pointer-events: none;
+                transform: translateY(-50%);
+                opacity: 0;
                 transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
@@ -65,101 +67,11 @@ class AlligatorAnimations {
                 z-index: 2;
             }
 
-            .alligator-ripples {
-                position: absolute;
-                bottom: -10px;
-                left: 10%;
-                width: 80%;
-                height: 20px;
-                background: radial-gradient(
-                    ellipse,
-                    rgba(80, 179, 238, 0.3) 0%,
-                    rgba(80, 179, 238, 0.1) 60%,
-                    transparent 100%
-                );
-                border-radius: 50%;
-                z-index: 1;
-                animation: rippleEffect 3s ease-in-out infinite;
-            }
 
-            .alligator-tail {
-                position: absolute;
-                right: 10px;
-                top: 40%;
-                width: 40px;
-                height: 15px;
-                background: linear-gradient(90deg, #3B9D84, #50B3EE);
-                border-radius: 50% 10px;
-                transform-origin: left center;
-                z-index: 1;
-                animation: tailWag 2s ease-in-out infinite;
-            }
 
-            .alligator-bubbles {
-                position: absolute;
-                top: 20px;
-                right: 30px;
-                width: 30px;
-                height: 40px;
-                z-index: 3;
-            }
 
-            .alligator-bubbles::before,
-            .alligator-bubbles::after {
-                content: '';
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(80, 179, 238, 0.6);
-                animation: bubbleFloat 2.5s ease-in-out infinite;
-            }
 
-            .alligator-bubbles::before {
-                width: 6px;
-                height: 6px;
-                top: 0;
-                left: 5px;
-                animation-delay: 0s;
-            }
 
-            .alligator-bubbles::after {
-                width: 4px;
-                height: 4px;
-                top: 15px;
-                left: 15px;
-                animation-delay: 0.8s;
-            }
-
-            @keyframes rippleEffect {
-                0%, 100% {
-                    transform: scale(1);
-                    opacity: 0.3;
-                }
-                50% {
-                    transform: scale(1.2);
-                    opacity: 0.1;
-                }
-            }
-
-            @keyframes tailWag {
-                0%, 100% { transform: rotateZ(0deg); }
-                25% { transform: rotateZ(15deg); }
-                75% { transform: rotateZ(-10deg); }
-            }
-
-            @keyframes bubbleFloat {
-                0% {
-                    opacity: 0;
-                    transform: translateY(0) scale(0.5);
-                }
-                50% {
-                    opacity: 1;
-                    transform: translateY(-20px) scale(1);
-                }
-                100% {
-                    opacity: 0;
-                    transform: translateY(-40px) scale(0.3);
-                }
-            }
 
             @keyframes alligatorSwim {
                 0%, 100% { transform: translateX(0) rotateZ(0deg); }
@@ -190,7 +102,7 @@ class AlligatorAnimations {
             }
 
             .alligator-visible {
-                bottom: 20px;
+                right: 20px;
             }
 
             .alligator-center {
@@ -200,12 +112,12 @@ class AlligatorAnimations {
 
             @media (max-width: 768px) {
                 .alligator-animation {
-                    width: 150px;
-                    height: 90px;
-                    left: 10px;
+                    width: 120px;
+                    height: 120px;
+                    top: 70vh;
                 }
                 .alligator-visible {
-                    bottom: 10px;
+                    right: 10px;
                 }
             }
         `;
@@ -214,17 +126,51 @@ class AlligatorAnimations {
         document.body.appendChild(this.alligator);
     }
 
+    calculateHeroThreshold() {
+        // Calculate when hero section ends
+        const heroElement = document.querySelector('section[class*="hero"]');
+        if (heroElement) {
+            this.heroScrollThreshold = heroElement.offsetHeight * 0.8;
+        } else {
+            this.heroScrollThreshold = window.innerHeight * 0.8;
+        }
+    }
+
+    checkInitialScroll() {
+        // Check if user has already scrolled past hero on page load
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScroll > this.heroScrollThreshold) {
+            this.hasPassedHero = true;
+            this.startPageLoadAnimation();
+        }
+    }
+
     startPageLoadAnimation() {
+        // Only start animation if we've passed the hero section
+        if (!this.hasPassedHero) return;
+
         // Swim up from bottom animation
         setTimeout(() => {
-            this.alligator.classList.add('alligator-visible');
-            this.alligator.classList.add('alligator-swimming');
+            this.showAnimal();
 
             // Welcome gesture after surfacing
             setTimeout(() => {
                 this.welcomeNewPatients();
             }, 2000);
         }, 600);
+    }
+
+    showAnimal() {
+        this.alligator.style.opacity = '1';
+        this.alligator.style.right = '20px';
+        this.alligator.classList.add('alligator-visible');
+        this.alligator.classList.add('alligator-swimming');
+    }
+
+    hideAnimal() {
+        this.alligator.style.opacity = '0';
+        this.alligator.style.right = '-250px';
+        this.alligator.classList.remove('alligator-visible', 'alligator-swimming', 'alligator-welcoming', 'alligator-snapping');
     }
 
     startTailWagging() {
@@ -279,19 +225,40 @@ class AlligatorAnimations {
 
     handleScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Check if we're back in hero section and hide animal
+        if (scrollTop <= this.heroScrollThreshold) {
+            if (this.hasPassedHero) {
+                this.hideAnimal();
+            }
+            return;
+        }
+
+        // Check if we've passed the hero section (first time or returning)
+        if (scrollTop > this.heroScrollThreshold) {
+            if (!this.hasPassedHero) {
+                this.hasPassedHero = true;
+                this.startPageLoadAnimation();
+                return;
+            } else {
+                // Already been past hero, just show the animal again
+                this.showAnimal();
+            }
+        }
+
         const scrollPercent = scrollTop / (document.documentElement.scrollHeight - window.innerHeight);
 
-        // Move alligator horizontally based on scroll (swimming across the page)
+        // Move alligator based on scroll (similar to zebra behavior)
         if (scrollPercent > 0.2 && scrollPercent < 0.8) {
-            const leftPosition = 20 + (scrollPercent * 200);
-            this.alligator.style.left = `${Math.min(leftPosition, window.innerWidth - 220)}px`;
+            this.alligator.style.right = `${20 + (scrollPercent * 30)}px`;
             this.alligator.classList.add('alligator-swimming');
         } else if (scrollPercent >= 0.8) {
             this.alligator.classList.remove('alligator-swimming');
-            this.welcomeNewPatients();
+            this.alligator.classList.add('alligator-welcoming');
         } else {
-            this.alligator.style.left = '20px';
+            this.alligator.style.right = '20px';
             this.alligator.classList.add('alligator-swimming');
+            this.alligator.classList.remove('alligator-welcoming');
         }
     }
 
@@ -300,8 +267,6 @@ class AlligatorAnimations {
             this.alligator.classList.remove('alligator-swimming', 'alligator-welcoming');
             this.alligator.classList.add('alligator-snapping');
 
-            // Create extra bubbles during form interaction
-            this.createExtraBubbles();
 
             setTimeout(() => {
                 this.alligator.classList.remove('alligator-snapping');
@@ -320,27 +285,6 @@ class AlligatorAnimations {
         }, 1000);
     }
 
-    createExtraBubbles() {
-        const bubbleContainer = this.alligator.querySelector('.alligator-bubbles');
-        const extraBubble = document.createElement('div');
-        extraBubble.style.cssText = `
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: rgba(80, 179, 238, 0.7);
-            border-radius: 50%;
-            top: 10px;
-            left: 10px;
-            animation: bubbleFloat 1.5s ease-out forwards;
-            pointer-events: none;
-        `;
-
-        bubbleContainer.appendChild(extraBubble);
-
-        setTimeout(() => {
-            extraBubble.remove();
-        }, 1500);
-    }
 
     destroy() {
         if (this.alligator) {
@@ -356,4 +300,7 @@ class AlligatorAnimations {
 }
 
 // Initialize alligator animations when script loads
-const alligatorAnimations = new AlligatorAnimations();
+// Only initialize alligator animations on team page
+if (window.location.pathname.includes('team.html') || document.title.includes('Team')) {
+    new AlligatorAnimations();
+}

@@ -6,7 +6,7 @@
     <title>Village Pediatrics - Pediatric Care in St. Augustine, FL</title>
     <meta name="description" content="Village Pediatrics provides expert pediatric care in St. Augustine, FL. Same-day appointments, 24/7 nursing support. Ages newborn to 21.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -19,7 +19,8 @@
                         'lightgray': '#D6CDC6'
                     },
                     fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
+                        'inter': ['Inter', 'sans-serif'],
+                        'fredoka': ['Fredoka', 'sans-serif']
                     }
                 }
             }
@@ -31,7 +32,7 @@
         }
         
         .hero-bg {
-            background: linear-gradient(135deg, #0D2673 0%, #3B9D84 70%, #50B3EE 100%);
+            background: linear-gradient(135deg, #435e84 0%, #435e84 100%);
         }
         
         .btn {
@@ -55,341 +56,662 @@
             height: 1px;
             background: linear-gradient(to right, transparent, #3B9D84, transparent);
         }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Enhanced Animal navigation styles */
+        .animal-nav-item {
+            opacity: 0;
+            transform: translateY(-100px) scale(0.8) rotateX(45deg);
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .animal-nav-item.animate-in {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotateX(0deg);
+        }
+
+        .animal-nav-item:nth-child(1) { animation-delay: 0.1s; }
+        .animal-nav-item:nth-child(2) { animation-delay: 0.3s; }
+        .animal-nav-item:nth-child(3) { animation-delay: 0.5s; }
+        .animal-nav-item:nth-child(4) { animation-delay: 0.7s; }
+        .animal-nav-item:nth-child(5) { animation-delay: 0.9s; }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1) translateX(0px);
+                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            }
+            25% {
+                transform: translateY(-6px) rotate(1deg) scale(1.01) translateX(-2px);
+                filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+            }
+            50% {
+                transform: translateY(-12px) rotate(2deg) scale(1.02) translateX(0px);
+                filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+            }
+            75% {
+                transform: translateY(-6px) rotate(1deg) scale(1.01) translateX(2px);
+                filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+            }
+        }
+
+        .animal-nav-item.animate-in img {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Enhanced hover effects */
+        .animal-nav-item:hover {
+            transform: translateY(-5px) scale(1.15) rotateY(5deg) !important;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .animal-nav-item:hover img {
+            animation: animalExcited 0.6s ease-in-out;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2)) brightness(1.1);
+        }
+
+        @keyframes animalExcited {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-5deg) scale(1.05); }
+            75% { transform: rotate(5deg) scale(1.05); }
+        }
+
+        /* Label pulse effect */
+        .animal-nav-item:hover .bg-white {
+            animation: labelPulse 0.5s ease-in-out;
+            background: rgba(242, 177, 56, 0.95) !important;
+            border-color: #3B9D84 !important;
+            transform: scale(1.05);
+        }
+
+        @keyframes labelPulse {
+            0%, 100% { transform: scale(1.05); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Magical sparkle effect on hover */
+        .animal-nav-item::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #F2B138, transparent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .animal-nav-item:hover::after {
+            opacity: 1;
+            animation: sparkleHover 0.8s ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1) rotate(180deg); opacity: 0.8; }
+        }
+
+        @keyframes sparkleHover {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
+            100% { transform: scale(0) rotate(360deg); opacity: 0; }
+        }
+
+        /* Star animation styles */
+        .star {
+            opacity: 0;
+            transform: translateY(-40px) translateX(-30px) scale(0) rotate(-180deg);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .star.animate {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+        }
+
+        .star:nth-child(1) { animation-delay: 0.1s; }
+        .star:nth-child(2) { animation-delay: 0.3s; }
+        .star:nth-child(3) { animation-delay: 0.5s; }
+        .star:nth-child(4) { animation-delay: 0.7s; }
+        .star:nth-child(5) { animation-delay: 0.9s; }
+
+        /* Professional Testimonial Cards */
+        .testimonial-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #3b82f6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .testimonial-card:hover::before {
+            opacity: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Hero Elephant Animations */
+        .elephant-container img {
+            animation: elephantSubtleRock 4s ease-in-out infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .elephant-rock {
+            animation: elephantRockSideToSide 3s ease-in-out infinite;
+        }
+
+        @keyframes elephantSubtleRock {
+            0%, 100% {
+                transform: translateX(0px);
+            }
+            25% {
+                transform: translateX(-3px);
+            }
+            50% {
+                transform: translateX(0px);
+            }
+            75% {
+                transform: translateX(3px);
+            }
+        }
+
+        @keyframes elephantRockSideToSide {
+            0%, 100% {
+                transform: rotate(0deg) translateX(0px);
+            }
+            25% {
+                transform: rotate(-2deg) translateX(-8px);
+            }
+            50% {
+                transform: rotate(0deg) translateX(0px);
+            }
+            75% {
+                transform: rotate(2deg) translateX(8px);
+            }
+        }
+
+
+        /* Footprint effects */
+        .elephant-footprint {
+            position: absolute;
+            bottom: -20px;
+            width: 30px;
+            height: 20px;
+            background: rgba(59, 157, 132, 0.3);
+            border-radius: 50%;
+            opacity: 0;
+            animation: footprintAppear 3s ease-in-out infinite;
+        }
+
+        .elephant-footprint:nth-child(2) { left: 20%; animation-delay: 4s; }
+        .elephant-footprint:nth-child(3) { left: 40%; animation-delay: 4.5s; }
+        .elephant-footprint:nth-child(4) { left: 60%; animation-delay: 5s; }
+
+        @keyframes footprintAppear {
+            0%, 90%, 100% { opacity: 0; transform: scale(0); }
+             20%, 70% { opacity: 0.6; transform: scale(1); }
+        }
+
+        /* Gentle bounce animation for floating elephant */
+        .elephant-gentle-bounce {
+            animation: elephantGentleBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes elephantGentleBounce {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
     
-    <!-- Header -->
-    <header class="bg-white shadow-sm border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-10 w-auto">
-                    <div class="ml-3">
-                        <div class="text-lg font-semibold text-navy">Village Pediatrics</div>
-                        <div class="text-sm text-teal">St. Augustine, FL</div>
-                    </div>
-                </div>
-
-                <!-- Navigation -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="about.html" class="text-gray-600 hover:text-navy font-medium">About</a>
-                    <a href="services.html" class="text-gray-600 hover:text-navy font-medium">Services</a>
-                    <a href="team.html" class="text-gray-600 hover:text-navy font-medium">Our Team</a>
-                    <a href="new-patients.html" class="text-gray-600 hover:text-navy font-medium">New Patients</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-navy font-medium">Contact</a>
-                </nav>
-
-                <!-- Phone -->
-                <div class="flex items-center space-x-4">
-                    <a href="tel:9049401577" class="bg-teal text-white px-4 py-2 rounded-lg font-medium btn">
-                        (904) 940-1577
-                    </a>
-                    <button class="md:hidden p-2">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <!-- Hero Section -->
-    <section class="hero-bg text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-            <div class="max-w-3xl">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                    Expert Pediatric Care for 
-                    <span class="text-orange">Your Family</span>
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">
-                    Comprehensive healthcare for children from newborn to 21 years. 
-                    Same-day appointments and 24/7 support when you need us most.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="new-patients.html" class="bg-orange text-white px-8 py-4 rounded-lg font-semibold text-lg btn text-center">
-                        New Patients Welcome
-                    </a>
-                    <a href="contact.html" class="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg btn text-center">
-                        Schedule Appointment
-                    </a>
+    <section class="hero-bg text-white relative overflow-hidden min-h-screen flex items-center">
+        <!-- Background Video -->
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="videos/homepage-banner.mp4" type="video/mp4">
+        </video>
+
+        <!-- Animal Navigation Over Video -->
+        <nav class="absolute top-12 left-0 right-0 z-30" id="animal-nav">
+            <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8">
+                <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                    <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                    <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300">
+                        <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase"><span class="sm:hidden">Home</span><span class="hidden sm:inline">Home</span></span>
+                    </div>
+                </a>
+                <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                    <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                    <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300">
+                        <span class="text-xs sm:text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase hidden sm:inline">About Us</span><span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase sm:hidden">About</span>
+                    </div>
+                </a>
+                <a href="services.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                    <img src="images/animals/zebra.png" alt="Services" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                    <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300">
+                        <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase">Services</span>
+                    </div>
+                </a>
+                <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                    <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                    <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300">
+                        <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase hidden sm:inline">Our Team</span><span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase sm:hidden">Team</span>
+                    </div>
+                </a>
+                <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                    <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                    <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300">
+                        <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase hidden sm:inline">New Patients</span><span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase sm:hidden">New</span>
+                    </div>
+                </a>
+                <a href="patient-portal.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                    <img src="images/animals/giraffe.png" alt="Patient Portal" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                    <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300">
+                        <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase hidden sm:inline">Patient Portal</span><span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase sm:hidden">Portal</span>
+                    </div>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Logo positioned in top left -->
+        <div class="absolute top-8 left-8 z-20">
+            <a href="index.html">
+                <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain filter drop-shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
+            </a>
+        </div>
+
+        <!-- Contact Us Button in top right -->
+        <div class="absolute top-8 right-8 z-20">
+            <a href="contact.html" class="bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-inter text-lg hover:bg-orange hover:scale-105 transition-all duration-300 shadow-lg">
+                Contact Us
+            </a>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 hero-content pt-32">
+            <div class="flex items-center justify-center relative z-10">
+                <div class="text-center">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold font-fredoka text-white mb-48 drop-shadow-lg">
+                        Welcome to<br>
+                        <span class="text-orange">Village Pediatrics</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-2xl text-white/90 font-inter drop-shadow-md mb-8">
+                        Where caring for kids is our superpower!
+                    </p>
+                    <!-- Schedule Button -->
+                    <div class="flex justify-center">
+                        <a href="contact.html" class="bg-orange/70 backdrop-blur-sm border-2 border-orange text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange/90 transition-colors fun-button click-ripple">
+                            Schedule Your Visit
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Quick Access -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-navy mb-4">Quick Access</h2>
-                <p class="text-lg text-gray-600">Everything you need for your child's healthcare</p>
-            </div>
-            
-            <div class="grid md:grid-cols-4 gap-6">
-                <a href="patient-portal.html" class="bg-white p-6 rounded-xl card text-center block">
-                    <div class="w-12 h-12 bg-lightblue/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-6 h-6 text-lightblue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-navy mb-2">Patient Portal</h3>
-                    <p class="text-gray-600 text-sm">Access records, schedule appointments, message providers</p>
-                </a>
-
-                <a href="contact.html" class="bg-white p-6 rounded-xl card text-center block">
-                    <div class="w-12 h-12 bg-teal/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-navy mb-2">Schedule Visit</h3>
-                    <p class="text-gray-600 text-sm">Book appointments online or by phone</p>
-                </a>
-
-                <a href="new-patients.html" class="bg-white p-6 rounded-xl card text-center block">
-                    <div class="w-12 h-12 bg-orange/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-navy mb-2">New Patients</h3>
-                    <p class="text-gray-600 text-sm">Get started with our practice</p>
-                </a>
-
-                <a href="tel:9049401577" class="bg-white p-6 rounded-xl card text-center block">
-                    <div class="w-12 h-12 bg-red-50 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-navy mb-2">Call Now</h3>
-                    <p class="text-gray-600 text-sm">For urgent needs and questions</p>
-                </a>
-            </div>
+    <!-- What Parents Are Saying and Visit Our Office -->
+    <section class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #fffbeb, #fef3c7, #dbeafe, #bfdbfe);">
+        <!-- Background pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-32 h-32 border-2 border-orange rounded-full"></div>
+            <div class="absolute top-32 right-20 w-24 h-24 border-2 border-teal rounded-full"></div>
+            <div class="absolute bottom-20 left-1/4 w-28 h-28 border-2 border-lightblue rounded-full"></div>
         </div>
-    </section>
 
-    <!-- Services Overview -->
-    <section class="py-16">
+        <!-- What Parents Are Saying -->
+        <div class="py-20 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-navy mb-4">Our Services</h2>
-                <p class="text-lg text-gray-600">Comprehensive care for every stage of your child's development</p>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-fredoka text-navy mb-6">What Parents Are Saying</h2>
+                <p class="text-2xl md:text-3xl text-gray-600 font-fredoka italic">Real families share their Village Pediatrics experience</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-teal/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-navy mb-2">Well-Child Visits</h3>
-                    <p class="text-gray-600 text-sm">Regular checkups and developmental screenings</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-navy mb-2">Same-Day Sick Visits</h3>
-                    <p class="text-gray-600 text-sm">Available when your child needs care</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-lightblue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-lightblue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-navy mb-2">Immunizations</h3>
-                    <p class="text-gray-600 text-sm">Complete vaccination schedules</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-navy mb-2">Specialty Care</h3>
-                    <p class="text-gray-600 text-sm">ADHD, asthma, mental health support</p>
-                </div>
-            </div>
-
-            <div class="text-center">
-                <a href="services.html" class="bg-teal text-white px-8 py-3 rounded-lg font-semibold btn">
-                    View All Services
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-navy mb-4">Why Choose Village Pediatrics</h2>
-                <p class="text-lg text-gray-600">What sets us apart in pediatric care</p>
-            </div>
-
-            <div class="grid lg:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-orange rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-3">Same-Day Appointments</h3>
-                    <p class="text-gray-600">When your child is sick, we're here with same-day appointments available every day.</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-teal rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-3">24/7 After-Hours Support</h3>
-                    <p class="text-gray-600">A Village Pediatrics provider is on-call every night for urgent medical questions.</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-lightblue rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-2m-12 0H3m2 0h2M9 7h6m-6 4h6m-6 4h6"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-3">Experienced Team</h3>
-                    <p class="text-gray-600">Board-certified physicians with over 20 years of experience caring for children.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold text-navy mb-6">About Village Pediatrics</h2>
-                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Since 2008, Village Pediatrics has been providing comprehensive pediatric care to families in 
-                    St. Augustine and surrounding communities. Our experienced team is committed to building lasting 
-                    relationships with families and providing exceptional healthcare for children from newborn to 21 years.
-                </p>
-                <a href="about.html" class="bg-navy text-white px-8 py-3 rounded-lg font-semibold btn">
-                    Learn More About Us
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="py-16 bg-navy text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold mb-6">Visit Our Office</h2>
-                    <div class="space-y-4 mb-8">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-orange mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                            </svg>
-                            <span>319 W Town Pl, STE 1, St. Augustine, FL 32092</span>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 testimonial-card">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-500 text-xl stars mb-1">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
                         </div>
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-orange mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                            </svg>
-                            <span>(904) 940-1577</span>
-                        </div>
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-orange mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Mon-Thu: 8AM-7PM | Fri: 9AM-5PM | Sat: 9AM-1PM</span>
+                    </div>
+                    <p class="text-gray-700 mb-6 leading-relaxed font-inter text-base font-bold">
+                        "So happy with Dr. DuPont! He is caring, fun and attentive. He's made a lot of positive changes and the extended hours are perfect for working parents. It's made all the difference!"
+                    </p>
+                    <div class="flex items-center">
+                        <div>
+                            <p class="font-medium text-gray-800 text-base">Miglena K.</p>
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <div class="bg-white/10 backdrop-blur p-8 rounded-xl">
-                        <h3 class="text-xl font-bold mb-4">Ready to Get Started?</h3>
-                        <p class="mb-6 text-white/90">
-                            We're accepting new patients and would love to welcome your family to Village Pediatrics.
-                        </p>
-                        <div class="space-y-3">
-                            <a href="tel:9049401577" class="block w-full bg-orange text-white px-6 py-3 rounded-lg font-semibold text-center btn">
-                                Call (904) 940-1577
-                            </a>
-                            <a href="new-patients.html" class="block w-full border-2 border-white text-white px-6 py-3 rounded-lg font-semibold text-center btn">
-                                New Patient Info
-                            </a>
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 testimonial-card">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-500 text-xl stars mb-1">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6 leading-relaxed font-inter text-base font-bold">
+                        "From the moment we walked in we felt welcomed! Dr. Dupont was kind, thorough, and so great with my daughter. I felt actually heard by a medical professional!"
+                    </p>
+                    <div class="flex items-center">
+                        <div>
+                            <p class="font-medium text-gray-800 text-base">Beth L.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 testimonial-card">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-500 text-xl stars mb-1">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6 leading-relaxed font-inter text-base font-bold">
+                        "Very impressed! Same day appointment for my baby boy. Dr. Dupont was SO sweet, very thorough and knowledgeable. My hope in pediatricians is restored!"
+                    </p>
+                    <div class="flex items-center">
+                        <div>
+                            <p class="font-medium text-gray-800 text-base">Samantha K.</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
+
+        <!-- Visit Our Office -->
+        <div class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-fredoka text-navy mb-12">Visit Our Office</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 items-start">
+                <div class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border border-navy/20 shadow-2xl hover:shadow-3xl hover:bg-white hover:-translate-y-2 hover:scale-105 transition-all duration-500">
+                    <div class="space-y-6">
+                        <div class="flex items-center text-navy">
+                            <div class="bg-navy/10 backdrop-blur-sm p-3 rounded-full border border-navy/20 mr-4">
+                                <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-lg font-semibold font-fredoka text-navy">Our Location</p>
+                                <span class="text-base font-inter text-navy/80">319 W Town Pl, STE 1, St. Augustine, FL 32092</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-navy">
+                            <div class="bg-navy/10 backdrop-blur-sm p-3 rounded-full border border-navy/20 mr-4">
+                                <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-lg font-semibold font-fredoka text-navy">Call Us</p>
+                                <span class="text-base font-inter text-navy/80">(904) 940-1577</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-navy">
+                            <div class="bg-navy/10 backdrop-blur-sm p-3 rounded-full border border-navy/20 mr-4">
+                                <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-lg font-semibold font-fredoka text-navy">Office Hours</p>
+                                <span class="text-base font-inter text-navy/80">Mon-Thu: 8AM-7PM<br>Fri: 9AM-5PM<br>Sat: 9AM-1PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/90 backdrop-blur-sm p-6 rounded-3xl border border-navy/20 shadow-2xl hover:shadow-3xl hover:bg-white hover:-translate-y-2 hover:scale-105 transition-all duration-500">
+                    <h3 class="text-xl font-bold font-fredoka text-navy mb-4 text-center">Find Us</h3>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3470.089635738!2d-81.31894792397!3d29.888481875226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e42a8de7e6ab49%3A0x123456789abcdef!2s319%20W%20Town%20Pl%20STE%201%2C%20St.%20Augustine%2C%20FL%2032092!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                        width="100%"
+                        height="320"
+                        style="border:0; border-radius: 1rem;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div class="mt-4 text-center">
+                        <a href="https://maps.google.com/maps?q=319+W+Town+Pl,+STE+1,+St.+Augustine,+FL+32092" target="_blank" class="text-navy font-fredoka font-semibold hover:text-orange transition-colors duration-300">
+                            Get Directions →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border border-navy/20 shadow-2xl hover:shadow-3xl hover:bg-white hover:-translate-y-2 hover:scale-105 transition-all duration-500">
+                    <h3 class="text-2xl font-bold font-fredoka text-navy mb-6">Ready to Get Started?</h3>
+                    <p class="mb-6 text-base text-navy/80 font-inter">
+                        We're accepting new patients and would love to welcome your family to Village Pediatrics.
+                    </p>
+                    <div class="space-y-3">
+                        <a href="tel:9049401577" class="block w-full bg-navy text-white px-6 py-3 rounded-2xl font-semibold text-center font-fredoka text-base hover:bg-navy/90 hover:scale-105 transition-all duration-300 shadow-lg">
+                            Call (904) 940-1577
+                        </a>
+                        <a href="new-patients.html" class="block w-full border-2 border-navy bg-transparent text-navy px-6 py-3 rounded-2xl font-semibold text-center font-fredoka text-base hover:bg-navy hover:text-white hover:scale-105 transition-all duration-300 shadow-lg">
+                            New Patient Info
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Privia Medical Group Partnership - Top Section -->
+            <div class="mb-12 pb-8 border-b border-gray-700">
+                <div class="flex flex-col lg:flex-row items-center justify-center gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-gray-800/50 rounded-lg p-3">
+                            <img src="images/footer.png" alt="My Privia Medical Group" class="h-20 w-auto" onerror="this.style.display='none'">
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <h4 class="font-semibold text-xl text-white mb-2">Proud Partner of Privia Medical Group</h4>
+                            <p class="text-sm text-gray-300 leading-relaxed max-w-4xl">
+                                My Village Pediatrics is a proud member of Privia Medical Group. The best doctors in our community have joined together to form Privia Medical Group (PMG), a multi-specialty, high-performance medical group that puts patients first. Our physicians are united by the mission of providing better, more coordinated care for their patients.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Footer Content -->
             <div class="grid md:grid-cols-4 gap-8">
+                <!-- Practice Info -->
                 <div>
                     <div class="flex items-center mb-4">
-                        <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-8 w-auto brightness-0 invert">
+                        <img src="images/footer-logo.png" alt="Village Pediatrics" class="h-24 w-auto">
                         <div class="ml-3">
                             <div class="font-semibold">Village Pediatrics</div>
                             <div class="text-sm text-gray-400">St. Augustine, FL</div>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm">Compassionate pediatric care since 2008.</p>
+                    <p class="text-gray-400 text-sm">Trusted pediatric care since 2008.</p>
                 </div>
 
+                <!-- Quick Links -->
                 <div>
-                    <h4 class="font-semibold mb-4">Pages</h4>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="index.html" class="hover:text-white">Home</a></li>
                         <li><a href="about.html" class="hover:text-white">About</a></li>
                         <li><a href="services.html" class="hover:text-white">Services</a></li>
-                        <li><a href="team.html" class="hover:text-white">Our Team</a></li>
                         <li><a href="contact.html" class="hover:text-white">Contact</a></li>
                     </ul>
                 </div>
 
+                <!-- Our Providers -->
                 <div>
-                    <h4 class="font-semibold mb-4">Services</h4>
+                    <h4 class="font-semibold mb-4">Our Providers</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li>Well-Child Visits</li>
-                        <li>Sick Visits</li>
-                        <li>Immunizations</li>
-                        <li>Specialty Care</li>
+                        <li>Dr. Austin Dupont, MD</li>
+                        <li>Dr. Patricia Elvir, MD</li>
+                        <li>Trudy English, ARNP</li>
                     </ul>
                 </div>
 
+                <!-- Contact -->
                 <div>
                     <h4 class="font-semibold mb-4">Contact</h4>
                     <div class="text-sm text-gray-400 space-y-1">
                         <p>319 W Town Pl, STE 1</p>
                         <p>St. Augustine, FL 32092</p>
                         <p>(904) 940-1577</p>
-                        <p>Ages: Newborn to 21</p>
                     </div>
                 </div>
             </div>
 
-            <div class="section-divider my-8"></div>
-
-            <div class="text-center text-sm text-gray-400">
-                <p>&copy; 2024 Village Pediatrics. All rights reserved.</p>
+            <!-- Copyright and Legal -->
+            <div class="border-t border-gray-700 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                    <p>&copy; 2025 Village Pediatrics. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="accessibility.html" class="hover:text-white transition-colors">Accessibility</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- Floating Animal (Elephant) -->
+    <div id="floating-elephant" class="fixed bottom-4 right-4 z-50 opacity-0 transform translate-y-full transition-all duration-500 ease-in-out">
+        <div class="relative">
+            <img src="images/animals/elephant.png" alt="Friendly Elephant" class="w-48 h-48 md:w-56 md:h-56 object-contain elephant-gentle-bounce cursor-pointer hover:scale-110 transition-transform duration-300">
+            <div class="absolute inset-0 bg-white/20 rounded-full blur-sm -z-10"></div>
+        </div>
+    </div>
+
+    <!-- Animal Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait a moment for page to settle, then animate animals in
+            setTimeout(() => {
+                const animals = document.querySelectorAll('.animal-nav-item');
+                animals.forEach((animal, index) => {
+                    setTimeout(() => {
+                        animal.classList.add('animate-in');
+                    }, index * 200); // Stagger each animal by 200ms
+                });
+            }, 500); // Start animations 500ms after page load
+
+            // Animate stars when testimonials come into view
+            const observerOptions = {
+                threshold: 0.3,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const stars = entry.target.querySelectorAll('.star');
+                        stars.forEach((star, index) => {
+                            setTimeout(() => {
+                                star.classList.add('animate');
+                            }, index * 100); // Stagger each star by 100ms
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all testimonial cards
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Initialize floating elephant scroll detection
+            initFloatingElephant();
+        });
+
+        // Floating Elephant Scroll Detection
+        function initFloatingElephant() {
+            const floatingElephant = document.getElementById('floating-elephant');
+            const heroSection = document.querySelector('.hero-bg');
+
+            if (!floatingElephant || !heroSection) return;
+
+            function handleScroll() {
+                const heroRect = heroSection.getBoundingClientRect();
+                const heroBottom = heroRect.bottom;
+                const heroHeight = heroRect.height;
+                const threshold = heroHeight * 0.2; // Show when 80% of hero is scrolled past
+
+                if (heroBottom <= threshold) {
+                    // Hero section is mostly out of view, show elephant
+                    floatingElephant.style.opacity = '1';
+                    floatingElephant.style.transform = 'translateY(0)';
+                } else {
+                    // Hero section is in view, hide elephant
+                    floatingElephant.style.opacity = '0';
+                    floatingElephant.style.transform = 'translateY(100%)';
+                }
+            }
+
+            // Listen for scroll events
+            window.addEventListener('scroll', handleScroll);
+
+            // Initial check
+            handleScroll();
+        }
+    </script>
 
 </body>
 </html>

@@ -10,6 +10,8 @@ class LionAnimations {
         this.scrollPosition = 0;
         this.animationFrame = null;
         this.maneAnimationInterval = null;
+        this.hasPassedHero = false;
+        this.heroScrollThreshold = 0;
 
         this.init();
     }
@@ -24,9 +26,10 @@ class LionAnimations {
     }
 
     setup() {
+        this.calculateHeroThreshold();
         this.createLionElement();
         this.bindEvents();
-        this.startPageLoadAnimation();
+        this.checkInitialScroll();
         this.startManeAnimation();
         this.isInitialized = true;
     }
@@ -36,9 +39,7 @@ class LionAnimations {
         this.lion = document.createElement('div');
         this.lion.className = 'lion-animation';
         this.lion.innerHTML = `
-            <div class="lion-mane"></div>
             <img src="images/animals/lion.png" alt="Lion" class="lion-image">
-            <div class="lion-crown"></div>
         `;
 
         // Add CSS styles
@@ -46,12 +47,14 @@ class LionAnimations {
         style.textContent = `
             .lion-animation {
                 position: fixed;
-                top: 20px;
-                left: -200px;
-                width: 180px;
-                height: 180px;
+                top: 70vh;
+                right: -250px;
+                width: 240px;
+                height: 240px;
                 z-index: 100;
                 pointer-events: none;
+                transform: translateY(-50%);
+                opacity: 0;
                 transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
@@ -81,19 +84,6 @@ class LionAnimations {
                 animation: maneFlow 4s ease-in-out infinite;
             }
 
-            .lion-crown {
-                position: absolute;
-                top: 10px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 30px;
-                height: 20px;
-                background: linear-gradient(45deg, #F2B138, #FFD700);
-                clip-path: polygon(50% 0%, 20% 35%, 40% 35%, 40% 100%, 60% 100%, 60% 35%, 80% 35%);
-                opacity: 0;
-                z-index: 3;
-                animation: crownGlow 3s ease-in-out infinite 1s;
-            }
 
             @keyframes maneFlow {
                 0%, 100% {
@@ -106,10 +96,6 @@ class LionAnimations {
                 }
             }
 
-            @keyframes crownGlow {
-                0%, 100% { opacity: 0; transform: translateX(-50%) scale(0.8); }
-                50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
-            }
 
             @keyframes lionNod {
                 0%, 100% { transform: rotateX(0deg) rotateY(0deg); }
@@ -141,13 +127,9 @@ class LionAnimations {
             }
 
             .lion-visible {
-                left: 20px;
+                right: 20px;
             }
 
-            .lion-center {
-                left: 50%;
-                transform: translateX(-50%);
-            }
 
             @media (max-width: 768px) {
                 .lion-animation {
@@ -156,7 +138,7 @@ class LionAnimations {
                     top: 10px;
                 }
                 .lion-visible {
-                    left: 10px;
+                    right: 10px;
                 }
             }
         `;
@@ -165,17 +147,51 @@ class LionAnimations {
         document.body.appendChild(this.lion);
     }
 
+    calculateHeroThreshold() {
+        // Calculate when hero section ends
+        const heroElement = document.querySelector('section[class*="hero"]');
+        if (heroElement) {
+            this.heroScrollThreshold = heroElement.offsetHeight * 0.8;
+        } else {
+            this.heroScrollThreshold = window.innerHeight * 0.8;
+        }
+    }
+
+    checkInitialScroll() {
+        // Check if user has already scrolled past hero on page load
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScroll > this.heroScrollThreshold) {
+            this.hasPassedHero = true;
+            this.startPageLoadAnimation();
+        }
+    }
+
     startPageLoadAnimation() {
-        // Majestic entrance animation
+        // Only start animation if we've passed the hero section
+        if (!this.hasPassedHero) return;
+
+        // Simple entrance - just appear in top right corner
         setTimeout(() => {
-            this.lion.classList.add('lion-visible');
-            this.lion.classList.add('lion-walking');
+            this.showAnimal();
 
             // Show pride after entrance
             setTimeout(() => {
                 this.showPride();
             }, 2000);
-        }, 800);
+        }, 500);
+    }
+
+    showAnimal() {
+        this.lion.style.opacity = '1';
+        this.lion.style.right = '20px';
+        this.lion.classList.add('lion-visible');
+        this.lion.classList.add('lion-walking');
+    }
+
+    hideAnimal() {
+        this.lion.style.opacity = '0';
+        this.lion.style.right = '-250px';
+        this.lion.classList.remove('lion-visible', 'lion-walking', 'lion-proud', 'lion-nodding');
     }
 
     startManeAnimation() {
@@ -223,30 +239,35 @@ class LionAnimations {
 
     handleScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Check if we're back in hero section and hide animal
+        if (scrollTop <= this.heroScrollThreshold) {
+            if (this.hasPassedHero) {
+                this.hideAnimal();
+            }
+            return;
+        }
+
+        // Check if we've passed the hero section (first time or returning)
+        if (scrollTop > this.heroScrollThreshold) {
+            if (!this.hasPassedHero) {
+                this.hasPassedHero = true;
+                this.startPageLoadAnimation();
+                return;
+            } else {
+                // Already been past hero, just show the animal again
+                this.showAnimal();
+            }
+        }
+
         const scrollPercent = scrollTop / (document.documentElement.scrollHeight - window.innerHeight);
 
-        // Move lion vertically based on scroll
-        if (scrollPercent > 0.1 && scrollPercent < 0.9) {
-            const topPosition = 20 + (scrollPercent * 50);
-            this.lion.style.top = `${topPosition}px`;
-            this.lion.classList.add('lion-walking');
-        } else if (scrollPercent >= 0.9) {
+        // Keep lion in top right corner, just change animations based on scroll
+        if (scrollPercent >= 0.9) {
             this.lion.classList.remove('lion-walking');
             this.showPride();
         } else {
-            this.lion.style.top = '20px';
             this.lion.classList.add('lion-walking');
-        }
-
-        // Special animation at certain scroll points
-        if (scrollPercent > 0.3 && scrollPercent < 0.7) {
-            if (!this.lion.classList.contains('lion-proud')) {
-                this.lion.style.left = '50%';
-                this.lion.style.transform = 'translateX(-50%)';
-            }
-        } else {
-            this.lion.style.left = '20px';
-            this.lion.style.transform = 'none';
         }
     }
 
@@ -276,4 +297,7 @@ class LionAnimations {
 }
 
 // Initialize lion animations when script loads
-const lionAnimations = new LionAnimations();
+// Only initialize lion animations on about page
+if (window.location.pathname.includes('about.html') || document.title.includes('About')) {
+    new LionAnimations();
+}

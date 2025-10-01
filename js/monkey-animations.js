@@ -11,6 +11,8 @@ class MonkeyAnimations {
         this.animationFrame = null;
         this.swingInterval = null;
         this.currentVine = 0;
+        this.hasPassedHero = false;
+        this.heroScrollThreshold = 0;
 
         this.init();
     }
@@ -25,10 +27,11 @@ class MonkeyAnimations {
     }
 
     setup() {
+        this.calculateHeroThreshold();
         this.createMonkeyElement();
         this.createVines();
         this.bindEvents();
-        this.startPageLoadAnimation();
+        this.checkInitialScroll();
         this.isInitialized = true;
     }
 
@@ -50,11 +53,13 @@ class MonkeyAnimations {
                 position: fixed;
                 top: 50px;
                 right: -200px;
-                width: 160px;
-                height: 160px;
+                width: 220px;
+                height: 220px;
                 z-index: 100;
                 pointer-events: none;
                 transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+                opacity: 0;
+                transform: translateX(50px);
             }
 
             .monkey-image {
@@ -251,17 +256,54 @@ class MonkeyAnimations {
         }
     }
 
+    calculateHeroThreshold() {
+        // Calculate when hero section ends - usually around 80vh or check for hero elements
+        const heroElement = document.querySelector('section[class*="hero"]');
+        if (heroElement) {
+            this.heroScrollThreshold = heroElement.offsetHeight * 0.8;
+        } else {
+            // Fallback to standard hero height
+            this.heroScrollThreshold = window.innerHeight * 0.8;
+        }
+    }
+
+    checkInitialScroll() {
+        // Check if user has already scrolled past hero on page load
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScroll > this.heroScrollThreshold) {
+            this.hasPassedHero = true;
+            this.startPageLoadAnimation();
+        }
+    }
+
     startPageLoadAnimation() {
+        // Only start animation if we've passed the hero section
+        if (!this.hasPassedHero) return;
+
         // Swing into view animation
         setTimeout(() => {
-            this.monkey.classList.add('monkey-visible');
-            this.monkey.classList.add('monkey-swinging');
+            this.showAnimal();
 
             // Show tablet after swinging in
             setTimeout(() => {
                 this.showTablet();
             }, 2000);
-        }, 1000);
+        }, 500);
+    }
+
+    showAnimal() {
+        this.monkey.style.opacity = '1';
+        this.monkey.style.transform = 'translateX(0)';
+        this.monkey.style.right = '20px';
+        this.monkey.classList.add('monkey-visible');
+        this.monkey.classList.add('monkey-swinging');
+    }
+
+    hideAnimal() {
+        this.monkey.style.opacity = '0';
+        this.monkey.style.transform = 'translateX(50px)';
+        this.monkey.style.right = '-200px';
+        this.monkey.classList.remove('monkey-visible', 'monkey-swinging', 'monkey-show-tablet', 'monkey-bouncing', 'monkey-typing', 'monkey-show-typing');
     }
 
     showTablet() {
@@ -318,6 +360,27 @@ class MonkeyAnimations {
 
     handleScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Check if we're back in hero section and hide animal
+        if (scrollTop <= this.heroScrollThreshold) {
+            if (this.hasPassedHero) {
+                this.hideAnimal();
+            }
+            return;
+        }
+
+        // Check if we've passed the hero section (first time or returning)
+        if (scrollTop > this.heroScrollThreshold) {
+            if (!this.hasPassedHero) {
+                this.hasPassedHero = true;
+                this.startPageLoadAnimation();
+                return;
+            } else {
+                // Already been past hero, just show the animal again
+                this.showAnimal();
+            }
+        }
+
         const scrollPercent = scrollTop / (document.documentElement.scrollHeight - window.innerHeight);
 
         // Swing between vines based on scroll
@@ -373,64 +436,12 @@ class MonkeyAnimations {
         this.monkey.classList.remove('monkey-swinging', 'monkey-typing');
         this.monkey.classList.add('monkey-bouncing');
 
-        // Create success animation
-        this.createSuccessBananas();
-
         setTimeout(() => {
             this.monkey.classList.remove('monkey-bouncing');
             this.monkey.classList.add('monkey-swinging');
         }, 2000);
     }
 
-    createSuccessBananas() {
-        // Create small banana icons that float up
-        for (let i = 0; i < 3; i++) {
-            const banana = document.createElement('div');
-            banana.style.cssText = `
-                position: absolute;
-                top: 50px;
-                right: ${Math.random() * 30 + 10}px;
-                width: 15px;
-                height: 15px;
-                background: #F2B138;
-                border-radius: 50% 50% 50% 0;
-                transform: rotate(-45deg);
-                animation: bananaFloat 2s ease-out forwards;
-                pointer-events: none;
-                z-index: 101;
-            `;
-
-            banana.style.animationDelay = `${i * 0.2}s`;
-            document.body.appendChild(banana);
-
-            setTimeout(() => {
-                banana.remove();
-            }, 2200);
-        }
-
-        // Add banana float animation
-        if (!document.querySelector('#banana-animation-style')) {
-            const bananaStyle = document.createElement('style');
-            bananaStyle.id = 'banana-animation-style';
-            bananaStyle.textContent = `
-                @keyframes bananaFloat {
-                    0% {
-                        opacity: 0;
-                        transform: rotate(-45deg) translateY(0) scale(0.5);
-                    }
-                    50% {
-                        opacity: 1;
-                        transform: rotate(-45deg) translateY(-30px) scale(1);
-                    }
-                    100% {
-                        opacity: 0;
-                        transform: rotate(-45deg) translateY(-60px) scale(0.3);
-                    }
-                }
-            `;
-            document.head.appendChild(bananaStyle);
-        }
-    }
 
     destroy() {
         if (this.monkey) {
@@ -450,4 +461,7 @@ class MonkeyAnimations {
 }
 
 // Initialize monkey animations when script loads
-const monkeyAnimations = new MonkeyAnimations();
+// Only initialize monkey animations on patient portal page
+if (window.location.pathname.includes('patient-portal.html') || document.title.includes('Patient Portal')) {
+    new MonkeyAnimations();
+}
