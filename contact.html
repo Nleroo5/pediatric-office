@@ -6,12 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Village Pediatrics | Schedule Appointments in St. Augustine, FL</title>
     <meta name="description" content="Contact Village Pediatrics in St. Augustine, FL. Call (904) 940-1577 for appointments. Located at 319 W Town Pl, STE 1. Same-day appointments available.">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-18RT1K0291"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-18RT1K0291');
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    screens: {
+                        'xs': '375px',
+                        'xxs': '320px'
+                    },
                     colors: {
                         'navy': '#0D2673',
                         'navy-50': '#f0f3ff',
@@ -397,6 +410,67 @@
             width: 300px;
             height: 300px;
         }
+
+        /* Mobile-Specific Optimizations */
+        @media (max-width: 480px) {
+            .animal-nav-item {
+                min-width: 60px;
+                min-height: 80px;
+            }
+
+            .animal-nav-item img {
+                min-width: 40px;
+                min-height: 40px;
+            }
+
+            .animal-nav-item span {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            nav {
+                padding: 0 4px;
+            }
+
+            .animal-nav-item {
+                min-width: 50px;
+            }
+
+            .animal-nav-item img {
+                width: 32px !important;
+                height: 32px !important;
+            }
+
+            .animal-nav-item span {
+                font-size: 8px;
+                padding: 2px 6px;
+            }
+        }
+
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .animal-nav-item:active {
+                transform: scale(0.95);
+                transition: transform 0.1s ease;
+            }
+
+            .animal-nav-item {
+                cursor: pointer;
+                -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+            }
+        }
+
+        /* Prevent horizontal scrolling on mobile */
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -412,42 +486,42 @@
     </div>
 
     <!-- Animal Navigation Over Hero -->
-    <nav class="absolute top-20 left-0 right-0 z-30" id="animal-nav">
-        <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8">
+    <nav class="absolute top-20 left-0 right-0 z-30 px-2" id="animal-nav">
+        <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 max-w-screen-sm mx-auto">
             <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/giraffe.png" alt="Home" class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-gray-600/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-gray-600 group-hover:bg-gray-800 group-hover:border-gray-800 transition-all duration-300">
-                    <span class="text-xs font-extrabold text-white font-inter tracking-wider uppercase">Home</span>
+                <img src="images/animals/giraffe.png" alt="Home" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-gray-600/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-gray-600 group-hover:bg-gray-800 group-hover:border-gray-800 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Home</span>
                 </div>
             </a>
             <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/lion.png" alt="About Us" class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-navy/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-orange group-hover:bg-orange group-hover:border-orange transition-all duration-300">
-                    <span class="text-xs font-extrabold text-white font-inter tracking-wider uppercase">About Us</span>
+                <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-navy/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-orange group-hover:bg-orange group-hover:border-orange transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">About Us</span>
                 </div>
             </a>
             <a href="services.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/zebra.png" alt="Services" class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-teal/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-teal group-hover:bg-lightblue group-hover:border-lightblue transition-all duration-300">
-                    <span class="text-xs font-extrabold text-white font-inter tracking-wider uppercase">Services</span>
+                <img src="images/animals/zebra.png" alt="Services" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-teal/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-teal group-hover:bg-lightblue group-hover:border-lightblue transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Services</span>
                 </div>
             </a>
             <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/alligator.png" alt="Our Team" class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-lightblue/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-lightblue group-hover:bg-teal group-hover:border-teal transition-all duration-300">
-                    <span class="text-xs font-extrabold text-white font-inter tracking-wider uppercase">Our Team</span>
+                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-lightblue/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-lightblue group-hover:bg-teal group-hover:border-teal transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Our Team</span>
                 </div>
             </a>
             <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/monkey.png" alt="New Patients" class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-orange/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-orange group-hover:bg-navy group-hover:border-navy transition-all duration-300">
-                    <span class="text-xs font-extrabold text-white font-inter tracking-wider uppercase">New Patients</span>
+                <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-orange/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-orange group-hover:bg-navy group-hover:border-navy transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">New Patients</span>
                 </div>
             </a>
             <a href="patient-portal.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/lion.png" alt="Patient Portal" class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-navy/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-navy group-hover:bg-orange group-hover:border-orange transition-all duration-300">
-                    <span class="text-xs font-extrabold text-white font-inter tracking-wider uppercase">Patient Portal</span>
+                <img src="images/animals/lion.png" alt="Patient Portal" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-navy/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-navy group-hover:bg-orange group-hover:border-orange transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Patient Portal</span>
                 </div>
             </a>
         </div>
@@ -462,7 +536,7 @@
 
     <!-- Contact Us Button in top right -->
     <div class="absolute top-8 right-8 z-20">
-        <a href="contact.html" class="bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-inter text-lg hover:bg-orange hover:scale-105 transition-all duration-300 shadow-lg">
+        <a href="contact.html" class="bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-poppins text-lg hover:bg-orange hover:scale-105 transition-all duration-300 shadow-lg">
             Contact Us
         </a>
     </div>
@@ -723,27 +797,27 @@
                         <div class="grid md:grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
-                                <input type="text" required class="form-input w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal min-h-[48px]">
+                                <input type="text" name="Full Name" required class="form-input w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal min-h-[48px]">
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
-                                <input type="tel" class="form-input w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal min-h-[48px]">
+                                <input type="tel" name="Phone Number" class="form-input w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal min-h-[48px]">
                             </div>
                         </div>
 
                         <div class="mb-6">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
-                            <input type="email" required class="form-input w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal min-h-[48px]">
+                            <input type="email" name="Email Address" required class="form-input w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal min-h-[48px]">
                         </div>
 
                         <div class="mb-6">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
-                            <input type="text" class="form-input w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal min-h-[48px]">
+                            <input type="text" name="Subject" class="form-input w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal min-h-[48px]">
                         </div>
 
                         <div class="mb-6">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">Message *</label>
-                            <textarea rows="5" required class="form-textarea w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal min-h-[120px]" placeholder="How can we help you today?"></textarea>
+                            <textarea rows="5" name="Message" required class="form-textarea w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal/20 focus:border-teal min-h-[120px]" placeholder="How can we help you today?"></textarea>
                         </div>
 
                         <div class="text-center">
@@ -771,9 +845,9 @@
                     If your child is experiencing a life-threatening emergency, call <strong>911</strong> immediately or go to the nearest emergency room.
                 </p>
                 <div class="flex justify-center">
-                    <a href="tel:911" class="bg-red-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition-colors fun-button click-ripple min-h-[48px] inline-flex items-center justify-center">
+                    <div class="bg-red-600 text-white px-8 py-4 rounded-lg font-semibold min-h-[48px] inline-flex items-center justify-center cursor-default">
                         Call 911 - Emergency
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -921,6 +995,28 @@
             event.preventDefault();
 
             const form = event.target;
+            const formData = new FormData(form);
+
+            // Get form values
+            const fullName = formData.get('Full Name') || '';
+            const phoneNumber = formData.get('Phone Number') || '';
+            const emailAddress = formData.get('Email Address') || '';
+            const subject = formData.get('Subject') || 'Contact Form Submission';
+            const message = formData.get('Message') || '';
+
+            // Create email body
+            const emailBody = `Full Name: ${fullName}
+Phone Number: ${phoneNumber}
+
+Message:
+${message}`;
+
+            // Create mailto link with subject and body
+            const mailtoLink = `mailto:hello@myvillagepeds.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
             const formContainer = form.parentElement;
 
             // Replace form with success message
@@ -931,8 +1027,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-navy mb-4">Message Sent Successfully!</h3>
-                    <p class="text-gray-600 mb-8">Thank you for contacting Village Pediatrics. We'll get back to you within 24 hours.</p>
+                    <h3 class="text-2xl font-bold text-navy mb-4">Email Client Opened!</h3>
+                    <p class="text-gray-600 mb-8">Your email client should now be open with the message pre-filled. Please send the email to complete your contact request.</p>
                     <a href="tel:9049401577" class="bg-teal text-white px-8 py-3 rounded-lg font-semibold hover:bg-navy transition-colors fun-button click-ripple">
                         Call (904) 940-1577 for Immediate Assistance
                     </a>

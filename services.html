@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - Village Pediatrics | St. Augustine, FL</title>
     <meta name="description" content="Comprehensive pediatric services from newborn to 21 years. Same-day appointments, immunizations, specialty care, and more at Village Pediatrics in St. Augustine, FL.">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-18RT1K0291"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-18RT1K0291');
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    screens: {
+                        'xs': '375px',
+                        'xxs': '320px'
+                    },
                     colors: {
                         'navy': '#0D2673',
                         'teal': '#3B9D84',
@@ -471,6 +484,12 @@
             }
         }
 
+        /* On-Site Laboratory list items styling */
+        .service-card ul li {
+            font-size: 1.125rem;
+            line-height: 1.5;
+        }
+
         /* Animal animation styles */
         .animal-nav-item {
             opacity: 0;
@@ -887,6 +906,67 @@
             }
         }
 
+        /* Mobile-Specific Optimizations */
+        @media (max-width: 480px) {
+            .animal-nav-item {
+                min-width: 60px;
+                min-height: 80px;
+            }
+
+            .animal-nav-item img {
+                min-width: 40px;
+                min-height: 40px;
+            }
+
+            .animal-nav-item span {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            nav {
+                padding: 0 4px;
+            }
+
+            .animal-nav-item {
+                min-width: 50px;
+            }
+
+            .animal-nav-item img {
+                width: 32px !important;
+                height: 32px !important;
+            }
+
+            .animal-nav-item span {
+                font-size: 8px;
+                padding: 2px 6px;
+            }
+        }
+
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .animal-nav-item:active {
+                transform: scale(0.95);
+                transition: transform 0.1s ease;
+            }
+
+            .animal-nav-item {
+                cursor: pointer;
+                -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+            }
+        }
+
+        /* Prevent horizontal scrolling on mobile */
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         /* Responsive adjustments for age section */
         @media (max-width: 768px) {
             .age-title {
@@ -914,42 +994,42 @@
     </div>
 
     <!-- Animal Navigation Over Hero -->
-    <nav class="absolute top-20 left-0 right-0 z-30" id="animal-nav">
-        <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8">
+    <nav class="absolute top-20 left-0 right-0 z-30 px-2" id="animal-nav">
+        <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 max-w-screen-sm mx-auto">
             <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-gray-800 group-hover:border-gray-800 transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Home</span><span class="hidden sm:inline">Home</span></span>
+                <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-gray-800 group-hover:border-gray-800 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Home</span><span class="hidden sm:inline">Home</span></span>
                 </div>
             </a>
             <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-orange group-hover:border-orange transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">About</span><span class="hidden sm:inline">About Us</span></span>
+                <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-orange group-hover:border-orange transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">About</span><span class="hidden sm:inline">About Us</span></span>
                 </div>
             </a>
             <a href="services.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/zebra.png" alt="Services" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-orange group-hover:bg-lightblue group-hover:border-lightblue transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Care</span><span class="hidden sm:inline">Services</span></span>
+                <img src="images/animals/zebra.png" alt="Services" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-orange group-hover:bg-lightblue group-hover:border-lightblue transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Care</span><span class="hidden sm:inline">Services</span></span>
                 </div>
             </a>
             <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-teal group-hover:border-teal transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Team</span><span class="hidden sm:inline">Our Team</span></span>
+                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-teal group-hover:border-teal transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Team</span><span class="hidden sm:inline">Our Team</span></span>
                 </div>
             </a>
             <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-navy group-hover:border-navy transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">New</span><span class="hidden sm:inline">New Patients</span></span>
+                <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-navy group-hover:border-navy transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">New</span><span class="hidden sm:inline">New Patients</span></span>
                 </div>
             </a>
             <a href="patient-portal.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/giraffe.png" alt="Patient Portal" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-orange group-hover:border-orange transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Portal</span><span class="hidden sm:inline">Patient Portal</span></span>
+                <img src="images/animals/giraffe.png" alt="Patient Portal" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-orange group-hover:border-orange transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Portal</span><span class="hidden sm:inline">Patient Portal</span></span>
                 </div>
             </a>
         </div>
@@ -964,7 +1044,7 @@
 
     <!-- Contact Us Button in top right -->
     <div class="absolute top-8 right-8 z-20">
-        <a href="contact.html" class="bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-inter text-lg hover:bg-orange hover:scale-105 transition-all duration-300 shadow-lg">
+        <a href="contact.html" class="bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-poppins text-lg hover:bg-orange hover:scale-105 transition-all duration-300 shadow-lg">
             Contact Us
         </a>
     </div>
@@ -990,7 +1070,7 @@
                     <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 font-fredoka text-white">
                         Our Services
                     </h1>
-                    <p class="text-lg sm:text-xl md:text-2xl text-white/90 font-inter mb-8 sm:mb-12">
+                    <p class="text-lg sm:text-xl md:text-2xl text-white/90 font-poppins mb-8 sm:mb-12">
                         Comprehensive pediatric care from newborn to young adult
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
@@ -1077,8 +1157,30 @@
             </div>
         </div>
 
+        <!-- Baby Photo Section -->
+        <div class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-center relative">
+                    <!-- Baby photo container -->
+                    <div class="flex-shrink-0 relative">
+                        <img src="images/team/baby.png" alt="Adorable baby receiving pediatric care"
+                             class="w-full max-w-lg h-auto rounded-2xl shadow-2xl relative z-10"
+                             style="max-height: 320px; object-fit: cover;">
+
+                        <!-- Left rectangle extending from photo -->
+                        <div class="absolute left-0 top-0 bottom-0 bg-navy opacity-30 -translate-x-full"
+                             style="width: 50vw; transform: translateX(-100%);"></div>
+
+                        <!-- Right rectangle extending from photo -->
+                        <div class="absolute right-0 top-0 bottom-0 bg-navy opacity-30 translate-x-full"
+                             style="width: 50vw; transform: translateX(100%);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- On-Site Laboratory Services -->
-        <div class="py-20 relative z-10">
+        <div class="pt-12 pb-20 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="section-header">
                 <div class="accent-line"></div>

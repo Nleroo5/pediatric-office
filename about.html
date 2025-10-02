@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Village Pediatrics | St. Augustine, FL</title>
     <meta name="description" content="Learn about Village Pediatrics' history, mission, and commitment to providing exceptional pediatric care in St. Augustine, FL since 2008.">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-18RT1K0291"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-18RT1K0291');
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    screens: {
+                        'xs': '375px',
+                        'xxs': '320px'
+                    },
                     colors: {
                         'navy': '#0D2673',
                         'teal': '#3B9D84',
@@ -602,23 +615,26 @@
         }
 
 
-        /* Enhanced 3D Interactive Benefit Cards */
+        /* Enhanced Slide-Up Interactive Benefit Cards */
         .interactive-benefit-card {
             position: relative;
             width: 100%;
             height: 320px;
-            perspective: 1200px;
             cursor: pointer;
-            transform-style: preserve-3d;
+            overflow: hidden;
+            border-radius: 20px;
+            transition: all 0.4s ease;
         }
 
-        .interactive-benefit-card .card-front,
-        .interactive-benefit-card .card-back {
-            position: absolute;
+        .interactive-benefit-card .card-front {
+            position: relative;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden;
-            transition: all 2.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.98) 0%,
+                rgba(255, 255, 255, 0.95) 50%,
+                rgba(248, 250, 252, 0.98) 100%);
+            border: 2px solid #feb92c;
             border-radius: 20px;
             padding: 35px;
             display: flex;
@@ -630,45 +646,29 @@
                 0 20px 40px rgba(0,0,0,0.1),
                 0 10px 20px rgba(59, 157, 132, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-
-        .interactive-benefit-card .card-front {
-            background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.98) 0%,
-                rgba(255, 255, 255, 0.95) 50%,
-                rgba(248, 250, 252, 0.98) 100%);
-            border: 2px solid #feb92c;
-            transform: rotateY(0deg) translateZ(0px);
             backdrop-filter: blur(10px);
-        }
-
-        .interactive-benefit-card .card-front::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg,
-                rgba(59, 157, 132, 0.05) 0%,
-                rgba(80, 179, 238, 0.05) 100%);
-            border-radius: 18px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .interactive-benefit-card:hover .card-front::before {
-            opacity: 1;
+            transition: all 0.4s ease;
         }
 
         .interactive-benefit-card .card-back {
-            background: linear-gradient(135deg, #3B9D84, #50B3EE);
-            transform: rotateY(180deg) translateZ(0px);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(135deg, #0D2673, #3B9D84);
             color: white;
+            border-radius: 20px 20px 0 0;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transform: translateY(100%);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow:
-                0 25px 50px rgba(0,0,0,0.2),
-                0 15px 30px rgba(59, 157, 132, 0.3),
+                0 -10px 30px rgba(0,0,0,0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
@@ -680,41 +680,59 @@
             right: 0;
             bottom: 0;
             background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 60%);
-            border-radius: 20px;
+            border-radius: 20px 20px 0 0;
             pointer-events: none;
         }
 
-        .interactive-benefit-card:hover .card-front {
-            transform: rotateY(-180deg) translateZ(20px) scale(1.02);
-        }
-
         .interactive-benefit-card:hover .card-back {
-            transform: rotateY(0deg) translateZ(20px) scale(1.02);
+            transform: translateY(0);
         }
 
-        .interactive-benefit-card:nth-child(odd) .card-back {
-            background: linear-gradient(135deg, #50B3EE, #F2B138);
+        .interactive-benefit-card:hover .card-front {
+            transform: translateY(-20px);
+            box-shadow:
+                0 30px 60px rgba(0,0,0,0.15),
+                0 15px 35px rgba(59, 157, 132, 0.2),
+                inset 0 2px 5px rgba(255, 255, 255, 0.9);
         }
 
-        .interactive-benefit-card:nth-child(3n) .card-back {
-            background: linear-gradient(135deg, #0D2673, #3B9D84);
+        /* Show card title in top section when hovered */
+        .interactive-benefit-card .card-front h3 {
+            transition: all 0.4s ease;
         }
+
+        .interactive-benefit-card:hover .card-front h3 {
+            transform: translateY(-60px);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0D2673;
+            margin-bottom: 0;
+            z-index: 15;
+            position: relative;
+        }
+
+        .interactive-benefit-card:hover .card-front p {
+            opacity: 0;
+            transform: translateY(-40px);
+        }
+
+        .interactive-benefit-card .card-front p {
+            transition: all 0.3s ease;
+        }
+
+        .interactive-benefit-card:hover .card-front .w-16 {
+            opacity: 1;
+            transform: translateY(-52px) scale(0.8);
+        }
+
 
         .interactive-benefit-card:hover {
             transform: translateY(-10px) scale(1.02);
         }
 
-        .interactive-benefit-card .card-front:hover {
-            border-color: #feb92c;
-        }
-
         /* Add floating animation to card icons */
         .interactive-benefit-card .card-front .w-16 {
             transition: all 0.3s ease;
-        }
-
-        .interactive-benefit-card:hover .card-front .w-16 {
-            transform: translateY(-5px) rotateY(10deg);
         }
 
         @media (max-width: 768px) {
@@ -784,6 +802,187 @@
         .hover-grow:hover {
             transform: scale(1.02) translateY(-2px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .mission-card-glow {
+            animation: subtleGoldenGlow 4s ease-in-out infinite;
+            transition: transform 0.3s ease !important;
+        }
+
+        .mission-card-glow:hover {
+            transform: translateY(-3px) scale(1.01) !important;
+        }
+
+        @keyframes subtleGoldenGlow {
+            0%, 100% {
+                box-shadow:
+                    0 15px 35px rgba(0, 0, 0, 0.1),
+                    0 0 20px rgba(242, 177, 56, 0.2),
+                    0 0 30px rgba(242, 177, 56, 0.1);
+            }
+            50% {
+                box-shadow:
+                    0 15px 35px rgba(0, 0, 0, 0.15),
+                    0 0 25px rgba(242, 177, 56, 0.35),
+                    0 0 40px rgba(242, 177, 56, 0.2);
+            }
+        }
+
+        /* Horizontal Timeline Styles */
+        .timeline-line-horizontal {
+            background: linear-gradient(to right, #b05717, #ffb82c, #fedc8d);
+            height: 8px;
+            border-radius: 4px;
+            box-shadow:
+                0 0 20px rgba(176, 87, 23, 0.6),
+                0 4px 8px rgba(0, 0, 0, 0.2),
+                inset 0 0 10px rgba(255, 255, 255, 0.3);
+            position: absolute;
+            z-index: 1;
+            width: calc(100% - 64px);
+            left: 32px;
+            top: 32px;
+        }
+
+        .timeline-line-horizontal::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.8), transparent);
+            border-radius: 1px;
+        }
+
+        .timeline-dot-horizontal {
+            background: linear-gradient(135deg, #b05717, #ffb82c);
+            border: 6px solid white;
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 4px rgba(176, 87, 23, 0.3),
+                0 8px 25px rgba(0, 0, 0, 0.15),
+                inset 0 2px 5px rgba(255, 255, 255, 0.3);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(1.2) rotateZ(0deg);
+            opacity: 1;
+            cursor: pointer;
+            position: absolute;
+            perspective: 1000px;
+        }
+
+        .timeline-dot-horizontal::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .timeline-dot-horizontal:hover::before {
+            opacity: 1;
+        }
+
+        .timeline-dot-horizontal.animate {
+            transform: scale(1.2) rotateZ(0deg);
+            opacity: 1;
+        }
+
+        .timeline-dot-horizontal:hover {
+            transform: scale(1.4) rotateZ(10deg) !important;
+            box-shadow:
+                0 0 0 6px rgba(176, 87, 23, 0.4),
+                0 15px 40px rgba(0, 0, 0, 0.25),
+                inset 0 2px 5px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Simple connecting lines from dots to cards */
+        .timeline-connector {
+            position: absolute;
+            top: 44px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 32px;
+            background: #b05717;
+            z-index: 2;
+        }
+
+        .timeline-item-horizontal {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg) translateZ(0px);
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .timeline-item-horizontal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 184, 44, 0.15) 0%, rgba(176, 87, 23, 0.1) 50%, rgba(255, 184, 44, 0.05) 100%);
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .timeline-item-horizontal:hover::before {
+            opacity: 1;
+        }
+
+        .timeline-item-horizontal.animate {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg) translateZ(0px);
+        }
+
+        .timeline-item-horizontal:hover {
+            transform: translateY(-10px) scale(1.02) rotateX(2deg) rotateY(1deg) translateZ(20px) !important;
+            box-shadow:
+                0 25px 50px rgba(255, 184, 44, 0.3),
+                0 15px 40px rgba(176, 87, 23, 0.2),
+                0 0 30px rgba(255, 184, 44, 0.4);
+        }
+
+        /* Clean timeline card styling with golden glow */
+        .timeline-item-horizontal .modern-card {
+            position: relative;
+            animation: subtleGoldenGlow 4s ease-in-out infinite;
+            transition: transform 0.3s ease !important;
+        }
+
+        .timeline-item-horizontal .modern-card:hover {
+            transform: translateY(-3px) scale(1.01) !important;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line-horizontal {
+                display: none;
+            }
+
+            .timeline-dot-horizontal {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+                margin: 0 auto 1rem auto;
+            }
+
+            .timeline-item-horizontal {
+                margin-bottom: 2rem;
+            }
         }
 
         .parallax-element {
@@ -1045,8 +1244,66 @@
             45% { opacity: 1; transform: scale(1.1); }
         }
 
+        /* Mobile-Specific Optimizations */
+        @media (max-width: 480px) {
+            .animal-nav-item {
+                min-width: 60px;
+                min-height: 80px;
+            }
 
+            .animal-nav-item img {
+                min-width: 40px;
+                min-height: 40px;
+            }
 
+            .animal-nav-item span {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            nav {
+                padding: 0 4px;
+            }
+
+            .animal-nav-item {
+                min-width: 50px;
+            }
+
+            .animal-nav-item img {
+                width: 32px !important;
+                height: 32px !important;
+            }
+
+            .animal-nav-item span {
+                font-size: 8px;
+                padding: 2px 6px;
+            }
+        }
+
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .animal-nav-item:active {
+                transform: scale(0.95);
+                transition: transform 0.1s ease;
+            }
+
+            .animal-nav-item {
+                cursor: pointer;
+                -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+            }
+        }
+
+        /* Prevent horizontal scrolling on mobile */
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -1063,42 +1320,42 @@
 
     
     <!-- Animal Navigation Over Hero -->
-    <nav class="absolute top-20 left-0 right-0 z-30" id="animal-nav">
-        <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8">
+    <nav class="absolute top-20 left-0 right-0 z-30 px-2" id="animal-nav">
+        <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 max-w-screen-sm mx-auto">
             <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-gray-800 group-hover:border-gray-800 transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Home</span><span class="hidden sm:inline">Home</span></span>
+                <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-gray-800 group-hover:border-gray-800 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Home</span><span class="hidden sm:inline">Home</span></span>
                 </div>
             </a>
             <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-orange group-hover:bg-orange group-hover:border-orange transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">About</span><span class="hidden sm:inline">About Us</span></span>
+                <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-orange group-hover:bg-orange group-hover:border-orange transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">About</span><span class="hidden sm:inline">About Us</span></span>
                 </div>
             </a>
             <a href="services.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/zebra.png" alt="Services" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-lightblue group-hover:border-lightblue transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Care</span><span class="hidden sm:inline">Services</span></span>
+                <img src="images/animals/zebra.png" alt="Services" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-lightblue group-hover:border-lightblue transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Care</span><span class="hidden sm:inline">Services</span></span>
                 </div>
             </a>
             <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-teal group-hover:border-teal transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Team</span><span class="hidden sm:inline">Our Team</span></span>
+                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-teal group-hover:border-teal transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Team</span><span class="hidden sm:inline">Our Team</span></span>
                 </div>
             </a>
             <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-navy group-hover:border-navy transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">New</span><span class="hidden sm:inline">New Patients</span></span>
+                <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-navy group-hover:border-navy transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">New</span><span class="hidden sm:inline">New Patients</span></span>
                 </div>
             </a>
             <a href="patient-portal.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/giraffe.png" alt="Patient Portal" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-orange group-hover:border-orange transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Portal</span><span class="hidden sm:inline">Patient Portal</span></span>
+                <img src="images/animals/giraffe.png" alt="Patient Portal" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-orange group-hover:border-orange transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Portal</span><span class="hidden sm:inline">Patient Portal</span></span>
                 </div>
             </a>
         </div>
@@ -1113,7 +1370,7 @@
 
     <!-- Contact Us Button in top right -->
     <div class="absolute top-8 right-8 z-20">
-        <a href="contact.html" class="bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-inter text-lg hover:bg-orange hover:scale-105 transition-all duration-300 shadow-lg">
+        <a href="contact.html" class="bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-poppins text-lg hover:bg-orange hover:scale-105 transition-all duration-300 shadow-lg">
             Contact Us
         </a>
     </div>
@@ -1158,7 +1415,7 @@
                     <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-fredoka text-lionbrown">Our Mission</h2>
                     <div class="accent-line flex-1 ml-6"></div>
                 </div>
-                <div class="modern-card p-10 hover-grow">
+                <div class="modern-card p-10 mission-card-glow">
                     <p class="text-lg sm:text-xl text-black leading-relaxed mb-8">
                         To provide <span class="text-black">exceptional pediatric care</span>,
                         delivering compassionate, comprehensive healthcare for children from newborn to age 21.
@@ -1187,63 +1444,59 @@
                 <p class="text-base sm:text-lg text-black">The growth of our pediatric practice through the years</p>
             </div>
 
-            <div class="max-w-4xl mx-auto">
-                <!-- Timeline Line -->
-                <div class="relative">
-                    <div class="absolute left-1/2 transform -translate-x-1/2 timeline-line h-full"></div>
+            <div class="max-w-7xl mx-auto">
+                <!-- Horizontal Traditional Timeline -->
+                <div class="relative py-16">
+                    <!-- Main Horizontal Timeline Line -->
+                    <div class="absolute top-1/2 left-8 right-8 h-2 bg-gradient-to-r from-orange via-orange to-orange transform -translate-y-1/2 rounded-full shadow-lg"></div>
 
-                    <div class="space-y-16">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
                         <!-- 2008: The Foundation -->
-                        <div class="relative flex items-center timeline-item" data-year="2008">
-                            <div class="flex-1 pr-8 text-right">
-                                <div class="modern-card p-12 timeline-card">
-                                    <div class="text-3xl font-bold text-orange mb-4 font-fredoka">2008</div>
+                        <div class="relative text-center">
+                            <!-- Year Above Timeline -->
+                            <div class="mb-16">
+                                <div class="timeline-year text-4xl font-bold text-orange mb-4 font-fredoka">2008</div>
+                            </div>
+
+                            <!-- Content Below Timeline -->
+                            <div class="mt-16">
+                                <div class="modern-card p-8">
                                     <h3 class="text-2xl font-semibold text-lionbrown mb-4">The Foundation</h3>
-                                    <p class="text-base sm:text-lg text-black">Dr. Patricia Elvir established <span class="text-black">Village Pediatrics</span> with a
-                                    vision to serve St. Augustine families with <span class="text-black">compassionate care</span> and
-                                    <span class="text-black">medical excellence</span>.</p>
+                                    <p class="text-base text-black">Dr. Patricia Elvir established Village Pediatrics with a vision to serve St. Augustine families with compassionate care and medical excellence.</p>
                                 </div>
                             </div>
-                            <div class="timeline-dot w-6 h-6 absolute left-1/2 transform -translate-x-1/2" data-year="2008">
-                                <div class="pulse-ring w-full h-full absolute top-0 left-0"></div>
-                            </div>
-                            <div class="flex-1 pl-8"></div>
                         </div>
 
                         <!-- 2008-2025: Building Trust -->
-                        <div class="relative flex items-center timeline-item" data-year="2008-2025">
-                            <div class="flex-1 pr-8"></div>
-                            <div class="timeline-dot w-6 h-6 absolute left-1/2 transform -translate-x-1/2" data-year="2008-2025">
-                                <div class="pulse-ring w-full h-full absolute top-0 left-0"></div>
+                        <div class="relative text-center">
+                            <!-- Year Above Timeline -->
+                            <div class="mb-16">
+                                <div class="timeline-year text-4xl font-bold text-orange mb-4 font-fredoka">2008-2025</div>
                             </div>
-                            <div class="flex-1 pl-8">
-                                <div class="modern-card p-8 timeline-card right">
-                                    <div class="text-3xl font-bold text-orange mb-4 font-fredoka">2008-2025</div>
+
+                            <!-- Content Below Timeline -->
+                            <div class="mt-16">
+                                <div class="modern-card p-8">
                                     <h3 class="text-2xl font-semibold text-lionbrown mb-4">Building Trust & Excellence</h3>
-                                    <p class="text-base sm:text-lg text-black">For 17 years, our practice flourished! We established
-                                    <span class="text-black">same-day appointments</span>,
-                                    <span class="text-black">24/7 nursing support</span>, and
-                                    <span class="text-black">comprehensive care</span> that families could rely upon.</p>
+                                    <p class="text-base text-black">For 17 years, our practice flourished! We established same-day appointments, 24/7 nursing support, and comprehensive care that families could rely upon.</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- 2025: New Leadership -->
-                        <div class="relative flex items-center timeline-item" data-year="2025">
-                            <div class="flex-1 pr-8 text-right">
-                                <div class="modern-card p-12 timeline-card">
-                                    <div class="text-3xl font-bold text-orange mb-4 font-fredoka">September 2025</div>
-                                    <h3 class="text-2xl font-semibold text-lionbrown mb-4">New Leadership</h3>
-                                    <p class="text-base sm:text-lg text-black">Dr. Austin Dupont joins the practice, bringing
-                                    <span class="text-black">fresh perspectives</span> while preserving the
-                                    <span class="text-black">established traditions</span> and
-                                    <span class="text-black">trusted care</span> that families have grown to cherish.</p>
+                        <div class="relative text-center">
+                            <!-- Year Above Timeline -->
+                            <div class="mb-16">
+                                <div class="timeline-year text-4xl font-bold text-orange mb-4 font-fredoka">September 2025</div>
+                            </div>
+
+                            <!-- Content Below Timeline -->
+                            <div class="mt-16">
+                                <div class="modern-card p-8">
+                                    <h3 class="text-2xl font-semibold text-lionbrown mb-4">New Ownership</h3>
+                                    <p class="text-base text-black">Dr. Austin Dupont became the new owner of Village Pediatrics, bringing fresh perspectives while preserving the established traditions and trusted care that families have grown to cherish.</p>
                                 </div>
                             </div>
-                            <div class="timeline-dot w-6 h-6 absolute left-1/2 transform -translate-x-1/2" data-year="2025">
-                                <div class="pulse-ring w-full h-full absolute top-0 left-0"></div>
-                            </div>
-                            <div class="flex-1 pl-8"></div>
                         </div>
                     </div>
                 </div>
@@ -1366,7 +1619,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="bg-white rounded-2xl shadow-lg border-2 border-feb92c p-12 transition-all duration-300 hover:translateY(-12px) hover:scale-105 hover:shadow-2xl">
                 <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-fredoka text-lionbrown mb-6">Ready to Meet Our Team?</h2>
-                <p class="text-lg sm:text-xl text-gray-600 mb-10 font-inter">Learn more about the dedicated providers who make Village Pediatrics special.</p>
+                <p class="text-lg sm:text-xl text-gray-600 mb-10 font-poppins">Learn more about the dedicated providers who make Village Pediatrics special.</p>
 
                 <div class="flex flex-col sm:flex-row gap-6 justify-center">
                     <a href="team.html" class="bg-gradient-to-r from-lionbrown to-liongold text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-lg">
@@ -1467,9 +1720,9 @@
     <script>
         // Enhanced Timeline Animation and Interactivity
         function animateTimeline() {
-            const timelineDots = document.querySelectorAll('.timeline-dot');
+            const timelineDots = document.querySelectorAll('.timeline-dot-horizontal');
             const timelineCards = document.querySelectorAll('.timeline-card');
-            const timelineItems = document.querySelectorAll('.timeline-item');
+            const timelineItems = document.querySelectorAll('.timeline-item-horizontal');
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1585,7 +1838,7 @@
         }
 
         function highlightTimelineItem(index) {
-            const items = document.querySelectorAll('.timeline-item');
+            const items = document.querySelectorAll('.timeline-item-horizontal');
             items.forEach((item, i) => {
                 if (i === index) {
                     item.style.filter = 'brightness(1.1) saturate(1.2)';
@@ -1758,6 +2011,7 @@
 
         });
     </script>
+
 
     <!-- Lion Animation Script -->
     <script src="js/lion-animations.js"></script>

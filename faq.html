@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frequently Asked Questions - Village Pediatrics</title>
     <meta name="description" content="Find answers to common questions about Village Pediatrics services, appointments, insurance, and policies. Same-day appointments available in St. Augustine, FL.">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-18RT1K0291"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-18RT1K0291');
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    screens: {
+                        'xs': '375px',
+                        'xxs': '320px'
+                    },
                     colors: {
                         'navy': '#0D2673',
                         'teal': '#3B9D84',
@@ -29,58 +42,12 @@
                         'poppins': ['Poppins', 'sans-serif'],
                         'roboto': ['Roboto', 'sans-serif']
                     },
-                    animation: {
-                        'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
-                        'float': 'float 3s ease-in-out infinite',
-                        'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
-                        'slide-down': 'slide-down 0.3s ease-out forwards',
-                    }
+                    animation: {}
                 }
             }
         }
     </script>
     <style>
-        @keyframes fade-in-up {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        @keyframes pulse-soft {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(59, 157, 132, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 0 15px rgba(59, 157, 132, 0);
-            }
-        }
-        
-        @keyframes slide-down {
-            0% {
-                opacity: 0;
-                max-height: 0;
-                padding: 0 1.5rem;
-            }
-            100% {
-                opacity: 1;
-                max-height: 300px;
-                padding: 1.5rem;
-            }
-        }
         
         .glass-card {
             background: rgba(255, 255, 255, 0.95);
@@ -96,149 +63,148 @@
         }
         
         .card-hover {
-            background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.98) 0%,
-                rgba(255, 255, 255, 0.95) 50%,
-                rgba(248, 250, 252, 0.98) 100%);
-            border: 2px solid rgba(59, 157, 132, 0.2);
-            border-radius: 20px;
-            box-shadow:
-                0 15px 35px rgba(0, 0, 0, 0.1),
-                0 5px 15px rgba(59, 157, 132, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             position: relative;
-            perspective: 1000px;
-            transform-style: preserve-3d;
-            backdrop-filter: blur(10px);
+            margin-bottom: 1rem;
         }
 
-        .card-hover::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg,
-                rgba(59, 157, 132, 0.05) 0%,
-                rgba(80, 179, 238, 0.05) 50%,
-                rgba(242, 177, 56, 0.05) 100%);
-            border-radius: 18px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .card-hover:hover::before {
-            opacity: 1;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-15px) scale(1.02) rotateX(5deg) rotateY(2deg) translateZ(20px);
-            box-shadow:
-                0 30px 60px rgba(0, 0, 0, 0.15),
-                0 15px 35px rgba(59, 157, 132, 0.2),
-                inset 0 2px 5px rgba(255, 255, 255, 0.9);
-            border-color: rgba(59, 157, 132, 0.4);
-        }
-
-        .card-hover::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg) translateX(-100%) translateY(-100%);
-            transition: transform 0.6s ease;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .card-hover:hover::after {
-            transform: rotate(45deg) translateX(100%) translateY(100%);
-            opacity: 1;
-        }
-        
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-        }
-        
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(59, 157, 132, 0.1), rgba(80, 179, 238, 0.1));
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .shape-1 {
-            width: 120px;
-            height: 120px;
-            top: 15%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-        
-        .shape-2 {
-            width: 180px;
-            height: 180px;
-            top: 60%;
-            right: 15%;
-            animation-delay: 2s;
-        }
-        
-        .shape-3 {
-            width: 100px;
-            height: 100px;
-            top: 30%;
-            right: 25%;
-            animation-delay: 4s;
-        }
-        
         .faq-question {
             cursor: pointer;
-            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
+            padding: 1.5rem;
+            border: none;
+            border-bottom: none;
         }
-        
-        .faq-question::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 157, 132, 0.1), transparent);
-            transition: left 0.5s;
-        }
-        
-        .faq-question:hover::before {
-            left: 100%;
-        }
-        
+
         .faq-question:hover {
-            background-color: rgba(59, 157, 132, 0.05);
+            background-color: #f9fafb;
         }
-        
+
         .faq-answer {
-            max-height: 0;
             overflow: hidden;
-            transition: all 0.4s ease;
+            background: #ffffff;
+            max-height: 0;
             opacity: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.9));
         }
-        
+
         .faq-answer.active {
-            max-height: 300px;
+            max-height: 500px;
             opacity: 1;
-            animation: slide-down 0.4s ease-out forwards;
+            padding: 1.5rem;
+        }
+
+        .faq-question h3,
+        .faq-question h3.flex,
+        .faq-question div h3,
+        .faq-item .faq-question h3 {
+            font-size: 1.125rem !important;
+            font-weight: 600 !important;
+            color: #0D2673 !important;
+            line-height: 1.5 !important;
+            margin: 0 !important;
+            padding-right: 1rem !important;
+            border: none !important;
+            border-bottom: none !important;
+        }
+
+        .faq-question .flex {
+            border: none;
+            border-bottom: none;
+        }
+
+        .faq-answer p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #374151;
+            margin: 0 0 1rem 0;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .faq-answer li {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer li:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer strong {
+            color: #0D2673;
+            font-weight: 600;
+        }
+
+        .faq-icon {
+            color: #0D2673;
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+        }
+
+        .category-section {
+            margin-bottom: 3rem;
+        }
+
+        .category-section h3,
+        .category-section h3.flex,
+        .category-section h3.flex.items-center {
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            color: #F2B138 !important;
+            margin-bottom: 1.5rem !important;
+            padding-bottom: 0.5rem !important;
+        }
+
+        .category-section .space-y-4 > * + * {
+            margin-top: 1rem;
+        }
+
+        /* Overall FAQ container improvements */
+        .faq-container {
+            max-width: 42rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .faq-container {
+                max-width: 48rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .faq-container {
+                max-width: 56rem;
+            }
+        }
+
+        /* Responsive text improvements */
+        @media (max-width: 640px) {
+            .faq-question h3 {
+                font-size: 0.875rem;
+                line-height: 1.4;
+            }
+
+            .faq-question {
+                padding: 1.25rem;
+            }
+
+            .faq-answer.active {
+                padding: 1.25rem;
+            }
         }
         
         .search-highlight {
@@ -250,15 +216,41 @@
         
         .filter-tag {
             cursor: pointer;
-            transition: all 0.3s ease;
         }
-        
-        .filter-tag:hover {
-            transform: scale(1.05);
+
+        .tab-button {
+            position: relative;
+            white-space: nowrap;
+            border-bottom-width: 3px;
         }
-        
-        .filter-tag.active {
-            background: linear-gradient(135deg, #0D2673, #3B9D84);
+
+        .tab-button.active {
+            background-color: #0D2673 !important;
+            color: white !important;
+            border-bottom-color: #0D2673 !important;
+        }
+
+        .tab-button:not(.active) {
+            background-color: white;
+            color: #6b7280;
+            border-bottom-color: transparent;
+        }
+
+
+        /* Mobile responsive tabs */
+        @media (max-width: 768px) {
+            .tab-button {
+                flex: 1 0 50%;
+                font-size: 0.875rem;
+                padding: 0.75rem 0.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tab-button {
+                flex: 1 0 100%;
+                border-bottom-width: 2px;
+            }
         }
         
         .scroll-to-top {
@@ -266,233 +258,82 @@
             bottom: 2rem;
             right: 2rem;
             z-index: 50;
-            opacity: 0;
-            transition: all 0.3s ease;
-            transform: translateY(20px);
-        }
-        
-        .scroll-to-top.visible {
             opacity: 1;
-            transform: translateY(0);
         }
         
         .category-section {
-            transition: all 0.3s ease;
         }
         
         .category-section.hidden {
             display: none;
         }
 
-        /* Animated Background Elements */
-        .bg-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
 
-        .bg-shape {
-            position: absolute;
-            opacity: 0.1;
-            animation: floatAround 20s ease-in-out infinite;
-        }
 
-        .bg-shape:nth-child(1) {
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, rgba(242, 177, 56, 0.15) 0%, rgba(242, 177, 56, 0.05) 60%, transparent 100%);
-            border-radius: 50%;
-            top: 10%;
-            left: 8%;
-            animation-delay: 0s;
-            animation-duration: 30s;
-        }
-
-        .bg-shape:nth-child(2) {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, rgba(242, 177, 56, 0.12), rgba(59, 157, 132, 0.08));
-            border-radius: 60% 40% 40% 60%;
-            top: 25%;
-            right: 12%;
-            animation-delay: -8s;
-            animation-duration: 35s;
-        }
-
-        .bg-shape:nth-child(3) {
-            width: 140px;
-            height: 140px;
-            background: radial-gradient(ellipse, rgba(242, 177, 56, 0.1) 0%, rgba(242, 177, 56, 0.03) 50%, transparent 100%);
-            border-radius: 70% 30% 30% 70%;
-            bottom: 25%;
-            left: 15%;
-            animation-delay: -15s;
-            animation-duration: 40s;
-        }
-
-        .bg-shape:nth-child(4) {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, rgba(59, 157, 132, 0.1), rgba(242, 177, 56, 0.08));
-            border-radius: 40% 60% 60% 40%;
-            bottom: 15%;
-            right: 20%;
-            animation-delay: -22s;
-            animation-duration: 33s;
-        }
-
-        .bg-shape:nth-child(5) {
-            width: 110px;
-            height: 110px;
-            background: radial-gradient(circle, rgba(242, 177, 56, 0.08) 0%, rgba(80, 179, 238, 0.05) 70%, transparent 100%);
-            border-radius: 50% 50% 20% 80%;
-            top: 55%;
-            left: 3%;
-            animation-delay: -30s;
-            animation-duration: 38s;
-        }
-
-        .bg-shape:nth-child(6) {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(45deg, rgba(242, 177, 56, 0.1), rgba(13, 38, 115, 0.06));
-            border-radius: 30% 70% 70% 30%;
-            top: 35%;
-            right: 8%;
-            animation-delay: -37s;
-            animation-duration: 26s;
-        }
-
-        @keyframes floatAround {
-            0%, 100% {
-                transform: translate(0px, 0px) rotate(0deg) scale(1);
-                opacity: 0.1;
-            }
-            25% {
-                transform: translate(30px, -20px) rotate(90deg) scale(1.1);
-                opacity: 0.2;
-            }
-            50% {
-                transform: translate(-20px, 30px) rotate(180deg) scale(0.9);
-                opacity: 0.15;
-            }
-            75% {
-                transform: translate(40px, 10px) rotate(270deg) scale(1.05);
-                opacity: 0.25;
-            }
-        }
-
-        /* Animal animation styles */
+        /* Animal navigation styles */
         .animal-nav-item {
-            opacity: 0;
-            transform: translateY(-100px) scale(0.8);
-            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .animal-nav-item.animate-in {
             opacity: 1;
-            transform: translateY(0) scale(1);
         }
 
-        .animal-nav-item:nth-child(1) { animation-delay: 0.1s; }
-        .animal-nav-item:nth-child(2) { animation-delay: 0.3s; }
-        .animal-nav-item:nth-child(3) { animation-delay: 0.5s; }
-        .animal-nav-item:nth-child(4) { animation-delay: 0.7s; }
-        .animal-nav-item:nth-child(5) { animation-delay: 0.9s; }
-        .animal-nav-item:nth-child(6) { animation-delay: 1.1s; }
+        /* Mobile-Specific Optimizations */
+        @media (max-width: 480px) {
+            .animal-nav-item {
+                min-width: 60px;
+                min-height: 80px;
+            }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg) scale(1) translateX(0px);
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            .animal-nav-item img {
+                min-width: 40px;
+                min-height: 40px;
             }
-            25% {
-                transform: translateY(-6px) rotate(1deg) scale(1.01) translateX(-2px);
-                filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
-            }
-            50% {
-                transform: translateY(-12px) rotate(2deg) scale(1.02) translateX(0px);
-                filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
-            }
-            75% {
-                transform: translateY(-6px) rotate(1deg) scale(1.01) translateX(2px);
-                filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+
+            .animal-nav-item span {
+                font-size: 10px;
+                padding: 4px 8px;
             }
         }
 
-        .animal-nav-item.animate-in img {
-            animation: float 3s ease-in-out infinite;
+        @media (max-width: 320px) {
+            nav {
+                padding: 0 4px;
+            }
+
+            .animal-nav-item {
+                min-width: 50px;
+            }
+
+            .animal-nav-item img {
+                width: 32px !important;
+                height: 32px !important;
+            }
+
+            .animal-nav-item span {
+                font-size: 8px;
+                padding: 2px 6px;
+            }
         }
 
-        /* Text shimmer effect */
-        .text-shimmer {
-            background: linear-gradient(45deg, #3B9D84, #50B3EE, #F2B138, #0D2673);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 3s ease-in-out infinite;
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .animal-nav-item:active {
+                transform: scale(0.95);
+                transition: transform 0.1s ease;
+            }
+
+            .animal-nav-item {
+                cursor: pointer;
+                -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+            }
         }
 
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Interactive Elements */
-        .fun-button {
-            position: relative;
-            overflow: hidden;
-            transform: perspective(1px) translateZ(0);
-            transition: all 0.3s ease;
-        }
-
-        .fun-button:hover {
-            transform: scale(1.05) rotate(1deg);
-            box-shadow: 0 10px 30px rgba(59, 157, 132, 0.3);
-        }
-
-        .fun-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        /* Prevent horizontal scrolling on mobile */
+        body {
+            overflow-x: hidden;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
         }
 
-        .fun-button:hover::before {
-            left: 100%;
-        }
-
-        .click-ripple {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .click-ripple::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .click-ripple:active::after {
-            width: 300px;
-            height: 300px;
+        * {
+            box-sizing: border-box;
         }
     </style>
 </head>
@@ -507,42 +348,42 @@
         <div class="bg-shape"></div>
     </div>
     <!-- Animal Navigation Over Hero -->
-    <nav class="absolute top-20 left-0 right-0 z-30" id="animal-nav">
-        <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8">
-            <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-gray-600/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-gray-600 group-hover:bg-gray-800 group-hover:border-gray-800 transition-all duration-300">
-                    <span class="text-xs font-extrabold text-white font-inter tracking-wider uppercase">Home</span>
+    <nav class="absolute top-20 left-0 right-0 z-30 px-2" id="animal-nav">
+        <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 max-w-screen-sm mx-auto">
+            <a href="index.html" class="animal-nav-item flex flex-col items-center group  ">
+                <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-gray-600/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-gray-600 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Home</span>
                 </div>
             </a>
-            <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-navy/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-orange group-hover:bg-orange group-hover:border-orange transition-all duration-300">
-                    <span class="text-xs font-extrabold text-white font-inter tracking-wider uppercase">About Us</span>
+            <a href="about.html" class="animal-nav-item flex flex-col items-center group  ">
+                <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-navy/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-orange min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">About Us</span>
                 </div>
             </a>
-            <a href="services.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/zebra.png" alt="Services" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-teal/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-teal group-hover:bg-lightblue group-hover:border-lightblue transition-all duration-300">
-                    <span class="text-xs font-extrabold text-white font-inter tracking-wider uppercase">Services</span>
+            <a href="services.html" class="animal-nav-item flex flex-col items-center group  ">
+                <img src="images/animals/zebra.png" alt="Services" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-teal/80 backdrop-blur-sm px-4 py-2 rounded-full min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Services</span>
                 </div>
             </a>
-            <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-lightblue/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-lightblue group-hover:bg-teal group-hover:border-teal transition-all duration-300">
-                    <span class="text-xs font-extrabold text-white font-inter tracking-wider uppercase">Our Team</span>
+            <a href="team.html" class="animal-nav-item flex flex-col items-center group  ">
+                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-lightblue/80 backdrop-blur-sm px-4 py-2 rounded-full min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Our Team</span>
                 </div>
             </a>
-            <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-orange/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-orange group-hover:bg-navy group-hover:border-navy transition-all duration-300">
-                    <span class="text-xs font-extrabold text-white font-inter tracking-wider uppercase">New Patients</span>
+            <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group  ">
+                <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-orange/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-orange min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">New Patients</span>
                 </div>
             </a>
-            <a href="patient-portal.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/lion.png" alt="Patient Portal" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-navy/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-navy group-hover:bg-orange group-hover:border-orange transition-all duration-300">
-                    <span class="text-xs font-extrabold text-white font-inter tracking-wider uppercase">Patient Portal</span>
+            <a href="patient-portal.html" class="animal-nav-item flex flex-col items-center group  ">
+                <img src="images/animals/lion.png" alt="Patient Portal" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-navy/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-navy min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Patient Portal</span>
                 </div>
             </a>
         </div>
@@ -551,29 +392,24 @@
     <!-- Logo positioned in top left -->
     <div class="absolute top-8 left-8 z-20">
         <a href="index.html">
-            <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain filter drop-shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
+            <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain filter drop-shadow-lg   cursor-pointer">
         </a>
     </div>
 
     <!-- Contact Us Button in top right -->
     <div class="absolute top-8 right-8 z-20">
-        <a href="contact.html" class="bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-inter text-lg hover:bg-orange hover:scale-105 transition-all duration-300 shadow-lg">
+        <a href="contact.html" class="bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-poppins text-lg    shadow-lg">
             Contact Us
         </a>
     </div>
 
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-br from-navy via-lightblue to-teal text-white py-20 pt-80 overflow-hidden">
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-        </div>
         <div class="container mx-auto px-6 text-right relative z-10">
-            <div class="animate-fade-in-up">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 sm:mb-12 font-fredoka text-shimmer tracking-tight">
-                    Frequently Asked
-                    <span class="text-orange">Questions</span>
+            <div class="">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 sm:mb-12 font-fredoka tracking-tight">
+                    <span class="text-orange">Frequently Asked</span>
+                    <span class="text-white">Questions</span>
                 </h1>
                 <p class="text-xl md:text-2xl font-light max-w-4xl ml-auto leading-relaxed opacity-90">
                     Find answers to common questions about our pediatric services and practice
@@ -585,30 +421,48 @@
     <!-- Filter Section -->
     <section class="py-16 bg-white relative -mt-12">
         <div class="container mx-auto px-6">
-            <!-- Dynamic Filter Tags -->
-            <div class="max-w-4xl mx-auto mb-12">
-                <div class="flex flex-wrap gap-3 justify-center">
-                    <button class="filter-tag bg-village-navy text-white px-6 py-3 rounded-full font-semibold text-sm active" data-category="all">
-                        All Questions
-                    </button>
-                    <button class="filter-tag bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-semibold text-sm hover:bg-gray-300" data-category="appointments">
-                        Appointments
-                    </button>
-                    <button class="filter-tag bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-semibold text-sm hover:bg-gray-300" data-category="new-patients">
-                        New Patients
-                    </button>
-                    <button class="filter-tag bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-semibold text-sm hover:bg-gray-300" data-category="insurance">
-                        Insurance
-                    </button>
-                    <button class="filter-tag bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-semibold text-sm hover:bg-gray-300" data-category="services">
-                        Services
-                    </button>
-                    <button class="filter-tag bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-semibold text-sm hover:bg-gray-300" data-category="after-hours">
-                        After Hours
-                    </button>
-                    <button class="filter-tag bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-semibold text-sm hover:bg-gray-300" data-category="policies">
-                        Policies
-                    </button>
+            <!-- Tab-Style Navigation -->
+            <div class="max-w-7xl mx-auto mb-16">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <!-- Tab Container -->
+                    <div class="border-b border-gray-200">
+                        <nav class="flex flex-wrap" aria-label="FAQ Categories">
+                            <!-- All Questions Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-navy bg-navy text-white active" data-category="all">
+                                All Questions
+                            </button>
+
+                            <!-- Appointments Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="appointments">
+                                Appointments
+                            </button>
+
+                            <!-- New Patients Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="new-patients">
+                                New Patients
+                            </button>
+
+                            <!-- Insurance Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="insurance">
+                                Insurance
+                            </button>
+
+                            <!-- Services Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="services">
+                                Services
+                            </button>
+
+                            <!-- After Hours Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="after-hours">
+                                After Hours
+                            </button>
+
+                            <!-- Policies Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="policies">
+                                Policies
+                            </button>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
@@ -616,8 +470,7 @@
 
     <!-- FAQ Content -->
     <section class="pb-20">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto">
+        <div class="faq-container">
                 
                 <!-- Popular Questions -->
                 <div class="category-section mb-16" data-category="popular">
@@ -625,67 +478,67 @@
                         <h2 class="text-3xl font-bold gradient-text mb-8 text-center">Most Popular Questions</h2>
                         
                         <div class="space-y-6">
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="appointments popular">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="appointments popular">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">How do I schedule an appointment?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">How do I schedule an appointment?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">You can schedule appointments in two convenient ways: call our office at <strong>(904) 940-1577</strong> during business hours, or use our online Yosi scheduling system available 24/7 on our website at myvillagepeds.com. Our friendly staff can help you find the best appointment time that works for your family's schedule.</p>
+                                    <p class="">You can schedule appointments in two convenient ways: call our office at <strong>(904) 940-1577</strong> during business hours, or use our online Yosi scheduling system available 24/7 on our website at myvillagepeds.com. Our friendly staff can help you find the best appointment time that works for your family's schedule.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="appointments popular">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="appointments popular">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">Do you offer same-day appointments?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">Do you offer same-day appointments?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">Yes! We prioritize same-day sick appointments because we understand children can't wait when they're not feeling well. Call us as early as possible in the morning at <strong>(904) 940-1577</strong> to secure a same-day appointment. We also accept walk-ins subject to provider availability.</p>
+                                    <p class="">Yes! We prioritize same-day sick appointments because we understand children can't wait when they're not feeling well. Call us as early as possible in the morning at <strong>(904) 940-1577</strong> to secure a same-day appointment. We also accept walk-ins subject to provider availability.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="new-patients popular">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="new-patients popular">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">What should I bring for my child's first appointment?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">What should I bring for my child's first appointment?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">Please bring: <strong>current insurance cards, photo identification, previous medical records, complete immunization records, list of current medications, and any questions or concerns</strong> you'd like to discuss. Having these items ready helps us provide the best care from day one.</p>
+                                    <p class="">Please bring: <strong>current insurance cards, photo identification, previous medical records, complete immunization records, list of current medications, and any questions or concerns</strong> you'd like to discuss. Having these items ready helps us provide the best care from day one.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="insurance popular">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="insurance popular">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">Do you accept my insurance?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">Do you accept my insurance?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">We participate with 16+ insurance plans including <strong>Aetna, Florida Blue, CIGNA, Humana, United Healthcare</strong>, and many others. However, we <strong>do NOT accept Medicaid or Florida KidCare</strong>. Please call our office to verify your specific plan and coverage details.</p>
+                                    <p class="">We participate with 16+ insurance plans including <strong>Aetna, Florida Blue, CIGNA, Humana, United Healthcare</strong>, and many others. However, we <strong>do NOT accept Medicaid or Florida KidCare</strong>. Please call our office to verify your specific plan and coverage details.</p>
                                 </div>
                             </div>
                         </div>
@@ -697,7 +550,7 @@
                     
                     <!-- Appointments Category -->
                     <div class="category-section" data-category="appointments">
-                        <h3 class="text-2xl font-bold gradient-text mb-6 flex items-center">
+                        <h3 class="flex items-center">
                             <div class="w-8 h-8 bg-gradient-to-br from-village-orange to-yellow-400 rounded-full flex items-center justify-center mr-3">
                                 <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -707,67 +560,67 @@
                         </h3>
                         
                         <div class="space-y-4">
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="appointments">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="appointments">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">How far in advance should I book well-child visits?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">How far in advance should I book well-child visits?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">We recommend scheduling well-child visits 2-4 weeks in advance to ensure you get your preferred time slot. However, we understand schedules change, so we also keep some flexibility for families who need appointments sooner.</p>
+                                    <p class="">We recommend scheduling well-child visits 2-4 weeks in advance to ensure you get your preferred time slot. However, we understand schedules change, so we also keep some flexibility for families who need appointments sooner.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="appointments">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="appointments">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">When can I schedule same-day sick appointments?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">When can I schedule same-day sick appointments?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">Same-day sick appointments are available every day, including weekends. <strong>Please call before 3:00 PM</strong> to request a same-day appointment. We prioritize sick children and will do our best to accommodate your child's needs.</p>
+                                    <p class="">Same-day sick appointments are available every day, including weekends. <strong>Please call before 3:00 PM</strong> to request a same-day appointment. We prioritize sick children and will do our best to accommodate your child's needs.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="appointments">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="appointments">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">What is your cancellation policy?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">What is your cancellation policy?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">We require <strong>24-hour advance notice</strong> for appointment cancellations. This allows us to offer the appointment time to other families who may need care. Repeated last-minute cancellations or no-shows may result in scheduling restrictions.</p>
+                                    <p class="">We require <strong>24-hour advance notice</strong> for appointment cancellations. This allows us to offer the appointment time to other families who may need care. Repeated last-minute cancellations or no-shows may result in scheduling restrictions.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="appointments">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="appointments">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">Do you have weekend or evening hours?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">Do you have weekend or evening hours?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">Yes! We offer extended hours Monday-Thursday until 7:00 PM and Saturday hours from 9:00 AM to 1:00 PM. We're closed Sundays, but our 24/7 after-hours nursing line is always available with a Village Pediatrics provider on-call every night.</p>
+                                    <p class="">Yes! We offer extended hours Monday-Thursday until 7:00 PM and Saturday hours from 9:00 AM to 1:00 PM. We're closed Sundays, but our 24/7 after-hours nursing line is always available with a Village Pediatrics provider on-call every night.</p>
                                 </div>
                             </div>
                         </div>
@@ -775,7 +628,7 @@
 
                     <!-- New Patients Category -->
                     <div class="category-section" data-category="new-patients">
-                        <h3 class="text-2xl font-bold gradient-text mb-6 flex items-center">
+                        <h3 class="flex items-center">
                             <div class="w-8 h-8 bg-gradient-to-br from-village-light-blue to-blue-400 rounded-full flex items-center justify-center mr-3">
                                 <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
@@ -785,36 +638,36 @@
                         </h3>
                         
                         <div class="space-y-4">
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="new-patients">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="new-patients">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">How do I transfer medical records from our previous pediatrician?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">How do I transfer medical records from our previous pediatrician?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">You can request records directly from your previous pediatrician's office - most will fax or mail them to us with your written authorization. We can also provide you with a medical records release form. Having these records before your first visit helps us understand your child's health history.</p>
+                                    <p class="">You can request records directly from your previous pediatrician's office - most will fax or mail them to us with your written authorization. We can also provide you with a medical records release form. Having these records before your first visit helps us understand your child's health history.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="new-patients">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="new-patients">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">What documents do I need to bring for my child's first appointment?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">What documents do I need to bring for my child's first appointment?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed mb-3">Please bring the following documents for your child's first appointment:</p>
-                                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                                    <p class=" mb-3">Please bring the following documents for your child's first appointment:</p>
+                                    <ul class="list-disc">
                                         <li><strong>Birth certificate</strong> (copy is acceptable)</li>
                                         <li><strong>Insurance card</strong> (front and back)</li>
                                         <li><strong>Vaccination records</strong> from previous healthcare providers</li>
@@ -824,51 +677,51 @@
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="new-patients">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="new-patients">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">Do parents need to be present for all appointments?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">Do parents need to be present for all appointments?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">Yes, <strong>a parent or legal guardian must be present</strong> for all appointments for patients under 18 years of age. This ensures proper consent for medical care and allows us to discuss your child's health directly with their guardian. For patients 18 and older, parental presence is optional but welcomed.</p>
+                                    <p class="">Yes, <strong>a parent or legal guardian must be present</strong> for all appointments for patients under 18 years of age. This ensures proper consent for medical care and allows us to discuss your child's health directly with their guardian. For patients 18 and older, parental presence is optional but welcomed.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="new-patients">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="new-patients">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">How do I verify my insurance coverage?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">How do I verify my insurance coverage?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">We recommend <strong>verifying your insurance coverage before your appointment</strong>. Please contact your insurance provider to confirm that Village Pediatrics is in-network and that pediatric services are covered under your plan. We also verify benefits on our end, but it's helpful when families check as well to avoid any surprises.</p>
+                                    <p class="">We recommend <strong>verifying your insurance coverage before your appointment</strong>. Please contact your insurance provider to confirm that Village Pediatrics is in-network and that pediatric services are covered under your plan. We also verify benefits on our end, but it's helpful when families check as well to avoid any surprises.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="new-patients">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="new-patients">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">What age range do you serve?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">What age range do you serve?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">We see patients from <strong>newborn through 21 years of age</strong>. We provide comprehensive care for your child's entire pediatric journey, from those first precious weeks through young adulthood. We do not see newborns in the hospital, but we're here for your baby's first outpatient visit.</p>
+                                    <p class="">We see patients from <strong>newborn through 21 years of age</strong>. We provide comprehensive care for your child's entire pediatric journey, from those first precious weeks through young adulthood. We do not see newborns in the hospital, but we're here for your baby's first outpatient visit.</p>
                                 </div>
                             </div>
                         </div>
@@ -876,8 +729,8 @@
 
                     <!-- Insurance Category -->
                     <div class="category-section" data-category="insurance">
-                        <h3 class="text-2xl font-bold gradient-text mb-6 flex items-center">
-                            <div class="w-8 h-8 bg-gradient-to-br from-village-teal to-green-400 rounded-full flex items-center justify-center mr-3">
+                        <h3 class="flex items-center">
+                            <div class="w-8 h-8 bg-gradient-to-br from-village-navy to-navy rounded-full flex items-center justify-center mr-3">
                                 <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
                                 </svg>
@@ -886,35 +739,35 @@
                         </h3>
                         
                         <div class="space-y-4">
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="insurance">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="insurance">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">When is payment due?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">When is payment due?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">Payment is due at the time of service. We accept cash, all major credit cards, personal checks, FSA/HSA cards, and offer a convenient card-on-file system. For out-of-network and self-pay patients, we require deposits: $200+ for new patients and $150+ for established patients.</p>
+                                    <p class="">Payment is due at the time of service. We accept cash, all major credit cards, personal checks, FSA/HSA cards, and offer a convenient card-on-file system. For out-of-network and self-pay patients, we require deposits: $200+ for new patients and $150+ for established patients.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="insurance">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="insurance">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">Do you offer payment plans?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">Do you offer payment plans?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">Yes, we offer payment plans for families who need them. Please speak with our billing staff to discuss options that work for your family's budget. We want to ensure cost never prevents your child from receiving quality healthcare.</p>
+                                    <p class="">Yes, we offer payment plans for families who need them. Please speak with our billing staff to discuss options that work for your family's budget. We want to ensure cost never prevents your child from receiving quality healthcare.</p>
                                 </div>
                             </div>
                         </div>
@@ -922,7 +775,7 @@
 
                     <!-- Services Category -->
                     <div class="category-section" data-category="services">
-                        <h3 class="text-2xl font-bold gradient-text mb-6 flex items-center">
+                        <h3 class="flex items-center">
                             <div class="w-8 h-8 bg-gradient-to-br from-village-navy to-purple-600 rounded-full flex items-center justify-center mr-3">
                                 <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -932,35 +785,35 @@
                         </h3>
                         
                         <div class="space-y-4">
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="services">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="services">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">What services do you provide in-office?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">What services do you provide in-office?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">We provide comprehensive pediatric care including well-child visits, sick visits, immunizations, developmental screenings, minor procedures (ear piercing, wart removal), on-site laboratory testing (strep, COVID, flu, RSV), chronic disease management (asthma, ADHD), mental health support, and nutrition counseling.</p>
+                                    <p class="">We provide comprehensive pediatric care including well-child visits, sick visits, immunizations, developmental screenings, minor procedures (ear piercing, wart removal), on-site laboratory testing (strep, COVID, flu, RSV), chronic disease management (asthma, ADHD), mental health support, and nutrition counseling.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="services">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="services">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">Do you offer telehealth appointments?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">Do you offer telehealth appointments?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">Yes, we offer telemedicine visits for routine follow-ups, non-emergency concerns, and consultations where a physical exam isn't necessary. This provides convenient access to our providers from your home. Call us to determine if your concern is appropriate for a telehealth visit.</p>
+                                    <p class="">Yes, we offer telemedicine visits for routine follow-ups, non-emergency concerns, and consultations where a physical exam isn't necessary. This provides convenient access to our providers from your home. Call us to determine if your concern is appropriate for a telehealth visit.</p>
                                 </div>
                             </div>
                         </div>
@@ -968,7 +821,7 @@
 
                     <!-- After Hours Category -->
                     <div class="category-section" data-category="after-hours">
-                        <h3 class="text-2xl font-bold gradient-text mb-6 flex items-center">
+                        <h3 class="flex items-center">
                             <div class="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mr-3">
                                 <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.998-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
@@ -978,35 +831,35 @@
                         </h3>
                         
                         <div class="space-y-4">
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="after-hours">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="after-hours">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">What should I do if my child is sick after hours?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">What should I do if my child is sick after hours?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">Call our main number <strong>(904) 940-1577</strong> - we have a 24/7 after-hours nursing line with a Village Pediatrics provider on-call every single night. Our on-call provider can assess your child's symptoms, provide guidance, and determine if immediate care is needed.</p>
+                                    <p class="">Call our main number <strong>(904) 940-1577</strong> - we have a 24/7 after-hours nursing line with a Village Pediatrics provider on-call every single night. Our on-call provider can assess your child's symptoms, provide guidance, and determine if immediate care is needed.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="after-hours">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="after-hours">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">When should I go to the emergency room vs. calling your office?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">When should I go to the emergency room vs. calling your office?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">Go to the ER immediately for: <strong>difficulty breathing, severe injuries, loss of consciousness, signs of dehydration in infants, high fever in newborns under 3 months</strong>, or any life-threatening emergency. For other concerns, call us first - our after-hours nursing line can help determine the appropriate level of care.</p>
+                                    <p class="">Go to the ER immediately for: <strong>difficulty breathing, severe injuries, loss of consciousness, signs of dehydration in infants, high fever in newborns under 3 months</strong>, or any life-threatening emergency. For other concerns, call us first - our after-hours nursing line can help determine the appropriate level of care.</p>
                                 </div>
                             </div>
                         </div>
@@ -1014,7 +867,7 @@
 
                     <!-- Policies Category -->
                     <div class="category-section" data-category="policies">
-                        <h3 class="text-2xl font-bold gradient-text mb-6 flex items-center">
+                        <h3 class="flex items-center">
                             <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mr-3">
                                 <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -1024,35 +877,35 @@
                         </h3>
                         
                         <div class="space-y-4">
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="policies">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="policies">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">Can grandparents or other relatives bring my child?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">Can grandparents or other relatives bring my child?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">Yes, as long as they have written permission from the parent/guardian and are listed as authorized individuals in your child's chart. They should bring the child's insurance card and any relevant medical information. For certain procedures or decisions, we may need to contact the parent directly.</p>
+                                    <p class="">Yes, as long as they have written permission from the parent/guardian and are listed as authorized individuals in your child's chart. They should bring the child's insurance card and any relevant medical information. For certain procedures or decisions, we may need to contact the parent directly.</p>
                                 </div>
                             </div>
 
-                            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-category="policies">
-                                <div class="faq-question p-6" onclick="toggleFAQ(this)">
+                            <div class="faq-item card-hover" data-category="policies">
+                                <div class="faq-question " onclick="toggleFAQ(this)">
                                     <div class="flex justify-between items-center">
-                                        <h3 class="text-lg font-semibold text-village-navy pr-4">What is your policy on prescription refills?</h3>
-                                        <div class="faq-icon text-village-teal flex-shrink-0">
-                                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <h3 class="">What is your policy on prescription refills?</h3>
+                                        <div class="faq-icon ">
+                                            <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="faq-answer">
-                                    <p class="text-gray-700 leading-relaxed">Please call during business hours with at least 48-hour notice for routine prescription refills. For chronic medications like asthma inhalers or ADHD medications, we may require periodic office visits to monitor your child's condition.</p>
+                                    <p class="">Please call during business hours with at least 48-hour notice for routine prescription refills. For chronic medications like asthma inhalers or ADHD medications, we may require periodic office visits to monitor your child's condition.</p>
                                 </div>
                             </div>
                         </div>
@@ -1063,18 +916,18 @@
     </section>
 
     <!-- Quick Contact Section -->
-    <section class="py-20 bg-gradient-to-br from-village-navy via-village-teal to-village-light-blue text-white">
+    <section class="py-20 bg-gradient-to-br from-village-navy via-village-navy to-village-light-blue text-white">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl md:text-5xl font-bold mb-8">Still Have Questions?</h2>
             <p class="text-xl opacity-90 mb-12 max-w-3xl mx-auto leading-relaxed">
                 Our friendly staff is here to help! Contact us directly for personalized assistance.
             </p>
             
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="tel:9049401577" class="bg-village-orange hover:bg-opacity-90 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
+            <div class="flex flex-col sm:flex-row ga justify-center">
+                <a href="tel:9049401577" class="bg-village-orange  text-white px-10 py-4 rounded-full font-bold text-lg   ">
                     Call (904) 940-1577
                 </a>
-                <a href="contact.html" class="bg-transparent border-2 border-white hover:bg-white hover:text-village-navy text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105">
+                <a href="contact.html" class="bg-transparent border-2 border-white  text-white px-10 py-4 rounded-full font-bold text-lg  ">
                     Contact Us
                 </a>
             </div>
@@ -1082,26 +935,19 @@
     </section>
 
     <!-- Scroll to Top Button -->
-    <button id="scrollToTop" class="scroll-to-top bg-village-teal hover:bg-village-navy text-white p-4 rounded-full shadow-lg transition-all duration-300">
+    <button id="scrollToTop" class="scroll-to-top bg-navy text-white p-4 rounded-full shadow-lg ">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
     </button>
 
-    <!-- Floating Animal (Giraffe) -->
-    <div id="floating-giraffe" class="fixed bottom-4 right-4 z-50 opacity-0 transform translate-y-full transition-all duration-500 ease-in-out">
-        <div class="relative">
-            <img src="images/animals/giraffe.png" alt="Friendly Giraffe" class="w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 object-contain animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300">
-            <div class="absolute inset-0 bg-white/20 rounded-full blur-sm -z-10"></div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Privia Medical Group Partnership - Top Section -->
             <div class="mb-12 pb-8 border-b border-gray-700">
-                <div class="flex flex-col lg:flex-row items-center justify-center gap-6">
+                <div class="flex flex-col lg:flex-row items-center justify-center ga">
                     <div class="flex items-center gap-4">
                         <div class="bg-white/90 rounded-lg p-3">
                             <img src="images/footer.png" alt="My Privia Medical Group" class="h-20 w-auto" onerror="this.style.display='none'">
@@ -1134,10 +980,10 @@
                 <div>
                     <h4 class="font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="index.html" class="hover:text-white">Home</a></li>
-                        <li><a href="about.html" class="hover:text-white">About</a></li>
-                        <li><a href="services.html" class="hover:text-white">Services</a></li>
-                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                        <li><a href="index.html" class="">Home</a></li>
+                        <li><a href="about.html" class="">About</a></li>
+                        <li><a href="services.html" class="">Services</a></li>
+                        <li><a href="contact.html" class="">Contact</a></li>
                     </ul>
                 </div>
 
@@ -1168,9 +1014,9 @@
                 <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
                     <p>&copy; 2025 Village Pediatrics. All rights reserved.</p>
                     <div class="flex space-x-6 mt-4 md:mt-0">
-                        <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
-                        <a href="accessibility.html" class="hover:text-white transition-colors">Accessibility</a>
+                        <a href="privacy.html" class=" ">Privacy Policy</a>
+                        <a href="terms.html" class=" ">Terms of Service</a>
+                        <a href="accessibility.html" class=" ">Accessibility</a>
                     </div>
                 </div>
             </div>
@@ -1185,19 +1031,16 @@
             
             if (answer.classList.contains('active')) {
                 answer.classList.remove('active');
-                icon.style.transform = 'rotate(0deg)';
             } else {
                 // Close all other open FAQs
                 document.querySelectorAll('.faq-answer.active').forEach(faq => {
                     faq.classList.remove('active');
                 });
                 document.querySelectorAll('.faq-icon svg').forEach(ico => {
-                    ico.style.transform = 'rotate(0deg)';
                 });
                 
                 // Open clicked FAQ
                 answer.classList.add('active');
-                icon.style.transform = 'rotate(180deg)';
             }
         }
 
@@ -1259,115 +1102,12 @@
             });
         });
 
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fade-in-up 0.6s ease-out forwards';
-                }
-            });
-        }, observerOptions);
 
-        // Observe all cards and sections
-        document.querySelectorAll('.glass-card, .card-hover, .faq-item').forEach(el => {
-            observer.observe(el);
-        });
 
-        // Animal navigation animations
-        setTimeout(() => {
-            const animals = document.querySelectorAll('.animal-nav-item');
-            animals.forEach((animal, index) => {
-                setTimeout(() => {
-                    animal.classList.add('animate-in');
-                }, index * 200); // Stagger each animal by 200ms
-            });
-        }, 500); // Start animations 500ms after page load
 
-        // Initialize interactive elements
-        initInteractiveElements();
 
-        // Initialize floating animal
-        initFloatingAnimal();
-
-        // Interactive Elements
-        function initInteractiveElements() {
-            // Parallax effect on mouse move
-            document.addEventListener('mousemove', function(e) {
-                const shapes = document.querySelectorAll('.bg-shape');
-                const mouseX = e.clientX / window.innerWidth;
-                const mouseY = e.clientY / window.innerHeight;
-
-                shapes.forEach((shape, index) => {
-                    const speed = (index + 1) * 0.5;
-                    const x = (mouseX - 0.5) * speed * 10;
-                    const y = (mouseY - 0.5) * speed * 10;
-                    shape.style.transform += ` translate(${x}px, ${y}px)`;
-                });
-            });
-
-            // Add 3D tilt effect to cards
-            document.querySelectorAll('.card-hover, .glass-card').forEach(card => {
-                card.addEventListener('mousemove', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (y - centerY) / 10;
-                    const rotateY = (centerX - x) / 10;
-
-                    this.style.transform = `translateY(-15px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
-                });
-
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = '';
-                });
-            });
-        }
-
-        // Floating Animal (Giraffe) Functionality
-        function initFloatingAnimal() {
-            const floatingAnimal = document.getElementById('floating-giraffe');
-            const heroSection = document.querySelector('section.relative.bg-gradient-to-br.from-navy');
-
-            if (!floatingAnimal || !heroSection) return;
-
-            function checkScroll() {
-                const heroRect = heroSection.getBoundingClientRect();
-                const heroBottom = heroRect.bottom;
-
-                // Show animal when hero section is out of view (scrolled past)
-                if (heroBottom <= 0) {
-                    floatingAnimal.style.opacity = '1';
-                    floatingAnimal.style.transform = 'translateY(0)';
-                } else {
-                    floatingAnimal.style.opacity = '0';
-                    floatingAnimal.style.transform = 'translateY(100%)';
-                }
-            }
-
-            // Check on scroll
-            window.addEventListener('scroll', checkScroll);
-
-            // Initial check
-            checkScroll();
-
-            // Add click functionality to scroll to top
-            floatingAnimal.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        }
     </script>
 
-    <!-- FAQ Animal Animation Script -->
-    <script src="js/faq-animations.js"></script>
 </body>
 </html>

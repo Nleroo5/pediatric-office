@@ -44,6 +44,10 @@ class MonkeyAnimations {
             <img src="images/animals/monkey.png" alt="Monkey" class="monkey-image">
             <div class="monkey-tail"></div>
             <div class="typing-indicator"></div>
+            <div class="text-bubble">
+                <div class="bubble-content">Schedule your visit today!</div>
+                <div class="bubble-tail"></div>
+            </div>
         `;
 
         // Add CSS styles
@@ -56,7 +60,7 @@ class MonkeyAnimations {
                 width: 220px;
                 height: 220px;
                 z-index: 100;
-                pointer-events: none;
+                pointer-events: auto;
                 transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
                 opacity: 0;
                 transform: translateX(50px);
@@ -236,6 +240,113 @@ class MonkeyAnimations {
                     right: 10px;
                 }
                 .vine { display: none; }
+                .text-bubble {
+                    top: -50px;
+                    left: -80px;
+                    min-width: 120px;
+                }
+                .bubble-content {
+                    font-size: 11px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .monkey-animation {
+                    width: 150px;
+                    height: 150px;
+                    top: 60px;
+                    right: -180px;
+                }
+                .monkey-visible {
+                    right: 2px;
+                }
+                .text-bubble {
+                    top: -45px;
+                    left: -70px;
+                    min-width: 100px;
+                    padding: 8px 12px;
+                }
+                .bubble-content {
+                    font-size: 10px;
+                }
+            }
+
+            @media (max-width: 320px) {
+                .monkey-animation {
+                    width: 120px;
+                    height: 120px;
+                    top: 50px;
+                    right: -150px;
+                }
+                .monkey-visible {
+                    right: 1px;
+                }
+                .text-bubble {
+                    top: -40px;
+                    left: -60px;
+                    min-width: 90px;
+                    padding: 6px 10px;
+                }
+                .bubble-content {
+                    font-size: 9px;
+                }
+            }
+
+            /* Text Bubble Styles */
+            .text-bubble {
+                position: absolute;
+                top: -80px;
+                left: -120px;
+                background: #ffffff;
+                border: 3px solid #F2B138;
+                border-radius: 20px;
+                padding: 12px 16px;
+                opacity: 0;
+                transform: scale(0.5) translateY(20px);
+                transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                pointer-events: none;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                z-index: 1000;
+                min-width: 180px;
+            }
+
+            .bubble-content {
+                font-family: 'Fredoka', sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                color: #0D2673;
+                text-align: center;
+                line-height: 1.3;
+                white-space: nowrap;
+            }
+
+            .bubble-tail {
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 0;
+                border-left: 15px solid transparent;
+                border-right: 15px solid transparent;
+                border-top: 15px solid #F2B138;
+            }
+
+            .bubble-tail::after {
+                content: '';
+                position: absolute;
+                top: -18px;
+                left: -12px;
+                width: 0;
+                height: 0;
+                border-left: 12px solid transparent;
+                border-right: 12px solid transparent;
+                border-top: 12px solid #ffffff;
+            }
+
+            .monkey-animation:hover .text-bubble {
+                opacity: 1;
+                transform: scale(1) translateY(0);
             }
         `;
 

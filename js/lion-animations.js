@@ -40,6 +40,11 @@ class LionAnimations {
         this.lion.className = 'lion-animation';
         this.lion.innerHTML = `
             <img src="images/animals/lion.png" alt="Lion" class="lion-image">
+            <div class="lion-spotlight"></div>
+            <div class="text-bubble">
+                <div class="bubble-content">Schedule your visit today!</div>
+                <div class="bubble-tail"></div>
+            </div>
         `;
 
         // Add CSS styles
@@ -52,7 +57,7 @@ class LionAnimations {
                 width: 240px;
                 height: 240px;
                 z-index: 100;
-                pointer-events: none;
+                pointer-events: auto;
                 transform: translateY(-50%);
                 opacity: 0;
                 transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -84,6 +89,16 @@ class LionAnimations {
                 animation: maneFlow 4s ease-in-out infinite;
             }
 
+            .lion-spotlight {
+                position: absolute;
+                inset: 0;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                filter: blur(4px);
+                z-index: -1;
+            }
+
+
 
             @keyframes maneFlow {
                 0%, 100% {
@@ -114,6 +129,7 @@ class LionAnimations {
                 75% { transform: translateX(-3px) translateY(-1px); }
             }
 
+
             .lion-nodding {
                 animation: lionNod 2s ease-in-out;
             }
@@ -131,14 +147,122 @@ class LionAnimations {
             }
 
 
+            /* Text Bubble Styles */
+            .text-bubble {
+                position: absolute;
+                top: -80px;
+                left: -120px;
+                background: #ffffff;
+                border: 3px solid #F2B138;
+                border-radius: 20px;
+                padding: 12px 16px;
+                opacity: 0;
+                transform: scale(0.5) translateY(20px);
+                transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                pointer-events: none;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                z-index: 1000;
+                min-width: 180px;
+            }
+
+            .bubble-content {
+                font-family: 'Fredoka', sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                color: #0D2673;
+                text-align: center;
+                line-height: 1.3;
+                white-space: nowrap;
+            }
+
+            .bubble-tail {
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 0;
+                border-left: 15px solid transparent;
+                border-right: 15px solid transparent;
+                border-top: 15px solid #F2B138;
+            }
+
+            .bubble-tail::after {
+                content: '';
+                position: absolute;
+                top: -18px;
+                left: -12px;
+                width: 0;
+                height: 0;
+                border-left: 12px solid transparent;
+                border-right: 12px solid transparent;
+                border-top: 12px solid #ffffff;
+            }
+
+            .lion-animation:hover .text-bubble {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+
             @media (max-width: 768px) {
                 .lion-animation {
-                    width: 120px;
-                    height: 120px;
-                    top: 10px;
+                    width: 100px;
+                    height: 100px;
+                    top: 80px;
+                    right: -200px;
                 }
                 .lion-visible {
-                    right: 10px;
+                    right: 5px;
+                }
+                .text-bubble {
+                    top: -50px;
+                    left: -80px;
+                    min-width: 120px;
+                }
+                .bubble-content {
+                    font-size: 11px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .lion-animation {
+                    width: 80px;
+                    height: 80px;
+                    top: 70px;
+                    right: -160px;
+                }
+                .lion-visible {
+                    right: 2px;
+                }
+                .text-bubble {
+                    top: -45px;
+                    left: -70px;
+                    min-width: 100px;
+                    padding: 8px 12px;
+                }
+                .bubble-content {
+                    font-size: 10px;
+                }
+            }
+
+            @media (max-width: 320px) {
+                .lion-animation {
+                    width: 60px;
+                    height: 60px;
+                    top: 60px;
+                    right: -120px;
+                }
+                .lion-visible {
+                    right: 1px;
+                }
+                .text-bubble {
+                    top: -40px;
+                    left: -60px;
+                    min-width: 90px;
+                    padding: 6px 10px;
+                }
+                .bubble-content {
+                    font-size: 9px;
                 }
             }
         `;
