@@ -78,7 +78,7 @@
         .bg-shape:nth-child(2) {
             width: 80px;
             height: 80px;
-            background: linear-gradient(45deg, rgba(242, 177, 56, 0.12), rgba(59, 157, 132, 0.08));
+            background: linear-gradient(45deg, rgba(242, 177, 56, 0.12), rgba(242, 177, 56, 0.08));
             border-radius: 60% 40% 40% 60%;
             top: 25%;
             right: 12%;
@@ -100,7 +100,7 @@
         .bg-shape:nth-child(4) {
             width: 90px;
             height: 90px;
-            background: linear-gradient(135deg, rgba(59, 157, 132, 0.1), rgba(242, 177, 56, 0.08));
+            background: linear-gradient(135deg, rgba(242, 177, 56, 0.1), rgba(242, 177, 56, 0.08));
             border-radius: 40% 60% 60% 40%;
             bottom: 15%;
             right: 20%;
@@ -149,24 +149,6 @@
             }
         }
 
-        /* Swamp Water Animation */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="30" r="2" fill="%234682B4" opacity="0.3"><animate attributeName="r" values="2;4;2" dur="3s" repeatCount="indefinite"/></circle><circle cx="70" cy="60" r="3" fill="%2387CEEB" opacity="0.2"><animate attributeName="r" values="3;5;3" dur="4s" repeatCount="indefinite"/></circle><circle cx="40" cy="80" r="2" fill="%234682B4" opacity="0.4"><animate attributeName="r" values="2;3;2" dur="2.5s" repeatCount="indefinite"/></circle></svg>') repeat;
-            pointer-events: none;
-            z-index: -1;
-            animation: swampBubbles 20s linear infinite;
-        }
-
-        @keyframes swampBubbles {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-100px); }
-        }
 
         .hero-bg {
             background: linear-gradient(135deg, #c57c45 0%, #d4861a 25%, #e6941f 50%, #f2a855 75%, #f9c77b 100%);
@@ -205,16 +187,6 @@
             50% { transform: translateY(-15px) rotate(5deg); opacity: 0.2; }
         }
 
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path d="M0,15 Q25,5 50,15 T100,15 L100,20 L0,20 Z" fill="%23448844" opacity="0.3"/></svg>') repeat-x;
-            animation: swampRipples 15s ease-in-out infinite;
-        }
 
         @keyframes swampRipples {
             0%, 100% { transform: translateX(0px); }
@@ -829,39 +801,73 @@
                             </div>
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
+                                <span>AvMed</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
+                                <span>Centene</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
+                                <span>Champ VA</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
                                 <span>CIGNA</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
+                                <span>Coventry/First Health</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
+                                <span>Disney Cruise Lines</span>
                             </div>
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
                                 <span>Florida Blue</span>
                             </div>
-                            <div class="flex items-center">
-                                <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
-                                <span>Humana</span>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
-                                <span>United Healthcare</span>
-                            </div>
                         </div>
                         <div class="space-y-2">
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
-                                <span>BlueCross BlueShield</span>
+                                <span>Florida Health Care Plans</span>
                             </div>
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
-                                <span>Tricare</span>
+                                <span>Humana Military Certified</span>
                             </div>
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
-                                <span>Medicare</span>
+                                <span>Humana Military Prime</span>
                             </div>
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
-                                <span>And 11+ other plans</span>
+                                <span>Liberty Health Share</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
+                                <span>MultiPlan/PHCS</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
+                                <span>Prime Health Services</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
+                                <span>Provider Networks of America</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gator-green rounded-full mr-3"></div>
+                                <span>United HealthCare</span>
                             </div>
                         </div>
+                    </div>
+                    <div class="bg-orange/10 border-l-4 border-orange p-4 rounded mb-4">
+                        <h4 class="font-semibold text-navy mb-2">Important Note</h4>
+                        <p class="text-gray-700 text-sm">
+                            You should always check with your Privia Medical Group provider to verify plan and product coverage as this is not an exhaustive list, and plans change frequently. This list will be updated from time to time as needed.
+                        </p>
                     </div>
                     <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded">
                         <p class="text-red-800 font-semibold flex items-center">
@@ -872,6 +878,7 @@
                         </p>
                     </div>
                 </div>
+
 
                 <!-- Payment Information -->
                 <div class="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-orange golden-hover-card">
@@ -1012,6 +1019,7 @@
                         <li><a href="about.html" class="hover:text-white">About</a></li>
                         <li><a href="services.html" class="hover:text-white">Services</a></li>
                         <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                        <li><a href="faq.html" class="hover:text-white">FAQ</a></li>
                     </ul>
                 </div>
 
@@ -1022,6 +1030,7 @@
                         <li>Dr. Austin Dupont, MD</li>
                         <li>Dr. Patricia Elvir, MD</li>
                         <li>Trudy English, ARNP</li>
+                        <li>Dr. Lindsay Wolf, DNP</li>
                     </ul>
                 </div>
 

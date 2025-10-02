@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Team - Village Pediatrics | Expert Pediatric Providers in St. Augustine, FL</title>
-    <meta name="description" content="Meet the expert pediatric team at Village Pediatrics in St. Augustine, FL. Dr. Austin Dupont, Dr. Patricia Elvir, Trudy English ARNP, and Dr. Lindsay Wolf provide compassionate care for your children.">
+    <meta name="description" content="Meet the expert pediatric team at Village Pediatrics in St. Augustine, FL. Dr. Austin Dupont, Dr. Patricia Elvir, and Trudy English ARNP provide compassionate care for your children.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -45,6 +45,144 @@
             50% { background-position: 100% 50%; }
         }
 
+        /* Animated Background Elements */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: floatAround 20s ease-in-out infinite;
+        }
+
+        .bg-shape:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(245, 241, 93, 0.15) 0%, rgba(245, 241, 93, 0.05) 60%, transparent 100%);
+            border-radius: 50%;
+            top: 10%;
+            left: 8%;
+            animation-delay: 0s;
+            animation-duration: 30s;
+        }
+
+        .bg-shape:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, rgba(110, 189, 58, 0.12), rgba(28, 126, 60, 0.08));
+            border-radius: 60% 40% 40% 60%;
+            top: 25%;
+            right: 12%;
+            animation-delay: -8s;
+            animation-duration: 35s;
+        }
+
+        .bg-shape:nth-child(3) {
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(ellipse, rgba(110, 189, 58, 0.1) 0%, rgba(110, 189, 58, 0.03) 50%, transparent 100%);
+            border-radius: 70% 30% 30% 70%;
+            bottom: 25%;
+            left: 15%;
+            animation-delay: -15s;
+            animation-duration: 40s;
+        }
+
+        .bg-shape:nth-child(4) {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, rgba(28, 126, 60, 0.1), rgba(245, 241, 93, 0.08));
+            border-radius: 40% 60% 60% 40%;
+            bottom: 15%;
+            right: 20%;
+            animation-delay: -22s;
+            animation-duration: 33s;
+        }
+
+        .bg-shape:nth-child(5) {
+            width: 110px;
+            height: 110px;
+            background: radial-gradient(circle, rgba(242, 177, 56, 0.08) 0%, rgba(80, 179, 238, 0.05) 70%, transparent 100%);
+            border-radius: 50% 50% 20% 80%;
+            top: 55%;
+            left: 3%;
+            animation-delay: -30s;
+            animation-duration: 38s;
+        }
+
+        .bg-shape:nth-child(6) {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, rgba(242, 177, 56, 0.1), rgba(13, 38, 115, 0.06));
+            border-radius: 30% 70% 70% 30%;
+            top: 35%;
+            right: 8%;
+            animation-delay: -37s;
+            animation-duration: 26s;
+        }
+
+        @keyframes floatAround {
+            0%, 100% {
+                transform: translate(0px, 0px) rotate(0deg) scale(1);
+                opacity: 0.1;
+            }
+            25% {
+                transform: translate(30px, -20px) rotate(90deg) scale(1.1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: translate(-20px, 30px) rotate(180deg) scale(0.9);
+                opacity: 0.15;
+            }
+            75% {
+                transform: translate(40px, 10px) rotate(270deg) scale(1.05);
+                opacity: 0.25;
+            }
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #0D2673 0%, #3B9D84 70%, #50B3EE 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 15%;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            animation: subtleFloat 8s ease-in-out infinite;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            bottom: 25%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            animation: subtleFloat 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+            50% { transform: translateY(-15px) rotate(5deg); opacity: 0.2; }
+        }
+        
         .provider-card {
             background: linear-gradient(135deg,
                 rgba(255, 255, 255, 0.98) 0%,
@@ -53,47 +191,478 @@
             border: 2px solid rgba(59, 157, 132, 0.2);
             box-shadow:
                 0 15px 35px rgba(0, 0, 0, 0.1),
-                0 5px 15px rgba(59, 157, 132, 0.1);
+                0 5px 15px rgba(59, 157, 132, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            perspective: 1000px;
+            transform-style: preserve-3d;
             backdrop-filter: blur(10px);
         }
 
+        .provider-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                rgba(59, 157, 132, 0.05) 0%,
+                rgba(80, 179, 238, 0.05) 50%,
+                rgba(242, 177, 56, 0.05) 100%);
+            border-radius: 23px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .provider-card:hover::before {
+            opacity: 1;
+        }
+
         .provider-card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-15px) scale(1.02) rotateX(5deg) rotateY(2deg) translateZ(20px);
             box-shadow:
-                0 25px 50px rgba(0, 0, 0, 0.15),
-                0 10px 25px rgba(59, 157, 132, 0.2);
+                0 30px 60px rgba(0, 0, 0, 0.15),
+                0 15px 35px rgba(59, 157, 132, 0.2),
+                inset 0 2px 5px rgba(255, 255, 255, 0.9);
             border-color: rgba(59, 157, 132, 0.4);
         }
 
-        /* Animal navigation styles */
+        .provider-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg) translateX(-100%) translateY(-100%);
+            transition: transform 0.6s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .provider-card:hover::after {
+            transform: rotate(45deg) translateX(100%) translateY(100%);
+            opacity: 1;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .shape-1 { width: 100px; height: 100px; top: 10%; left: 10%; animation-delay: 0s; }
+        .shape-2 { width: 150px; height: 150px; top: 60%; right: 10%; animation-delay: 2s; }
+        .shape-3 { width: 80px; height: 80px; top: 30%; right: 30%; animation-delay: 4s; }
+
+        /* Animal animation styles */
         .animal-nav-item {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
+            transform: translateY(-100px) scale(0.8);
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
         .animal-nav-item.animate-in {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
-        .animal-nav-item img {
-            transition: all 0.3s ease;
-        }
-        .animal-nav-item.animate-in img {
-            animation: float 3s ease-in-out infinite;
-        }
+
+        .animal-nav-item:nth-child(1) { animation-delay: 0.1s; }
+        .animal-nav-item:nth-child(2) { animation-delay: 0.3s; }
+        .animal-nav-item:nth-child(3) { animation-delay: 0.5s; }
+        .animal-nav-item:nth-child(4) { animation-delay: 0.7s; }
+        .animal-nav-item:nth-child(5) { animation-delay: 0.9s; }
+
         @keyframes float {
             0%, 100% {
-                transform: translateY(0px);
+                transform: translateY(0px) rotate(0deg) scale(1) translateX(0px);
+                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            }
+            25% {
+                transform: translateY(-6px) rotate(1deg) scale(1.01) translateX(-2px);
+                filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
             }
             50% {
-                transform: translateY(-8px);
+                transform: translateY(-12px) rotate(2deg) scale(1.02) translateX(0px);
+                filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+            }
+            75% {
+                transform: translateY(-6px) rotate(1deg) scale(1.01) translateX(2px);
+                filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
             }
         }
 
+        .animal-nav-item.animate-in img {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Hero Alligator Animations */
+        .alligator-container {
+            animation: alligatorEntry 2.2s ease-out forwards;
+            transform: translateX(100px);
+            opacity: 0;
+        }
+
+        @keyframes alligatorEntry {
+            0% {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            60% {
+                transform: translateX(-8px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .alligator-container img {
+            animation: alligatorSwimRock 4.5s ease-in-out infinite 2.5s;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes alligatorSwimRock {
+            0%, 100% {
+                transform: scale(1) rotate(0deg) translateX(0px);
+            }
+            20% {
+                transform: scale(1.01) rotate(0.5deg) translateX(-3px);
+            }
+            50% {
+                transform: scale(1.02) rotate(1deg) translateX(0px);
+            }
+            80% {
+                transform: scale(1.01) rotate(0.5deg) translateX(3px);
+            }
+        }
+
+        .alligator-container:hover img {
+            animation: alligatorSnap 1.2s ease-in-out;
+            transform: scale(1.05);
+        }
+
+        @keyframes alligatorSnap {
+            0%, 100% { transform: scale(1.05) rotate(0deg); }
+            30% { transform: scale(1.08) rotate(-2deg) scaleY(0.95); }
+            70% { transform: scale(1.08) rotate(2deg) scaleY(0.95); }
+        }
+
+        /* Water ripples effect */
+        .alligator-ripple {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 20px;
+            background: radial-gradient(ellipse, rgba(59, 157, 132, 0.3), transparent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: rippleEffect 4s ease-in-out infinite 3s;
+        }
+
+        @keyframes rippleEffect {
+            0%, 80%, 100% { opacity: 0; transform: translateX(-50%) scale(1); }
+            20%, 60% { opacity: 0.6; transform: translateX(-50%) scale(1.2); }
+            40% { opacity: 0.8; transform: translateX(-50%) scale(1.4); }
+        }
+
+
+        /* Text shimmer effect */
+        .text-shimmer {
+            background: linear-gradient(45deg, #3B9D84, #50B3EE, #F2B138, #0D2673);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Interactive Elements */
+        .fun-button {
+            position: relative;
+            overflow: hidden;
+            transform: perspective(1px) translateZ(0);
+            transition: all 0.3s ease;
+        }
+
+        .fun-button:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 10px 30px rgba(59, 157, 132, 0.3);
+        }
+
+        .fun-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .fun-button:hover::before {
+            left: 100%;
+        }
+
+        .click-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .click-ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .click-ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Animated Light Green Bubbles */
+        .bubble {
+            position: absolute;
+            background-color: rgba(110, 189, 58, 0.6);
+            border-radius: 50%;
+            animation: bubbleFloat 8s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        .bubble-1 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 8s;
+        }
+
+        .bubble-2 {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: -2s;
+            animation-duration: 10s;
+        }
+
+        .bubble-3 {
+            width: 60px;
+            height: 60px;
+            top: 40%;
+            left: 30%;
+            animation-delay: -4s;
+            animation-duration: 12s;
+        }
+
+        .bubble-4 {
+            width: 100px;
+            height: 100px;
+            top: 70%;
+            left: 60%;
+            animation-delay: -6s;
+            animation-duration: 9s;
+        }
+
+        .bubble-5 {
+            width: 90px;
+            height: 90px;
+            top: 30%;
+            left: 75%;
+            animation-delay: -3s;
+            animation-duration: 11s;
+        }
+
+        .bubble-6 {
+            width: 70px;
+            height: 70px;
+            top: 80%;
+            left: 20%;
+            animation-delay: -5s;
+            animation-duration: 7s;
+        }
+
+        .bubble-7 {
+            width: 110px;
+            height: 110px;
+            top: 15%;
+            left: 50%;
+            animation-delay: -1s;
+            animation-duration: 9s;
+        }
+
+        .bubble-8 {
+            width: 50px;
+            height: 50px;
+            top: 55%;
+            left: 15%;
+            animation-delay: -7s;
+            animation-duration: 6s;
+        }
+
+        .bubble-9 {
+            width: 85px;
+            height: 85px;
+            top: 35%;
+            left: 85%;
+            animation-delay: -3.5s;
+            animation-duration: 10s;
+        }
+
+        .bubble-10 {
+            width: 95px;
+            height: 95px;
+            top: 75%;
+            left: 45%;
+            animation-delay: -2.5s;
+            animation-duration: 8.5s;
+        }
+
+        .bubble-11 {
+            width: 65px;
+            height: 65px;
+            top: 25%;
+            left: 70%;
+            animation-delay: -4.5s;
+            animation-duration: 11s;
+        }
+
+        .bubble-12 {
+            width: 75px;
+            height: 75px;
+            top: 90%;
+            left: 80%;
+            animation-delay: -6.5s;
+            animation-duration: 7.5s;
+        }
+
+        @keyframes bubbleFloat {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-30px) scale(1.1);
+                opacity: 0.3;
+            }
+        }
+
+        /* 3D Interactive Provider Cards */
+        .provider-card-3d {
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            box-shadow:
+                20px 20px 40px rgba(0, 0, 0, 0.1),
+                -20px -20px 40px rgba(255, 255, 255, 0.8),
+                inset 5px 5px 10px rgba(0, 0, 0, 0.05),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .provider-card-3d:hover {
+            transform: perspective(1000px) rotateX(-5deg) rotateY(5deg) translateY(-10px) scale(1.02);
+            box-shadow:
+                30px 30px 60px rgba(0, 0, 0, 0.15),
+                -30px -30px 60px rgba(255, 255, 255, 0.9),
+                inset 8px 8px 15px rgba(0, 0, 0, 0.08),
+                inset -8px -8px 15px rgba(255, 255, 255, 0.9);
+        }
+
+        .provider-card-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(110, 189, 58, 0.1) 50%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 1.5rem;
+            pointer-events: none;
+        }
+
+        .provider-card-3d:hover::before {
+            opacity: 1;
+        }
+
+        .provider-card-3d:active {
+            transform: perspective(1000px) rotateX(-2deg) rotateY(2deg) translateY(-5px) scale(0.98);
+            transition: all 0.1s ease;
+        }
+
+        /* Enhanced photo hover effects */
+        .provider-photo {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .provider-card-3d:hover .provider-photo {
+            transform: scale(1.05);
+        }
+
+        .provider-photo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(110, 189, 58, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .provider-card-3d:hover .provider-photo::after {
+            opacity: 1;
+        }
+
+        /* Interactive text effects */
+        .provider-name {
+            transition: all 0.3s ease;
+        }
+
+        .provider-card-3d:hover .provider-name {
+            color: #1c7e3c;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Gentle bounce animation for floating alligator */
         .alligator-gentle-bounce {
             animation: alligatorGentleBounce 2s ease-in-out infinite;
         }
+
         @keyframes alligatorGentleBounce {
             0%, 100% {
                 transform: translateY(0px);
@@ -102,9 +671,63 @@
                 transform: translateY(-8px);
             }
         }
+
     </style>
 </head>
-<body>
+<body class="bg-white text-gray-900">
+    
+    <!-- Animated Background Shapes -->
+    <div class="bg-shapes">
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+    </div>
+
+    <!-- Animal Navigation Over Hero -->
+    <nav class="absolute top-20 left-0 right-0 z-30" id="animal-nav">
+        <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8">
+            <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#1c7e3c] group-hover:bg-gray-800 group-hover:border-gray-800 transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Home</span><span class="hidden sm:inline">Home</span></span>
+                </div>
+            </a>
+            <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#1c7e3c] group-hover:bg-orange group-hover:border-orange transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">About</span><span class="hidden sm:inline">About Us</span></span>
+                </div>
+            </a>
+            <a href="services.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/zebra.png" alt="Services" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#1c7e3c] group-hover:bg-lightblue group-hover:border-lightblue transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Care</span><span class="hidden sm:inline">Services</span></span>
+                </div>
+            </a>
+            <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-orange group-hover:bg-teal group-hover:border-teal transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Team</span><span class="hidden sm:inline">Our Team</span></span>
+                </div>
+            </a>
+            <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#1c7e3c] group-hover:bg-navy group-hover:border-navy transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">New</span><span class="hidden sm:inline">New Patients</span></span>
+                </div>
+            </a>
+            <a href="patient-portal.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/giraffe.png" alt="Patient Portal" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#1c7e3c] group-hover:bg-orange group-hover:border-orange transition-all duration-300">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-inter tracking-wider uppercase"><span class="sm:hidden">Portal</span><span class="hidden sm:inline">Patient Portal</span></span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
     <!-- Logo positioned in top left -->
     <div class="absolute top-8 left-8 z-20">
         <a href="index.html">
@@ -112,50 +735,32 @@
         </a>
     </div>
 
-    <!-- Animal Navigation -->
-    <nav class="absolute top-8 right-8 z-20" id="animal-nav">
-        <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 md:gap-8">
-            <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 group-hover:bg-gray-100" style="border-color: #654321; transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase"><span class="sm:hidden">Home</span><span class="hidden sm:inline">Home</span></span>
-                </div>
-            </a>
-            <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 group-hover:bg-gray-100 transition-all duration-300" style="border-color: #654321;">
-                    <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase"><span class="sm:hidden">About</span><span class="hidden sm:inline">About Us</span></span>
-                </div>
-            </a>
-            <a href="services.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/zebra.png" alt="Services" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 group-hover:bg-gray-100" style="border-color: #654321; transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase"><span class="sm:hidden">Services</span><span class="hidden sm:inline">Services</span></span>
-                </div>
-            </a>
-            <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 group-hover:bg-gray-100" style="border-color: #654321; transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase"><span class="sm:hidden">Team</span><span class="hidden sm:inline">Our Team</span></span>
-                </div>
-            </a>
-            <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 group-hover:bg-gray-100 transition-all duration-300" style="border-color: #654321;">
-                    <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase"><span class="sm:hidden">New</span><span class="hidden sm:inline">New Patients</span></span>
-                </div>
-            </a>
-            <a href="patient-portal.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/giraffe.png" alt="Patient Portal" class="w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 group-hover:bg-gray-100" style="border-color: #654321; transition-all duration-300">
-                    <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase"><span class="sm:hidden">Portal</span><span class="hidden sm:inline">Patient Portal</span></span>
-                </div>
-            </a>
-        </div>
-    </nav>
+    <!-- Contact Us Button in top right -->
+    <div class="absolute top-8 right-8 z-20">
+        <a href="contact.html" class="bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-inter text-lg hover:bg-orange hover:scale-105 transition-all duration-300 shadow-lg">
+            Contact Us
+        </a>
+    </div>
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden min-h-screen flex items-center py-20">
+    <section class="text-white py-20 pt-80 relative overflow-hidden" style="background-color: #1c7e3c;">
+        <!-- Animated Dark Green Bubbles -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+            <div class="bubble bubble-5"></div>
+            <div class="bubble bubble-6"></div>
+            <div class="bubble bubble-7"></div>
+            <div class="bubble bubble-8"></div>
+            <div class="bubble bubble-9"></div>
+            <div class="bubble bubble-10"></div>
+            <div class="bubble bubble-11"></div>
+            <div class="bubble bubble-12"></div>
+        </div>
+
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-8 items-center">
                 <div class="text-right lg:text-right ml-auto">
@@ -165,211 +770,323 @@
                     <p class="text-base sm:text-lg md:text-xl text-white/90 mb-8">
                         Our dedicated team combines decades of pediatric experience with a modern, family-centered approach to healthcare.
                     </p>
+                    <div class="flex justify-center lg:justify-end">
+                        <a href="contact.html" class="bg-teamgreen/70 backdrop-blur-sm border-2 border-teamgreen text-white px-8 py-3 rounded-lg font-semibold hover:bg-teamgreen/90 transition-colors fun-button click-ripple">
+                            Book Your Visit
+                        </a>
+                    </div>
                 </div>
                 <div class="flex justify-center lg:justify-end">
-                    <div class="relative">
-                        <img src="images/animals/alligator.png" alt="Friendly Alligator" class="w-80 h-80 object-contain alligator-gentle-bounce">
+                    <div class="alligator-container relative">
+                        <img src="images/animals/alligator.png" alt="Friendly Alligator" class="w-80 h-80 object-contain">
+                        <div class="alligator-ripple"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Profiles Section -->
-    <section class="py-20 relative overflow-hidden" style="background: linear-gradient(to bottom right, #f8fdf5, #e8f5d8, #d4e8b8);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-teamdark mb-4 font-fredoka">Our Providers</h2>
-                <p class="text-base sm:text-lg text-gray-700">Meet the dedicated physicians and nurse practitioners who lead our practice</p>
+    <!-- Full Team Photo Section -->
+    <section class="py-16 relative overflow-hidden" style="background: linear-gradient(to bottom, #f8fdf5, #ffffff);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-teamdark mb-4 font-fredoka">Our Village Pediatrics Family</h2>
+                <p class="text-lg text-gray-700">Meet our dedicated team working together to provide exceptional care for your children</p>
             </div>
 
-            <!-- Dr. Austin Dupont - Lead -->
+            <div class="relative">
+                <div class="bg-white rounded-3xl shadow-2xl p-12 border-4 border-teamgreen/20">
+                    <img src="images/team/team.png" alt="Village Pediatrics Full Team" class="w-full h-auto rounded-2xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 ease-in-out">
+                    <div class="mt-6 text-center">
+                        <p class="text-teamdark font-semibold text-lg">Together, we're committed to your child's health and happiness</p>
+                    </div>
+                </div>
+
+                <!-- Decorative elements -->
+                <div class="absolute -top-4 -left-4 w-16 h-16 bg-teamgreen/20 rounded-full animate-pulse"></div>
+                <div class="absolute -bottom-4 -right-4 w-20 h-20 bg-lightblue/20 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Combined Team Sections -->
+    <section class="py-20 relative overflow-hidden" style="background: linear-gradient(to bottom right, #f8fdf5, #e8f5d8, #d4e8b8);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-teamdark mb-4 font-fredoka">Our Providers</h2>
+                <p class="text-base sm:text-lg text-gray-700">Meet the dedicated physicians and nurse practitioner who lead our practice</p>
+            </div>
+
+            <!-- Providers Group Photo -->
             <div class="mb-16">
-                <div class="provider-card bg-white rounded-3xl shadow-xl overflow-hidden border-t-4 border-teamgreen max-w-4xl mx-auto">
-                    <div class="p-8">
-                        <div class="flex flex-col lg:flex-row gap-8 items-start">
-                            <!-- Photo -->
-                            <div class="w-48 h-48 rounded-full overflow-hidden mx-auto lg:mx-0 border-4 border-teamgreen/30 flex-shrink-0">
-                                <img src="images/team/dupont.png" alt="Dr. Austin Dupont" class="w-full h-full object-cover">
-                            </div>
-
-                            <!-- Content -->
-                            <div class="flex-1">
-                                <div class="text-center lg:text-left mb-6">
-                                    <h3 class="text-3xl font-bold text-teamdark mb-2">Dr. Austin Dupont, MD</h3>
-                                    <p class="text-teamgreen font-semibold text-xl">Owner & Lead Pediatrician</p>
-                                    <p class="text-gray-600">University of Toledo College of Medicine</p>
-                                    <p class="text-gray-600">Residency: University of Toledo Pediatric Program</p>
-                                </div>
-
-                                <!-- Bio -->
-                                <div class="space-y-4 text-gray-700 leading-relaxed">
-                                    <p>
-                                        Hi! I'm Dr. Austin Dupont, a pediatrician passionate about providing trusted, compassionate, and down-to-earth care to children and their families. I completed medical school and pediatric residency in Toledo, Ohio, before moving to Jacksonville with my wife, Jade, in 2022. After an unforgettable honeymoon backpacking through Europe, we settled down here and welcomed our daughter, Daisy Mae, in the fall of 2024.
-                                    </p>
-                                    <p>
-                                        In September 2025, I was blessed with the opportunity to purchase Village Pediatrics from Dr. Pat Elvir, who founded the practice in 2007. Dr. Elvir has been both a mentor and an inspiration to me, and I deeply admire the warm, family-centered culture she built. It's an honor to carry on her legacy at this cornerstone practice in the St. Augustine community.
-                                    </p>
-                                    <p>
-                                        I'm known for being easy-going and fun (expect a high-five or fist bump when I walk in!), but I take my role in your child's health very seriously. I look forward to getting to know your family and walking alongside you through every stage of your child's journey.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Specialties & Interests -->
-                        <div class="grid md:grid-cols-2 gap-6 mt-8">
-                            <div class="bg-navy/5 rounded-xl p-6">
-                                <h4 class="font-semibold text-navy mb-4 flex items-center">
-                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                                    </svg>
-                                    Special Interests & Expertise
-                                </h4>
-                                <ul class="space-y-2 text-sm text-gray-700">
-                                    <li class="flex items-center">
-                                        <span class="w-2 h-2 bg-teamgreen rounded-full mr-3"></span>
-                                        ADHD Diagnosis & Management
-                                    </li>
-                                    <li class="flex items-center">
-                                        <span class="w-2 h-2 bg-teamgreen rounded-full mr-3"></span>
-                                        Anxiety & Depression
-                                    </li>
-                                    <li class="flex items-center">
-                                        <span class="w-2 h-2 bg-teamgreen rounded-full mr-3"></span>
-                                        Asthma Management
-                                    </li>
-                                    <li class="flex items-center">
-                                        <span class="w-2 h-2 bg-teamgreen rounded-full mr-3"></span>
-                                        Constipation Management
-                                    </li>
-                                    <li class="flex items-center">
-                                        <span class="w-2 h-2 bg-teamgreen rounded-full mr-3"></span>
-                                        Healthy Habits (Pediatric Weight Management Program)
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="bg-teamgreen/5 rounded-xl p-6">
-                                <h4 class="font-semibold text-teamdark mb-4">Outside the Office</h4>
-                                <p class="text-gray-700 text-sm leading-relaxed">
-                                    You'll usually find me at church, spending quality time with my family, working on home projects, or out in nature. I love woodworking, archery with my compound bow, and traveling—especially my past solo backpacking adventures through Europe. Fun fact: my family and I rolled up our sleeves and handled many of the office renovations ourselves, including adding a brand-new 4th exam room and fresh paint throughout!
-                                </p>
-                            </div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-2xl shadow-xl p-8 border-2 border-teamgreen/30">
+                        <img src="images/team/provider.png" alt="Village Pediatrics Medical Providers" class="w-full h-auto rounded-xl shadow-md hover:shadow-2xl transform hover:scale-105 transition-all duration-500 ease-in-out">
+                        <div class="mt-4 text-center">
+                            <p class="text-teamdark font-medium text-base">Trudy English ARNP, Dr. Austin Dupont, Dr. Patricia Elvir, Dr. Lindsay Wolf</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Other Providers Grid -->
-            <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Provider Cards Grid - 2x2 Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                <!-- Dr. Austin Dupont -->
+                <div class="provider-card-3d bg-white rounded-3xl shadow-xl overflow-hidden border-t-4 border-teamgreen h-full">
+                    <div class="p-8 h-full flex flex-col">
+                        <!-- Dr. Dupont Photo -->
+                        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-teamgreen/30 provider-photo">
+                            <img src="images/team/dupont.png" alt="Dr. Austin Dupont" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-bold text-teamdark mb-2 provider-name">Dr. Austin Dupont, MD</h3>
+                            <p class="text-teamgreen font-semibold text-lg">Owner & Lead Pediatrician</p>
+                            <p class="text-gray-600 text-base">University of Toledo</p>
+                        </div>
+
+                        <!-- Bio -->
+                        <div class="flex-grow space-y-3">
+                            <p class="text-gray-700 leading-relaxed text-base">
+                                Dr. Austin Dupont completed medical school and pediatric residency in Toledo, Ohio, before moving to Jacksonville with his wife, Jade, in 2022. After an unforgettable honeymoon backpacking through Europe, they welcomed their daughter, Daisy Mae, in fall 2024.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed text-base">
+                                In September 2025, he purchased Village Pediatrics from Dr. Pat Elvir, carrying on her legacy of warm, family-centered care. Known for being easy-going and fun (expect a high-five or fist bump!), he takes your child's health very seriously.
+                            </p>
+
+                            <!-- Personal Interests -->
+                            <div class="bg-navy/5 rounded-lg p-4">
+                                <h4 class="font-semibold text-navy mb-2 text-base">Personal Life</h4>
+                                <p class="text-base text-gray-700">Enjoys church, family time, woodworking, archery with his compound bow, and traveling. Fun fact: handled many office renovations himself, including adding a 4th exam room!</p>
+                            </div>
+
+                            <!-- Specialties -->
+                            <div class="bg-teamgreen/5 rounded-lg p-4">
+                                <h4 class="font-semibold text-teamgreen mb-2 text-base">Special Interests</h4>
+                                <ul class="space-y-1 text-base text-gray-700">
+                                    <li class="text-base">•ADHD Diagnosis & Management</li>
+                                    <li class="text-base">•Anxiety & Depression</li>
+                                    <li class="text-base">•Asthma Management</li>
+                                    <li class="text-base">•Constipation Management</li>
+                                    <li class="text-base">•Healthy Habits Program</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Dr. Patricia Elvir -->
-                <div class="provider-card bg-white rounded-3xl shadow-xl overflow-hidden border-t-4 border-teal">
-                    <div class="p-6">
-                        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-teal/30">
+                <div class="provider-card-3d bg-white rounded-3xl shadow-xl overflow-hidden border-t-4 border-teal h-full">
+                    <div class="p-8 h-full flex flex-col">
+                        <!-- Dr. Elvir Photo -->
+                        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-teal/30 provider-photo">
                             <img src="images/team/elvir.png" alt="Dr. Patricia Elvir" class="w-full h-full object-cover">
                         </div>
                         <div class="text-center mb-6">
-                            <h3 class="text-xl font-bold text-teamdark mb-1">Dr. Patricia Elvir, MD</h3>
-                            <p class="text-teal font-semibold">FAAP, ABIHM</p>
-                            <p class="text-orange font-semibold text-sm">Founding Physician</p>
-                            <p class="text-gray-600 text-sm">University of San Carlos, Guatemala</p>
+                            <h3 class="text-2xl font-bold text-teamdark mb-2 provider-name">Dr. Patricia Elvir, MD</h3>
+                            <p class="text-teal font-semibold text-lg">FAAP, ABIHM</p>
+                            <p class="text-orange font-semibold text-base">Founding Physician</p>
                         </div>
 
-                        <div class="space-y-4 text-sm text-gray-700 leading-relaxed">
-                            <p>
-                                Dr. Elvir is a native New Yorker who completed her pediatric residency at Schneider Children's Hospital, serving as Chief Resident. She is dual board certified with the American Board of Pediatrics and Integrative and Holistic Medicine, with over 20 years of experience.
+                        <!-- Bio -->
+                        <div class="flex-grow space-y-3">
+                            <p class="text-gray-700 leading-relaxed text-base">
+                                Native New Yorker who did her pediatric residency at Schneider Children's Hospital of Long Island Jewish Medical Center, serving as Chief Resident. Attended medical school at University of San Carlos in Guatemala City, Guatemala.
                             </p>
-                            <p>
-                                An ordained minister and founder of Amigos de Juanita, she has a heart for medical missions to Central America and speaks fluent Spanish. She founded Village Pediatrics in 2008 and grew it into a beloved practice serving the St. Augustine area.
+                            <p class="text-gray-700 leading-relaxed text-base">
+                                Dual board certified with American Board of Pediatrics and American Board of Integrative and Holistic Medicine, plus Fellow of American Board of Pediatrics. Founded Village Pediatrics in St. Augustine in summer 2008.
                             </p>
-                        </div>
 
-                        <div class="bg-teal/5 rounded-xl p-4 mt-4">
-                            <h4 class="font-semibold text-teal mb-2">Mission Work</h4>
-                            <p class="text-xs text-gray-600">Medical missions in Guatemala, Nicaragua, and Haiti</p>
+                            <!-- Mission Work -->
+                            <div class="bg-teal/5 rounded-lg p-4">
+                                <h4 class="font-semibold text-teal mb-2 text-base">Ministry & Mission Work</h4>
+                                <p class="text-base text-gray-700">Ordained minister with The Apostolic Network of Global Awakening. Founded "Amigos de Juanita" for medical missions to Central America. Has served in Guatemala, Nicaragua, and Haiti.</p>
+                            </div>
+
+                            <!-- Background -->
+                            <div class="bg-orange/5 rounded-lg p-4">
+                                <h4 class="font-semibold text-orange mb-2 text-base">Background</h4>
+                                <ul class="space-y-1 text-base text-gray-700">
+                                    <li class="text-base">•Fluent in Spanish</li>
+                                    <li class="text-base">•20+ years clinical & academic experience</li>
+                                    <li class="text-base">•Relocated from NY to Jacksonville 2005</li>
+                                    <li class="text-base">•Mother of two sons</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Trudy English -->
-                <div class="provider-card bg-white rounded-3xl shadow-xl overflow-hidden border-t-4 border-lightblue">
-                    <div class="p-6">
-                        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-lightblue/30">
+                <div class="provider-card-3d bg-white rounded-3xl shadow-xl overflow-hidden border-t-4 border-lightblue h-full">
+                    <div class="p-8 h-full flex flex-col">
+                        <!-- Trudy Photo -->
+                        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-lightblue/30 provider-photo">
                             <img src="images/team/trudy.png" alt="Trudy English, ARNP" class="w-full h-full object-cover">
                         </div>
                         <div class="text-center mb-6">
-                            <h3 class="text-xl font-bold text-teamdark mb-1">Trudy English, ARNP</h3>
-                            <p class="text-lightblue font-semibold">Pediatric Nurse Practitioner</p>
-                            <p class="text-gray-600 text-sm">University of Akron BSN</p>
-                            <p class="text-gray-600 text-sm">Ohio State University MSN</p>
+                            <h3 class="text-2xl font-bold text-teamdark mb-2 provider-name">Trudy English, ARNP</h3>
+                            <p class="text-lightblue font-semibold text-lg">Pediatric Nurse Practitioner</p>
+                            <p class="text-gray-600 text-base">University of Akron BSN, Ohio State MSN</p>
                         </div>
 
-                        <div class="space-y-4 text-sm text-gray-700 leading-relaxed">
-                            <p>
-                                Trudy graduated with her BSN in 1989 and worked in the Neonatal Intensive Care Unit at Ohio State University Medical Center before realizing her passion for pediatrics. She earned her Masters in advanced pediatric nursing in 1996 and has been with Village Pediatrics since 2015.
+                        <!-- Bio -->
+                        <div class="flex-grow space-y-3">
+                            <p class="text-gray-700 leading-relaxed text-base">
+                                Graduated from University of Akron with BSN in 1989. After a short time at Duke University working with autologous bone marrow transplant patients, she found her passion for pediatrics and spent years in the NICU at Ohio State University Medical Center.
                             </p>
-                            <p>
-                                Trudy and her husband Robert have three children (twins Grace and Will, and daughter Annie). She enjoys caring for her barn animals including two donkeys, three goats, and 18 hens!
+                            <p class="text-gray-700 leading-relaxed text-base">
+                                Graduated with Masters in advanced pediatric nursing from Ohio State in 1996, becoming certified as a pediatric nurse practitioner the same year. Began career in primary care pediatrics in Columbus, then Jacksonville. With Village Pediatrics since 2015.
                             </p>
-                        </div>
 
-                        <div class="bg-lightblue/5 rounded-xl p-4 mt-4">
-                            <h4 class="font-semibold text-lightblue mb-2">Personal Interests</h4>
-                            <p class="text-xs text-gray-600">Beach combing, puzzles, reading, and family time</p>
+                            <!-- Family Life -->
+                            <div class="bg-lightblue/5 rounded-lg p-4">
+                                <h4 class="font-semibold text-lightblue mb-2 text-base">Family & Interests</h4>
+                                <p class="text-base text-gray-700">Married to Robert with three children (twins Grace and Will, daughter Annie). Enjoys caring for barn animals (2 donkeys, 3 goats, 18 hens!), traveling, beach time, puzzles, and reading.</p>
+                            </div>
+
+                            <!-- Experience -->
+                            <div class="bg-navy/5 rounded-lg p-4">
+                                <h4 class="font-semibold text-navy mb-2 text-base">Clinical Experience</h4>
+                                <ul class="space-y-1 text-base text-gray-700">
+                                    <li class="text-base">•NICU specialist background</li>
+                                    <li class="text-base">•Primary care pediatrics expert</li>
+                                    <li class="text-base">•30+ years nursing experience</li>
+                                    <li class="text-base">•Certified pediatric nurse practitioner</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Dr. Lindsay Wolf -->
-                <div class="provider-card bg-white rounded-3xl shadow-xl overflow-hidden border-t-4 border-orange">
-                    <div class="p-6">
-                        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-orange/30">
+                <div class="provider-card-3d bg-white rounded-3xl shadow-xl overflow-hidden border-t-4 border-orange h-full">
+                    <div class="p-8 h-full flex flex-col">
+                        <!-- Dr. Wolf Photo -->
+                        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-orange/30 provider-photo">
                             <img src="images/team/wolf.png" alt="Dr. Lindsay Wolf" class="w-full h-full object-cover">
                         </div>
                         <div class="text-center mb-6">
-                            <h3 class="text-xl font-bold text-teamdark mb-1">Dr. Lindsay Wolf, DNP</h3>
-                            <p class="text-orange font-semibold">MBA, APRN, CPNP-PC, CNE, CLC</p>
-                            <p class="text-gray-600 text-sm">Jacksonville University Professor</p>
-                            <p class="text-gray-600 text-sm">University of Florida DNP</p>
+                            <h3 class="text-2xl font-bold text-teamdark mb-2 provider-name">Dr. Lindsay Wolf, DNP</h3>
+                            <p class="text-orange font-semibold text-lg">MBA, APRN, CPNP-PC, CNE, CLC</p>
+                            <p class="text-gray-600 text-base">Associate Professor & Associate Dean</p>
                         </div>
 
-                        <div class="space-y-4 text-sm text-gray-700 leading-relaxed">
-                            <p>
-                                Dr. Wolf is a full-time Associate Professor and Associate Dean of Nursing at Jacksonville University, teaching in multiple programs while practicing as an autonomous pediatric nurse practitioner one day per week.
+                        <!-- Bio -->
+                        <div class="flex-grow space-y-3">
+                            <p class="text-gray-700 leading-relaxed text-base">
+                                Full-time Associate Professor of Nursing at Jacksonville University Keigwin School of Nursing and Associate Dean of Nursing. Teaches in all programs including Traditional BSN, ABSN 16-month and 12-month programs, Graduate NP programs and Graduate non-NP programs.
                             </p>
-                            <p>
-                                She is certified as a Nurse Educator, Pediatric Nurse Practitioner, and Lactation Counselor. Her main interests include growth and development, children with special needs, and lactation support for breastfeeding families.
+                            <p class="text-gray-700 leading-relaxed text-base">
+                                Practices as autonomous pediatric nurse practitioner one day per week. Received BSN at University of North Florida, DNP and PNP degree from University of Florida, and MBA from Jacksonville University.
                             </p>
-                        </div>
 
-                        <div class="bg-orange/5 rounded-xl p-4 mt-4">
-                            <h4 class="font-semibold text-orange mb-2">Specializations</h4>
-                            <p class="text-xs text-gray-600">Lactation support, special needs, growth & development</p>
+                            <!-- Certifications -->
+                            <div class="bg-orange/5 rounded-lg p-4">
+                                <h4 class="font-semibold text-orange mb-2 text-base">Certifications & Education</h4>
+                                <p class="text-base text-gray-700">Certified Nurse Educator (NLN), Certified Pediatric Nurse Practitioner (PNCB), Certified Lactation Counselor (ALPP). BSN UNF, DNP/PNP UF, MBA JU.</p>
+                            </div>
+
+                            <!-- Specializations & Personal -->
+                            <div class="bg-lightblue/5 rounded-lg p-4">
+                                <h4 class="font-semibold text-lightblue mb-2 text-base">Focus & Family</h4>
+                                <ul class="space-y-1 text-base text-gray-700">
+                                    <li class="text-base">•Growth & development in pediatrics</li>
+                                    <li class="text-base">•Children with special needs</li>
+                                    <li class="text-base">•Lactation support & education</li>
+                                    <li class="text-base">•Active in Catholic Church, mother of 5 daughters</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Practice Philosophy Section -->
-    <section class="py-16 relative overflow-hidden" style="background: linear-gradient(to right, #fefcf8, #f8f2e6, #f1dfc9);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+        <!-- Team Approach -->
+        <div class="py-20 relative z-10">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute top-10 left-10 w-32 h-32 bg-teamgreen rounded-full"></div>
+                <div class="absolute top-40 right-20 w-24 h-24 bg-lightblue rounded-full"></div>
+                <div class="absolute bottom-20 left-1/4 w-20 h-20 bg-orange rounded-full"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-teamdark mb-6 font-fredoka">Our Collaborative Approach</h2>
+                    <p class="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">How our team works together to provide exceptional, coordinated care for your family</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+                    <!-- Team Collaboration Card -->
+                    <div class="group">
+                        <div class="bg-white rounded-3xl shadow-xl p-8 border-l-4 border-teamgreen h-full transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-teamgreen to-teamdark rounded-2xl flex items-center justify-center mr-4 group-hover:rotate-6 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-2xl font-bold text-teamdark">Team Collaboration</h3>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed text-base">Our providers work seamlessly together, sharing expertise and ensuring coordinated care for every patient. Regular team meetings ensure everyone is aligned on your child's care plan.</p>
+                        </div>
+                    </div>
+
+                    <!-- Evidence-Based Care Card -->
+                    <div class="group">
+                        <div class="bg-white rounded-3xl shadow-xl p-8 border-l-4 border-lightblue h-full transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-lightblue to-teal rounded-2xl flex items-center justify-center mr-4 group-hover:rotate-6 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-2xl font-bold text-teamdark">Evidence-Based Care</h3>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed text-base">We stay current with the latest research and medical advances, ensuring your child receives the most effective treatments backed by scientific evidence and best practices.</p>
+                        </div>
+                    </div>
+
+                    <!-- Family-Centered Care Card -->
+                    <div class="group">
+                        <div class="bg-white rounded-3xl shadow-xl p-8 border-l-4 border-orange h-full transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-orange to-yellow-500 rounded-2xl flex items-center justify-center mr-4 group-hover:rotate-6 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-2xl font-bold text-teamdark">Family-Centered Care</h3>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed text-base">We involve families in healthcare decisions and respect your role as your child's primary advocate and caregiver. Your input guides our treatment approach.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-white rounded-2xl shadow-lg border-2 border-[#1c7e3c] p-12">
                 <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-teamdark mb-6 font-fredoka">Ready to Meet Our Team?</h2>
-                <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
-                    Our collaborative approach ensures your child receives comprehensive care from a team that truly cares about their health and development.
-                </p>
+                <p class="text-base sm:text-lg text-gray-600 mb-8">Schedule an appointment today and experience the difference our expert, compassionate team can make for your child's health.</p>
+
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="new-patients.html" class="bg-teamgreen text-white px-8 py-4 rounded-lg font-semibold hover:bg-teamdark transition-colors">
-                        Become a Patient
+                    <a href="tel:9049401577" class="bg-teamdark/70 backdrop-blur-sm border-2 border-teamdark text-white px-8 py-3 rounded-lg font-semibold hover:bg-teamdark/90 transition-colors fun-button click-ripple">
+                        Call (904) 940-1577
                     </a>
-                    <a href="contact.html" class="bg-white border-2 border-teamgreen text-teamgreen px-8 py-4 rounded-lg font-semibold hover:bg-teamgreen hover:text-white transition-colors">
-                        Contact Us
+                    <a href="contact.html" class="bg-teamgreen/70 backdrop-blur-sm border-2 border-teamgreen text-white px-8 py-3 rounded-lg font-semibold hover:bg-teamgreen/90 transition-colors fun-button click-ripple">
+                        Schedule Appointment
+                    </a>
+                    <a href="new-patients.html" class="border-2 border-teamdark/80 text-teamdark px-8 py-3 rounded-lg font-semibold hover:bg-teamdark/80 hover:text-white transition-colors fun-button click-ripple">
+                        New Patient Info
                     </a>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -392,6 +1109,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Main Footer Content -->
             <div class="grid md:grid-cols-4 gap-8">
                 <!-- Practice Info -->
@@ -405,6 +1123,7 @@
                     </div>
                     <p class="text-gray-400 text-sm">Trusted pediatric care since 2008.</p>
                 </div>
+
                 <!-- Quick Links -->
                 <div>
                     <h4 class="font-semibold mb-4">Quick Links</h4>
@@ -413,8 +1132,10 @@
                         <li><a href="about.html" class="hover:text-white">About</a></li>
                         <li><a href="services.html" class="hover:text-white">Services</a></li>
                         <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                        <li><a href="faq.html" class="hover:text-white">FAQ</a></li>
                     </ul>
                 </div>
+
                 <!-- Our Providers -->
                 <div>
                     <h4 class="font-semibold mb-4">Our Providers</h4>
@@ -425,6 +1146,7 @@
                         <li>Dr. Lindsay Wolf, DNP</li>
                     </ul>
                 </div>
+
                 <!-- Contact -->
                 <div>
                     <h4 class="font-semibold mb-4">Contact</h4>
@@ -435,6 +1157,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Copyright and Legal -->
             <div class="border-t border-gray-700 mt-8 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
@@ -457,40 +1180,97 @@
         </div>
     </div>
 
+    <!-- Animal Animation Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Wait a moment for page to settle, then animate animals in
             setTimeout(() => {
                 const animals = document.querySelectorAll('.animal-nav-item');
                 animals.forEach((animal, index) => {
                     setTimeout(() => {
                         animal.classList.add('animate-in');
-                    }, index * 200);
+                    }, index * 200); // Stagger each animal by 200ms
                 });
-            }, 500);
+            }, 500); // Start animations 500ms after page load
 
-            // Floating Animal Scroll Detection
+            // Initialize interactive elements
+            initInteractiveElements();
+
+            // Initialize floating alligator scroll detection
+            initFloatingAlligator();
+        });
+
+        // Interactive Elements
+        function initInteractiveElements() {
+            // Parallax effect on mouse move
+            document.addEventListener('mousemove', function(e) {
+                const shapes = document.querySelectorAll('.bg-shape');
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+
+                shapes.forEach((shape, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const x = (mouseX - 0.5) * speed * 10;
+                    const y = (mouseY - 0.5) * speed * 10;
+                    shape.style.transform += ` translate(${x}px, ${y}px)`;
+                });
+            });
+
+            // Add 3D tilt effect to provider cards
+            document.querySelectorAll('.provider-card').forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+
+                    this.style.transform = `translateY(-15px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
+        }
+
+        // Floating Alligator Scroll Detection
+        function initFloatingAlligator() {
             const floatingAlligator = document.getElementById('floating-alligator');
-            const heroSection = document.querySelector('section');
+            const heroSection = document.querySelector('section[style*="background-color: #1c7e3c"]');
+
             if (!floatingAlligator || !heroSection) return;
 
             function handleScroll() {
                 const heroRect = heroSection.getBoundingClientRect();
                 const heroBottom = heroRect.bottom;
                 const heroHeight = heroRect.height;
-                const threshold = heroHeight * 0.2;
+                const threshold = heroHeight * 0.2; // Show when 80% of hero is scrolled past
 
                 if (heroBottom <= threshold) {
-                    floatingAlligator.classList.remove('opacity-0', 'translate-y-full');
-                    floatingAlligator.classList.add('opacity-100', 'translate-y-0');
+                    // Hero section is mostly out of view, show alligator
+                    floatingAlligator.style.opacity = '1';
+                    floatingAlligator.style.transform = 'translateY(0)';
                 } else {
-                    floatingAlligator.classList.remove('opacity-100', 'translate-y-0');
-                    floatingAlligator.classList.add('opacity-0', 'translate-y-full');
+                    // Hero section is in view, hide alligator
+                    floatingAlligator.style.opacity = '0';
+                    floatingAlligator.style.transform = 'translateY(100%)';
                 }
             }
 
+            // Listen for scroll events
             window.addEventListener('scroll', handleScroll);
+
+            // Initial check
             handleScroll();
-        });
+        }
     </script>
+
+
+    <!-- Lion Animation Script -->
+    <script src="js/lion-animations.js"></script>
+
 </body>
 </html>

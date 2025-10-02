@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Village Pediatrics - Pediatric Care in St. Augustine, FL</title>
     <meta name="description" content="Village Pediatrics provides expert pediatric care in St. Augustine, FL. Same-day appointments, 24/7 nursing support. Ages newborn to 21.">
+    <meta name="keywords" content="pediatrician, St. Augustine, Florida, children's health, newborn care, teen medicine, immunizations, same-day appointments">
+    <meta name="author" content="Village Pediatrics">
+    <meta property="og:title" content="Village Pediatrics - Expert Pediatric Care in St. Augustine, FL">
+    <meta property="og:description" content="Trusted pediatric care since 2008. Same-day appointments, 24/7 nursing support for children newborn to 21 years.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://villagepediatrics.com">
+    <meta property="og:image" content="https://villagepediatrics.com/images/logo/village-pediatrics-logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Village Pediatrics - Expert Pediatric Care in St. Augustine, FL">
+    <meta name="twitter:description" content="Trusted pediatric care since 2008. Same-day appointments, 24/7 nursing support for children newborn to 21 years.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -51,6 +61,33 @@
             transform: translateY(-4px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
+
+        /* Mobile-specific optimizations */
+        @media (max-width: 768px) {
+            .card:hover {
+                transform: none; /* Disable hover effects on mobile */
+            }
+            .animal-nav-item:hover {
+                transform: scale(1.02); /* Gentler scaling on mobile */
+            }
+        }
+
+        /* Touch targets - minimum 44px */
+        .touch-target {
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        /* Click-to-call styling */
+        .phone-link {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .phone-link:hover {
+            color: #3B9D84;
+        }
         
         .section-divider {
             height: 1px;
@@ -80,6 +117,7 @@
             transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             perspective: 1000px;
             transform-style: preserve-3d;
+            will-change: transform, opacity;
         }
 
         .animal-nav-item.animate-in {
@@ -308,16 +346,16 @@
         </video>
 
         <!-- Animal Navigation Over Video -->
-        <nav class="absolute top-12 left-0 right-0 z-30" id="animal-nav">
+        <nav class="absolute top-12 left-0 right-0 z-30" id="animal-nav" role="navigation" aria-label="Main navigation">
             <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8">
-                <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                    <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300" aria-label="Navigate to Home page" role="button" tabindex="0">
+                    <img src="images/animals/elephant.png" alt="Friendly elephant mascot for Home navigation" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
                     <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300">
                         <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase"><span class="sm:hidden">Home</span><span class="hidden sm:inline">Home</span></span>
                     </div>
                 </a>
-                <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                    <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
+                <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300" aria-label="Navigate to About Us page" role="button" tabindex="0">
+                    <img src="images/animals/lion.png" alt="Friendly lion mascot for About Us navigation" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-1 sm:mb-2 filter drop-shadow-lg">
                     <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300">
                         <span class="text-xs sm:text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase hidden sm:inline">About Us</span><span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-inter tracking-wider uppercase sm:hidden">About</span>
                     </div>
@@ -497,7 +535,7 @@
                             </div>
                             <div>
                                 <p class="text-lg font-semibold font-fredoka text-navy">Call Us</p>
-                                <span class="text-base font-inter text-navy/80">(904) 940-1577</span>
+                                <a href="tel:9049401577" class="text-base font-inter text-navy/80 phone-link touch-target" aria-label="Call Village Pediatrics">(904) 940-1577</a>
                             </div>
                         </div>
                         <div class="flex items-center text-navy">
@@ -551,6 +589,90 @@
         </div>
     </section>
 
+    <!-- Virtual Office Tour -->
+    <section class="py-20 bg-gradient-to-br from-orange/5 via-white to-lightblue/5" role="region" aria-label="Virtual office tour">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-fredoka text-navy mb-4">Take a Virtual Tour</h2>
+                <p class="text-2xl md:text-3xl text-gray-600 font-fredoka italic">See our kid-friendly, welcoming office spaces</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <!-- Tour Content -->
+                <div class="space-y-6">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-navy">
+                        <h3 class="text-2xl font-bold text-navy mb-4 font-fredoka">Designed for Comfort</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Our office is specifically designed to make children and families feel comfortable and at ease. From colorful, animal-themed decorations to child-sized furniture, every detail is thoughtfully planned.
+                        </p>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center">
+                                <div class="w-2 h-2 bg-navy rounded-full mr-3"></div>
+                                Bright, welcoming waiting areas with toys and books
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-2 h-2 bg-navy rounded-full mr-3"></div>
+                                Clean, modern exam rooms with fun animal themes
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-2 h-2 bg-navy rounded-full mr-3"></div>
+                                Private consultation areas for parents
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-2 h-2 bg-navy rounded-full mr-3"></div>
+                                Easy accessibility and parking
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Photo Gallery -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <div class="bg-lightblue/20 rounded-2xl p-8 text-center shadow-lg" role="img" aria-label="Waiting room preview">
+                            <div class="text-6xl mb-4">🦒</div>
+                            <h4 class="font-bold text-navy">Waiting Room</h4>
+                            <p class="text-sm text-gray-600">Comfortable seating and play areas</p>
+                        </div>
+                        <div class="bg-orange/20 rounded-2xl p-8 text-center shadow-lg" role="img" aria-label="Reception area preview">
+                            <div class="text-6xl mb-4">🐘</div>
+                            <h4 class="font-bold text-navy">Reception</h4>
+                            <p class="text-sm text-gray-600">Friendly check-in area</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 mt-8">
+                        <div class="bg-teal/20 rounded-2xl p-8 text-center shadow-lg" role="img" aria-label="Exam room preview">
+                            <div class="text-6xl mb-4">🦁</div>
+                            <h4 class="font-bold text-navy">Exam Rooms</h4>
+                            <p class="text-sm text-gray-600">Modern equipment, fun themes</p>
+                        </div>
+                        <div class="bg-lightblue/20 rounded-2xl p-8 text-center shadow-lg" role="img" aria-label="Consultation room preview">
+                            <div class="text-6xl mb-4">🐵</div>
+                            <h4 class="font-bold text-navy">Consultation</h4>
+                            <p class="text-sm text-gray-600">Private family discussions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visit Us Section -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-navy text-center">
+                <h3 class="text-2xl font-bold text-navy mb-4 font-fredoka">Ready to Visit?</h3>
+                <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                    We'd love to welcome you and your family to our practice. Our office is conveniently located in St. Augustine with easy parking and accessibility features.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="tel:9049401577" class="bg-navy text-white px-8 py-4 rounded-lg font-semibold hover:bg-teal transition-colors shadow-lg touch-target" aria-label="Call to schedule appointment">
+                        📞 Schedule a Visit
+                    </a>
+                    <a href="contact.html" class="border-2 border-navy text-navy px-8 py-4 rounded-lg font-semibold hover:bg-navy hover:text-white transition-colors shadow-lg touch-target" aria-label="Get directions to office">
+                        🗺️ Get Directions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -593,6 +715,7 @@
                         <li><a href="about.html" class="hover:text-white">About</a></li>
                         <li><a href="services.html" class="hover:text-white">Services</a></li>
                         <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                        <li><a href="faq.html" class="hover:text-white">FAQ</a></li>
                     </ul>
                 </div>
 
@@ -603,6 +726,7 @@
                         <li>Dr. Austin Dupont, MD</li>
                         <li>Dr. Patricia Elvir, MD</li>
                         <li>Trudy English, ARNP</li>
+                        <li>Dr. Lindsay Wolf, DNP</li>
                     </ul>
                 </div>
 
@@ -612,7 +736,7 @@
                     <div class="text-sm text-gray-400 space-y-1">
                         <p>319 W Town Pl, STE 1</p>
                         <p>St. Augustine, FL 32092</p>
-                        <p>(904) 940-1577</p>
+                        <p><a href="tel:9049401577" class="phone-link touch-target" aria-label="Call Village Pediatrics">(904) 940-1577</a></p>
                     </div>
                 </div>
             </div>
@@ -711,6 +835,99 @@
             // Initial check
             handleScroll();
         }
+    </script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "@id": "https://villagepediatrics.com",
+        "name": "Village Pediatrics",
+        "description": "Expert pediatric care in St. Augustine, FL. Same-day appointments, 24/7 nursing support for children newborn to 21 years.",
+        "url": "https://villagepediatrics.com",
+        "logo": "https://villagepediatrics.com/images/logo/village-pediatrics-logo.png",
+        "image": "https://villagepediatrics.com/images/logo/village-pediatrics-logo.png",
+        "telephone": "+19049401577",
+        "email": "info@villagepediatrics.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "319 W Town Pl, STE 1",
+            "addressLocality": "St. Augustine",
+            "addressRegion": "FL",
+            "postalCode": "32092",
+            "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "29.9052",
+            "longitude": "-81.3124"
+        },
+        "openingHours": [
+            "Mo-Fr 08:00-17:00",
+            "Sa 08:00-12:00"
+        ],
+        "paymentAccepted": "Cash, Credit Card, Insurance",
+        "priceRange": "$$",
+        "medicalSpecialty": "Pediatrics",
+        "serviceArea": {
+            "@type": "Place",
+            "name": "St. Augustine, Florida"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Pediatric Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "MedicalProcedure",
+                        "name": "Well-child visits"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "MedicalProcedure",
+                        "name": "Same-day sick appointments"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "MedicalProcedure",
+                        "name": "Immunizations"
+                    }
+                }
+            ]
+        },
+        "physician": [
+            {
+                "@type": "Physician",
+                "name": "Dr. Austin Dupont",
+                "jobTitle": "Pediatrician",
+                "medicalSpecialty": "Pediatrics"
+            },
+            {
+                "@type": "Physician",
+                "name": "Dr. Patricia Elvir",
+                "jobTitle": "Pediatrician",
+                "medicalSpecialty": "Pediatrics"
+            },
+            {
+                "@type": "Person",
+                "name": "Trudy English",
+                "jobTitle": "ARNP",
+                "medicalSpecialty": "Pediatric Nursing"
+            },
+            {
+                "@type": "Person",
+                "name": "Dr. Lindsay Wolf",
+                "jobTitle": "DNP",
+                "medicalSpecialty": "Pediatric Nursing"
+            }
+        ]
+    }
     </script>
 
 </body>
