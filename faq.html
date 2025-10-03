@@ -252,7 +252,11 @@
                 border-bottom-width: 2px;
             }
         }
-        
+
+        .footer-privia-mobile {
+            display: none;
+        }
+
         .scroll-to-top {
             position: fixed;
             bottom: 2rem;
@@ -418,6 +422,16 @@
 
             .footer-privia-section {
                 display: none !important;
+            }
+
+            .footer-privia-mobile {
+                display: block !important;
+                text-align: center;
+                font-size: 0.75rem;
+                color: #9CA3AF;
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid #374151;
             }
 
             .footer-providers-section {
@@ -1109,6 +1123,11 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Mobile Privia Partnership Mention -->
+            <div class="footer-privia-mobile hidden">
+                <p>Proud partner of Privia Medical Group</p>
+            </div>
+
             <!-- Privia Medical Group Partnership - Top Section -->
             <div class="footer-privia-section mb-12 pb-8 border-b border-gray-700">
                 <div class="flex flex-col lg:flex-row items-center justify-center ga">
