@@ -1,5 +1,5 @@
 /**
- * Zebra Animation Controller for Services Page
+ * Zebra Animation Controller for Servicespage
  * Handles page load and scroll-based animations
  */
 
@@ -38,7 +38,7 @@ class ZebraAnimations {
         this.zebra.className = 'zebra-animation';
         this.zebra.innerHTML = `
             <img src="images/animals/zebra.png" alt="Zebra" class="zebra-image">
-            <div class="zebra-stripes"></div>
+            <div class="zebra-spotlight"></div>
             <div class="text-bubble">
                 <div class="bubble-content">Schedule your visit today!</div>
                 <div class="bubble-tail"></div>
@@ -62,60 +62,35 @@ class ZebraAnimations {
             }
 
             .zebra-image {
+                position: relative;
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+                filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+                z-index: 2;
             }
 
-            .zebra-stripes {
+            .zebra-spotlight {
                 position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 8px,
-                    rgba(59, 157, 132, 0.1) 8px,
-                    rgba(59, 157, 132, 0.1) 16px
-                );
-                opacity: 0;
-                animation: stripeShimmer 3s ease-in-out infinite;
+                inset: 0;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                filter: blur(4px);
+                z-index: -1;
             }
 
-            @keyframes stripeShimmer {
-                0%, 100% { opacity: 0; transform: translateX(0); }
-                50% { opacity: 0.3; transform: translateX(10px); }
-            }
-
-            @keyframes zebraWalk {
-                0%, 100% { transform: translateY(0) rotateZ(0deg); }
-                25% { transform: translateY(-5px) rotateZ(1deg); }
-                75% { transform: translateY(-3px) rotateZ(-1deg); }
-            }
-
-            @keyframes zebraPoint {
-                0%, 100% { transform: rotateZ(0deg) scale(1); }
-                50% { transform: rotateZ(-10deg) scale(1.05); }
-            }
-
-            .zebra-walking {
-                animation: zebraWalk 2s ease-in-out infinite;
-            }
-
-            .zebra-pointing {
-                animation: zebraPoint 1.5s ease-in-out;
+            @keyframes gentleFloat {
+                0%, 100% {
+                    transform: translateY(-50%) translateY(0px);
+                }
+                50% {
+                    transform: translateY(-50%) translateY(-10px);
+                }
             }
 
             .zebra-visible {
                 right: 20px;
-            }
-
-            .zebra-center {
-                right: 50%;
-                transform: translateX(50%);
+                animation: gentleFloat 3.5s ease-in-out infinite;
             }
 
             @media (max-width: 768px) {
@@ -159,7 +134,7 @@ class ZebraAnimations {
             }
 
             .bubble-content {
-                font-family: 'Fredoka', sans-serif;
+                font-family: 'Inter', sans-serif;
                 font-size: 14px;
                 font-weight: 600;
                 color: #0D2673;
@@ -225,14 +200,9 @@ class ZebraAnimations {
         // Only start animation if we've passed the hero section
         if (!this.hasPassedHero) return;
 
-        // Initial entrance animation
+        // Simple entrance - just appear
         setTimeout(() => {
             this.showAnimal();
-
-            // Point to services after entrance
-            setTimeout(() => {
-                this.pointToServices();
-            }, 1500);
         }, 500);
     }
 
@@ -240,26 +210,12 @@ class ZebraAnimations {
         this.zebra.style.opacity = '1';
         this.zebra.style.right = '20px';
         this.zebra.classList.add('zebra-visible');
-        this.zebra.classList.add('zebra-walking');
     }
 
     hideAnimal() {
         this.zebra.style.opacity = '0';
         this.zebra.style.right = '-250px';
-        this.zebra.classList.remove('zebra-visible', 'zebra-walking', 'zebra-pointing');
-    }
-
-    pointToServices() {
-        const serviceCards = document.querySelectorAll('.service-card, .card, [class*="service"]');
-        if (serviceCards.length > 0) {
-            this.zebra.classList.remove('zebra-walking');
-            this.zebra.classList.add('zebra-pointing');
-
-            setTimeout(() => {
-                this.zebra.classList.remove('zebra-pointing');
-                this.zebra.classList.add('zebra-walking');
-            }, 2000);
-        }
+        this.zebra.classList.remove('zebra-visible');
     }
 
     bindEvents() {
@@ -272,13 +228,6 @@ class ZebraAnimations {
                     ticking = false;
                 });
                 ticking = true;
-            }
-        });
-
-        // Service card hover interactions
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.closest('.service-card, .card, [class*="service"]')) {
-                this.reactToServiceHover();
             }
         });
     }
@@ -305,33 +254,6 @@ class ZebraAnimations {
                 this.showAnimal();
             }
         }
-
-        const scrollPercent = scrollTop / (document.documentElement.scrollHeight - window.innerHeight);
-
-        // Move zebra based on scroll
-        if (scrollPercent > 0.2 && scrollPercent < 0.8) {
-            this.zebra.style.right = `${20 + (scrollPercent * 30)}px`;
-            this.zebra.classList.add('zebra-walking');
-        } else if (scrollPercent >= 0.8) {
-            this.zebra.classList.remove('zebra-walking');
-            this.zebra.classList.add('zebra-pointing');
-        } else {
-            this.zebra.style.right = '20px';
-            this.zebra.classList.add('zebra-walking');
-            this.zebra.classList.remove('zebra-pointing');
-        }
-    }
-
-    reactToServiceHover() {
-        if (!this.zebra.classList.contains('zebra-pointing')) {
-            this.zebra.classList.remove('zebra-walking');
-            this.zebra.classList.add('zebra-pointing');
-
-            setTimeout(() => {
-                this.zebra.classList.remove('zebra-pointing');
-                this.zebra.classList.add('zebra-walking');
-            }, 1500);
-        }
     }
 
     destroy() {
@@ -344,6 +266,7 @@ class ZebraAnimations {
     }
 }
 
+// Initialize zebra animations when script loads
 // Only initialize zebra animations on services page
 if (window.location.pathname.includes('services.html') || document.title.includes('Services')) {
     new ZebraAnimations();

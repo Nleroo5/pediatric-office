@@ -72,23 +72,6 @@ class LionAnimations {
                 z-index: 2;
             }
 
-            .lion-mane {
-                position: absolute;
-                top: -10px;
-                left: -10px;
-                width: 120%;
-                height: 120%;
-                background: radial-gradient(
-                    circle,
-                    rgba(242, 177, 56, 0.3) 0%,
-                    rgba(242, 177, 56, 0.1) 40%,
-                    transparent 70%
-                );
-                border-radius: 50%;
-                z-index: 1;
-                animation: maneFlow 4s ease-in-out infinite;
-            }
-
             .lion-spotlight {
                 position: absolute;
                 inset: 0;
@@ -98,52 +81,18 @@ class LionAnimations {
                 z-index: -1;
             }
 
-
-
-            @keyframes maneFlow {
+            @keyframes gentleFloat {
                 0%, 100% {
-                    transform: scale(1) rotateZ(0deg);
-                    opacity: 0.3;
+                    transform: translateY(-50%) translateY(0px);
                 }
                 50% {
-                    transform: scale(1.1) rotateZ(2deg);
-                    opacity: 0.5;
+                    transform: translateY(-50%) translateY(-10px);
                 }
-            }
-
-
-            @keyframes lionNod {
-                0%, 100% { transform: rotateX(0deg) rotateY(0deg); }
-                25% { transform: rotateX(-5deg) rotateY(2deg); }
-                75% { transform: rotateX(5deg) rotateY(-2deg); }
-            }
-
-            @keyframes lionPride {
-                0%, 100% { transform: scale(1) rotateZ(0deg); }
-                50% { transform: scale(1.05) rotateZ(3deg); }
-            }
-
-            @keyframes lionWalk {
-                0%, 100% { transform: translateX(0) translateY(0); }
-                25% { transform: translateX(5px) translateY(-3px); }
-                75% { transform: translateX(-3px) translateY(-1px); }
-            }
-
-
-            .lion-nodding {
-                animation: lionNod 2s ease-in-out;
-            }
-
-            .lion-proud {
-                animation: lionPride 1.5s ease-in-out;
-            }
-
-            .lion-walking {
-                animation: lionWalk 3s ease-in-out infinite;
             }
 
             .lion-visible {
                 right: 20px;
+                animation: gentleFloat 3.5s ease-in-out infinite;
             }
 
 
@@ -166,7 +115,7 @@ class LionAnimations {
             }
 
             .bubble-content {
-                font-family: 'Fredoka', sans-serif;
+                font-family: 'Inter', sans-serif;
                 font-size: 14px;
                 font-weight: 600;
                 color: #0D2673;
@@ -254,14 +203,9 @@ class LionAnimations {
         // Only start animation if we've passed the hero section
         if (!this.hasPassedHero) return;
 
-        // Simple entrance - just appear in top right corner
+        // Simple entrance - just appear
         setTimeout(() => {
             this.showAnimal();
-
-            // Show pride after entrance
-            setTimeout(() => {
-                this.showPride();
-            }, 2000);
         }, 500);
     }
 
@@ -269,28 +213,16 @@ class LionAnimations {
         this.lion.style.opacity = '1';
         this.lion.style.right = '20px';
         this.lion.classList.add('lion-visible');
-        this.lion.classList.add('lion-walking');
     }
 
     hideAnimal() {
         this.lion.style.opacity = '0';
         this.lion.style.right = '-250px';
-        this.lion.classList.remove('lion-visible', 'lion-walking', 'lion-proud', 'lion-nodding');
+        this.lion.classList.remove('lion-visible');
     }
 
     startManeAnimation() {
-        // Continuous mane flowing animation is handled by CSS
-        // This method can be extended for more complex mane animations
-    }
-
-    showPride() {
-        this.lion.classList.remove('lion-walking');
-        this.lion.classList.add('lion-proud');
-
-        setTimeout(() => {
-            this.lion.classList.remove('lion-proud');
-            this.lion.classList.add('lion-walking');
-        }, 2000);
+        // No animation
     }
 
     bindEvents() {
@@ -303,20 +235,6 @@ class LionAnimations {
                     ticking = false;
                 });
                 ticking = true;
-            }
-        });
-
-        // Team member hover interactions
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.closest('.team-member, .team-card, [class*="team"]')) {
-                this.reactToTeamHover();
-            }
-        });
-
-        // About section hover
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.closest('[class*="about"], .mission, .vision, .values')) {
-                this.showPride();
             }
         });
     }
@@ -342,28 +260,6 @@ class LionAnimations {
                 // Already been past hero, just show the animal again
                 this.showAnimal();
             }
-        }
-
-        const scrollPercent = scrollTop / (document.documentElement.scrollHeight - window.innerHeight);
-
-        // Keep lion in top right corner, just change animations based on scroll
-        if (scrollPercent >= 0.9) {
-            this.lion.classList.remove('lion-walking');
-            this.showPride();
-        } else {
-            this.lion.classList.add('lion-walking');
-        }
-    }
-
-    reactToTeamHover() {
-        if (!this.lion.classList.contains('lion-nodding')) {
-            this.lion.classList.remove('lion-walking', 'lion-proud');
-            this.lion.classList.add('lion-nodding');
-
-            setTimeout(() => {
-                this.lion.classList.remove('lion-nodding');
-                this.lion.classList.add('lion-walking');
-            }, 2000);
         }
     }
 

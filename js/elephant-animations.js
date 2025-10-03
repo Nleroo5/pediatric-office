@@ -38,6 +38,7 @@ class ElephantAnimations {
         this.elephant.className = 'elephant-animation';
         this.elephant.innerHTML = `
             <img src="images/animals/elephant.png" alt="Elephant" class="elephant-image">
+            <div class="elephant-spotlight"></div>
             <div class="text-bubble">
                 <div class="bubble-content">Schedule your visit today!</div>
                 <div class="bubble-tail"></div>
@@ -69,27 +70,27 @@ class ElephantAnimations {
                 z-index: 2;
             }
 
-            @keyframes elephantWalk {
-                0%, 100% { transform: translateY(0) rotateZ(0deg); }
-                25% { transform: translateY(-5px) rotateZ(1deg); }
-                75% { transform: translateY(-3px) rotateZ(-1deg); }
+            .elephant-spotlight {
+                position: absolute;
+                inset: 0;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                filter: blur(4px);
+                z-index: -1;
             }
 
-            @keyframes elephantTrumpet {
-                0%, 100% { transform: scale(1) rotateZ(0deg); }
-                50% { transform: scale(1.05) rotateZ(3deg); }
-            }
-
-            .elephant-walking {
-                animation: elephantWalk 3s ease-in-out infinite;
-            }
-
-            .elephant-trumpeting {
-                animation: elephantTrumpet 1.5s ease-in-out;
+            @keyframes gentleFloat {
+                0%, 100% {
+                    transform: translateY(-50%) translateY(0px);
+                }
+                50% {
+                    transform: translateY(-50%) translateY(-10px);
+                }
             }
 
             .elephant-visible {
                 right: 20px;
+                animation: gentleFloat 3.5s ease-in-out infinite;
             }
 
             @media (max-width: 768px) {
@@ -133,7 +134,7 @@ class ElephantAnimations {
             }
 
             .bubble-content {
-                font-family: 'Fredoka', sans-serif;
+                font-family: 'Inter', sans-serif;
                 font-size: 14px;
                 font-weight: 600;
                 color: #0D2673;
@@ -202,11 +203,6 @@ class ElephantAnimations {
         // Simple entrance - just appear
         setTimeout(() => {
             this.showAnimal();
-
-            // Show trumpet animation after entrance
-            setTimeout(() => {
-                this.showTrumpet();
-            }, 2000);
         }, 500);
     }
 
@@ -214,23 +210,12 @@ class ElephantAnimations {
         this.elephant.style.opacity = '1';
         this.elephant.style.right = '20px';
         this.elephant.classList.add('elephant-visible');
-        this.elephant.classList.add('elephant-walking');
     }
 
     hideAnimal() {
         this.elephant.style.opacity = '0';
         this.elephant.style.right = '-250px';
-        this.elephant.classList.remove('elephant-visible', 'elephant-walking', 'elephant-trumpeting');
-    }
-
-    showTrumpet() {
-        this.elephant.classList.remove('elephant-walking');
-        this.elephant.classList.add('elephant-trumpeting');
-
-        setTimeout(() => {
-            this.elephant.classList.remove('elephant-trumpeting');
-            this.elephant.classList.add('elephant-walking');
-        }, 2000);
+        this.elephant.classList.remove('elephant-visible');
     }
 
     bindEvents() {
@@ -243,13 +228,6 @@ class ElephantAnimations {
                     ticking = false;
                 });
                 ticking = true;
-            }
-        });
-
-        // Homepage content hover interactions
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.closest('.hero-content, .main-content, [class*="home"]')) {
-                this.reactToContentHover();
             }
         });
     }
@@ -275,28 +253,6 @@ class ElephantAnimations {
                 // Already been past hero, just show the animal again
                 this.showAnimal();
             }
-        }
-
-        const scrollPercent = scrollTop / (document.documentElement.scrollHeight - window.innerHeight);
-
-        // Keep elephant in position, just change animations based on scroll
-        if (scrollPercent >= 0.9) {
-            this.elephant.classList.remove('elephant-walking');
-            this.showTrumpet();
-        } else {
-            this.elephant.classList.add('elephant-walking');
-        }
-    }
-
-    reactToContentHover() {
-        if (!this.elephant.classList.contains('elephant-trumpeting')) {
-            this.elephant.classList.remove('elephant-walking');
-            this.elephant.classList.add('elephant-trumpeting');
-
-            setTimeout(() => {
-                this.elephant.classList.remove('elephant-trumpeting');
-                this.elephant.classList.add('elephant-walking');
-            }, 1500);
         }
     }
 

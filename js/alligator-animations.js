@@ -1,5 +1,5 @@
 /**
- * Alligator Animation Controller for New Patients Page
+ * Alligator Animation Controller for Teampage
  * Handles page load and scroll-based animations
  */
 
@@ -9,7 +9,6 @@ class AlligatorAnimations {
         this.isInitialized = false;
         this.scrollPosition = 0;
         this.animationFrame = null;
-        this.tailWagInterval = null;
         this.hasPassedHero = false;
         this.heroScrollThreshold = 0;
 
@@ -30,7 +29,6 @@ class AlligatorAnimations {
         this.createAlligatorElement();
         this.bindEvents();
         this.checkInitialScroll();
-        this.startTailWagging();
         this.isInitialized = true;
     }
 
@@ -40,6 +38,7 @@ class AlligatorAnimations {
         this.alligator.className = 'alligator-animation';
         this.alligator.innerHTML = `
             <img src="images/animals/alligator.png" alt="Alligator" class="alligator-image">
+            <div class="alligator-spotlight"></div>
             <div class="text-bubble">
                 <div class="bubble-content">Schedule your visit today!</div>
                 <div class="bubble-tail"></div>
@@ -59,7 +58,7 @@ class AlligatorAnimations {
                 pointer-events: auto;
                 transform: translateY(-50%);
                 opacity: 0;
-                transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+                transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
             .alligator-image {
@@ -71,47 +70,27 @@ class AlligatorAnimations {
                 z-index: 2;
             }
 
-
-
-
-
-
-
-            @keyframes alligatorSwim {
-                0%, 100% { transform: translateX(0) rotateZ(0deg); }
-                50% { transform: translateX(10px) rotateZ(1deg); }
+            .alligator-spotlight {
+                position: absolute;
+                inset: 0;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                filter: blur(4px);
+                z-index: -1;
             }
 
-            @keyframes alligatorSnap {
-                0%, 100% { transform: scaleY(1); }
-                50% { transform: scaleY(0.9); }
-            }
-
-            @keyframes alligatorWelcome {
-                0%, 100% { transform: scale(1) rotateZ(0deg); }
-                25% { transform: scale(1.05) rotateZ(-2deg); }
-                75% { transform: scale(1.05) rotateZ(2deg); }
-            }
-
-            .alligator-swimming {
-                animation: alligatorSwim 4s ease-in-out infinite;
-            }
-
-            .alligator-snapping {
-                animation: alligatorSnap 0.8s ease-in-out;
-            }
-
-            .alligator-welcoming {
-                animation: alligatorWelcome 2s ease-in-out;
+            @keyframes gentleFloat {
+                0%, 100% {
+                    transform: translateY(-50%) translateY(0px);
+                }
+                50% {
+                    transform: translateY(-50%) translateY(-10px);
+                }
             }
 
             .alligator-visible {
                 right: 20px;
-            }
-
-            .alligator-center {
-                left: 50%;
-                transform: translateX(-50%);
+                animation: gentleFloat 3.5s ease-in-out infinite;
             }
 
             @media (max-width: 768px) {
@@ -125,6 +104,7 @@ class AlligatorAnimations {
                 }
                 .alligator-visible {
                     right: 16px;
+                    animation: none;
                 }
                 .text-bubble {
                     top: -50px;
@@ -155,7 +135,7 @@ class AlligatorAnimations {
             }
 
             .bubble-content {
-                font-family: 'Fredoka', sans-serif;
+                font-family: 'Inter', sans-serif;
                 font-size: 14px;
                 font-weight: 600;
                 color: #0D2673;
@@ -221,43 +201,22 @@ class AlligatorAnimations {
         // Only start animation if we've passed the hero section
         if (!this.hasPassedHero) return;
 
-        // Swim up from bottom animation
+        // Simple entrance - just appear
         setTimeout(() => {
             this.showAnimal();
-
-            // Welcome gesture after surfacing
-            setTimeout(() => {
-                this.welcomeNewPatients();
-            }, 2000);
-        }, 600);
+        }, 500);
     }
 
     showAnimal() {
         this.alligator.style.opacity = '1';
         this.alligator.style.right = '20px';
         this.alligator.classList.add('alligator-visible');
-        this.alligator.classList.add('alligator-swimming');
     }
 
     hideAnimal() {
         this.alligator.style.opacity = '0';
         this.alligator.style.right = '-250px';
-        this.alligator.classList.remove('alligator-visible', 'alligator-swimming', 'alligator-welcoming', 'alligator-snapping');
-    }
-
-    startTailWagging() {
-        // Tail wagging is handled by CSS animation
-        // This method can be extended for more complex tail animations
-    }
-
-    welcomeNewPatients() {
-        this.alligator.classList.remove('alligator-swimming');
-        this.alligator.classList.add('alligator-welcoming');
-
-        setTimeout(() => {
-            this.alligator.classList.remove('alligator-welcoming');
-            this.alligator.classList.add('alligator-swimming');
-        }, 2500);
+        this.alligator.classList.remove('alligator-visible');
     }
 
     bindEvents() {
@@ -270,27 +229,6 @@ class AlligatorAnimations {
                     ticking = false;
                 });
                 ticking = true;
-            }
-        });
-
-        // Form interactions
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.closest('form, .form-group, input, select, textarea')) {
-                this.reactToFormInteraction();
-            }
-        });
-
-        // Button clicks
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('button, .btn, [type="submit"]')) {
-                this.reactToButtonClick();
-            }
-        });
-
-        // New patient info hover
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.closest('.new-patient, [class*="patient"], .welcome')) {
-                this.welcomeNewPatients();
             }
         });
     }
@@ -317,46 +255,7 @@ class AlligatorAnimations {
                 this.showAnimal();
             }
         }
-
-        const scrollPercent = scrollTop / (document.documentElement.scrollHeight - window.innerHeight);
-
-        // Move alligator based on scroll (similar to zebra behavior)
-        if (scrollPercent > 0.2 && scrollPercent < 0.8) {
-            this.alligator.style.right = `${20 + (scrollPercent * 30)}px`;
-            this.alligator.classList.add('alligator-swimming');
-        } else if (scrollPercent >= 0.8) {
-            this.alligator.classList.remove('alligator-swimming');
-            this.alligator.classList.add('alligator-welcoming');
-        } else {
-            this.alligator.style.right = '20px';
-            this.alligator.classList.add('alligator-swimming');
-            this.alligator.classList.remove('alligator-welcoming');
-        }
     }
-
-    reactToFormInteraction() {
-        if (!this.alligator.classList.contains('alligator-snapping')) {
-            this.alligator.classList.remove('alligator-swimming', 'alligator-welcoming');
-            this.alligator.classList.add('alligator-snapping');
-
-
-            setTimeout(() => {
-                this.alligator.classList.remove('alligator-snapping');
-                this.alligator.classList.add('alligator-swimming');
-            }, 1000);
-        }
-    }
-
-    reactToButtonClick() {
-        // Excited tail wagging for button clicks
-        this.alligator.style.animation = 'alligatorWelcome 1s ease-in-out';
-
-        setTimeout(() => {
-            this.alligator.style.animation = '';
-            this.alligator.classList.add('alligator-swimming');
-        }, 1000);
-    }
-
 
     destroy() {
         if (this.alligator) {
@@ -364,9 +263,6 @@ class AlligatorAnimations {
         }
         if (this.animationFrame) {
             cancelAnimationFrame(this.animationFrame);
-        }
-        if (this.tailWagInterval) {
-            clearInterval(this.tailWagInterval);
         }
     }
 }
