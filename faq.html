@@ -335,6 +335,49 @@
         * {
             box-sizing: border-box;
         }
+
+        /* Mobile Menu Styles */
+        .mobile-menu-overlay {
+            z-index: 9999;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu {
+            transform: translateX(0);
+        }
+
+        .hamburger-icon.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-icon.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-menu-item:active {
+            transform: scale(0.95);
+        }
+
+        /* Hide horizontal nav on mobile, show on desktop */
+        @media (max-width: 767px) {
+            .desktop-animal-nav {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .mobile-hamburger-nav, .mobile-menu-overlay {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body class="font-poppins bg-gradient-to-br from-gray-50 to-white">
@@ -347,8 +390,69 @@
         <div class="bg-shape"></div>
         <div class="bg-shape"></div>
     </div>
-    <!-- Animal Navigation Over Hero -->
-    <nav class="absolute top-20 left-0 right-0 z-30 px-2" id="animal-nav">
+    <!-- Mobile Hamburger Menu (hidden on desktop) -->
+    <div class="mobile-hamburger-nav md:hidden absolute top-8 right-4 z-40" style="top: 80px;">
+        <button id="mobile-menu-button" class="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all duration-300" aria-label="Open navigation menu">
+            <div class="hamburger-icon">
+                <span class="block w-6 h-0.5 bg-black mb-1 transition-all duration-300"></span>
+                <span class="block w-6 h-0.5 bg-black mb-1 transition-all duration-300"></span>
+                <span class="block w-6 h-0.5 bg-black transition-all duration-300"></span>
+            </div>
+        </button>
+    </div>
+
+    <!-- Mobile Menu Overlay (hidden by default) -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay md:hidden fixed inset-0 bg-black/50 z-50 opacity-0 invisible transition-all duration-300">
+        <div class="mobile-menu bg-white h-full w-80 max-w-[90vw] transform -translate-x-full transition-transform duration-300 flex flex-col">
+            <!-- Mobile Menu Header -->
+            <div class="flex items-center justify-between p-6 border-b flex-shrink-0">
+                <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-16 w-16">
+                <button id="mobile-menu-close" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Items -->
+            <div class="p-6 space-y-4 flex-1 overflow-y-auto">
+                <a href="index.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <img src="images/animals/elephant.png" alt="Home" class="w-10 h-10 object-contain">
+                    <span class="font-semibold text-gray-900 font-poppins">Home</span>
+                </a>
+                <a href="about.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <img src="images/animals/lion.png" alt="About Us" class="w-10 h-10 object-contain">
+                    <span class="font-semibold text-gray-900 font-poppins">About Us</span>
+                </a>
+                <a href="services.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <img src="images/animals/zebra.png" alt="Services" class="w-10 h-10 object-contain">
+                    <span class="font-semibold text-gray-900 font-poppins">Services</span>
+                </a>
+                <a href="team.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <img src="images/animals/alligator.png" alt="Our Team" class="w-10 h-10 object-contain">
+                    <span class="font-semibold text-gray-900 font-poppins">Our Team</span>
+                </a>
+                <a href="new-patients.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <img src="images/animals/monkey.png" alt="New Patients" class="w-10 h-10 object-contain">
+                    <span class="font-semibold text-gray-900 font-poppins">New Patients</span>
+                </a>
+                <a href="patient-portal.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <img src="images/animals/giraffe.png" alt="Patient Portal" class="w-10 h-10 object-contain">
+                    <span class="font-semibold text-gray-900 font-poppins">Patient Portal</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Footer -->
+            <div class="absolute bottom-0 left-0 right-0 p-6 border-t bg-gray-50">
+                <a href="contact.html" class="block w-full bg-orange text-white text-center py-3 rounded-lg font-semibold hover:bg-orange/90 transition-colors">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop Animal Navigation (hidden on mobile) -->
+    <nav class="desktop-animal-nav hidden md:block absolute top-20 left-0 right-0 z-30 px-2" id="animal-nav">
         <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 max-w-screen-sm mx-auto">
             <a href="index.html" class="animal-nav-item flex flex-col items-center group  ">
                 <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
@@ -924,10 +1028,10 @@
             </p>
             
             <div class="flex flex-col sm:flex-row ga justify-center">
-                <a href="tel:9049401577" class="bg-village-orange  text-white px-10 py-4 rounded-full font-bold text-lg   ">
+                <a href="tel:9049401577" class="bg-village-orange  text-white px-8 py-3 rounded-full font-bold text-lg   ">
                     Call (904) 940-1577
                 </a>
-                <a href="contact.html" class="bg-transparent border-2 border-white  text-white px-10 py-4 rounded-full font-bold text-lg  ">
+                <a href="contact.html" class="bg-transparent border-2 border-white  text-white px-8 py-3 rounded-full font-bold text-lg  ">
                     Contact Us
                 </a>
             </div>
@@ -1107,6 +1211,61 @@
 
 
 
+    </script>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const hamburgerIcon = document.querySelector('.hamburger-icon');
+            const body = document.body;
+
+            function openMobileMenu() {
+                mobileMenuOverlay.classList.add('active');
+                hamburgerIcon.classList.add('active');
+                body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            function closeMobileMenu() {
+                mobileMenuOverlay.classList.remove('active');
+                hamburgerIcon.classList.remove('active');
+                body.style.overflow = ''; // Restore scrolling
+            }
+
+            // Open menu when hamburger button is clicked
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', openMobileMenu);
+            }
+
+            // Close menu when close button is clicked
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close menu when clicking outside the menu
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.addEventListener('click', function(e) {
+                    if (e.target === mobileMenuOverlay) {
+                        closeMobileMenu();
+                    }
+                });
+            }
+
+            // Close menu when clicking on a menu item
+            const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+            mobileMenuItems.forEach(item => {
+                item.addEventListener('click', closeMobileMenu);
+            });
+
+            // Close menu with escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenuOverlay && mobileMenuOverlay.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+        });
     </script>
 
 </body>

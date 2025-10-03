@@ -964,6 +964,30 @@
                 display: none !important;
             }
         }
+
+        /* Mobile floating giraffe positioning */
+        @media (max-width: 767px) {
+            .giraffe-container {
+                position: fixed !important;
+                bottom: 20px !important;
+                right: 20px !important;
+                z-index: 30 !important;
+                transform: none !important;
+                opacity: 1 !important;
+                animation: none !important;
+            }
+
+            .giraffe-container img {
+                width: 120px !important;
+                height: 120px !important;
+                animation: giraffeStretchRock 4s ease-in-out infinite !important;
+            }
+
+            /* Hide giraffe text bubble on mobile */
+            .giraffe-text-bubble {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -978,7 +1002,7 @@
     </div>
 
     <!-- Mobile Hamburger Menu (hidden on desktop) -->
-    <div class="mobile-hamburger-nav md:hidden absolute top-8 left-4 z-40">
+    <div class="mobile-hamburger-nav md:hidden absolute top-8 right-4 z-40" style="top: 80px;">
         <button id="mobile-menu-button" class="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all duration-300" aria-label="Open navigation menu">
             <div class="hamburger-icon">
                 <span class="block w-6 h-0.5 bg-black mb-1 transition-all duration-300"></span>
@@ -990,9 +1014,9 @@
 
     <!-- Mobile Menu Overlay (hidden by default) -->
     <div id="mobile-menu-overlay" class="mobile-menu-overlay md:hidden fixed inset-0 bg-black/50 z-50 opacity-0 invisible transition-all duration-300">
-        <div class="mobile-menu bg-white h-full w-80 max-w-[90vw] transform -translate-x-full transition-transform duration-300">
+        <div class="mobile-menu bg-white h-full w-80 max-w-[90vw] transform -translate-x-full transition-transform duration-300 flex flex-col">
             <!-- Mobile Menu Header -->
-            <div class="flex items-center justify-between p-6 border-b">
+            <div class="flex items-center justify-between p-6 border-b flex-shrink-0">
                 <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-16 w-16">
                 <button id="mobile-menu-close" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1002,7 +1026,7 @@
             </div>
 
             <!-- Mobile Menu Items -->
-            <div class="p-6 space-y-4">
+            <div class="p-6 space-y-4 flex-1 overflow-y-auto">
                 <a href="index.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
                     <img src="images/animals/elephant.png" alt="Home" class="w-10 h-10 object-contain">
                     <span class="font-semibold text-gray-900 font-poppins">Home</span>
@@ -1110,6 +1134,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-8 items-center">
                 <div class="text-right lg:text-right ml-auto">
+                    <!-- Mobile Animal Above Title -->
+                    <div class="flex justify-center lg:hidden mb-6">
+                        <div class="giraffe-container relative">
+                            <img src="images/animals/giraffe.png" alt="Friendly Giraffe" class="w-40 h-40 object-contain">
+                        </div>
+                    </div>
+
                     <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 sm:mb-12 font-fredoka text-white sm:whitespace-nowrap" style="-webkit-text-stroke: 2px white;">
                         Patient Portal
                     </h1>
@@ -1121,13 +1152,14 @@
                     <div class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-end items-center">
                         <a href="https://8042-1.portal.athenahealth.com/"
                            target="_blank"
-                           class="portal-button text-white font-bold py-4 px-8 rounded-xl text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 fun-button click-ripple">
+                           class="portal-button text-white font-bold px-8 py-3 rounded-xl text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 fun-button click-ripple">
                             <i class="fas fa-sign-in-alt mr-3"></i>
                             Access Your Portal
                         </a>
                     </div>
                 </div>
-                <div class="flex justify-center lg:justify-end">
+                <!-- Desktop Animal On Side -->
+                <div class="hidden lg:flex justify-center lg:justify-end">
                     <div class="giraffe-container relative">
                         <img src="images/animals/giraffe.png" alt="Friendly Giraffe" class="w-80 h-80 object-contain">
                     </div>
