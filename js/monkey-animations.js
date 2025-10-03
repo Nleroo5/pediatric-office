@@ -232,8 +232,8 @@ class MonkeyAnimations {
 
             @media (max-width: 768px) {
                 .monkey-animation {
-                    width: 8px;
-                    height: 8px;
+                    width: 36px;
+                    height: 36px;
                     bottom: 16px;
                     right: -200px;
                     top: auto;

@@ -272,163 +272,6 @@
             transform: translateY(-4px);
         }
 
-        /* Hero Elephant Animations */
-        .elephant-container img {
-            animation: elephantSubtleRock 4s ease-in-out infinite;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .elephant-rock {
-            animation: elephantRockSideToSide 3s ease-in-out infinite;
-        }
-
-        @keyframes elephantSubtleRock {
-            0%, 100% {
-                transform: translateX(0px);
-            }
-            25% {
-                transform: translateX(-3px);
-            }
-            50% {
-                transform: translateX(0px);
-            }
-            75% {
-                transform: translateX(3px);
-            }
-        }
-
-        @keyframes elephantRockSideToSide {
-            0%, 100% {
-                transform: rotate(0deg) translateX(0px);
-            }
-            25% {
-                transform: rotate(-2deg) translateX(-8px);
-            }
-            50% {
-                transform: rotate(0deg) translateX(0px);
-            }
-            75% {
-                transform: rotate(2deg) translateX(8px);
-            }
-        }
-
-
-        /* Footprint effects */
-        .elephant-footprint {
-            position: absolute;
-            bottom: -20px;
-            width: 30px;
-            height: 20px;
-            background: rgba(59, 157, 132, 0.3);
-            border-radius: 50%;
-            opacity: 0;
-            animation: footprintAppear 3s ease-in-out infinite;
-        }
-
-        .elephant-footprint:nth-child(2) { left: 20%; animation-delay: 4s; }
-        .elephant-footprint:nth-child(3) { left: 40%; animation-delay: 4.5s; }
-        .elephant-footprint:nth-child(4) { left: 60%; animation-delay: 5s; }
-
-        @keyframes footprintAppear {
-            0%, 90%, 100% { opacity: 0; transform: scale(0); }
-             20%, 70% { opacity: 0.6; transform: scale(1); }
-        }
-
-        /* Gentle bounce animation for floating elephant */
-        .elephant-gentle-bounce {
-            animation: elephantGentleBounce 2s ease-in-out infinite;
-        }
-
-        @keyframes elephantGentleBounce {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        /* Elephant Text Bubble Styles */
-        .elephant-text-bubble {
-            position: absolute;
-            top: -80px;
-            left: -120px;
-            background: #ffffff;
-            border: 3px solid #F2B138;
-            border-radius: 20px;
-            padding: 12px 16px;
-            opacity: 0;
-            transform: scale(0.5) translateY(20px);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            pointer-events: none;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            z-index: 1000;
-            min-width: 180px;
-        }
-
-        .elephant-text-bubble .bubble-content {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: #0D2673;
-            text-align: center;
-            line-height: 1.3;
-            white-space: nowrap;
-        }
-
-        .elephant-text-bubble .bubble-tail {
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 15px solid #F2B138;
-        }
-
-        .elephant-text-bubble .bubble-tail::after {
-            content: '';
-            position: absolute;
-            top: -18px;
-            left: -12px;
-            width: 0;
-            height: 0;
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
-            border-top: 12px solid #ffffff;
-        }
-
-        #floating-elephant:hover .elephant-text-bubble {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            .elephant-text-bubble {
-                top: -70px;
-                left: -100px;
-                min-width: 150px;
-                padding: 10px 14px;
-            }
-            .elephant-text-bubble .bubble-content {
-                font-size: 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .elephant-text-bubble {
-                top: -60px;
-                left: -80px;
-                min-width: 120px;
-                padding: 8px 12px;
-            }
-            .elephant-text-bubble .bubble-content {
-                font-size: 11px;
-            }
-        }
 
         /* Mobile-Specific Optimizations */
         @media (max-width: 480px) {
@@ -938,17 +781,6 @@
         </div>
     </footer>
 
-    <!-- Floating Animal (Elephant) -->
-    <div id="floating-elephant" class="fixed bottom-4 right-4 z-50 opacity-0 transform translate-y-full transition-all duration-500 ease-in-out">
-        <div class="relative">
-            <img src="images/animals/elephant.png" alt="Friendly Elephant" class="w-2 h-2 object-contain elephant-gentle-bounce cursor-pointer hover:scale-110 transition-transform duration-300">
-            <div class="absolute inset-0 bg-white/20 rounded-full blur-sm -z-10"></div>
-            <div class="elephant-text-bubble">
-                <div class="bubble-content">Schedule your visit today!</div>
-                <div class="bubble-tail"></div>
-            </div>
-        </div>
-    </div>
 
     <!-- Animal Animation Script -->
     <script>
@@ -1165,6 +997,9 @@
             });
         });
     </script>
+
+    <!-- Elephant Animation Script -->
+    <script src="js/elephant-animations.js"></script>
 
 </body>
 </html>

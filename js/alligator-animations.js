@@ -53,8 +53,8 @@ class AlligatorAnimations {
                 position: fixed;
                 top: 70vh;
                 right: -250px;
-                width: 240px;
-                height: 240px;
+                width: 220px;
+                height: 220px;
                 z-index: 100;
                 pointer-events: auto;
                 transform: translateY(-50%);
@@ -116,8 +116,8 @@ class AlligatorAnimations {
 
             @media (max-width: 768px) {
                 .alligator-animation {
-                    width: 8px;
-                    height: 8px;
+                    width: 36px;
+                    height: 36px;
                     bottom: 16px;
                     right: -200px;
                     top: auto;

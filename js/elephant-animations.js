@@ -1,5 +1,5 @@
 /**
- * Elephant Animation Controller for Contact Page
+ * Elephant Animation Controller for Homepage
  * Handles page load and scroll-based animations
  */
 
@@ -9,7 +9,6 @@ class ElephantAnimations {
         this.isInitialized = false;
         this.scrollPosition = 0;
         this.animationFrame = null;
-        this.trunkWaveInterval = null;
         this.hasPassedHero = false;
         this.heroScrollThreshold = 0;
 
@@ -30,8 +29,151 @@ class ElephantAnimations {
         this.createElephantElement();
         this.bindEvents();
         this.checkInitialScroll();
-        this.startTrunkWaving();
         this.isInitialized = true;
+    }
+
+    createElephantElement() {
+        // Create elephant container
+        this.elephant = document.createElement('div');
+        this.elephant.className = 'elephant-animation';
+        this.elephant.innerHTML = `
+            <img src="images/animals/elephant.png" alt="Elephant" class="elephant-image">
+            <div class="text-bubble">
+                <div class="bubble-content">Schedule your visit today!</div>
+                <div class="bubble-tail"></div>
+            </div>
+        `;
+
+        // Add CSS styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .elephant-animation {
+                position: fixed;
+                top: 70vh;
+                right: -250px;
+                width: 220px;
+                height: 220px;
+                z-index: 100;
+                pointer-events: auto;
+                transform: translateY(-50%);
+                opacity: 0;
+                transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .elephant-image {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+                z-index: 2;
+            }
+
+            @keyframes elephantWalk {
+                0%, 100% { transform: translateY(0) rotateZ(0deg); }
+                25% { transform: translateY(-5px) rotateZ(1deg); }
+                75% { transform: translateY(-3px) rotateZ(-1deg); }
+            }
+
+            @keyframes elephantTrumpet {
+                0%, 100% { transform: scale(1) rotateZ(0deg); }
+                50% { transform: scale(1.05) rotateZ(3deg); }
+            }
+
+            .elephant-walking {
+                animation: elephantWalk 3s ease-in-out infinite;
+            }
+
+            .elephant-trumpeting {
+                animation: elephantTrumpet 1.5s ease-in-out;
+            }
+
+            .elephant-visible {
+                right: 20px;
+            }
+
+            @media (max-width: 768px) {
+                .elephant-animation {
+                    width: 36px;
+                    height: 36px;
+                    bottom: 16px;
+                    right: -200px;
+                    top: auto;
+                    transform: none;
+                }
+                .elephant-visible {
+                    right: 16px;
+                }
+                .text-bubble {
+                    top: -50px;
+                    left: -80px;
+                    min-width: 120px;
+                }
+                .bubble-content {
+                    font-size: 11px;
+                }
+            }
+
+            /* Text Bubble Styles */
+            .text-bubble {
+                position: absolute;
+                top: -80px;
+                left: -120px;
+                background: #ffffff;
+                border: 3px solid #F2B138;
+                border-radius: 20px;
+                padding: 12px 16px;
+                opacity: 0;
+                transform: scale(0.5) translateY(20px);
+                transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                pointer-events: none;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                z-index: 1000;
+                min-width: 180px;
+            }
+
+            .bubble-content {
+                font-family: 'Fredoka', sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                color: #0D2673;
+                text-align: center;
+                line-height: 1.3;
+                white-space: nowrap;
+            }
+
+            .bubble-tail {
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 0;
+                border-left: 15px solid transparent;
+                border-right: 15px solid transparent;
+                border-top: 15px solid #F2B138;
+            }
+
+            .bubble-tail::after {
+                content: '';
+                position: absolute;
+                top: -18px;
+                left: -12px;
+                width: 0;
+                height: 0;
+                border-left: 12px solid transparent;
+                border-right: 12px solid transparent;
+                border-top: 12px solid #ffffff;
+            }
+
+            .elephant-animation:hover .text-bubble {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        `;
+
+        document.head.appendChild(style);
+        document.body.appendChild(this.elephant);
     }
 
     calculateHeroThreshold() {
@@ -53,125 +195,19 @@ class ElephantAnimations {
         }
     }
 
-    createElephantElement() {
-        // Create elephant container
-        this.elephant = document.createElement('div');
-        this.elephant.className = 'elephant-animation';
-        this.elephant.innerHTML = `
-            <img src="images/animals/elephant.png" alt="Elephant" class="elephant-image">
-            <div class="elephant-trunk"></div>
-        `;
-
-        // Add CSS styles
-        const style = document.createElement('style');
-        style.textContent = `
-            .elephant-animation {
-                position: fixed;
-                top: 70vh;
-                right: -280px;
-                width: 280px;
-                height: 280px;
-                z-index: 100;
-                pointer-events: none;
-                transform: translateY(-50%);
-                opacity: 0;
-                transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-
-            .elephant-image {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
-                z-index: 2;
-            }
-
-            .elephant-trunk {
-                position: absolute;
-                top: 40%;
-                left: 10%;
-                width: 30px;
-                height: 60px;
-                background: linear-gradient(180deg, #8B4513, #A0522D);
-                border-radius: 15px 15px 8px 8px;
-                z-index: 3;
-                transform-origin: top center;
-                animation: trunkWave 4s ease-in-out infinite;
-            }
-
-            @keyframes trunkWave {
-                0%, 100% { transform: rotateZ(0deg) rotateX(0deg); }
-                25% { transform: rotateZ(-10deg) rotateX(5deg); }
-                75% { transform: rotateZ(10deg) rotateX(-5deg); }
-            }
-
-            @keyframes elephantWalk {
-                0%, 100% { transform: translateX(0) rotateZ(0deg); }
-                50% { transform: translateX(8px) rotateZ(1deg); }
-            }
-
-            @keyframes elephantTrumpet {
-                0%, 100% { transform: scale(1) rotateZ(0deg); }
-                25% { transform: scale(1.05) rotateZ(-2deg); }
-                75% { transform: scale(1.05) rotateZ(2deg); }
-            }
-
-            @keyframes elephantBow {
-                0%, 100% { transform: rotateX(0deg) scale(1); }
-                50% { transform: rotateX(10deg) scale(0.95); }
-            }
-
-            .elephant-walking {
-                animation: elephantWalk 3s ease-in-out infinite;
-            }
-
-            .elephant-trumpeting {
-                animation: elephantTrumpet 2s ease-in-out;
-            }
-
-            .elephant-bowing {
-                animation: elephantBow 1.8s ease-in-out;
-            }
-
-            .elephant-visible {
-                right: 20px;
-                opacity: 1;
-            }
-
-            @media (max-width: 768px) {
-                .elephant-animation {
-                    width: 140px;
-                    height: 140px;
-                    top: 70vh;
-                }
-                .elephant-visible {
-                    right: 10px;
-                }
-                .elephant-trunk {
-                    width: 15px;
-                    height: 30px;
-                }
-            }
-        `;
-
-        document.head.appendChild(style);
-        document.body.appendChild(this.elephant);
-    }
-
     startPageLoadAnimation() {
         // Only start animation if we've passed the hero section
         if (!this.hasPassedHero) return;
 
-        // Stomp into view animation
+        // Simple entrance - just appear
         setTimeout(() => {
             this.showAnimal();
 
-            // Trumpet greeting after entrance
+            // Show trumpet animation after entrance
             setTimeout(() => {
-                this.trumpetGreeting();
-            }, 2500);
-        }, 700);
+                this.showTrumpet();
+            }, 2000);
+        }, 500);
     }
 
     showAnimal() {
@@ -183,23 +219,18 @@ class ElephantAnimations {
 
     hideAnimal() {
         this.elephant.style.opacity = '0';
-        this.elephant.style.right = '-280px';
-        this.elephant.classList.remove('elephant-visible', 'elephant-walking', 'elephant-trumpeting', 'elephant-bowing');
+        this.elephant.style.right = '-250px';
+        this.elephant.classList.remove('elephant-visible', 'elephant-walking', 'elephant-trumpeting');
     }
 
-    startTrunkWaving() {
-        // Trunk waving is handled by CSS animation
-        // This method can be extended for more complex trunk animations
-    }
-
-    trumpetGreeting() {
+    showTrumpet() {
         this.elephant.classList.remove('elephant-walking');
         this.elephant.classList.add('elephant-trumpeting');
 
         setTimeout(() => {
             this.elephant.classList.remove('elephant-trumpeting');
             this.elephant.classList.add('elephant-walking');
-        }, 2500);
+        }, 2000);
     }
 
     bindEvents() {
@@ -215,24 +246,10 @@ class ElephantAnimations {
             }
         });
 
-        // Contact form interactions
+        // Homepage content hover interactions
         document.addEventListener('mouseover', (e) => {
-            if (e.target.closest('form, .form-group, input, select, textarea')) {
-                this.reactToFormInteraction();
-            }
-        });
-
-        // Contact info hover
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.closest('.contact-info, [class*="contact"], .location, .phone')) {
-                this.trumpetGreeting();
-            }
-        });
-
-        // Button clicks
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('button, .btn, [type="submit"]')) {
-                this.reactToButtonClick();
+            if (e.target.closest('.hero-content, .main-content, [class*="home"]')) {
+                this.reactToContentHover();
             }
         });
     }
@@ -262,37 +279,25 @@ class ElephantAnimations {
 
         const scrollPercent = scrollTop / (document.documentElement.scrollHeight - window.innerHeight);
 
-        // Keep elephant in bottom right, just change animations based on scroll
+        // Keep elephant in position, just change animations based on scroll
         if (scrollPercent >= 0.9) {
             this.elephant.classList.remove('elephant-walking');
-            this.elephant.classList.add('elephant-bowing');
+            this.showTrumpet();
         } else {
-            this.elephant.classList.remove('elephant-bowing');
             this.elephant.classList.add('elephant-walking');
         }
     }
 
-    reactToFormInteraction() {
+    reactToContentHover() {
         if (!this.elephant.classList.contains('elephant-trumpeting')) {
-            this.elephant.classList.remove('elephant-walking', 'elephant-bowing');
+            this.elephant.classList.remove('elephant-walking');
             this.elephant.classList.add('elephant-trumpeting');
 
             setTimeout(() => {
                 this.elephant.classList.remove('elephant-trumpeting');
                 this.elephant.classList.add('elephant-walking');
-            }, 2000);
+            }, 1500);
         }
-    }
-
-    reactToButtonClick() {
-        // Excited trumpeting for button clicks
-        this.elephant.classList.remove('elephant-walking', 'elephant-bowing');
-        this.elephant.classList.add('elephant-trumpeting');
-
-        setTimeout(() => {
-            this.elephant.classList.remove('elephant-trumpeting');
-            this.elephant.classList.add('elephant-walking');
-        }, 2500);
     }
 
     destroy() {
@@ -302,14 +307,11 @@ class ElephantAnimations {
         if (this.animationFrame) {
             cancelAnimationFrame(this.animationFrame);
         }
-        if (this.trunkWaveInterval) {
-            clearInterval(this.trunkWaveInterval);
-        }
     }
 }
 
 // Initialize elephant animations when script loads
-// Only initialize elephant animations on contact page
-if (window.location.pathname.includes('contact.html') || document.title.includes('Contact')) {
+// Only initialize elephant animations on homepage
+if (window.location.pathname.includes('index.html') || document.title.includes('Home') || window.location.pathname === '/') {
     new ElephantAnimations();
 }
