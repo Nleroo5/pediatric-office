@@ -806,6 +806,34 @@
                 top: 1rem !important;
                 right: 1rem !important;
             }
+
+            /* Compact Mobile Footer */
+            footer {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            .footer-privia-section {
+                display: none !important;
+            }
+
+            .footer-providers-section {
+                display: none !important;
+            }
+
+            .footer-main-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+            .footer-logo img {
+                height: 3rem !important;
+            }
+
+            .footer-copyright {
+                margin-top: 1.5rem !important;
+                padding-top: 1.5rem !important;
+            }
         }
 
     </style>
@@ -1300,7 +1328,7 @@
     <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Privia Medical Group Partnership - Top Section -->
-            <div class="mb-12 pb-8 border-b border-gray-700">
+            <div class="footer-privia-section mb-12 pb-8 border-b border-gray-700">
                 <div class="flex flex-col lg:flex-row items-center justify-center gap-6">
                     <div class="flex items-center gap-4">
                         <div class="bg-white/90 rounded-lg p-3">
@@ -1317,21 +1345,26 @@
             </div>
 
             <!-- Main Footer Content -->
-            <div class="grid md:grid-cols-4 gap-8">
+            <div class="footer-main-grid grid md:grid-cols-4 gap-8">
                 <!-- Practice Info -->
-                <div>
-                    <div class="flex items-center mb-4">
+                <div class="footer-practice-info">
+                    <div class="footer-logo flex items-center mb-4">
                         <img src="images/footer-logo.png" alt="Village Pediatrics" class="h-24 w-auto">
                         <div class="ml-3">
                             <div class="font-semibold">Village Pediatrics</div>
                             <div class="text-sm text-gray-400">St. Augustine, FL</div>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm">Trusted pediatric care since 2008.</p>
+                    <p class="text-gray-400 text-sm mb-3">Trusted pediatric care since 2008.</p>
+                    <div class="text-sm text-gray-400 space-y-1">
+                        <p>319 W Town Pl, STE 1</p>
+                        <p>St. Augustine, FL 32092</p>
+                        <p><a href="tel:9049401577" class="phone-link touch-target" aria-label="Call Village Pediatrics">(904) 940-1577</a></p>
+                    </div>
                 </div>
 
                 <!-- Quick Links -->
-                <div>
+                <div class="footer-links">
                     <h4 class="font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li><a href="index.html" class="hover:text-white">Home</a></li>
@@ -1343,7 +1376,7 @@
                 </div>
 
                 <!-- Our Providers -->
-                <div>
+                <div class="footer-providers-section">
                     <h4 class="font-semibold mb-4">Our Providers</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li>Dr. Austin Dupont, MD</li>
@@ -1354,18 +1387,18 @@
                 </div>
 
                 <!-- Contact -->
-                <div>
+                <div class="footer-contact footer-providers-section">
                     <h4 class="font-semibold mb-4">Contact</h4>
                     <div class="text-sm text-gray-400 space-y-1">
                         <p>319 W Town Pl, STE 1</p>
                         <p>St. Augustine, FL 32092</p>
-                        <p>(904) 940-1577</p>
+                        <p><a href="tel:9049401577" class="phone-link touch-target" aria-label="Call Village Pediatrics">(904) 940-1577</a></p>
                     </div>
                 </div>
             </div>
 
             <!-- Copyright and Legal -->
-            <div class="border-t border-gray-700 mt-8 pt-8">
+            <div class="footer-copyright border-t border-gray-700 mt-8 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
                     <p>&copy; 2025 Village Pediatrics. All rights reserved.</p>
                     <div class="flex space-x-6 mt-4 md:mt-0">
