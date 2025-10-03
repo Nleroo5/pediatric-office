@@ -689,24 +689,44 @@
                     </div>
 
                     <!-- Desktop Dropdown (visible on desktop only) -->
-                    <div class="faq-tabs-desktop p-6">
-                        <div class="max-w-md mx-auto">
-                            <label for="desktop-faq-category-select" class="block text-sm font-semibold text-gray-700 mb-2">Select FAQ Category</label>
-                            <div class="relative">
-                                <select id="desktop-faq-category-select" class="filter-tag w-full px-6 py-4 text-lg font-semibold text-navy bg-white border-2 border-navy rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-teal focus:border-teal transition-all shadow-md hover:shadow-lg">
-                                    <option value="all" selected>All Questions</option>
-                                    <option value="appointments">Appointments</option>
-                                    <option value="new-patients">New Patients</option>
-                                    <option value="insurance">Insurance</option>
-                                    <option value="services">Services</option>
-                                    <option value="after-hours">After Hours</option>
-                                    <option value="policies">Policies</option>
-                                </select>
-                                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                                    <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
+                    <div class="faq-tabs-desktop p-8">
+                        <div class="max-w-2xl mx-auto">
+                            <!-- Glass Morphism Container -->
+                            <div class="glass-card rounded-3xl p-8 shadow-2xl border border-white/20 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-xl">
+                                <!-- Label with Icon -->
+                                <div class="flex items-center justify-center gap-3 mb-6">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-orange to-yellow-400 rounded-full flex items-center justify-center shadow-lg">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl font-bold font-fredoka bg-gradient-to-r from-navy to-teal bg-clip-text text-transparent">
+                                        Browse by Category
+                                    </h3>
                                 </div>
+
+                                <!-- Dropdown -->
+                                <div class="relative">
+                                    <select id="desktop-faq-category-select" class="filter-tag w-full px-8 py-5 text-xl font-semibold text-navy bg-white/80 backdrop-blur-sm border-2 border-transparent bg-gradient-to-r from-navy/10 to-teal/10 rounded-2xl appearance-none cursor-pointer focus:outline-none focus:ring-4 focus:ring-teal/30 focus:border-teal focus:bg-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] hover:bg-white font-poppins">
+                                        <option value="all" selected>✨ All Questions</option>
+                                        <option value="appointments">📅 Appointments & Scheduling</option>
+                                        <option value="new-patients">👶 New Patients</option>
+                                        <option value="insurance">💳 Insurance & Billing</option>
+                                        <option value="services">🏥 Medical Services</option>
+                                        <option value="after-hours">🌙 After Hours & Emergencies</option>
+                                        <option value="policies">📋 Practice Policies</option>
+                                    </select>
+                                    <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none">
+                                        <svg class="w-7 h-7 text-navy transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <!-- Helper Text -->
+                                <p class="text-center text-sm text-gray-600 mt-4 font-poppins">
+                                    Select a category to filter questions, or browse all FAQs below
+                                </p>
                             </div>
                         </div>
                     </div>
