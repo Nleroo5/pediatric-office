@@ -220,6 +220,18 @@
             .footer-tagline {
                 display: none !important;
             }
+
+            /* Hide animal navigation on mobile */
+            #animal-nav {
+                display: none !important;
+            }
+        }
+
+        /* Show animal navigation on desktop */
+        @media (min-width: 769px) {
+            #animal-nav {
+                display: block !important;
+            }
         }
 
         /* High contrast mode support */
