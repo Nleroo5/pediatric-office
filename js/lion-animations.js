@@ -155,8 +155,8 @@ class LionAnimations {
 
             @media (max-width: 768px) {
                 .lion-animation {
-                    width: 65px;
-                    height: 65px;
+                    width: 75px;
+                    height: 75px;
                     bottom: 16px;
                     right: -200px;
                     top: auto;
@@ -168,7 +168,7 @@ class LionAnimations {
                 .text-bubble {
                     top: -40px;
                     left: -15px;
-                    min-width: 45px;
+                    min-width: 32px;
                     padding: 6px 10px;
                 }
                 .bubble-content {
