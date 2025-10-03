@@ -711,20 +711,28 @@
                                 Insurance
                             </button>
 
-                            <!-- Services Tab -->
-                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="services">
-                                Services
-                            </button>
+                            <!-- More Dropdown Tab -->
+                            <div class="relative flex-1 min-w-0">
+                                <button id="more-dropdown-btn" class="tab-button w-full py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 flex items-center justify-center gap-2" type="button">
+                                    More
+                                    <svg class="w-5 h-5 transition-transform" id="more-dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
 
-                            <!-- After Hours Tab -->
-                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="after-hours">
-                                After Hours
-                            </button>
-
-                            <!-- Policies Tab -->
-                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="policies">
-                                Policies
-                            </button>
+                                <!-- Dropdown Menu -->
+                                <div id="more-dropdown-menu" class="hidden absolute top-full left-0 w-full bg-white border border-gray-200 rounded-b-lg shadow-lg z-10">
+                                    <button class="filter-tag dropdown-item w-full py-3 px-6 text-left font-semibold text-base text-gray-700 hover:bg-gray-100 transition-colors" data-category="services">
+                                        Services
+                                    </button>
+                                    <button class="filter-tag dropdown-item w-full py-3 px-6 text-left font-semibold text-base text-gray-700 hover:bg-gray-100 transition-colors" data-category="after-hours">
+                                        After Hours
+                                    </button>
+                                    <button class="filter-tag dropdown-item w-full py-3 px-6 text-left font-semibold text-base text-gray-700 hover:bg-gray-100 rounded-b-lg transition-colors" data-category="policies">
+                                        Policies
+                                    </button>
+                                </div>
+                            </div>
                         </nav>
                     </div>
                 </div>
@@ -1330,11 +1338,18 @@
                     t.classList.add('bg-gray-200', 'text-gray-700');
                     t.classList.remove('text-white');
                 });
-                
+
+                // Also clear "More" button active state if clicking main tabs
+                const moreBtn = document.getElementById('more-dropdown-btn');
+                if (moreBtn && !this.classList.contains('dropdown-item')) {
+                    moreBtn.classList.remove('active', 'bg-navy', 'text-white');
+                    moreBtn.classList.add('text-gray-600');
+                }
+
                 this.classList.add('active');
                 this.classList.remove('bg-gray-200', 'text-gray-700');
                 this.classList.add('text-white');
-                
+
                 currentFilter = this.dataset.category;
                 applyCurrentFilter();
             });
@@ -1381,9 +1396,53 @@
             });
         }
 
+        // Desktop More Dropdown functionality
+        const moreDropdownBtn = document.getElementById('more-dropdown-btn');
+        const moreDropdownMenu = document.getElementById('more-dropdown-menu');
+        const moreDropdownIcon = document.getElementById('more-dropdown-icon');
+
+        if (moreDropdownBtn && moreDropdownMenu) {
+            // Toggle dropdown on button click
+            moreDropdownBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isHidden = moreDropdownMenu.classList.contains('hidden');
+
+                if (isHidden) {
+                    moreDropdownMenu.classList.remove('hidden');
+                    moreDropdownIcon.style.transform = 'rotate(180deg)';
+                } else {
+                    moreDropdownMenu.classList.add('hidden');
+                    moreDropdownIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!moreDropdownBtn.contains(e.target) && !moreDropdownMenu.contains(e.target)) {
+                    moreDropdownMenu.classList.add('hidden');
+                    moreDropdownIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // Close dropdown when a dropdown item is clicked
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    moreDropdownMenu.classList.add('hidden');
+                    moreDropdownIcon.style.transform = 'rotate(0deg)';
+
+                    // Update "More" button appearance when dropdown item is active
+                    const selectedCategory = this.dataset.category;
+                    if (['services', 'after-hours', 'policies'].includes(selectedCategory)) {
+                        moreDropdownBtn.classList.add('active', 'bg-navy', 'text-white');
+                        moreDropdownBtn.classList.remove('text-gray-600');
+                    }
+                });
+            });
+        }
+
         // Scroll to top functionality
         const scrollToTopButton = document.getElementById('scrollToTop');
-        
+
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
                 scrollToTopButton.classList.add('visible');
