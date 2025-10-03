@@ -138,8 +138,33 @@
 
         @media (max-width: 768px) {
             .contact-btn-mobile {
-                padding: 0.35rem 0.875rem !important;
-                font-size: 0.4375rem !important;
+                background: #3B9D84 !important;
+                color: white !important;
+                padding: 0.5rem 1rem !important;
+                font-size: 0.75rem !important;
+                border-radius: 9999px !important;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+            }
+
+            .mobile-hamburger-nav {
+                top: 1rem !important;
+                left: 1rem !important;
+                right: auto !important;
+            }
+
+            .mobile-hamburger-nav button {
+                background: white !important;
+                padding: 0.75rem !important;
+            }
+
+            .mobile-hamburger-nav .hamburger-icon span {
+                background: #3B9D84 !important;
+                border-radius: 2px !important;
+            }
+
+            .contact-btn-container-mobile {
+                top: 1rem !important;
+                right: 1rem !important;
             }
         }
     </style>
@@ -195,8 +220,8 @@
     </div>
 
     <!-- Contact Us Button in top right -->
-    <div class="absolute top-8 right-8 z-20">
-        <a href="contact.html" class="contact-btn-mobile bg-orange/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold font-poppins text-lg hover:bg-orange hover:scale-105 transition-all duration-300 shadow-lg">
+    <div class="contact-btn-container-mobile absolute top-4 right-4 z-20 md:top-8 md:right-8">
+        <a href="contact.html" class="contact-btn-mobile bg-teal text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg md:bg-orange/90 md:backdrop-blur-sm md:px-6 md:py-3 md:text-lg">
             Contact Us
         </a>
     </div>
