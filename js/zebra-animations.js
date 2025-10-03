@@ -120,8 +120,8 @@ class ZebraAnimations {
 
             @media (max-width: 768px) {
                 .zebra-animation {
-                    width: 35px;
-                    height: 35px;
+                    width: 8px;
+                    height: 8px;
                     bottom: 16px;
                     right: -200px;
                     top: auto;
