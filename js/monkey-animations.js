@@ -232,12 +232,15 @@ class MonkeyAnimations {
 
             @media (max-width: 768px) {
                 .monkey-animation {
-                    width: 120px;
-                    height: 120px;
-                    top: 30px;
+                    width: 35px;
+                    height: 35px;
+                    bottom: 16px;
+                    right: -200px;
+                    top: auto;
+                    transform: none;
                 }
                 .monkey-visible {
-                    right: 10px;
+                    right: 16px;
                 }
                 .vine { display: none; }
                 .text-bubble {
@@ -247,48 +250,6 @@ class MonkeyAnimations {
                 }
                 .bubble-content {
                     font-size: 11px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .monkey-animation {
-                    width: 150px;
-                    height: 150px;
-                    top: 60px;
-                    right: -180px;
-                }
-                .monkey-visible {
-                    right: 2px;
-                }
-                .text-bubble {
-                    top: -45px;
-                    left: -70px;
-                    min-width: 100px;
-                    padding: 8px 12px;
-                }
-                .bubble-content {
-                    font-size: 10px;
-                }
-            }
-
-            @media (max-width: 320px) {
-                .monkey-animation {
-                    width: 120px;
-                    height: 120px;
-                    top: 50px;
-                    right: -150px;
-                }
-                .monkey-visible {
-                    right: 1px;
-                }
-                .text-bubble {
-                    top: -40px;
-                    left: -60px;
-                    min-width: 90px;
-                    padding: 6px 10px;
-                }
-                .bubble-content {
-                    font-size: 9px;
                 }
             }
 
@@ -572,7 +533,7 @@ class MonkeyAnimations {
 }
 
 // Initialize monkey animations when script loads
-// Only initialize monkey animations on patient portal page
-if (window.location.pathname.includes('patient-portal.html') || document.title.includes('Patient Portal')) {
+// Only initialize monkey animations on new patients page
+if (window.location.pathname.includes('new-patients.html') || document.title.includes('New Patients')) {
     new MonkeyAnimations();
 }

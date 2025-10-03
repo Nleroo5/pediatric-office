@@ -206,8 +206,8 @@ class LionAnimations {
 
             @media (max-width: 768px) {
                 .lion-animation {
-                    width: 120px;
-                    height: 120px;
+                    width: 35px;
+                    height: 35px;
                     bottom: 16px;
                     right: -200px;
                     top: auto;
