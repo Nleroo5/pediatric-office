@@ -688,52 +688,27 @@
                         </select>
                     </div>
 
-                    <!-- Desktop Tabs (visible on desktop only) -->
-                    <div class="faq-tabs-desktop border-b border-gray-200">
-                        <nav class="flex flex-wrap" aria-label="FAQ Categories">
-                            <!-- All Questions Tab -->
-                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-navy bg-navy text-white active" data-category="all">
-                                All Questions
-                            </button>
-
-                            <!-- Appointments Tab -->
-                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="appointments">
-                                Appointments
-                            </button>
-
-                            <!-- New Patients Tab -->
-                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="new-patients">
-                                New Patients
-                            </button>
-
-                            <!-- Insurance Tab -->
-                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="insurance">
-                                Insurance
-                            </button>
-
-                            <!-- More Dropdown Tab -->
-                            <div class="relative flex-1 min-w-0">
-                                <button id="more-dropdown-btn" class="tab-button w-full py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 flex items-center justify-center gap-2" type="button">
-                                    More
-                                    <svg class="w-5 h-5 transition-transform" id="more-dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- Desktop Dropdown (visible on desktop only) -->
+                    <div class="faq-tabs-desktop p-6">
+                        <div class="max-w-md mx-auto">
+                            <label for="desktop-faq-category-select" class="block text-sm font-semibold text-gray-700 mb-2">Select FAQ Category</label>
+                            <div class="relative">
+                                <select id="desktop-faq-category-select" class="filter-tag w-full px-6 py-4 text-lg font-semibold text-navy bg-white border-2 border-navy rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-teal focus:border-teal transition-all shadow-md hover:shadow-lg">
+                                    <option value="all" selected>All Questions</option>
+                                    <option value="appointments">Appointments</option>
+                                    <option value="new-patients">New Patients</option>
+                                    <option value="insurance">Insurance</option>
+                                    <option value="services">Services</option>
+                                    <option value="after-hours">After Hours</option>
+                                    <option value="policies">Policies</option>
+                                </select>
+                                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                                    <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
-                                </button>
-
-                                <!-- Dropdown Menu -->
-                                <div id="more-dropdown-menu" class="hidden absolute top-full left-0 w-full bg-white border border-gray-200 rounded-b-lg shadow-lg z-10">
-                                    <button class="filter-tag dropdown-item w-full py-3 px-6 text-left font-semibold text-base text-gray-700 hover:bg-gray-100 transition-colors" data-category="services">
-                                        Services
-                                    </button>
-                                    <button class="filter-tag dropdown-item w-full py-3 px-6 text-left font-semibold text-base text-gray-700 hover:bg-gray-100 transition-colors" data-category="after-hours">
-                                        After Hours
-                                    </button>
-                                    <button class="filter-tag dropdown-item w-full py-3 px-6 text-left font-semibold text-base text-gray-700 hover:bg-gray-100 rounded-b-lg transition-colors" data-category="policies">
-                                        Policies
-                                    </button>
                                 </div>
                             </div>
-                        </nav>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1329,31 +1304,6 @@
 
         // Category Filter Functionality
         let currentFilter = 'all';
-        
-        document.querySelectorAll('.filter-tag').forEach(tag => {
-            tag.addEventListener('click', function() {
-                // Update active tag
-                document.querySelectorAll('.filter-tag').forEach(t => {
-                    t.classList.remove('active');
-                    t.classList.add('bg-gray-200', 'text-gray-700');
-                    t.classList.remove('text-white');
-                });
-
-                // Also clear "More" button active state if clicking main tabs
-                const moreBtn = document.getElementById('more-dropdown-btn');
-                if (moreBtn && !this.classList.contains('dropdown-item')) {
-                    moreBtn.classList.remove('active', 'bg-navy', 'text-white');
-                    moreBtn.classList.add('text-gray-600');
-                }
-
-                this.classList.add('active');
-                this.classList.remove('bg-gray-200', 'text-gray-700');
-                this.classList.add('text-white');
-
-                currentFilter = this.dataset.category;
-                applyCurrentFilter();
-            });
-        });
 
         function applyCurrentFilter() {
             if (currentFilter === 'all') {
@@ -1381,62 +1331,26 @@
                 currentFilter = this.value;
                 applyCurrentFilter();
 
-                // Update desktop tabs to match (if visible)
-                document.querySelectorAll('.tab-button').forEach(btn => {
-                    if (btn.dataset.category === currentFilter) {
-                        btn.classList.add('active');
-                        btn.classList.remove('bg-gray-200', 'text-gray-700');
-                        btn.classList.add('text-white');
-                    } else {
-                        btn.classList.remove('active');
-                        btn.classList.add('bg-gray-200', 'text-gray-700');
-                        btn.classList.remove('text-white');
-                    }
-                });
+                // Update desktop dropdown to match (if visible)
+                const desktopSelect = document.getElementById('desktop-faq-category-select');
+                if (desktopSelect) {
+                    desktopSelect.value = currentFilter;
+                }
             });
         }
 
-        // Desktop More Dropdown functionality
-        const moreDropdownBtn = document.getElementById('more-dropdown-btn');
-        const moreDropdownMenu = document.getElementById('more-dropdown-menu');
-        const moreDropdownIcon = document.getElementById('more-dropdown-icon');
+        // Desktop dropdown filter functionality
+        const desktopSelect = document.getElementById('desktop-faq-category-select');
+        if (desktopSelect) {
+            desktopSelect.addEventListener('change', function() {
+                currentFilter = this.value;
+                applyCurrentFilter();
 
-        if (moreDropdownBtn && moreDropdownMenu) {
-            // Toggle dropdown on button click
-            moreDropdownBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const isHidden = moreDropdownMenu.classList.contains('hidden');
-
-                if (isHidden) {
-                    moreDropdownMenu.classList.remove('hidden');
-                    moreDropdownIcon.style.transform = 'rotate(180deg)';
-                } else {
-                    moreDropdownMenu.classList.add('hidden');
-                    moreDropdownIcon.style.transform = 'rotate(0deg)';
+                // Update mobile dropdown to match (if visible)
+                const mobileSelect = document.getElementById('faq-category-select');
+                if (mobileSelect) {
+                    mobileSelect.value = currentFilter;
                 }
-            });
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!moreDropdownBtn.contains(e.target) && !moreDropdownMenu.contains(e.target)) {
-                    moreDropdownMenu.classList.add('hidden');
-                    moreDropdownIcon.style.transform = 'rotate(0deg)';
-                }
-            });
-
-            // Close dropdown when a dropdown item is clicked
-            document.querySelectorAll('.dropdown-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    moreDropdownMenu.classList.add('hidden');
-                    moreDropdownIcon.style.transform = 'rotate(0deg)';
-
-                    // Update "More" button appearance when dropdown item is active
-                    const selectedCategory = this.dataset.category;
-                    if (['services', 'after-hours', 'policies'].includes(selectedCategory)) {
-                        moreDropdownBtn.classList.add('active', 'bg-navy', 'text-white');
-                        moreDropdownBtn.classList.remove('text-gray-600');
-                    }
-                });
             });
         }
 
