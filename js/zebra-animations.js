@@ -122,10 +122,13 @@ class ZebraAnimations {
                 .zebra-animation {
                     width: 120px;
                     height: 120px;
-                    top: 70vh;
+                    bottom: 16px;
+                    right: -200px;
+                    top: auto;
+                    transform: none;
                 }
                 .zebra-visible {
-                    right: 5px;
+                    right: 16px;
                 }
                 .text-bubble {
                     top: -50px;
@@ -134,48 +137,6 @@ class ZebraAnimations {
                 }
                 .bubble-content {
                     font-size: 11px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .zebra-animation {
-                    width: 180px;
-                    height: 180px;
-                    top: 65vh;
-                    right: -220px;
-                }
-                .zebra-visible {
-                    right: 2px;
-                }
-                .text-bubble {
-                    top: -45px;
-                    left: -70px;
-                    min-width: 100px;
-                    padding: 8px 12px;
-                }
-                .bubble-content {
-                    font-size: 10px;
-                }
-            }
-
-            @media (max-width: 320px) {
-                .zebra-animation {
-                    width: 140px;
-                    height: 140px;
-                    top: 60vh;
-                    right: -180px;
-                }
-                .zebra-visible {
-                    right: 1px;
-                }
-                .text-bubble {
-                    top: -40px;
-                    left: -60px;
-                    min-width: 90px;
-                    padding: 6px 10px;
-                }
-                .bubble-content {
-                    font-size: 9px;
                 }
             }
 

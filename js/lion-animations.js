@@ -206,13 +206,15 @@ class LionAnimations {
 
             @media (max-width: 768px) {
                 .lion-animation {
-                    width: 100px;
-                    height: 100px;
-                    top: 80px;
+                    width: 120px;
+                    height: 120px;
+                    bottom: 16px;
                     right: -200px;
+                    top: auto;
+                    transform: none;
                 }
                 .lion-visible {
-                    right: 5px;
+                    right: 16px;
                 }
                 .text-bubble {
                     top: -50px;
@@ -221,48 +223,6 @@ class LionAnimations {
                 }
                 .bubble-content {
                     font-size: 11px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .lion-animation {
-                    width: 80px;
-                    height: 80px;
-                    top: 70px;
-                    right: -160px;
-                }
-                .lion-visible {
-                    right: 2px;
-                }
-                .text-bubble {
-                    top: -45px;
-                    left: -70px;
-                    min-width: 100px;
-                    padding: 8px 12px;
-                }
-                .bubble-content {
-                    font-size: 10px;
-                }
-            }
-
-            @media (max-width: 320px) {
-                .lion-animation {
-                    width: 60px;
-                    height: 60px;
-                    top: 60px;
-                    right: -120px;
-                }
-                .lion-visible {
-                    right: 1px;
-                }
-                .text-bubble {
-                    top: -40px;
-                    left: -60px;
-                    min-width: 90px;
-                    padding: 6px 10px;
-                }
-                .bubble-content {
-                    font-size: 9px;
                 }
             }
         `;
