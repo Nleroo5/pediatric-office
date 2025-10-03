@@ -108,7 +108,7 @@ class AlligatorAnimations {
                 }
                 .text-bubble {
                     top: -40px;
-                    left: -15px;
+                    left: -50px;
                     min-width: 32px;
                     padding: 6px 10px;
                 }
