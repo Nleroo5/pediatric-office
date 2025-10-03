@@ -107,13 +107,16 @@ class AlligatorAnimations {
                     animation: none;
                 }
                 .text-bubble {
-                    top: -40px;
-                    left: -50px;
-                    min-width: 32px;
-                    padding: 6px 10px;
+                    top: -40px !important;
+                    left: -50px !important;
+                    min-width: 32px !important;
+                    max-width: 100px !important;
+                    padding: 6px 10px !important;
                 }
                 .bubble-content {
-                    font-size: 9px;
+                    font-size: 9px !important;
+                    line-height: 1.2 !important;
+                    white-space: normal !important;
                 }
             }
 
