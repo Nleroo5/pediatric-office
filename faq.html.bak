@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frequently Asked Questions - Village Pediatrics</title>
     <meta name="description" content="Find answers to common questions about Village Pediatrics services, appointments, insurance, and policies. Same-day appointments available in St. Augustine, FL.">
-    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-18RT1K0291"></script>
     <script>
@@ -240,45 +239,10 @@
 
         /* Mobile responsive tabs */
         @media (max-width: 768px) {
-            .faq-tabs-desktop {
-                display: none !important;
-            }
-
-            .faq-tabs-mobile {
-                display: block !important;
-            }
-
-            .faq-category-select {
-                width: 100%;
-                padding: 1rem;
-                font-size: 1rem;
-                font-weight: 600;
-                color: #0D2673;
-                background-color: white;
-                border: 2px solid #0D2673;
-                border-radius: 0.5rem;
-                appearance: none;
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230D2673'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
-                background-repeat: no-repeat;
-                background-position: right 1rem center;
-                background-size: 1.5rem;
-                padding-right: 3rem;
-            }
-
-            .faq-category-select:focus {
-                outline: none;
-                border-color: #3B9D84;
-                box-shadow: 0 0 0 3px rgba(59, 157, 132, 0.1);
-            }
-        }
-
-        @media (min-width: 769px) {
-            .faq-tabs-mobile {
-                display: none !important;
-            }
-
-            .faq-tabs-desktop {
-                display: flex !important;
+            .tab-button {
+                flex: 1 0 50%;
+                font-size: 0.875rem;
+                padding: 0.75rem 0.5rem;
             }
         }
 
@@ -288,11 +252,7 @@
                 border-bottom-width: 2px;
             }
         }
-
-        .footer-privia-mobile {
-            display: none;
-        }
-
+        
         .scroll-to-top {
             position: fixed;
             bottom: 2rem;
@@ -460,16 +420,6 @@
                 display: none !important;
             }
 
-            .footer-privia-mobile {
-                display: block !important;
-                text-align: center;
-                font-size: 0.75rem;
-                color: #9CA3AF;
-                margin-bottom: 1rem;
-                padding-bottom: 1rem;
-                border-bottom: 1px solid #374151;
-            }
-
             .footer-providers-section {
                 display: none !important;
             }
@@ -486,43 +436,6 @@
             .footer-copyright {
                 margin-top: 1.5rem !important;
                 padding-top: 1.5rem !important;
-            }
-
-            .footer-tagline {
-                display: none !important;
-            }
-
-            /* Increase hero bottom padding on mobile */
-            section[class*="py-10"] {
-                padding-bottom: 4rem !important;
-            }
-
-            /* Mobile optimized CTA buttons */
-            .cta-buttons-container {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 1rem !important;
-                width: 100%;
-            }
-
-            .cta-button {
-                width: 100% !important;
-                padding: 1rem 2rem !important;
-                font-size: 1rem !important;
-                text-align: center !important;
-                display: block !important;
-            }
-
-            .cta-button-primary {
-                background: #F2B138 !important;
-                color: white !important;
-                border: none !important;
-            }
-
-            .cta-button-secondary {
-                background: white !important;
-                color: #0D2673 !important;
-                border: 2px solid white !important;
             }
         }
     </style>
@@ -656,13 +569,13 @@
 
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-br from-navy via-lightblue to-teal text-white py-10 sm:py-20 pt-40 sm:pt-80 overflow-hidden">
-        <div class="container mx-auto px-6 text-center relative z-10">
+        <div class="container mx-auto px-6 text-center lg:text-right relative z-10">
             <div class="">
                 <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 sm:mb-12 font-fredoka tracking-tight">
                     <span class="text-orange">Frequently Asked</span>
                     <span class="text-white">Questions</span>
                 </h1>
-                <p class="text-xl md:text-2xl font-light max-w-4xl mx-auto leading-relaxed opacity-90">
+                <p class="text-xl md:text-2xl font-light max-w-4xl mx-auto lg:ml-auto leading-relaxed opacity-90">
                     Find answers to common questions about our pediatric services and practice
                 </p>
             </div>
@@ -675,22 +588,44 @@
             <!-- Tab-Style Navigation -->
             <div class="max-w-7xl mx-auto mb-16">
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <!-- Mobile Dropdown (visible on mobile only) -->
-                    <div class="faq-tabs-mobile p-4">
-                        <label for="faq-category-select" class="sr-only">Select FAQ Category</label>
-                        <select id="faq-category-select" class="faq-category-select">
-                            <option value="all">All Questions</option>
-                            <option value="appointments">Appointments</option>
-                            <option value="new-patients">New Patients</option>
-                            <option value="insurance">Insurance</option>
-                            <option value="services">Services</option>
-                            <option value="after-hours">After Hours</option>
-                            <option value="policies">Policies</option>
-                        </select>
-                    </div>
+                    <!-- Tab Container -->
+                    <div class="border-b border-gray-200">
+                        <nav class="flex flex-wrap" aria-label="FAQ Categories">
+                            <!-- All Questions Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-navy bg-navy text-white active" data-category="all">
+                                All Questions
+                            </button>
 
-                    <!-- Desktop: No Filter (hidden on desktop) -->
-                    <div class="faq-tabs-desktop hidden">
+                            <!-- Appointments Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="appointments">
+                                Appointments
+                            </button>
+
+                            <!-- New Patients Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="new-patients">
+                                New Patients
+                            </button>
+
+                            <!-- Insurance Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="insurance">
+                                Insurance
+                            </button>
+
+                            <!-- Services Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="services">
+                                Services
+                            </button>
+
+                            <!-- After Hours Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="after-hours">
+                                After Hours
+                            </button>
+
+                            <!-- Policies Tab -->
+                            <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-transparent text-gray-600 " data-category="policies">
+                                Policies
+                            </button>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -1152,11 +1087,11 @@
                 Our friendly staff is here to help! Contact us directly for personalized assistance.
             </p>
             
-            <div class="cta-buttons-container flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-                <a href="tel:9049401577" class="cta-button cta-button-primary bg-village-orange text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-orange transition-all">
+            <div class="flex flex-col sm:flex-row ga justify-center">
+                <a href="tel:9049401577" class="bg-village-orange  text-white px-8 py-3 rounded-full font-bold text-lg   ">
                     Call (904) 940-1577
                 </a>
-                <a href="contact.html" class="cta-button cta-button-secondary bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white hover:text-navy transition-all">
+                <a href="contact.html" class="bg-transparent border-2 border-white  text-white px-8 py-3 rounded-full font-bold text-lg  ">
                     Contact Us
                 </a>
             </div>
@@ -1174,11 +1109,6 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Mobile Privia Partnership Mention -->
-            <div class="footer-privia-mobile hidden">
-                <p>Proud partner of Privia Medical Group</p>
-            </div>
-
             <!-- Privia Medical Group Partnership - Top Section -->
             <div class="footer-privia-section mb-12 pb-8 border-b border-gray-700">
                 <div class="flex flex-col lg:flex-row items-center justify-center ga">
@@ -1199,36 +1129,30 @@
             <!-- Main Footer Content -->
             <div class="footer-main-grid grid md:grid-cols-4 gap-8">
                 <!-- Practice Info -->
-                <div class="footer-practice-info">
-                    <div class="footer-logo flex items-center mb-4">
+                <div>
+                    <div class="flex items-center mb-4">
                         <img src="images/footer-logo.png" alt="Village Pediatrics" class="h-24 w-auto">
                         <div class="ml-3">
                             <div class="font-semibold">Village Pediatrics</div>
                             <div class="text-sm text-gray-400">St. Augustine, FL</div>
                         </div>
                     </div>
-                    <p class="footer-tagline text-gray-400 text-sm mb-3">Trusted pediatric care since 2008.</p>
-                    <div class="text-sm text-gray-400 space-y-1">
-                        <p>319 W Town Pl, STE 1</p>
-                        <p>St. Augustine, FL 32092</p>
-                        <p><a href="tel:9049401577" class="phone-link touch-target" aria-label="Call Village Pediatrics">(904) 940-1577</a></p>
-                    </div>
+                    <p class="text-gray-400 text-sm">Trusted pediatric care since 2008.</p>
                 </div>
 
                 <!-- Quick Links -->
-                <div class="footer-links">
+                <div>
                     <h4 class="font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="index.html" class="hover:text-white">Home</a></li>
-                        <li><a href="about.html" class="hover:text-white">About</a></li>
-                        <li><a href="services.html" class="hover:text-white">Services</a></li>
-                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
-                        <li><a href="faq.html" class="hover:text-white">FAQ</a></li>
+                        <li><a href="index.html" class="">Home</a></li>
+                        <li><a href="about.html" class="">About</a></li>
+                        <li><a href="services.html" class="">Services</a></li>
+                        <li><a href="contact.html" class="">Contact</a></li>
                     </ul>
                 </div>
 
                 <!-- Our Providers -->
-                <div class="footer-providers-section">
+                <div>
                     <h4 class="font-semibold mb-4">Our Providers</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li>Dr. Austin Dupont, MD</li>
@@ -1239,18 +1163,18 @@
                 </div>
 
                 <!-- Contact -->
-                <div class="footer-contact footer-providers-section">
+                <div>
                     <h4 class="font-semibold mb-4">Contact</h4>
                     <div class="text-sm text-gray-400 space-y-1">
                         <p>319 W Town Pl, STE 1</p>
                         <p>St. Augustine, FL 32092</p>
-                        <p><a href="tel:9049401577" class="phone-link touch-target" aria-label="Call Village Pediatrics">(904) 940-1577</a></p>
+                        <p>(904) 940-1577</p>
                     </div>
                 </div>
             </div>
 
             <!-- Copyright and Legal -->
-            <div class="footer-copyright border-t border-gray-700 mt-8 pt-8">
+            <div class="border-t border-gray-700 mt-8 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
                     <p>&copy; 2025 Village Pediatrics. All rights reserved.</p>
                     <div class="flex space-x-6 mt-4 md:mt-0">
@@ -1286,6 +1210,24 @@
 
         // Category Filter Functionality
         let currentFilter = 'all';
+        
+        document.querySelectorAll('.filter-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                // Update active tag
+                document.querySelectorAll('.filter-tag').forEach(t => {
+                    t.classList.remove('active');
+                    t.classList.add('bg-gray-200', 'text-gray-700');
+                    t.classList.remove('text-white');
+                });
+                
+                this.classList.add('active');
+                this.classList.remove('bg-gray-200', 'text-gray-700');
+                this.classList.add('text-white');
+                
+                currentFilter = this.dataset.category;
+                applyCurrentFilter();
+            });
+        });
 
         function applyCurrentFilter() {
             if (currentFilter === 'all') {
@@ -1306,39 +1248,9 @@
             }
         }
 
-        // Mobile dropdown filter functionality
-        const mobileSelect = document.getElementById('faq-category-select');
-        if (mobileSelect) {
-            mobileSelect.addEventListener('change', function() {
-                currentFilter = this.value;
-                applyCurrentFilter();
-
-                // Update desktop dropdown to match (if visible)
-                const desktopSelect = document.getElementById('desktop-faq-category-select');
-                if (desktopSelect) {
-                    desktopSelect.value = currentFilter;
-                }
-            });
-        }
-
-        // Desktop dropdown filter functionality
-        const desktopSelect = document.getElementById('desktop-faq-category-select');
-        if (desktopSelect) {
-            desktopSelect.addEventListener('change', function() {
-                currentFilter = this.value;
-                applyCurrentFilter();
-
-                // Update mobile dropdown to match (if visible)
-                const mobileSelect = document.getElementById('faq-category-select');
-                if (mobileSelect) {
-                    mobileSelect.value = currentFilter;
-                }
-            });
-        }
-
         // Scroll to top functionality
         const scrollToTopButton = document.getElementById('scrollToTop');
-
+        
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
                 scrollToTopButton.classList.add('visible');

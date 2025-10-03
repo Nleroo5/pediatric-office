@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accessibility Statement - Village Pediatrics | Web Accessibility Commitment</title>
     <meta name="description" content="Village Pediatrics accessibility statement and commitment to providing an inclusive web experience for all users, including those with disabilities.">
-    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -145,10 +144,6 @@
         .animal-nav-item:nth-child(4) { animation-delay: 0.7s; }
         .animal-nav-item:nth-child(5) { animation-delay: 0.9s; }
 
-        .footer-privia-mobile {
-            display: none;
-        }
-
         @media (max-width: 768px) {
             .contact-btn-mobile {
                 background: #3B9D84 !important;
@@ -190,16 +185,6 @@
                 display: none !important;
             }
 
-            .footer-privia-mobile {
-                display: block !important;
-                text-align: center;
-                font-size: 0.75rem;
-                color: #9CA3AF;
-                margin-bottom: 1rem;
-                padding-bottom: 1rem;
-                border-bottom: 1px solid #374151;
-            }
-
             .footer-providers-section {
                 display: none !important;
             }
@@ -216,28 +201,6 @@
             .footer-copyright {
                 margin-top: 1.5rem !important;
                 padding-top: 1.5rem !important;
-            }
-
-            .footer-tagline {
-                display: none !important;
-            }
-
-            /* Hide animal navigation on mobile */
-            #animal-nav {
-                display: none !important;
-            }
-
-            /* Reduce hero section spacing on mobile */
-            section[class*="pt-80"] {
-                padding-top: 12rem !important;
-                padding-bottom: 3rem !important;
-            }
-        }
-
-        /* Show animal navigation on desktop */
-        @media (min-width: 769px) {
-            #animal-nav {
-                display: block !important;
             }
         }
 
@@ -264,67 +227,6 @@
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-navy text-white px-4 py-2 rounded-md z-50">
         Skip to main content
     </a>
-
-    <!-- Mobile Hamburger Menu (hidden on desktop) -->
-    <div class="mobile-hamburger-nav md:hidden absolute top-4 left-4 z-40">
-        <button id="mobile-menu-button" class="bg-white p-3 rounded-full shadow-lg" aria-label="Open navigation menu">
-            <div class="hamburger-icon">
-                <span class="block w-6 h-0.5 bg-teal mb-1 rounded"></span>
-                <span class="block w-6 h-0.5 bg-teal mb-1 rounded"></span>
-                <span class="block w-6 h-0.5 bg-teal rounded"></span>
-            </div>
-        </button>
-    </div>
-
-    <!-- Mobile Menu Overlay (hidden by default) -->
-    <div id="mobile-menu-overlay" class="mobile-menu-overlay md:hidden fixed inset-0 bg-black/50 z-50 opacity-0 invisible transition-all duration-300">
-        <div class="mobile-menu bg-white h-full w-80 max-w-[90vw] transform -translate-x-full transition-transform duration-300 flex flex-col">
-            <!-- Mobile Menu Header -->
-            <div class="flex items-center justify-between p-6 border-b flex-shrink-0">
-                <img src="images/logo/village-pediatrics-logo.png" alt="Village Pediatrics" class="h-16 w-16">
-                <button id="mobile-menu-close" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Mobile Menu Items -->
-            <div class="p-6 space-y-4 flex-1 overflow-y-auto pb-24">
-                <a href="index.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                    <img src="images/animals/elephant.png" alt="Home" class="w-10 h-10 object-contain">
-                    <span class="font-semibold text-gray-900 font-poppins">Home</span>
-                </a>
-                <a href="about.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                    <img src="images/animals/lion.png" alt="About Us" class="w-10 h-10 object-contain">
-                    <span class="font-semibold text-gray-900 font-poppins">About Us</span>
-                </a>
-                <a href="services.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                    <img src="images/animals/zebra.png" alt="Services" class="w-10 h-10 object-contain">
-                    <span class="font-semibold text-gray-900 font-poppins">Services</span>
-                </a>
-                <a href="team.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                    <img src="images/animals/alligator.png" alt="Our Team" class="w-10 h-10 object-contain">
-                    <span class="font-semibold text-gray-900 font-poppins">Our Team</span>
-                </a>
-                <a href="new-patients.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                    <img src="images/animals/monkey.png" alt="New Patients" class="w-10 h-10 object-contain">
-                    <span class="font-semibold text-gray-900 font-poppins">New Patients</span>
-                </a>
-                <a href="patient-portal.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                    <img src="images/animals/giraffe.png" alt="Patient Portal" class="w-10 h-10 object-contain">
-                    <span class="font-semibold text-gray-900 font-poppins">Patient Portal</span>
-                </a>
-            </div>
-
-            <!-- Mobile Menu Footer -->
-            <div class="absolute bottom-0 left-0 right-0 p-6 border-t bg-gray-50">
-                <a href="contact.html" class="block w-full bg-orange text-white text-center py-3 rounded-lg font-semibold hover:bg-orange/90 transition-colors">
-                    Contact Us
-                </a>
-            </div>
-        </div>
-    </div>
 
     <!-- Animal Navigation Over Hero -->
     <nav class="absolute top-20 left-0 right-0 z-30" id="animal-nav" role="navigation" aria-label="Main navigation">
@@ -660,11 +562,6 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Mobile Privia Partnership Mention -->
-            <div class="footer-privia-mobile hidden">
-                <p>Proud partner of Privia Medical Group</p>
-            </div>
-
             <!-- Privia Medical Group Partnership - Top Section -->
             <div class="footer-privia-section mb-12 pb-8 border-b border-gray-700">
                 <div class="flex flex-col lg:flex-row items-center justify-center gap-6">
@@ -685,58 +582,51 @@
             <!-- Main Footer Content -->
             <div class="footer-main-grid grid md:grid-cols-4 gap-8">
                 <!-- Practice Info -->
-                <div class="footer-practice-info">
-                    <div class="footer-logo flex items-center mb-4">
+                <div>
+                    <div class="flex items-center mb-4">
                         <img src="images/footer-logo.png" alt="Village Pediatrics" class="h-24 w-auto">
                         <div class="ml-3">
                             <div class="font-semibold">Village Pediatrics</div>
                             <div class="text-sm text-gray-400">St. Augustine, FL</div>
                         </div>
                     </div>
-                    <p class="footer-tagline text-gray-400 text-sm mb-3">Trusted pediatric care since 2008.</p>
-                    <div class="text-sm text-gray-400 space-y-1">
-                        <p>319 W Town Pl, STE 1</p>
-                        <p>St. Augustine, FL 32092</p>
-                        <p><a href="tel:9049401577" class="phone-link touch-target" aria-label="Call Village Pediatrics">(904) 940-1577</a></p>
-                    </div>
+                    <p class="text-gray-400 text-sm">Trusted pediatric care since 2008.</p>
                 </div>
 
                 <!-- Quick Links -->
-                <div class="footer-links">
+                <div>
                     <h4 class="font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li><a href="index.html" class="hover:text-white focus:text-white focus:outline-none focus:underline">Home</a></li>
                         <li><a href="about.html" class="hover:text-white focus:text-white focus:outline-none focus:underline">About</a></li>
                         <li><a href="services.html" class="hover:text-white focus:text-white focus:outline-none focus:underline">Services</a></li>
                         <li><a href="contact.html" class="hover:text-white focus:text-white focus:outline-none focus:underline">Contact</a></li>
-                        <li><a href="faq.html" class="hover:text-white focus:text-white focus:outline-none focus:underline">FAQ</a></li>
                     </ul>
                 </div>
 
                 <!-- Our Providers -->
-                <div class="footer-providers-section">
+                <div>
                     <h4 class="font-semibold mb-4">Our Providers</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li>Dr. Austin Dupont, MD</li>
                         <li>Dr. Patricia Elvir, MD</li>
                         <li>Trudy English, ARNP</li>
-                        <li>Dr. Lindsay Wolf, DNP</li>
                     </ul>
                 </div>
 
                 <!-- Contact -->
-                <div class="footer-contact footer-providers-section">
+                <div>
                     <h4 class="font-semibold mb-4">Contact</h4>
                     <div class="text-sm text-gray-400 space-y-1">
                         <p>319 W Town Pl, STE 1</p>
                         <p>St. Augustine, FL 32092</p>
-                        <p><a href="tel:9049401577" class="phone-link touch-target" aria-label="Call Village Pediatrics">(904) 940-1577</a></p>
+                        <p><a href="tel:+19049401577" class="hover:text-white focus:text-white focus:outline-none focus:underline">(904) 940-1577</a></p>
                     </div>
                 </div>
             </div>
 
             <!-- Copyright and Legal -->
-            <div class="footer-copyright border-t border-gray-700 mt-8 pt-8">
+            <div class="border-t border-gray-700 mt-8 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
                     <p>&copy; 2025 Village Pediatrics. All rights reserved.</p>
                     <nav class="flex space-x-6 mt-4 md:mt-0" aria-label="Legal pages">
@@ -762,49 +652,6 @@
                 });
             }, 500); // Start animations 500ms after page load
         });
-    </script>
-
-    <!-- Mobile menu functionality -->
-    <script>
-    // Mobile menu functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuButton = document.getElementById('mobile-menu-button');
-        const menuClose = document.getElementById('mobile-menu-close');
-        const menuOverlay = document.getElementById('mobile-menu-overlay');
-        const menuPanel = menuOverlay?.querySelector('.mobile-menu');
-        const hamburgerIcon = menuButton?.querySelector('.hamburger-icon');
-
-        function openMenu() {
-            if (menuOverlay && menuPanel && hamburgerIcon) {
-                menuOverlay.classList.remove('invisible', 'opacity-0');
-                menuOverlay.classList.add('visible', 'opacity-100');
-                menuPanel.classList.remove('-translate-x-full');
-                hamburgerIcon.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeMenu() {
-            if (menuOverlay && menuPanel && hamburgerIcon) {
-                menuOverlay.classList.add('opacity-0');
-                menuPanel.classList.add('-translate-x-full');
-                hamburgerIcon.classList.remove('active');
-                setTimeout(() => {
-                    menuOverlay.classList.add('invisible');
-                    menuOverlay.classList.remove('visible');
-                    document.body.style.overflow = '';
-                }, 300);
-            }
-        }
-
-        menuButton?.addEventListener('click', openMenu);
-        menuClose?.addEventListener('click', closeMenu);
-        menuOverlay?.addEventListener('click', function(e) {
-            if (e.target === menuOverlay) {
-                closeMenu();
-            }
-        });
-    });
     </script>
 
 </body>
