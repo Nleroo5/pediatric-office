@@ -239,10 +239,45 @@
 
         /* Mobile responsive tabs */
         @media (max-width: 768px) {
-            .tab-button {
-                flex: 1 0 50%;
-                font-size: 0.875rem;
-                padding: 0.75rem 0.5rem;
+            .faq-tabs-desktop {
+                display: none !important;
+            }
+
+            .faq-tabs-mobile {
+                display: block !important;
+            }
+
+            .faq-category-select {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1rem;
+                font-weight: 600;
+                color: #0D2673;
+                background-color: white;
+                border: 2px solid #0D2673;
+                border-radius: 0.5rem;
+                appearance: none;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230D2673'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right 1rem center;
+                background-size: 1.5rem;
+                padding-right: 3rem;
+            }
+
+            .faq-category-select:focus {
+                outline: none;
+                border-color: #3B9D84;
+                box-shadow: 0 0 0 3px rgba(59, 157, 132, 0.1);
+            }
+        }
+
+        @media (min-width: 769px) {
+            .faq-tabs-mobile {
+                display: none !important;
+            }
+
+            .faq-tabs-desktop {
+                display: flex !important;
             }
         }
 
@@ -606,8 +641,22 @@
             <!-- Tab-Style Navigation -->
             <div class="max-w-7xl mx-auto mb-16">
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <!-- Tab Container -->
-                    <div class="border-b border-gray-200">
+                    <!-- Mobile Dropdown (visible on mobile only) -->
+                    <div class="faq-tabs-mobile p-4">
+                        <label for="faq-category-select" class="sr-only">Select FAQ Category</label>
+                        <select id="faq-category-select" class="faq-category-select">
+                            <option value="all">All Questions</option>
+                            <option value="appointments">Appointments</option>
+                            <option value="new-patients">New Patients</option>
+                            <option value="insurance">Insurance</option>
+                            <option value="services">Services</option>
+                            <option value="after-hours">After Hours</option>
+                            <option value="policies">Policies</option>
+                        </select>
+                    </div>
+
+                    <!-- Desktop Tabs (visible on desktop only) -->
+                    <div class="faq-tabs-desktop border-b border-gray-200">
                         <nav class="flex flex-wrap" aria-label="FAQ Categories">
                             <!-- All Questions Tab -->
                             <button class="filter-tag tab-button flex-1 min-w-0 py-4 px-6 text-center font-semibold text-lg border-b-3 border-navy bg-navy text-white active" data-category="all">
@@ -1275,6 +1324,28 @@
                     }
                 });
             }
+        }
+
+        // Mobile dropdown filter functionality
+        const mobileSelect = document.getElementById('faq-category-select');
+        if (mobileSelect) {
+            mobileSelect.addEventListener('change', function() {
+                currentFilter = this.value;
+                applyCurrentFilter();
+
+                // Update desktop tabs to match (if visible)
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    if (btn.dataset.category === currentFilter) {
+                        btn.classList.add('active');
+                        btn.classList.remove('bg-gray-200', 'text-gray-700');
+                        btn.classList.add('text-white');
+                    } else {
+                        btn.classList.remove('active');
+                        btn.classList.add('bg-gray-200', 'text-gray-700');
+                        btn.classList.remove('text-white');
+                    }
+                });
+            });
         }
 
         // Scroll to top functionality
