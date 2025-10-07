@@ -39,10 +39,10 @@ class AlligatorAnimations {
         this.alligator.innerHTML = `
             <img src="images/animals/alligator.png" alt="Alligator" class="alligator-image">
             <div class="alligator-spotlight"></div>
-            <div class="text-bubble">
+            <a href="contact.html" class="text-bubble">
                 <div class="bubble-content">Schedule your visit today!</div>
                 <div class="bubble-tail"></div>
-            </div>
+            </a>
         `;
 
         // Add CSS styles
@@ -136,6 +136,8 @@ class AlligatorAnimations {
                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
                 z-index: 1000;
                 min-width: 180px;
+                text-decoration: none;
+                display: block;
             }
 
             .bubble-content {
@@ -172,9 +174,33 @@ class AlligatorAnimations {
                 border-top: 12px solid #ffffff;
             }
 
-            .alligator-animation:hover .text-bubble {
-                opacity: 1;
-                transform: scale(1) translateY(0);
+            /* Desktop only - show on hover and keep visible */
+            @media (min-width: 769px) {
+                .alligator-animation:hover .text-bubble {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                    pointer-events: auto;
+                }
+
+                .text-bubble.bubble-shown {
+                    opacity: 1 !important;
+                    transform: scale(1) translateY(0) !important;
+                    pointer-events: auto !important;
+                }
+
+                .text-bubble.bubble-shown:hover {
+                    background: #FFF8E1;
+                    border-color: #F2B138;
+                    transform: scale(1.05) translateY(-2px) !important;
+                }
+            }
+
+            /* Mobile - keep original behavior (no persistent bubble) */
+            @media (max-width: 768px) {
+                .alligator-animation:hover .text-bubble {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                }
             }
         `;
 
@@ -225,6 +251,20 @@ class AlligatorAnimations {
 
     bindEvents() {
         let ticking = false;
+        let bubbleActivated = false;
+
+        // Desktop only - make bubble persist on first hover
+        if (window.innerWidth >= 769) {
+            this.alligator.addEventListener('mouseenter', () => {
+                if (!bubbleActivated) {
+                    const bubble = this.alligator.querySelector('.text-bubble');
+                    if (bubble) {
+                        bubble.classList.add('bubble-shown');
+                        bubbleActivated = true;
+                    }
+                }
+            });
+        }
 
         window.addEventListener('scroll', () => {
             if (!ticking) {

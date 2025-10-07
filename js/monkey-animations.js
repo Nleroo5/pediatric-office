@@ -44,10 +44,10 @@ class MonkeyAnimations {
         this.monkey.innerHTML = `
             <img src="images/animals/monkey.png" alt="Monkey" class="monkey-image">
             <div class="monkey-spotlight"></div>
-            <div class="text-bubble">
+            <a href="contact.html" class="text-bubble">
                 <div class="bubble-content">Schedule your visit today!</div>
                 <div class="bubble-tail"></div>
-            </div>
+            </a>
         `;
 
         // Add CSS styles
@@ -115,6 +115,8 @@ class MonkeyAnimations {
                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
                 z-index: 1000;
                 min-width: 180px;
+                text-decoration: none;
+                display: block;
             }
 
             .bubble-content {
@@ -151,9 +153,33 @@ class MonkeyAnimations {
                 border-top: 12px solid #ffffff;
             }
 
-            .monkey-animation:hover .text-bubble {
-                opacity: 1;
-                transform: scale(1) translateY(0);
+            /* Desktop only - show on hover and keep visible */
+            @media (min-width: 769px) {
+                .monkey-animation:hover .text-bubble {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                    pointer-events: auto;
+                }
+
+                .text-bubble.bubble-shown {
+                    opacity: 1 !important;
+                    transform: scale(1) translateY(0) !important;
+                    pointer-events: auto !important;
+                }
+
+                .text-bubble.bubble-shown:hover {
+                    background: #FFF8E1;
+                    border-color: #F2B138;
+                    transform: scale(1.05) translateY(-2px) !important;
+                }
+            }
+
+            /* Mobile - keep original behavior (no persistent bubble) */
+            @media (max-width: 768px) {
+                .monkey-animation:hover .text-bubble {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                }
             }
 
             /* Mobile Styles */
@@ -234,6 +260,20 @@ class MonkeyAnimations {
 
     bindEvents() {
         let ticking = false;
+        let bubbleActivated = false;
+
+        // Desktop only - make bubble persist on first hover
+        if (window.innerWidth >= 769) {
+            this.monkey.addEventListener('mouseenter', () => {
+                if (!bubbleActivated) {
+                    const bubble = this.monkey.querySelector('.text-bubble');
+                    if (bubble) {
+                        bubble.classList.add('bubble-shown');
+                        bubbleActivated = true;
+                    }
+                }
+            });
+        }
 
         window.addEventListener('scroll', () => {
             if (!ticking) {
