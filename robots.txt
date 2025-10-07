@@ -1,0 +1,11 @@
+# robots.txt for Village Pediatrics - myvillagepeds.com
+
+User-agent: *
+Allow: /
+
+# Disallow admin areas if any
+Disallow: /admin/
+Disallow: /cgi-bin/
+
+# Sitemap location
+Sitemap: https://myvillagepeds.com/sitemap.xml
