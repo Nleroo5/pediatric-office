@@ -1125,7 +1125,7 @@
     </div>
 
     <!-- Mobile Hamburger Menu (hidden on desktop) -->
-    <div class="mobile-hamburger-nav md:hidden absolute top-4 left-4 z-40">
+    <div class="mobile-hamburger-nav md:hidden fixed top-4 left-4 z-40">
         <button id="mobile-menu-button" class="bg-white p-3 rounded-full shadow-lg" aria-label="Open navigation menu">
             <div class="hamburger-icon">
                 <span class="block w-6 h-0.5 bg-teal mb-1 rounded"></span>
@@ -1220,7 +1220,7 @@
             </a>
             <a href="patient-portal.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
                 <img src="images/animals/giraffe.png" alt="Patient Portal" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 object-contain mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-orange group-hover:border-orange transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                <div class="bg-white px-4 py-2 rounded-full border-2 group-hover:bg-gray-100 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap" style="border-color: #654321;">
                     <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Portal</span><span class="hidden sm:inline">Patient Portal</span></span>
                 </div>
             </a>
@@ -1447,7 +1447,7 @@
                         </div>
                         <div class="text-center lg:text-left">
                             <h4 class="font-semibold text-2xl text-white mb-2">Proud Partner of Privia Medical Group</h4>
-                            <p class="text-base text-gray-300 leading-relaxed max-w-4xl">
+                            <p class="text-lg text-gray-300 leading-relaxed max-w-4xl">
                                 Village Pediatrics is a proud member of Privia Medical Group. The best doctors in our community have joined together to form Privia Medical Group (PMG), a multi-specialty, high-performance medical group that puts patients first. Our physicians are united by the mission of providing better, more coordinated care for their patients.
                             </p>
                         </div>
@@ -1459,17 +1459,19 @@
             <div class="footer-main-grid grid md:grid-cols-4 gap-8">
                 <!-- Practice Info -->
                 <div class="footer-practice-info">
-                    <div class="footer-logo flex items-center mb-4">
-                        <img src="images/footer-logo.png" alt="Village Pediatrics" class="h-24 w-auto">
+                    <a href="index.html" class="footer-logo flex items-center mb-4 hover:opacity-80 transition-opacity">
+                        <img src="images/footer-logo.png" alt="Village Pediatrics" class="h-32 w-auto">
                         <div class="ml-3">
                             <div class="font-semibold">Village Pediatrics</div>
                             <div class="text-sm text-gray-400">St. Augustine, FL</div>
                         </div>
-                    </div>
+                    </a>
                     <p class="footer-tagline text-gray-400 text-sm mb-3">Trusted pediatric care since 2008.</p>
                     <div class="text-sm text-gray-400 space-y-1">
-                        <p>319 W Town Pl, STE 1</p>
-                        <p>St. Augustine, FL 32092</p>
+                        <a href="https://maps.google.com/?q=319+W+Town+Pl+STE+1+St+Augustine+FL+32092" target="_blank" class="hover:text-white transition-colors">
+                            <p>319 W Town Pl, STE 1</p>
+                            <p>St. Augustine, FL 32092</p>
+                        </a>
                         <p><a href="tel:9049401577" class="phone-link touch-target" aria-label="Call Village Pediatrics">(904) 940-1577</a></p>
                     </div>
                 </div>
@@ -1490,20 +1492,24 @@
                 <div class="footer-providers-section">
                     <h4 class="font-semibold mb-4">Our Providers</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li>Dr. Austin Dupont, MD</li>
-                        <li>Dr. Patricia Elvir, MD</li>
-                        <li>Trudy English, ARNP</li>
-                        <li>Dr. Lindsay Wolf, DNP</li>
+                        <li><a href="team.html" class="hover:text-white transition-colors">Dr. Austin Dupont, MD</a></li>
+                        <li><a href="team.html" class="hover:text-white transition-colors">Dr. Patricia Elvir, MD</a></li>
+                        <li><a href="team.html" class="hover:text-white transition-colors">Trudy English, ARNP</a></li>
+                        <li><a href="team.html" class="hover:text-white transition-colors">Dr. Lindsay Wolf, DNP</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact -->
+                <!-- Office Hours -->
                 <div class="footer-contact footer-providers-section">
-                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <h4 class="font-semibold mb-4">Office Hours</h4>
                     <div class="text-sm text-gray-400 space-y-1">
-                        <p>319 W Town Pl, STE 1</p>
-                        <p>St. Augustine, FL 32092</p>
-                        <p><a href="tel:9049401577" class="phone-link touch-target" aria-label="Call Village Pediatrics">(904) 940-1577</a></p>
+                        <p>Monday - Thursday</p>
+                        <p>8:00 AM - 7:00 PM</p>
+                        <p class="mt-2">Friday</p>
+                        <p>9:00 AM - 5:00 PM</p>
+                        <p class="mt-2">Saturday</p>
+                        <p>9:00 AM - 1:00 PM</p>
+                        <p class="mt-2">Sunday: Closed</p>
                     </div>
                 </div>
             </div>
