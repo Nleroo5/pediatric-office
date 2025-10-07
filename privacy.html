@@ -685,103 +685,8 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Mobile Privia Partnership Mention -->
-            <div class="footer-privia-mobile hidden">
-                <p>Proud partner of Privia Medical Group</p>
-            </div>
-
-            <!-- Privia Medical Group Partnership - Top Section -->
-            <div class="footer-privia-section mb-12 pb-8 border-b border-gray-700">
-                <div class="flex flex-col lg:flex-row items-center justify-center gap-6">
-                    <div class="flex items-center gap-4">
-                        <div class="bg-white/90 rounded-lg p-3">
-                            <img src="images/footer.png" alt="My Privia Medical Group" class="h-32 w-auto" onerror="this.style.display='none'">
-                        </div>
-                        <div class="text-center lg:text-left">
-                            <h4 class="font-semibold text-2xl text-white mb-2">Proud Partner of Privia Medical Group</h4>
-                            <p class="text-lg text-gray-300 leading-relaxed max-w-4xl">
-                                Village Pediatrics is a proud member of Privia Medical Group. The best doctors in our community have joined together to form Privia Medical Group (PMG), a multi-specialty, high-performance medical group that puts patients first. Our physicians are united by the mission of providing better, more coordinated care for their patients.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Main Footer Content -->
-            <div class="footer-main-grid grid md:grid-cols-4 gap-8">
-                <!-- Practice Info -->
-                <div class="footer-practice-info">
-                    <a href="index.html" class="footer-logo flex items-center mb-4 hover:opacity-80 transition-opacity">
-                        <img src="images/footer-logo.png" alt="Village Pediatrics" class="h-32 w-auto">
-                        <div class="ml-3">
-                            <div class="font-semibold">Village Pediatrics</div>
-                            <div class="text-sm text-gray-400">St. Augustine, FL</div>
-                        </div>
-                    </a>
-                    <p class="footer-tagline text-gray-400 text-sm mb-3">Trusted pediatric care since 2008.</p>
-                    <div class="text-sm text-gray-400 space-y-1">
-                        <a href="https://maps.google.com/?q=319+W+Town+Pl+STE+1+St+Augustine+FL+32092" target="_blank" class="hover:text-white transition-colors">
-                            <p>319 W Town Pl, STE 1</p>
-                            <p>St. Augustine, FL 32092</p>
-                        </a>
-                        <p><a href="tel:9049401577" class="phone-link touch-target" aria-label="Call Village Pediatrics">(904) 940-1577</a></p>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="footer-links">
-                    <h4 class="font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="index.html" class="hover:text-white">Home</a></li>
-                        <li><a href="about.html" class="hover:text-white">About</a></li>
-                        <li><a href="services.html" class="hover:text-white">Services</a></li>
-                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
-                        <li><a href="faq.html" class="hover:text-white">FAQ</a></li>
-                    </ul>
-                </div>
-
-                <!-- Our Providers -->
-                <div class="footer-providers-section">
-                    <h4 class="font-semibold mb-4">Our Providers</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="team.html" class="hover:text-white transition-colors">Dr. Austin Dupont, MD</a></li>
-                        <li><a href="team.html" class="hover:text-white transition-colors">Dr. Patricia Elvir, MD</a></li>
-                        <li><a href="team.html" class="hover:text-white transition-colors">Trudy English, ARNP</a></li>
-                        <li><a href="team.html" class="hover:text-white transition-colors">Dr. Lindsay Wolf, DNP</a></li>
-                    </ul>
-                </div>
-
-                <!-- Office Hours -->
-                <div class="footer-contact footer-providers-section">
-                    <h4 class="font-semibold mb-4">Office Hours</h4>
-                    <div class="text-sm text-gray-400 space-y-1">
-                        <p>Monday - Thursday</p>
-                        <p>8:00 AM - 7:00 PM</p>
-                        <p class="mt-2">Friday</p>
-                        <p>9:00 AM - 5:00 PM</p>
-                        <p class="mt-2">Saturday</p>
-                        <p>9:00 AM - 1:00 PM</p>
-                        <p class="mt-2">Sunday: Closed</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Copyright and Legal -->
-            <div class="footer-copyright border-t border-gray-700 mt-8 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-                    <p>&copy; 2025 Village Pediatrics. All rights reserved.</p>
-                    <div class="flex space-x-6 mt-4 md:mt-0">
-                        <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
-                        <a href="accessibility.html" class="hover:text-white transition-colors">Accessibility</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer (loaded dynamically from components/footer.html) -->
+    <div id="footer-placeholder"></div>
 
     <!-- Animal Animation Script -->
     <script>
@@ -840,6 +745,9 @@
         });
     });
     </script>
+
+    <!-- Load shared footer component -->
+    <script src="js/load-footer.js"></script>
 
 </body>
 </html>
