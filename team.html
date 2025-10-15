@@ -600,10 +600,15 @@
             }
         }
 
-        /* Reduce bubble sizes on mobile */
+        /* Reduce to only 2 bubbles on mobile */
         @media (max-width: 768px) {
             .bubble {
-                transform: scale(0.4);
+                display: none;
+            }
+            .bubble-1,
+            .bubble-3 {
+                display: block;
+                transform: scale(0.5);
             }
         }
 
