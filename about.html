@@ -1004,20 +1004,7 @@
             display: none;
         }
 
-        /* Hide schedule button on desktop initially, show on animal nav hover */
-        @media (min-width: 768px) {
-            div#schedule-visit-button.flex {
-                opacity: 0 !important;
-                visibility: hidden !important;
-                pointer-events: none !important;
-                transition: opacity 0.5s ease, visibility 0.5s ease !important;
-            }
-            div#schedule-visit-button.flex.schedule-button-shown {
-                opacity: 1 !important;
-                visibility: visible !important;
-                pointer-events: auto !important;
-            }
-        }
+        /* Buttons always visible - no hiding on desktop */
 
         @media (max-width: 768px) {
             .timeline-line-horizontal {
@@ -1748,10 +1735,10 @@
                 <p class="text-lg sm:text-xl text-gray-600 mb-10 font-poppins">Learn more about the dedicated providers who make Village Pediatrics special.</p>
 
                 <div class="flex flex-col sm:flex-row gap-6 justify-center" id="schedule-visit-button">
-                    <a href="team.html" class="text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300" style="background: linear-gradient(to right, #b05717, #ffb82c);">
+                    <a href="team.html" class="bg-gradient-to-r from-navy to-teal text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
                         Meet Our Providers
                     </a>
-                    <a href="contact.html" class="text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300" style="background: linear-gradient(to right, #F2B138, #3B9D84);">
+                    <a href="contact.html" class="bg-gradient-to-r from-orange to-navy text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
                         Schedule a Visit
                     </a>
                 </div>
@@ -2039,47 +2026,7 @@
                 });
             }, 500); // Start animations 500ms after page load
 
-            // Show Schedule Visit button on animal nav hover (Desktop only)
-            if (window.innerWidth >= 768) { // md breakpoint
-                const scheduleButton = document.getElementById('schedule-visit-button');
-                const animalItems = document.querySelectorAll('.animal-nav-item');
-                let buttonShown = false;
-
-                if (animalItems.length > 0 && scheduleButton) {
-                    console.log('Found', animalItems.length, 'animal nav items and schedule button!');
-
-                    // Add mouseenter to EACH animal item
-                    animalItems.forEach(function(animalItem, index) {
-                        console.log('Adding listener to animal item', index);
-                        animalItem.addEventListener('mouseenter', function() {
-                            console.log('Mouse entered animal item', index, '!');
-                            if (!buttonShown) {
-                                buttonShown = true;
-                                console.log('Showing schedule button permanently!');
-
-                                // Force styles directly with setProperty to override everything
-                                scheduleButton.style.setProperty('opacity', '1', 'important');
-                                scheduleButton.style.setProperty('visibility', 'visible', 'important');
-                                scheduleButton.style.setProperty('pointer-events', 'auto', 'important');
-                                scheduleButton.classList.add('schedule-button-shown');
-
-                                console.log('Styles forced. Button classes:', scheduleButton.className);
-                                console.log('Computed visibility:', window.getComputedStyle(scheduleButton).visibility);
-                                console.log('Computed opacity:', window.getComputedStyle(scheduleButton).opacity);
-
-                                // Aggressive persistent keeper - re-apply styles constantly
-                                setInterval(function() {
-                                    scheduleButton.style.setProperty('opacity', '1', 'important');
-                                    scheduleButton.style.setProperty('visibility', 'visible', 'important');
-                                    scheduleButton.style.setProperty('pointer-events', 'auto', 'important');
-                                }, 50);
-                            }
-                        });
-                    });
-                } else {
-                    console.log('Could not find elements!', 'animalItems:', animalItems.length, 'scheduleButton:', scheduleButton);
-                }
-            }
+            // Buttons now always visible - no conditional display logic needed
 
         });
     </script>
