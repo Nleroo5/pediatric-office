@@ -197,6 +197,68 @@
         .phone-link:hover {
             color: #3B9D84;
         }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 50;
+            min-width: 240px;
+            border: 2px solid #F2B138;
+            pointer-events: none;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown-item {
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1F2937;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #F3F4F6;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .dropdown-item:first-child {
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, #FEF3C7, #FECACA);
+            color: #0D2673;
+            padding-left: 24px;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #F2B138, transparent);
+            margin: 4px 0;
+        }
         
         .section-divider {
             height: 1px;
@@ -527,10 +589,24 @@
                         <img src="images/animals/zebra.png" alt="Services" class="w-10 h-10 object-contain">
                         <span class="font-semibold text-gray-900 font-poppins">Services</span>
                     </a>
-                    <a href="team.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <img src="images/animals/alligator.png" alt="Our Team" class="w-10 h-10 object-contain">
-                        <span class="font-semibold text-gray-900 font-poppins">Our Team</span>
-                    </a>
+                    <div class="mobile-menu-team-section">
+                        <button onclick="toggleTeamMenu()" class="mobile-menu-item flex items-center justify-between w-full p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="flex items-center space-x-4">
+                                <img src="images/animals/alligator.png" alt="Our Team" class="w-10 h-10 object-contain">
+                                <span class="font-semibold text-gray-900 font-poppins">Our Team</span>
+                            </div>
+                            <svg id="team-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="team-submenu" class="hidden pl-14 space-y-2 mt-2">
+                            <a href="providers/dr-austin-dupont.html" class="mobile-menu-item block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Dr. Austin Dupont</a>
+                            <a href="providers/dr-patricia-elvir.html" class="mobile-menu-item block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Dr. Patricia Elvir</a>
+                            <a href="providers/trudy-english-arnp.html" class="mobile-menu-item block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Trudy English, ARNP</a>
+                            <a href="providers/dr-lindsay-wolf.html" class="mobile-menu-item block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Dr. Lindsay Wolf</a>
+                            <a href="team.html" class="mobile-menu-item block p-2 text-sm text-orange font-semibold font-poppins hover:bg-gray-50 rounded-lg transition-colors">Meet the Full Team</a>
+                        </div>
+                    </div>
                     <a href="new-patients.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
                         <img src="images/animals/monkey.png" alt="New Patients" class="w-10 h-10 object-contain">
                         <span class="font-semibold text-gray-900 font-poppins">New Patients</span>
@@ -571,12 +647,22 @@
                         <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase">Services</span>
                     </div>
                 </a>
-                <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                    <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
-                    <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
-                        <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase hidden sm:inline">Our Team</span><span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase sm:hidden">Team</span>
+                <div class="dropdown animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                    <a href="team.html">
+                        <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
+                        <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                            <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase hidden sm:inline">Our Team</span><span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase sm:hidden">Team</span>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="providers/dr-austin-dupont.html" class="dropdown-item block">Dr. Austin Dupont</a>
+                        <a href="providers/dr-patricia-elvir.html" class="dropdown-item block">Dr. Patricia Elvir</a>
+                        <a href="providers/trudy-english-arnp.html" class="dropdown-item block">Trudy English, ARNP</a>
+                        <a href="providers/dr-lindsay-wolf.html" class="dropdown-item block">Dr. Lindsay Wolf</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="team.html" class="dropdown-item block">Meet the Full Team</a>
                     </div>
-                </a>
+                </div>
                 <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
                     <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
                     <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
@@ -1227,6 +1313,20 @@
                 }
             });
         });
+
+        // Toggle team submenu in mobile menu
+        function toggleTeamMenu() {
+            const submenu = document.getElementById('team-submenu');
+            const arrow = document.getElementById('team-arrow');
+
+            if (submenu.classList.contains('hidden')) {
+                submenu.classList.remove('hidden');
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                submenu.classList.add('hidden');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
     </script>
 
     <!-- Elephant Animation Script -->
