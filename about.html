@@ -250,15 +250,6 @@
             opacity: 1;
         }
 
-        .modern-card:hover {
-            transform: translateY(-15px) scale(1.02) rotateX(5deg) rotateY(2deg) translateZ(20px);
-            box-shadow:
-                0 30px 60px rgba(0, 0, 0, 0.15),
-                0 15px 35px rgba(59, 157, 132, 0.2),
-                inset 0 2px 5px rgba(255, 255, 255, 0.9);
-            border-color: #feb92c;
-        }
-
         .modern-card::after {
             content: '';
             position: absolute;
@@ -1976,24 +1967,7 @@
                 });
             });
 
-            // Add 3D tilt effect to all modern cards
-            document.querySelectorAll('.modern-card').forEach(card => {
-                card.addEventListener('mousemove', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (y - centerY) / 10;
-                    const rotateY = (centerX - x) / 10;
-
-                    this.style.transform = `translateY(-15px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
-                });
-
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = '';
-                });
-            });
+            // 3D tilt effect removed for cleaner user experience
 
             // Add random sparkle effects
             setInterval(createSparkle, 3000);
