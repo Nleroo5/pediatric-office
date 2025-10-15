@@ -1111,6 +1111,68 @@
 
         }
 
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 50;
+            min-width: 240px;
+            border: 2px solid #F2B138;
+            pointer-events: none;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown-item {
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1F2937;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #F3F4F6;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .dropdown-item:first-child {
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, #FEF3C7, #FECACA);
+            color: #0D2673;
+            padding-left: 24px;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #F2B138, transparent);
+            margin: 4px 0;
+        }
+
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -1207,12 +1269,22 @@
                     <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Care</span><span class="hidden sm:inline">Services</span></span>
                 </div>
             </a>
-            <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-teal group-hover:border-teal transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
-                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Team</span><span class="hidden sm:inline">Our Team</span></span>
+            <div class="dropdown animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <a href="team.html">
+                    <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
+                    <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-teal group-hover:border-teal transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                        <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Team</span><span class="hidden sm:inline">Our Team</span></span>
+                    </div>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="team.html" class="dropdown-item block">Meet the Full Team</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="providers/dr-austin-dupont.html" class="dropdown-item block">Dr. Austin Dupont</a>
+                    <a href="providers/dr-patricia-elvir.html" class="dropdown-item block">Dr. Patricia Elvir</a>
+                    <a href="providers/trudy-english-arnp.html" class="dropdown-item block">Trudy English, ARNP</a>
+                    <a href="providers/dr-lindsay-wolf.html" class="dropdown-item block">Dr. Lindsay Wolf</a>
                 </div>
-            </a>
+            </div>
             <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
                 <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
                 <div class="bg-white px-4 py-2 rounded-full border-2 border-custom-blue group-hover:bg-navy group-hover:border-navy transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
