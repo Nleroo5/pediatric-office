@@ -600,6 +600,13 @@
             }
         }
 
+        /* Reduce bubble sizes on mobile */
+        @media (max-width: 768px) {
+            .bubble {
+                transform: scale(0.4);
+            }
+        }
+
         /* 3D Interactive Provider Cards */
         .provider-card-3d {
             transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
