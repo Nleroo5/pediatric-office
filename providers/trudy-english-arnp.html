@@ -24,7 +24,8 @@
         .dropdown-item{padding:12px 20px;font-size:14px;font-weight:600;transition:all .2s;border-bottom:1px solid #F3F4F6}
         .dropdown-item:hover{background:linear-gradient(135deg,#FEF3C7,#FECACA);color:#0D2673;padding-left:24px}
         .dropdown-divider{height:1px;background:linear-gradient(to right,transparent,#F2B138,transparent);margin:4px 0}
-        .bubble{position:absolute;background-color:rgba(110,189,58,.6);border-radius:50%;animation:bubbleFloat 8s ease-in-out infinite;z-index:5}
+        .bubble{position:absolute;background-color:rgba(110,189,58,.6);border-radius:50%;animation:bubbleFloat 8s ease-in-out infinite;z-index:5;display:none}
+        @media (min-width:1024px){.bubble{display:block}}
         .bubble-1{width:80px;height:80px;top:20%;left:10%;animation-duration:8s}.bubble-2{width:120px;height:120px;top:60%;left:80%;animation-delay:-2s;animation-duration:10s}
         .bubble-3{width:60px;height:60px;top:40%;left:30%;animation-delay:-4s;animation-duration:12s}.bubble-4{width:100px;height:100px;top:70%;left:60%;animation-delay:-6s;animation-duration:9s}
         .bubble-5{width:90px;height:90px;top:30%;left:75%;animation-delay:-3s;animation-duration:11s}.bubble-6{width:70px;height:70px;top:80%;left:20%;animation-delay:-5s;animation-duration:7s}
@@ -84,7 +85,8 @@
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-8 items-center">
-                <div class="text-center lg:text-left">
+                <div class="flex justify-center order-1 lg:order-2"><div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-white/30 shadow-2xl"><img src="../images/team/trudy.png" alt="Trudy English" class="w-full h-full object-cover"></div></div>
+                <div class="text-center lg:text-left order-2 lg:order-1">
                     <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 font-fredoka text-white drop-shadow-lg">Trudy English, ARNP</h1>
                     <p class="text-xl sm:text-2xl text-[#f5f15d] font-semibold mb-4">Pediatric Nurse Practitioner</p>
                     <p class="text-base sm:text-lg text-white/90 mb-6">University of Akron BSN, Ohio State MSN</p>
@@ -93,7 +95,6 @@
                         <a href="../team.html" class="border-2 border-white/80 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20">Meet the Team</a>
                     </div>
                 </div>
-                <div class="flex justify-center"><div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-white/30 shadow-2xl"><img src="../images/team/trudy.png" alt="Trudy English" class="w-full h-full object-cover"></div></div>
             </div>
         </div>
     </section>

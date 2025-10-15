@@ -268,6 +268,14 @@
             border-radius: 50%;
             animation: bubbleFloat 8s ease-in-out infinite;
             z-index: 5;
+            display: none; /* Hide on mobile by default */
+        }
+
+        /* Show bubbles on desktop */
+        @media (min-width: 1024px) {
+            .bubble {
+                display: block;
+            }
         }
 
         .bubble-1 {
@@ -554,7 +562,14 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-8 items-center">
-                <div class="text-center lg:text-left">
+                <!-- Provider Photo - appears FIRST on mobile, SECOND on desktop -->
+                <div class="flex justify-center order-1 lg:order-2">
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-white/30 shadow-2xl">
+                        <img src="../images/team/dupont.png" alt="Dr. Austin Dupont" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <!-- Text Content - appears SECOND on mobile, FIRST on desktop -->
+                <div class="text-center lg:text-left order-2 lg:order-1">
                     <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 font-fredoka text-white drop-shadow-lg">
                         Dr. Austin Dupont, MD
                     </h1>
@@ -571,12 +586,6 @@
                         <a href="../team.html" class="border-2 border-white/80 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors">
                             Meet the Team
                         </a>
-                    </div>
-                </div>
-                <!-- Provider Photo -->
-                <div class="flex justify-center">
-                    <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-white/30 shadow-2xl">
-                        <img src="../images/team/dupont.png" alt="Dr. Austin Dupont" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>

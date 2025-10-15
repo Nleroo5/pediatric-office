@@ -78,8 +78,9 @@
         .dropdown-divider { height: 1px; background: linear-gradient(to right, transparent, #F2B138, transparent); margin: 4px 0; }
         .bubble {
             position: absolute; background-color: rgba(110, 189, 58, 0.6); border-radius: 50%;
-            animation: bubbleFloat 8s ease-in-out infinite; z-index: 5;
+            animation: bubbleFloat 8s ease-in-out infinite; z-index: 5; display: none;
         }
+        @media (min-width: 1024px) { .bubble { display: block; } }
         .bubble-1 { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; animation-duration: 8s; }
         .bubble-2 { width: 120px; height: 120px; top: 60%; left: 80%; animation-delay: -2s; animation-duration: 10s; }
         .bubble-3 { width: 60px; height: 60px; top: 40%; left: 30%; animation-delay: -4s; animation-duration: 12s; }
@@ -239,7 +240,12 @@
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-8 items-center">
-                <div class="text-center lg:text-left">
+                <div class="flex justify-center order-1 lg:order-2">
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-white/30 shadow-2xl">
+                        <img src="../images/team/elvir.png" alt="Dr. Patricia Elvir" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="text-center lg:text-left order-2 lg:order-1">
                     <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 font-fredoka text-white drop-shadow-lg">Dr. Patricia Elvir, MD</h1>
                     <p class="text-xl sm:text-2xl text-teamyellow font-semibold mb-4">Founding Physician</p>
                     <p class="text-lg text-orange font-semibold mb-4">FAAP, ABIHM</p>
@@ -247,11 +253,6 @@
                     <div class="flex flex-wrap justify-center lg:justify-start gap-4">
                         <a href="../contact.html" class="bg-teamgreen/70 backdrop-blur-sm border-2 border-teamgreen text-white px-8 py-3 rounded-lg font-semibold hover:bg-teamgreen/90 transition-colors">Schedule Appointment</a>
                         <a href="../team.html" class="border-2 border-white/80 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors">Meet the Team</a>
-                    </div>
-                </div>
-                <div class="flex justify-center">
-                    <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-white/30 shadow-2xl">
-                        <img src="../images/team/elvir.png" alt="Dr. Patricia Elvir" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
