@@ -761,7 +761,10 @@
 
             const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
             mobileMenuItems.forEach(item => {
-                item.addEventListener('click', closeMobileMenu);
+                // Don't close menu if it's the team toggle button
+                if (item.tagName !== 'BUTTON') {
+                    item.addEventListener('click', closeMobileMenu);
+                }
             });
 
             document.addEventListener('keydown', function(e) {
