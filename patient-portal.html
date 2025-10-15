@@ -1149,10 +1149,24 @@
                     <img src="images/animals/zebra.png" alt="Services" class="w-10 h-10 object-contain">
                     <span class="font-semibold text-gray-900 font-poppins">Services</span>
                 </a>
-                <a href="team.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                    <img src="images/animals/alligator.png" alt="Our Team" class="w-10 h-10 object-contain">
-                    <span class="font-semibold text-gray-900 font-poppins">Our Team</span>
-                </a>
+                <div class="mobile-menu-team-section">
+                    <button onclick="toggleTeamMenu()" class="mobile-menu-item flex items-center justify-between w-full p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <img src="images/animals/alligator.png" alt="Our Team" class="w-10 h-10 object-contain">
+                            <span class="font-semibold text-gray-900 font-poppins">Our Team</span>
+                        </div>
+                        <svg id="team-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="team-submenu" class="hidden pl-14 space-y-2 mt-2">
+                        <a href="team.html" class="block p-2 text-sm text-teal font-semibold font-poppins hover:bg-gray-50 rounded-lg transition-colors">Meet the Full Team</a>
+                        <a href="providers/dr-austin-dupont.html" class="block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Dr. Austin Dupont</a>
+                        <a href="providers/dr-patricia-elvir.html" class="block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Dr. Patricia Elvir</a>
+                        <a href="providers/trudy-english-arnp.html" class="block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Trudy English, ARNP</a>
+                        <a href="providers/dr-lindsay-wolf.html" class="block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Dr. Lindsay Wolf</a>
+                    </div>
+                </div>
                 <a href="new-patients.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
                     <img src="images/animals/monkey.png" alt="New Patients" class="w-10 h-10 object-contain">
                     <span class="font-semibold text-gray-900 font-poppins">New Patients</span>
@@ -1640,6 +1654,18 @@
                 }
             });
         });
+
+        function toggleTeamMenu() {
+            const submenu = document.getElementById('team-submenu');
+            const arrow = document.getElementById('team-arrow');
+            if (submenu.classList.contains('hidden')) {
+                submenu.classList.remove('hidden');
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                submenu.classList.add('hidden');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
     </script>
 
     <!-- Giraffe Animation Script -->
