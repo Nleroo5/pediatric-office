@@ -22,8 +22,13 @@
             return;
         }
 
+        // Determine the correct path based on current location
+        const scriptPath = document.currentScript?.src || document.querySelector('script[src*="load-footer.js"]')?.src;
+        const isInSubdirectory = scriptPath && scriptPath.includes('../js/load-footer.js');
+        const footerPath = isInSubdirectory ? '../components/footer.html' : 'components/footer.html';
+
         // Fetch the footer component
-        fetch('components/footer.html')
+        fetch(footerPath)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
