@@ -77,8 +77,6 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
             z-index: -1;
             overflow: hidden;
         }
@@ -220,14 +218,51 @@
                 0 8px 20px rgba(59, 157, 132, 0.15),
                 inset 0 1px 0 rgba(255, 255, 255, 0.9),
                 inset 0 -1px 0 rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            backdrop-filter: blur(15px);
+            cursor: pointer;
+            transform: translateZ(0) rotateX(0) rotateY(0);
+            will-change: transform;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                rgba(59, 157, 132, 0.08) 0%,
+                rgba(80, 179, 238, 0.08) 50%,
+                rgba(242, 177, 56, 0.08) 100%);
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
         }
 
         .contact-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-20px) translateZ(50px) rotateX(8deg) rotateY(4deg) scale(1.03);
             box-shadow:
-                0 25px 50px rgba(0, 0, 0, 0.15),
-                0 12px 25px rgba(59, 157, 132, 0.2);
+                0 40px 80px rgba(0, 0, 0, 0.2),
+                0 20px 50px rgba(59, 157, 132, 0.25),
+                0 10px 25px rgba(0, 0, 0, 0.15),
+                inset 0 2px 8px rgba(255, 255, 255, 0.95),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.08);
+            border-color: rgba(59, 157, 132, 0.5);
+        }
+
+        .contact-card:active {
+            transform: translateY(-15px) translateZ(30px) rotateX(4deg) rotateY(2deg) scale(1.01);
+            transition: all 0.1s ease;
         }
 
         .contact-card::after {
@@ -237,16 +272,37 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            display: none;
             background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transform: rotate(45deg) translateX(-100%) translateY(-100%);
             transition: transform 0.8s ease;
             opacity: 0;
             pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
         }
 
+        .contact-card:hover::after {
+            transform: rotate(45deg) translateX(100%) translateY(100%);
+            opacity: 1;
+        }
+
+        /* Enhanced icon animation */
+        .contact-card .contact-icon {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateZ(0) scale(1);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: translateZ(20px) scale(1.1) rotateY(10deg);
+        }
+
+        /* Interactive bounce animation */
+        @keyframes cardPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .contact-card:hover {
+            animation: cardPulse 2s ease-in-out infinite;
+        }
         
         .form-input, .form-textarea {
             transition: all 0.3s ease;
@@ -548,73 +604,6 @@
                 display: none !important;
             }
         }
-
-        /* Dropdown Menu Styles */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(0);
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                        visibility 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s,
-                        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 50;
-            min-width: 240px;
-            border: 2px solid #F2B138;
-            pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-            pointer-events: auto;
-            transition-delay: 0s, 0s, 0s;
-        }
-
-        .dropdown-item {
-            padding: 12px 20px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #1F2937;
-            transition: all 0.2s ease;
-            border-bottom: 1px solid #F3F4F6;
-            font-family: 'Fredoka', sans-serif;
-        }
-
-        .dropdown-item:first-child {
-            border-top-left-radius: 14px;
-            border-top-right-radius: 14px;
-        }
-
-        .dropdown-item:last-child {
-            border-bottom-left-radius: 14px;
-            border-bottom-right-radius: 14px;
-            border-bottom: none;
-        }
-
-        .dropdown-item:hover {
-            background: linear-gradient(135deg, #FEF3C7, #FECACA);
-            color: #0D2673;
-            padding-left: 24px;
-        }
-
-        .dropdown-divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, #F2B138, transparent);
-            margin: 4px 0;
-        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -667,24 +656,10 @@
                     <img src="images/animals/zebra.png" alt="Services" class="w-10 h-10 object-contain">
                     <span class="font-semibold text-gray-900 font-poppins">Services</span>
                 </a>
-                <div class="mobile-menu-team-section">
-                    <button onclick="toggleTeamMenu()" class="mobile-menu-item flex items-center justify-between w-full p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <div class="flex items-center space-x-4">
-                            <img src="images/animals/alligator.png" alt="Our Team" class="w-10 h-10 object-contain">
-                            <span class="font-semibold text-gray-900 font-poppins">Our Team</span>
-                        </div>
-                        <svg id="team-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div id="team-submenu" class="hidden pl-14 space-y-2 mt-2">
-                        <a href="team.html" class="block p-2 text-sm text-teal font-semibold font-poppins hover:bg-gray-50 rounded-lg transition-colors">Meet the Full Team</a>
-                        <a href="providers/dr-austin-dupont.html" class="block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Dr. Austin Dupont</a>
-                        <a href="providers/dr-patricia-elvir.html" class="block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Dr. Patricia Elvir</a>
-                        <a href="providers/trudy-english-arnp.html" class="block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Trudy English, ARNP</a>
-                        <a href="providers/dr-lindsay-wolf.html" class="block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Dr. Lindsay Wolf</a>
-                    </div>
-                </div>
+                <a href="team.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <img src="images/animals/alligator.png" alt="Our Team" class="w-10 h-10 object-contain">
+                    <span class="font-semibold text-gray-900 font-poppins">Our Team</span>
+                </a>
                 <a href="new-patients.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
                     <img src="images/animals/monkey.png" alt="New Patients" class="w-10 h-10 object-contain">
                     <span class="font-semibold text-gray-900 font-poppins">New Patients</span>
@@ -725,22 +700,12 @@
                     <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Services</span>
                 </div>
             </a>
-            <div class="dropdown animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <a href="team.html">
-                    <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
-                    <div class="bg-lightblue/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-yellow-400 group-hover:bg-teal group-hover:border-yellow-400 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
-                        <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Our Team</span>
-                    </div>
-                </a>
-                <div class="dropdown-menu">
-                    <a href="team.html" class="dropdown-item block">Meet the Full Team</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="providers/dr-austin-dupont.html" class="dropdown-item block">Dr. Austin Dupont</a>
-                    <a href="providers/dr-patricia-elvir.html" class="dropdown-item block">Dr. Patricia Elvir</a>
-                    <a href="providers/trudy-english-arnp.html" class="dropdown-item block">Trudy English, ARNP</a>
-                    <a href="providers/dr-lindsay-wolf.html" class="dropdown-item block">Dr. Lindsay Wolf</a>
+            <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-lightblue/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-yellow-400 group-hover:bg-teal group-hover:border-yellow-400 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Our Team</span>
                 </div>
-            </div>
+            </a>
             <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
                 <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
                 <div class="bg-orange/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-yellow-400 group-hover:bg-navy group-hover:border-yellow-400 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
@@ -892,7 +857,7 @@
                         <!-- Interactive Map -->
                         <div class="relative">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224811.8207748893!2d-81.51894792397!3d29.988481875226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e42a8de7e6ab49%3A0x123456789abcdef!2s319%20W%20Town%20Pl%20STE%201%2C%20St.%20Augustine%2C%20FL%2032092!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3462.7438089563777!2d-81.31445682391617!3d29.894475275327067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e42fc9b53efb87%3A0x6a8e5e0e6b5c6e5!2s319%20W%20Town%20Pl%20STE%201%2C%20St.%20Augustine%2C%20FL%2032092!5e0!3m2!1sen!2sus!4v1696534567890!5m2!1sen!2sus"
                                 width="100%"
                                 height="450"
                                 style="border:0; filter: contrast(1.1) saturate(1.2);"
@@ -975,6 +940,9 @@
                                         <span class="font-medium text-gray-900">Friday</span>
                                         <span class="text-gray-600">9:00 AM - 5:00 PM</span>
                                     </div>
+                                    <div class="text-center py-1">
+                                        <span class="text-sm text-gray-500">Closed 1:00-2:00 PM for lunch</span>
+                                    </div>
                                     <div class="flex justify-between items-center py-2 border-b border-gray-100">
                                         <span class="font-medium text-gray-900">Saturday</span>
                                         <span class="text-gray-600">9:00 AM - 1:00 PM</span>
@@ -986,27 +954,29 @@
                                 </div>
                             </div>
 
-                            <!-- Holiday Closures -->
+                            <!-- Special Services -->
                             <div>
                                 <h3 class="text-xl font-semibold text-navy mb-4 flex items-center">
                                     <svg class="w-6 h-6 mr-2 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                                     </svg>
-                                    Holiday Closures
+                                    Available Services
                                 </h3>
-                                <p class="text-sm text-gray-600 mb-3">
-                                    We will be closed on:
-                                </p>
-                                <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
-                                    <li>New Year's Day</li>
-                                    <li>Memorial Day</li>
-                                    <li>Independence Day</li>
-                                    <li>Labor Day</li>
-                                    <li>Thanksgiving (Nov 27-29)</li>
-                                    <li>Christmas (Dec 25-26)</li>
-                                </ul>
+                                <div class="space-y-4">
+                                    <div class="bg-orange/5 rounded-lg p-4">
+                                        <h4 class="font-semibold text-navy mb-2">Same-Day Appointments</h4>
+                                        <p class="text-gray-600 text-sm">Available Monday - Saturday for sick visits</p>
+                                    </div>
+                                    <div class="bg-teal/5 rounded-lg p-4">
+                                        <h4 class="font-semibold text-navy mb-2">Walk-Ins Welcome</h4>
+                                        <p class="text-gray-600 text-sm">Subject to provider availability</p>
+                                    </div>
+                                    <div class="bg-lightblue/5 rounded-lg p-4">
+                                        <h4 class="font-semibold text-navy mb-2">24/7 After-Hours</h4>
+                                        <p class="text-gray-600 text-sm">Call main number for nursing support</p>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -1112,6 +1082,25 @@
                     shape.style.transform += ` translate(${x}px, ${y}px)`;
                 });
             });
+
+            // Add 3D tilt effect to contact cards
+            document.querySelectorAll('.contact-card').forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+
+                    this.style.transform = `translateY(-15px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
         }
     </script>
 
@@ -1197,13 +1186,10 @@ ${message}`;
                 }
             });
 
-            // Close menu when clicking on a menu item (except team toggle button)
+            // Close menu when clicking on a menu item
             const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
             mobileMenuItems.forEach(item => {
-                // Don't close menu if it's the team toggle button
-                if (item.tagName !== 'BUTTON') {
-                    item.addEventListener('click', closeMobileMenu);
-                }
+                item.addEventListener('click', closeMobileMenu);
             });
 
             // Close menu with escape key
@@ -1213,18 +1199,6 @@ ${message}`;
                 }
             });
         });
-
-        function toggleTeamMenu() {
-            const submenu = document.getElementById('team-submenu');
-            const arrow = document.getElementById('team-arrow');
-            if (submenu.classList.contains('hidden')) {
-                submenu.classList.remove('hidden');
-                arrow.style.transform = 'rotate(180deg)';
-            } else {
-                submenu.classList.add('hidden');
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        }
     </script>
 
     <!-- Load shared footer component -->

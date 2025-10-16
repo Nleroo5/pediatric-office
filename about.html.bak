@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Village Pediatrics | St. Augustine, FL</title>
-    <meta name="description" content="Learn about Village Pediatrics' history, mission, and commitment to providing exceptional pediatric care in St. Augustine, FL since 2007.">
+    <meta name="description" content="Learn about Village Pediatrics' history, mission, and commitment to providing exceptional pediatric care in St. Augustine, FL since 2008.">
     <meta property="og:title" content="About Us - Village Pediatrics">
-    <meta property="og:description" content="Learn about Village Pediatrics' history, mission, and commitment to providing exceptional pediatric care in St. Augustine, FL since 2007.">
+    <meta property="og:description" content="Learn about Village Pediatrics' history, mission, and commitment to providing exceptional pediatric care in St. Augustine, FL since 2008.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://myvillagepeds.com/about.html">
     <meta property="og:image" content="https://myvillagepeds.com/images/og-image.png">
@@ -14,7 +14,7 @@
     <meta property="og:image:height" content="1200">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="About Us - Village Pediatrics">
-    <meta name="twitter:description" content="Learn about Village Pediatrics' history, mission, and commitment to providing exceptional pediatric care in St. Augustine, FL since 2007.">
+    <meta name="twitter:description" content="Learn about Village Pediatrics' history, mission, and commitment to providing exceptional pediatric care in St. Augustine, FL since 2008.">
     <link rel="canonical" href="https://myvillagepeds.com/about.html">
     <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
     <!-- Google tag (gtag.js) -->
@@ -78,8 +78,6 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
             z-index: -1;
             overflow: hidden;
         }
@@ -252,6 +250,15 @@
             opacity: 1;
         }
 
+        .modern-card:hover {
+            transform: translateY(-15px) scale(1.02) rotateX(5deg) rotateY(2deg) translateZ(20px);
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, 0.15),
+                0 15px 35px rgba(59, 157, 132, 0.2),
+                inset 0 2px 5px rgba(255, 255, 255, 0.9);
+            border-color: #feb92c;
+        }
+
         .modern-card::after {
             content: '';
             position: absolute;
@@ -264,74 +271,11 @@
             transition: transform 0.6s ease;
             opacity: 0;
             pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
         }
 
         .modern-card:hover::after {
             transform: rotate(45deg) translateX(100%) translateY(100%);
             opacity: 1;
-        }
-
-        /* Flip Card Styles for New Ownership Timeline Card */
-        .flip-card {
-            perspective: 1000px;
-            min-height: 250px;
-            height: auto;
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            min-height: 250px;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front,
-        .flip-card-back {
-            position: absolute;
-            width: 100%;
-            min-height: 250px;
-            backface-visibility: hidden;
-            border-radius: 24px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .flip-card-front {
-            background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.98) 0%,
-                rgba(255, 255, 255, 0.95) 50%,
-                rgba(248, 250, 252, 0.98) 100%);
-            border: 2px solid #feb92c;
-            box-shadow:
-                0 15px 35px rgba(0, 0, 0, 0.1),
-                0 5px 15px rgba(59, 157, 132, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-
-        .flip-card-back {
-            transform: rotateY(180deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: white;
-            border: 2px solid #feb92c;
-            box-shadow:
-                0 15px 35px rgba(0, 0, 0, 0.1),
-                0 5px 15px rgba(59, 157, 132, 0.1);
-        }
-
-        .flip-card-back img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 22px;
         }
 
         .accent-line {
@@ -502,8 +446,6 @@
             border-radius: 50%;
             animation: pulse 2s infinite;
             pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
         }
 
         @keyframes pulse {
@@ -752,8 +694,6 @@
             background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 60%);
             border-radius: 20px 20px 0 0;
             pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
         }
 
         .interactive-benefit-card:hover .card-back {
@@ -1073,7 +1013,20 @@
             display: none;
         }
 
-        /* Buttons always visible - no hiding on desktop */
+        /* Hide schedule button on desktop initially, show on animal nav hover */
+        @media (min-width: 768px) {
+            div#schedule-visit-button.flex {
+                opacity: 0 !important;
+                visibility: hidden !important;
+                pointer-events: none !important;
+                transition: opacity 0.5s ease, visibility 0.5s ease !important;
+            }
+            div#schedule-visit-button.flex.schedule-button-shown {
+                opacity: 1 !important;
+                visibility: visible !important;
+                pointer-events: auto !important;
+            }
+        }
 
         @media (max-width: 768px) {
             .timeline-line-horizontal {
@@ -1498,73 +1451,6 @@
             }
         }
 
-        /* Dropdown Menu Styles */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(0);
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                        visibility 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s,
-                        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 50;
-            min-width: 240px;
-            border: 2px solid #F2B138;
-            pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-            pointer-events: auto;
-            transition-delay: 0s, 0s, 0s;
-        }
-
-        .dropdown-item {
-            padding: 12px 20px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #1F2937;
-            transition: all 0.2s ease;
-            border-bottom: 1px solid #F3F4F6;
-            font-family: 'Fredoka', sans-serif;
-        }
-
-        .dropdown-item:first-child {
-            border-top-left-radius: 14px;
-            border-top-right-radius: 14px;
-        }
-
-        .dropdown-item:last-child {
-            border-bottom-left-radius: 14px;
-            border-bottom-right-radius: 14px;
-            border-bottom: none;
-        }
-
-        .dropdown-item:hover {
-            background: linear-gradient(135deg, #FEF3C7, #FECACA);
-            color: #0D2673;
-            padding-left: 24px;
-        }
-
-        .dropdown-divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, #F2B138, transparent);
-            margin: 4px 0;
-        }
-
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -1618,24 +1504,10 @@
                     <img src="images/animals/zebra.png" alt="Services" class="w-10 h-10 object-contain">
                     <span class="font-semibold text-gray-900 font-poppins">Services</span>
                 </a>
-                <div class="mobile-menu-team-section">
-                    <button onclick="toggleTeamMenu()" class="mobile-menu-item flex items-center justify-between w-full p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <div class="flex items-center space-x-4">
-                            <img src="images/animals/alligator.png" alt="Our Team" class="w-10 h-10 object-contain">
-                            <span class="font-semibold text-gray-900 font-poppins">Our Team</span>
-                        </div>
-                        <svg id="team-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div id="team-submenu" class="hidden pl-14 space-y-2 mt-2">
-                        <a href="team.html" class="block p-2 text-sm text-teal font-semibold font-poppins hover:bg-gray-50 rounded-lg transition-colors">Meet the Full Team</a>
-                        <a href="providers/dr-austin-dupont.html" class="block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Dr. Austin Dupont</a>
-                        <a href="providers/dr-patricia-elvir.html" class="block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Dr. Patricia Elvir</a>
-                        <a href="providers/trudy-english-arnp.html" class="block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Trudy English, ARNP</a>
-                        <a href="providers/dr-lindsay-wolf.html" class="block p-2 text-sm text-gray-700 font-poppins hover:bg-gray-50 rounded-lg transition-colors">Dr. Lindsay Wolf</a>
-                    </div>
-                </div>
+                <a href="team.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <img src="images/animals/alligator.png" alt="Our Team" class="w-10 h-10 object-contain">
+                    <span class="font-semibold text-gray-900 font-poppins">Our Team</span>
+                </a>
                 <a href="new-patients.html" class="mobile-menu-item flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
                     <img src="images/animals/monkey.png" alt="New Patients" class="w-10 h-10 object-contain">
                     <span class="font-semibold text-gray-900 font-poppins">New Patients</span>
@@ -1676,22 +1548,12 @@
                     <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Care</span><span class="hidden sm:inline">Services</span></span>
                 </div>
             </a>
-            <div class="dropdown animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <a href="team.html">
-                    <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
-                    <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-teal group-hover:border-teal transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
-                        <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Team</span><span class="hidden sm:inline">Our Team</span></span>
-                    </div>
-                </a>
-                <div class="dropdown-menu">
-                    <a href="team.html" class="dropdown-item block">Meet the Full Team</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="providers/dr-austin-dupont.html" class="dropdown-item block">Dr. Austin Dupont</a>
-                    <a href="providers/dr-patricia-elvir.html" class="dropdown-item block">Dr. Patricia Elvir</a>
-                    <a href="providers/trudy-english-arnp.html" class="dropdown-item block">Trudy English, ARNP</a>
-                    <a href="providers/dr-lindsay-wolf.html" class="dropdown-item block">Dr. Lindsay Wolf</a>
+            <a href="team.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-teal group-hover:border-teal transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-white font-poppins tracking-wider uppercase"><span class="sm:hidden">Team</span><span class="hidden sm:inline">Our Team</span></span>
                 </div>
-            </div>
+            </a>
             <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
                 <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
                 <div class="bg-white px-4 py-2 rounded-full border-2 border-[#b25a15] group-hover:bg-navy group-hover:border-navy transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
@@ -1772,11 +1634,15 @@
                 </div>
                 <div class="modern-card p-10 mission-card-glow">
                     <p class="text-lg sm:text-xl text-black leading-relaxed mb-8">
-                        At Village Pediatrics, we aim to provide trusted, compassionate care for every child and family we serve. Our extended weekday and weekend hours are designed to meet the real-life needs and schedules of our families, ensuring quality pediatric care is always within reach. We welcome all families - including those who choose alternative or delayed vaccination schedules - with respect, open communication, and evidence-based guidance. Our mission is to build lasting relationships rooted in trust, compassion, and holistic pediatric care, helping our patients and families to grow and thrive.
+                        To provide <span class="text-black">exceptional pediatric care</span>,
+                        delivering compassionate, comprehensive healthcare for children from newborn to age 21.
+                        We build <span class="text-black">lasting relationships</span> with families in the
+                        St. Augustine community through <span class="text-black">evidence-based medicine</span>
+                        and <span class="text-black">personalized attention</span>.
                     </p>
                     <div class="flex items-center justify-center">
                         <div class="accent-line w-24 mr-6"></div>
-                        <span class="text-black text-base sm:text-lg">Proudly serving families since 2007</span>
+                        <span class="text-black text-base sm:text-lg">Proudly serving families since 2008</span>
                         <div class="accent-line w-24 ml-6"></div>
                     </div>
                 </div>
@@ -1802,34 +1668,34 @@
                     <div class="absolute top-1/2 left-8 right-8 h-2 bg-gradient-to-r from-orange via-orange to-orange transform -translate-y-1/2 rounded-full shadow-lg"></div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                        <!-- 2007: The Foundation -->
+                        <!-- 2008: The Foundation -->
                         <div class="relative text-center">
                             <!-- Year Above Timeline -->
                             <div class="mb-16">
-                                <div class="timeline-year text-4xl font-bold text-orange mb-4 font-fredoka">2007</div>
+                                <div class="timeline-year text-4xl font-bold text-orange mb-4 font-fredoka">2008</div>
                             </div>
 
                             <!-- Content Below Timeline -->
                             <div class="mt-16">
-                                <div class="modern-card p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                                <div class="modern-card p-8">
                                     <h3 class="text-2xl font-semibold text-lionbrown mb-4">The Foundation</h3>
                                     <p class="text-base text-black">Dr. Patricia Elvir established Village Pediatrics with a vision to serve St. Augustine families with compassionate care and medical excellence.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 2007-2025: Building Trust -->
+                        <!-- 2008-2025: Building Trust -->
                         <div class="relative text-center">
                             <!-- Year Above Timeline -->
                             <div class="mb-16">
-                                <div class="timeline-year text-4xl font-bold text-orange mb-4 font-fredoka">2007-2025</div>
+                                <div class="timeline-year text-4xl font-bold text-orange mb-4 font-fredoka">2008-2025</div>
                             </div>
 
                             <!-- Content Below Timeline -->
                             <div class="mt-16">
-                                <div class="modern-card p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                                <div class="modern-card p-8">
                                     <h3 class="text-2xl font-semibold text-lionbrown mb-4">Building Trust & Excellence</h3>
-                                    <p class="text-base text-black">For 18 years, our practice flourished! We established same-day appointments, 24/7 nursing support, and comprehensive care that families could rely upon.</p>
+                                    <p class="text-base text-black">For 17 years, our practice flourished! We established same-day appointments, 24/7 nursing support, and comprehensive care that families could rely upon.</p>
                                 </div>
                             </div>
                         </div>
@@ -1843,18 +1709,9 @@
 
                             <!-- Content Below Timeline -->
                             <div class="mt-16">
-                                <div class="flip-card">
-                                    <div class="flip-card-inner">
-                                        <!-- Front of Card -->
-                                        <div class="flip-card-front p-8 flex flex-col justify-center">
-                                            <h3 class="text-2xl font-semibold text-lionbrown mb-4 font-fredoka">New Ownership</h3>
-                                            <p class="text-base text-black">Dr. Austin Dupont became the new owner of Village Pediatrics, bringing fresh perspectives while preserving the established traditions and trusted care that families have grown to cherish.</p>
-                                        </div>
-                                        <!-- Back of Card -->
-                                        <div class="flip-card-back">
-                                            <img src="images/team/duo.png" alt="Dr. Austin Dupont and Dr. Patricia Elvir">
-                                        </div>
-                                    </div>
+                                <div class="modern-card p-8">
+                                    <h3 class="text-2xl font-semibold text-lionbrown mb-4">New Ownership</h3>
+                                    <p class="text-base text-black">Dr. Austin Dupont became the new owner of Village Pediatrics, bringing fresh perspectives while preserving the established traditions and trusted care that families have grown to cherish.</p>
                                 </div>
                             </div>
                         </div>
@@ -1869,29 +1726,107 @@
             <div class="text-center mb-16">
                 <div class="flex items-center justify-center mb-8">
                     <div class="accent-line flex-1 mr-6"></div>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-fredoka text-lionbrown">What Makes Your Practice Unique?</h2>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-fredoka text-lionbrown">Why Families Choose Us</h2>
                     <div class="accent-line flex-1 ml-6"></div>
                 </div>
+                <p class="text-base sm:text-lg text-gray-600 font-fredoka italic">Hover over each benefit to learn more</p>
             </div>
 
-            <div class="max-w-5xl mx-auto space-y-8">
-                <!-- Extended Hours -->
-                <div class="modern-card p-10 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                    <h3 class="text-2xl font-bold text-orange mb-4 font-fredoka">Extended Hours for Your Convenience</h3>
-                    <p class="text-lg text-black leading-relaxed">We are proud to offer extended weekday hours and Saturday weekend hours designed to fit your family's schedule.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Interactive Card 1 -->
+                <div class="interactive-benefit-card group">
+                    <div class="card-front">
+                        <div class="w-16 h-16 bg-teal rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-2">Same-Day Appointments</h3>
+                        <p class="text-gray-600">When your child is sick, we're here</p>
+                    </div>
+                    <div class="card-back">
+                        <p class="text-white leading-relaxed">Available every day, including weekends. No waiting when your child needs care. Call before 3 PM for same-day availability.</p>
+                    </div>
                 </div>
 
-                <!-- Vaccination Flexibility -->
-                <div class="modern-card p-10 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                    <h3 class="text-2xl font-bold text-orange mb-4 font-fredoka">Welcoming All Families</h3>
-                    <p class="text-lg text-black leading-relaxed">We welcome all families, including those who follow alternative or delayed vaccine schedules, with respect and open communication.</p>
+                <!-- Interactive Card 2 -->
+                <div class="interactive-benefit-card group">
+                    <div class="card-front">
+                        <div class="w-16 h-16 bg-lightblue rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-2">24/7 Support</h3>
+                        <p class="text-gray-600">A provider is always on-call</p>
+                    </div>
+                    <div class="card-back">
+                        <p class="text-white leading-relaxed">Real Village Pediatrics providers answer after-hours calls - not a call center. Get medical advice from doctors who know your child.</p>
+                    </div>
                 </div>
 
-                <!-- Holistic Care -->
-                <div class="modern-card p-10 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                    <h3 class="text-2xl font-bold text-orange mb-4 font-fredoka">Comprehensive, Holistic Pediatric Care</h3>
-                    <p class="text-lg text-black leading-relaxed mb-4">At Village Pediatrics, we champion lifelong health and wellness by providing holistic and comprehensive pediatric care - not just treating a set of symptoms. Our approach is comprehensive, addressing everything from gut health to mental health, and beyond. We believe that true pediatric care means nurturing every aspect of a child's growth, development, and well-being.</p>
-                    <p class="text-lg text-black leading-relaxed font-semibold">Our mission is simple - to provide accessible, personalized, and evidence-based pediatric care for every child in St. Augustine.</p>
+                <!-- Interactive Card 3 -->
+                <div class="interactive-benefit-card group">
+                    <div class="card-front">
+                        <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-2">Know Your Child</h3>
+                        <p class="text-gray-600">Personal relationships with families</p>
+                    </div>
+                    <div class="card-back">
+                        <p class="text-white leading-relaxed">We remember your child's name, preferences, and history. Building trust through consistent, personalized care relationships.</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Card 4 -->
+                <div class="interactive-benefit-card group">
+                    <div class="card-front">
+                        <div class="w-16 h-16 bg-navy rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-2">Local Community</h3>
+                        <p class="text-gray-600">Rooted in St. Augustine</p>
+                    </div>
+                    <div class="card-back">
+                        <p class="text-white leading-relaxed">Family-owned practice serving St. Augustine and World Golf Village. We understand our community's unique needs.</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Card 5 -->
+                <div class="interactive-benefit-card group">
+                    <div class="card-front">
+                        <div class="w-16 h-16 bg-teal rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-2">Complete Care</h3>
+                        <p class="text-gray-600">Newborn to age 21</p>
+                    </div>
+                    <div class="card-back">
+                        <p class="text-white leading-relaxed">One practice for your child's entire journey. From first shots to college physicals - consistent care through every stage.</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Card 6 -->
+                <div class="interactive-benefit-card group">
+                    <div class="card-front">
+                        <div class="w-16 h-16 bg-lightblue rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-2">Bilingual Care</h3>
+                        <p class="text-gray-600">Spanish speaking providers</p>
+                    </div>
+                    <div class="card-back">
+                        <p class="text-white leading-relaxed">Fluent Spanish services to serve our diverse community with cultural understanding and clear communication.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1899,15 +1834,15 @@
         <!-- Meet Our Team CTA -->
         <div class="py-4 mt-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="bg-white rounded-2xl shadow-lg border-2 border-feb92c p-12 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <div class="bg-white rounded-2xl shadow-lg border-2 border-feb92c p-12 transition-all duration-300 hover:translateY(-12px) hover:scale-105 hover:shadow-2xl">
                 <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-fredoka text-lionbrown mb-6">Ready to Meet Our Team?</h2>
                 <p class="text-lg sm:text-xl text-gray-600 mb-10 font-poppins">Learn more about the dedicated providers who make Village Pediatrics special.</p>
 
                 <div class="flex flex-col sm:flex-row gap-6 justify-center" id="schedule-visit-button">
-                    <a href="team.html" class="text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300" style="background: linear-gradient(to right, #b05717, #F2B138);">
+                    <a href="team.html" class="bg-gradient-to-r from-lionbrown to-liongold text-white px-8 py-3 rounded-2xl font-bold text-lg shadow-lg">
                         Meet Our Providers
                     </a>
-                    <a href="contact.html" class="text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300" style="background: linear-gradient(to right, #F2B138, #ffb82c);">
+                    <a href="contact.html" class="bg-gradient-to-r from-liongold to-lionlight text-white px-8 py-3 rounded-2xl font-bold text-lg shadow-lg">
                         Schedule a Visit
                     </a>
                 </div>
@@ -1987,8 +1922,6 @@
                     animation: particleExplode 1s ease-out forwards;
                     animation-delay: ${i * 0.1}s;
                     pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
                     z-index: 1000;
                 `;
 
@@ -2011,8 +1944,6 @@
                 transform: translate(-50%, -50%);
                 animation: ripple 0.6s ease-out;
                 pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
                 z-index: 999;
             `;
 
@@ -2035,8 +1966,6 @@
                 z-index: -1;
                 animation: pulse 2s infinite;
                 pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
             `;
             card.appendChild(glow);
         }
@@ -2129,7 +2058,24 @@
                 });
             });
 
-            // 3D tilt effect removed for cleaner user experience
+            // Add 3D tilt effect to all modern cards
+            document.querySelectorAll('.modern-card').forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+
+                    this.style.transform = `translateY(-15px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
 
             // Add random sparkle effects
             setInterval(createSparkle, 3000);
@@ -2152,8 +2098,6 @@
                 background: ${randomColor};
                 border-radius: 50%;
                 pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
                 z-index: 1000;
                 left: ${Math.random() * window.innerWidth}px;
                 top: ${Math.random() * window.innerHeight}px;
@@ -2203,7 +2147,47 @@
                 });
             }, 500); // Start animations 500ms after page load
 
-            // Buttons now always visible - no conditional display logic needed
+            // Show Schedule Visit button on animal nav hover (Desktop only)
+            if (window.innerWidth >= 768) { // md breakpoint
+                const scheduleButton = document.getElementById('schedule-visit-button');
+                const animalItems = document.querySelectorAll('.animal-nav-item');
+                let buttonShown = false;
+
+                if (animalItems.length > 0 && scheduleButton) {
+                    console.log('Found', animalItems.length, 'animal nav items and schedule button!');
+
+                    // Add mouseenter to EACH animal item
+                    animalItems.forEach(function(animalItem, index) {
+                        console.log('Adding listener to animal item', index);
+                        animalItem.addEventListener('mouseenter', function() {
+                            console.log('Mouse entered animal item', index, '!');
+                            if (!buttonShown) {
+                                buttonShown = true;
+                                console.log('Showing schedule button permanently!');
+
+                                // Force styles directly with setProperty to override everything
+                                scheduleButton.style.setProperty('opacity', '1', 'important');
+                                scheduleButton.style.setProperty('visibility', 'visible', 'important');
+                                scheduleButton.style.setProperty('pointer-events', 'auto', 'important');
+                                scheduleButton.classList.add('schedule-button-shown');
+
+                                console.log('Styles forced. Button classes:', scheduleButton.className);
+                                console.log('Computed visibility:', window.getComputedStyle(scheduleButton).visibility);
+                                console.log('Computed opacity:', window.getComputedStyle(scheduleButton).opacity);
+
+                                // Aggressive persistent keeper - re-apply styles constantly
+                                setInterval(function() {
+                                    scheduleButton.style.setProperty('opacity', '1', 'important');
+                                    scheduleButton.style.setProperty('visibility', 'visible', 'important');
+                                    scheduleButton.style.setProperty('pointer-events', 'auto', 'important');
+                                }, 50);
+                            }
+                        });
+                    });
+                } else {
+                    console.log('Could not find elements!', 'animalItems:', animalItems.length, 'scheduleButton:', scheduleButton);
+                }
+            }
 
         });
     </script>
@@ -2252,13 +2236,10 @@
                 });
             }
 
-            // Close menu when clicking on a menu item (except team toggle button)
+            // Close menu when clicking on a menu item
             const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
             mobileMenuItems.forEach(item => {
-                // Don't close menu if it's the team toggle button
-                if (item.tagName !== 'BUTTON') {
-                    item.addEventListener('click', closeMobileMenu);
-                }
+                item.addEventListener('click', closeMobileMenu);
             });
 
             // Close menu with escape key
@@ -2268,18 +2249,6 @@
                 }
             });
         });
-
-        function toggleTeamMenu() {
-            const submenu = document.getElementById('team-submenu');
-            const arrow = document.getElementById('team-arrow');
-            if (submenu.classList.contains('hidden')) {
-                submenu.classList.remove('hidden');
-                arrow.style.transform = 'rotate(180deg)';
-            } else {
-                submenu.classList.add('hidden');
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        }
     </script>
 
     <!-- Load shared footer component -->
