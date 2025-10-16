@@ -1141,21 +1141,21 @@
 
                         <!-- Feature List -->
                         <div class="text-left space-y-4 mb-6">
-                            <div class="flex items-start gap-3">
-                                <span class="text-orange text-2xl leading-none mt-1">•</span>
-                                <span class="text-base text-gray-300">Make appointments</span>
+                            <div class="flex items-center gap-3">
+                                <span class="text-orange text-2xl leading-none">•</span>
+                                <span class="text-base text-white">Make appointments</span>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <span class="text-orange text-2xl leading-none mt-1">•</span>
-                                <span class="text-base text-gray-300">Message your provider</span>
+                            <div class="flex items-center gap-3">
+                                <span class="text-orange text-2xl leading-none">•</span>
+                                <span class="text-base text-white">Message your provider</span>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <span class="text-orange text-2xl leading-none mt-1">•</span>
-                                <span class="text-base text-gray-300">Manage medications</span>
+                            <div class="flex items-center gap-3">
+                                <span class="text-orange text-2xl leading-none">•</span>
+                                <span class="text-base text-white">Manage medications</span>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <span class="text-orange text-2xl leading-none mt-1">•</span>
-                                <span class="text-base text-gray-300">Get care on the go</span>
+                            <div class="flex items-center gap-3">
+                                <span class="text-orange text-2xl leading-none">•</span>
+                                <span class="text-base text-white">Get care on the go</span>
                             </div>
                         </div>
 
@@ -1507,19 +1507,29 @@
 
     <!-- Homepage-specific footer customizations -->
     <script>
-        document.addEventListener('footerLoaded', function() {
+        function customizeHomepageFooter() {
+            console.log('Customizing homepage footer...');
+
             // Find the Privia partnership section in the footer
             const priviaSection = document.querySelector('.footer-privia-section');
+            console.log('Found Privia section:', priviaSection);
 
             if (priviaSection) {
+                // Check if already customized (prevent duplicate additions)
+                if (priviaSection.querySelector('.homepage-mobile-grid')) {
+                    console.log('Already customized, skipping...');
+                    return;
+                }
+
                 // DESKTOP: Hide the Privia section on homepage (we have the combined section above)
                 if (window.innerWidth >= 1024) { // lg breakpoint
                     priviaSection.style.display = 'none';
+                    console.log('Desktop: hiding footer Privia section');
                 }
 
                 // MOBILE: Add 2x2 grid (badges + portal buttons) to Privia section
                 const mobileGrid = document.createElement('div');
-                mobileGrid.className = 'lg:hidden mt-6 border-t border-gray-700 pt-6';
+                mobileGrid.className = 'homepage-mobile-grid lg:hidden mt-6 border-t border-gray-700 pt-6';
                 mobileGrid.innerHTML = `
                     <h4 class="text-center text-white font-semibold text-base mb-4">myPrivia Portal & App</h4>
 
@@ -1553,8 +1563,23 @@
 
                 // Append to the Privia section
                 priviaSection.appendChild(mobileGrid);
+                console.log('Mobile: Added 2x2 grid to footer');
+            } else {
+                console.warn('Privia section not found in footer');
             }
-        });
+        }
+
+        // Listen for footerLoaded event
+        document.addEventListener('footerLoaded', customizeHomepageFooter);
+
+        // Fallback: try after DOM is fully loaded (in case event already fired)
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(customizeHomepageFooter, 100);
+            });
+        } else {
+            setTimeout(customizeHomepageFooter, 100);
+        }
     </script>
 
 </body>
