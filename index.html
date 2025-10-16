@@ -1525,14 +1525,20 @@
                     priviaSection.style.display = 'none';
                     console.log('Desktop: hiding footer Privia section');
                 } else {
-                    // MOBILE: Ensure section is visible
+                    // MOBILE: Hide the default Privia image and text
+                    const priviaContent = priviaSection.querySelector('.flex.flex-col');
+                    if (priviaContent) {
+                        priviaContent.style.display = 'none';
+                        console.log('Mobile: hiding default Privia content (image and text)');
+                    }
+                    // Ensure section container is visible
                     priviaSection.style.display = 'block';
                     console.log('Mobile: ensuring footer Privia section is visible');
                 }
 
                 // MOBILE: Add 2x2 grid (badges + portal buttons) to Privia section
                 const mobileGrid = document.createElement('div');
-                mobileGrid.className = 'homepage-mobile-grid lg:hidden mt-6 border-t border-gray-700 pt-6';
+                mobileGrid.className = 'homepage-mobile-grid lg:hidden';
                 mobileGrid.innerHTML = `
                     <h4 class="text-center text-white font-semibold text-base mb-4">myPrivia Portal & App</h4>
 
