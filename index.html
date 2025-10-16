@@ -1041,6 +1041,135 @@
     </section>
 
 
+    <!-- myPrivia Patient Portal Section - Homepage Desktop Only -->
+    <!-- Combined: Partnership info + App downloads + Patient login -->
+    <section class="hidden lg:block bg-gradient-to-b from-navy via-[#1a3366] to-gray-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Privia Partnership Header with Logo -->
+            <div class="flex items-center justify-center gap-6 mb-10 pb-8 border-b border-gray-700">
+                <div class="bg-white/90 rounded-lg p-3">
+                    <img src="images/footer.png" alt="My Privia Medical Group" class="h-28 w-auto" onerror="this.style.display='none'">
+                </div>
+                <div class="max-w-3xl">
+                    <h3 class="font-semibold text-2xl text-white mb-2">Powered by Privia Medical Group</h3>
+                    <p class="text-base text-gray-300 leading-relaxed">
+                        Village Pediatrics partners with Privia Medical Group to provide better, more coordinated care. Access your patient portal, schedule appointments, and manage your family's healthcare anytime, anywhere.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Three-Column CTA Section: Stacked Cards + Mobile App + Features -->
+            <div class="grid grid-cols-3 gap-8 items-start">
+                <!-- Column 1: Stacked Portal Actions -->
+                <div class="space-y-4">
+                    <!-- Patient Portal Login Card -->
+                    <div class="text-center">
+                        <div class="bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-all duration-300 border border-white/20">
+                            <svg class="w-10 h-10 mx-auto mb-3 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <h4 class="text-lg font-bold text-white mb-2">Patient Portal</h4>
+                            <p class="text-sm text-white mb-4">Access your health records online</p>
+
+                            <a href="https://www.myprivia.com/account-access" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange text-white font-semibold text-sm px-6 py-2.5 rounded-lg shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:bg-orange/90">
+                                Login to Portal
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- New Patient Registration Card -->
+                    <div class="text-center">
+                        <div class="bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-all duration-300 border border-white/20">
+                            <svg class="w-10 h-10 mx-auto mb-3 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+                            </svg>
+                            <h4 class="text-lg font-bold text-white mb-2">New Patient?</h4>
+                            <p class="text-sm text-white mb-4">Register for the patient portal</p>
+
+                            <a href="https://www.myprivia.com/account-access" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange text-white font-semibold text-sm px-6 py-2.5 rounded-lg shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:bg-orange/90">
+                                Register Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2: Mobile App with Interactive QR -->
+                <div class="text-center">
+                    <div class="bg-white/5 rounded-xl p-8 h-full hover:bg-white/10 transition-all duration-300 border border-white/20">
+                        <svg class="w-12 h-12 mx-auto mb-4 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                        <h4 class="text-xl font-bold text-white mb-2">Mobile App</h4>
+                        <p class="text-base text-white mb-6">Download the myPrivia app</p>
+
+                        <!-- Button View (Default) -->
+                        <div id="app-buttons" class="space-y-3">
+                            <button onclick="showQRCode('ios')" class="w-full bg-white text-gray-900 font-semibold text-sm px-6 py-3 rounded-lg shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                </svg>
+                                Download for iOS
+                            </button>
+                            <button onclick="showQRCode('android')" class="w-full bg-white text-gray-900 font-semibold text-sm px-6 py-3 rounded-lg shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.523 15.341c-.8 0-1.429-.656-1.429-1.468s.629-1.468 1.429-1.468c.779 0 1.429.656 1.429 1.468s-.65 1.468-1.429 1.468zm-11.046 0c-.779 0-1.429-.656-1.429-1.468s.629-1.468 1.429-1.468 1.429.656 1.429 1.468-.65 1.468-1.429 1.468zm19.523-10.341v14c0 2.761-2.238 5-5 5h-14c-2.762 0-5-2.239-5-5v-14c0-2.761 2.238-5 5-5h14c2.762 0 5 2.239 5 5zm-11 1.651c0-1.469-1.198-2.651-2.683-2.651-1.485 0-2.684 1.182-2.684 2.651v9.349h5.367v-9.349z"/>
+                                </svg>
+                                Download for Android
+                            </button>
+                        </div>
+
+                        <!-- QR Code View (Hidden by default) -->
+                        <div id="qr-code-view" class="hidden">
+                            <div class="bg-white rounded-lg p-4 inline-block mb-3">
+                                <img id="qr-code-image" src="" alt="QR Code" class="w-40 h-40 mx-auto">
+                            </div>
+                            <p id="qr-instructions" class="text-xs text-gray-400 mb-3"></p>
+                            <button onclick="hideQRCode()" class="text-orange text-sm font-semibold hover:underline">
+                                ← Back to options
+                            </button>
+                        </div>
+
+                        <p class="text-xs text-white mt-4">Scan QR with your phone</p>
+                    </div>
+                </div>
+
+                <!-- Column 3: App Features -->
+                <div class="text-center">
+                    <div class="bg-white/5 rounded-xl p-8 h-full border border-white/20">
+                        <h4 class="text-xl font-bold text-white mb-2">Download the App</h4>
+                        <p class="text-base text-white mb-6">What you can do with myPrivia</p>
+
+                        <!-- Feature List -->
+                        <div class="text-left space-y-4 mb-6">
+                            <div class="flex items-start gap-3">
+                                <span class="text-orange text-2xl leading-none mt-1">•</span>
+                                <span class="text-base text-gray-300">Make appointments</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-orange text-2xl leading-none mt-1">•</span>
+                                <span class="text-base text-gray-300">Message your provider</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-orange text-2xl leading-none mt-1">•</span>
+                                <span class="text-base text-gray-300">Manage medications</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-orange text-2xl leading-none mt-1">•</span>
+                                <span class="text-base text-gray-300">Get care on the go</span>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-white mt-6">Available on iOS & Android</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Version: Compact text links in footer -->
+    <!-- This will be added to the Privia section within the footer component -->
+
+
     <!-- Footer (loaded dynamically from components/footer.html) -->
     <div id="footer-placeholder"></div>
 
@@ -1326,6 +1455,88 @@
 
     <!-- Load shared footer component -->
     <script src="js/load-footer.js"></script>
+
+    <!-- QR Code Interactive Functionality for Desktop -->
+    <script>
+        // QR Code URLs
+        const QR_CODES = {
+            ios: {
+                url: 'https://apps.apple.com/us/app/myprivia/id1364708257',
+                qrImage: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://apps.apple.com/us/app/myprivia/id1364708257',
+                instruction: 'Open Camera app on your iPhone and scan'
+            },
+            android: {
+                url: 'https://play.google.com/store/apps/details?id=com.priviamedicalgroup.priviaapp&hl=en_US',
+                qrImage: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://play.google.com/store/apps/details?id=com.priviamedicalgroup.priviaapp',
+                instruction: 'Open Camera app on your Android and scan'
+            }
+        };
+
+        function showQRCode(platform) {
+            // Check if we're on desktop (lg breakpoint = 1024px)
+            if (window.innerWidth < 1024) {
+                // On mobile/tablet, redirect directly to app store
+                window.open(QR_CODES[platform].url, '_blank');
+                return;
+            }
+
+            // On desktop, show QR code
+            const appButtons = document.getElementById('app-buttons');
+            const qrCodeView = document.getElementById('qr-code-view');
+            const qrImage = document.getElementById('qr-code-image');
+            const qrInstructions = document.getElementById('qr-instructions');
+
+            // Update QR code image and instructions
+            qrImage.src = QR_CODES[platform].qrImage;
+            qrInstructions.textContent = QR_CODES[platform].instruction;
+
+            // Hide buttons, show QR code with smooth transition
+            appButtons.classList.add('hidden');
+            qrCodeView.classList.remove('hidden');
+        }
+
+        function hideQRCode() {
+            const appButtons = document.getElementById('app-buttons');
+            const qrCodeView = document.getElementById('qr-code-view');
+
+            // Show buttons, hide QR code
+            qrCodeView.classList.add('hidden');
+            appButtons.classList.remove('hidden');
+        }
+    </script>
+
+    <!-- Homepage-specific footer customizations -->
+    <script>
+        document.addEventListener('footerLoaded', function() {
+            // Find the Privia partnership section in the footer
+            const priviaSection = document.querySelector('.footer-privia-section');
+
+            if (priviaSection) {
+                // DESKTOP: Hide the Privia section on homepage (we have the combined section above)
+                if (window.innerWidth >= 1024) { // lg breakpoint
+                    priviaSection.style.display = 'none';
+                }
+
+                // MOBILE: Add app download badge icons to Privia section
+                const mobileAppBadges = document.createElement('div');
+                mobileAppBadges.className = 'lg:hidden mt-6 border-t border-gray-700 pt-6';
+                mobileAppBadges.innerHTML = `
+                    <h4 class="text-center text-white font-semibold text-base mb-4">Download the myPrivia App</h4>
+                    <div class="flex flex-col items-center gap-3">
+                        <a href="https://apps.apple.com/us/app/myprivia/id1364708257" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 active:scale-95">
+                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&releaseDate=1594857600" alt="Download on the App Store" style="width: 140px; height: auto;">
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.priviamedicalgroup.priviaapp&hl=en_US" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 active:scale-95">
+                            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" style="width: 160px; height: auto;">
+                        </a>
+                    </div>
+                `;
+
+                // Append to the Privia section
+                priviaSection.appendChild(mobileAppBadges);
+            }
+        });
+    </script>
 
 </body>
 </html>
