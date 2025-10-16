@@ -69,10 +69,10 @@
         .dropdown-menu {
             position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(-10px);
             background: white; border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0; visibility: hidden; transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 50; min-width: 240px; border: 2px solid #F2B138; pointer-events: none;
         }
-        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); pointer-events: auto; transition-delay: 0s, 0s, 0s; }
         .dropdown-item { padding: 12px 20px; font-size: 14px; font-weight: 600; transition: all 0.2s ease; border-bottom: 1px solid #F3F4F6; }
         .dropdown-item:hover { background: linear-gradient(135deg, #FEF3C7, #FECACA); color: #0D2673; padding-left: 24px; }
         .dropdown-divider { height: 1px; background: linear-gradient(to right, transparent, #F2B138, transparent); margin: 4px 0; }
