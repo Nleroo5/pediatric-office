@@ -1525,6 +1525,10 @@
                 if (window.innerWidth >= 1024) { // lg breakpoint
                     priviaSection.style.display = 'none';
                     console.log('Desktop: hiding footer Privia section');
+                } else {
+                    // MOBILE: Ensure section is visible
+                    priviaSection.style.display = 'block';
+                    console.log('Mobile: ensuring footer Privia section is visible');
                 }
 
                 // MOBILE: Add 2x2 grid (badges + portal buttons) to Privia section
@@ -1572,13 +1576,15 @@
         // Listen for footerLoaded event
         document.addEventListener('footerLoaded', customizeHomepageFooter);
 
-        // Fallback: try after DOM is fully loaded (in case event already fired)
+        // Fallback: try multiple times with increasing delays to ensure footer is loaded
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(customizeHomepageFooter, 100);
+                setTimeout(customizeHomepageFooter, 200);
+                setTimeout(customizeHomepageFooter, 500);
             });
         } else {
-            setTimeout(customizeHomepageFooter, 100);
+            setTimeout(customizeHomepageFooter, 200);
+            setTimeout(customizeHomepageFooter, 500);
         }
     </script>
 
