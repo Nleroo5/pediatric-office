@@ -342,13 +342,16 @@
             perspective: 1000px;
             transform-style: preserve-3d;
             transform: translateZ(0px);
-            padding: 2rem;
+            padding: 1.5rem;
             cursor: pointer;
             box-shadow:
                 0 15px 35px rgba(0, 0, 0, 0.12),
                 0 5px 15px rgba(0, 0, 0, 0.07),
                 inset 0 1px 0 rgba(255, 255, 255, 0.9),
                 inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
         }
 
         .service-card::before {
@@ -451,8 +454,8 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
             margin-top: 3rem;
         }
 
@@ -487,12 +490,33 @@
 
         @media (max-width: 768px) {
             .services-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
 
             .service-card {
-                padding: 1.5rem;
+                padding: 1rem;
+            }
+
+            .service-card h3 {
+                font-size: 0.95rem;
+            }
+
+            .service-card .text-gray-600 {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
 
             .section-title {
@@ -544,6 +568,57 @@
         .service-card ul li {
             font-size: 1.125rem;
             line-height: 1.5;
+        }
+
+        /* Expandable card styles */
+        .service-card .card-content {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-card.collapsed .card-content {
+            max-height: 120px;
+        }
+
+        .service-card.collapsed .card-content::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, white);
+        }
+
+        .expand-arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            color: #3B9D84;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .expand-arrow svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:not(.collapsed) .expand-arrow svg {
+            transform: rotate(180deg);
+        }
+
+        .service-card h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .service-card .text-gray-600 {
+            font-size: 0.9rem;
         }
 
         .footer-privia-mobile {
@@ -1401,101 +1476,158 @@
             <div class="services-grid">
                 <!-- Well-Child Visits -->
                 <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Well Child Visits</h3>
-                    <p class="text-gray-600 leading-relaxed">Comprehensive checkups designed to monitor your child's growth, development, and overall health at every stage, from newborns through age 21.</p>
+                    <h3 class="text-xl font-bold text-navy">Well Child Visits</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">Comprehensive checkups designed to monitor your child's growth, development, and overall health at every stage, from newborns through age 21.</p>
+                    </div>
                 </div>
 
                 <!-- Same-Day Sick Visits -->
                 <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Same-Day Sick Visits</h3>
-                    <p class="text-gray-600 leading-relaxed">We will always strive to ensure your children are able to be seen quickly, with same-day sick appointments available daily!</p>
+                    <h3 class="text-xl font-bold text-navy">Same-Day Sick Visits</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">We will always strive to ensure your children are able to be seen quickly, with same-day sick appointments available daily!</p>
+                    </div>
                 </div>
 
                 <!-- Developmental and Autism Screenings -->
                 <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Developmental and Autism Screenings</h3>
-                    <p class="text-gray-600 leading-relaxed">We follow the American Academy of Pediatrics' recommended screening schedule, designed to ensure your child is meeting their age-appropriate developmental milestones.</p>
+                    <h3 class="text-xl font-bold text-navy">Developmental and Autism Screenings</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">We follow the American Academy of Pediatrics' recommended screening schedule, designed to ensure your child is meeting their age-appropriate developmental milestones.</p>
+                    </div>
                 </div>
 
                 <!-- Hours Designed to Fit Your Family's Schedule -->
                 <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Hours Designed to Fit Your Family's Schedule</h3>
-                    <p class="text-gray-600 leading-relaxed">With extended weekday hours and Saturday weekend hours, Village Pediatrics is there when your family needs us most.</p>
+                    <h3 class="text-xl font-bold text-navy">Hours Designed to Fit Your Family's Schedule</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">With extended weekday hours and Saturday weekend hours, Village Pediatrics is there when your family needs us most.</p>
+                    </div>
                 </div>
 
                 <!-- Vaccines & Immunizations -->
-                <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Vaccines & Immunizations</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">At Village Pediatrics, we strongly believe in the importance and value of childhood immunizations to protect our children, families, and community. We recommend and encourage our patients to follow the routine CDC vaccination schedule, which has been proven safe and effective in preventing serious illness.</p>
-                    <p class="text-gray-600 leading-relaxed mb-4">At the same time, we understand that every family's journey is unique. We are well known in the St. Augustine community for our welcoming and respectful approach to families — including those who choose alternative or delayed vaccine schedules.</p>
-                    <p class="text-gray-600 leading-relaxed">It is our promise and pledge that we will never treat you or your child differently based on a decision you make as a parent in regards to vaccines. Our goal is always to ensure open communication built on mutual respect and trust, and to work together as partners centered on promoting your child's health and well-being.</p>
+                <div class="service-card collapsed" data-expandable="true">
+                    <h3 class="text-xl font-bold text-navy">Vaccines & Immunizations</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed mb-4">At Village Pediatrics, we strongly believe in the importance and value of childhood immunizations to protect our children, families, and community. We recommend and encourage our patients to follow the routine CDC vaccination schedule, which has been proven safe and effective in preventing serious illness.</p>
+                        <p class="text-gray-600 leading-relaxed mb-4">At the same time, we understand that every family's journey is unique. We are well known in the St. Augustine community for our welcoming and respectful approach to families — including those who choose alternative or delayed vaccine schedules.</p>
+                        <p class="text-gray-600 leading-relaxed">It is our promise and pledge that we will never treat you or your child differently based on a decision you make as a parent in regards to vaccines. Our goal is always to ensure open communication built on mutual respect and trust, and to work together as partners centered on promoting your child's health and well-being.</p>
+                    </div>
+                    <div class="expand-arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Sports & School Physicals -->
                 <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Sports & School Physicals</h3>
-                    <p class="text-gray-600 leading-relaxed">Need that all-important sport physical or back-to-school form? We have you covered!</p>
+                    <h3 class="text-xl font-bold text-navy">Sports & School Physicals</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">Need that all-important sport physical or back-to-school form? We have you covered!</p>
+                    </div>
                 </div>
 
                 <!-- Meet the Pediatrician -->
                 <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Meet the Pediatrician</h3>
-                    <p class="text-gray-600 leading-relaxed">Looking for a pediatrician in whom you can entrust the care of your precious newborn? Get a tour of the office, meet the staff, and schedule a free Meet-The-Pediatrician appointment today!</p>
+                    <h3 class="text-xl font-bold text-navy">Meet the Pediatrician</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">Looking for a pediatrician in whom you can entrust the care of your precious newborn? Get a tour of the office, meet the staff, and schedule a free Meet-The-Pediatrician appointment today!</p>
+                    </div>
                 </div>
 
                 <!-- Newborn Care -->
-                <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Newborn Care</h3>
-                    <p class="text-gray-600 leading-relaxed">At Village Pediatrics, we prioritize newborn care with exceptional attention and compassion. We do this by dedicating 45 minutes to every first newborn visit so that your trusted pediatric provider can ensure your baby is healthy, thriving, and off to the best possible start. We understand that welcoming a new baby comes with countless questions, and our team takes the time to provide thoughtful guidance, reassurance, and support - for both new parents and newborns!</p>
+                <div class="service-card collapsed" data-expandable="true">
+                    <h3 class="text-xl font-bold text-navy">Newborn Care</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">At Village Pediatrics, we prioritize newborn care with exceptional attention and compassion. We do this by dedicating 45 minutes to every first newborn visit so that your trusted pediatric provider can ensure your baby is healthy, thriving, and off to the best possible start. We understand that welcoming a new baby comes with countless questions, and our team takes the time to provide thoughtful guidance, reassurance, and support - for both new parents and newborns!</p>
+                    </div>
+                    <div class="expand-arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Pediatric Obesity Management -->
                 <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Pediatric Obesity Management</h3>
-                    <p class="text-gray-600 leading-relaxed">Through our Healthy Habits initiative, we are proud to offer a comprehensive pediatric weight management program that focuses on the promotion of health-focused lifestyle changes.</p>
+                    <h3 class="text-xl font-bold text-navy">Pediatric Obesity Management</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">Through our Healthy Habits initiative, we are proud to offer a comprehensive pediatric weight management program that focuses on the promotion of health-focused lifestyle changes.</p>
+                    </div>
                 </div>
 
                 <!-- Asthma Management -->
                 <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Asthma Management</h3>
-                    <p class="text-gray-600 leading-relaxed">Our pediatric providers are well-trained and confident in diagnosing and managing both acute asthma "attacks" as well as chronic asthma management.</p>
+                    <h3 class="text-xl font-bold text-navy">Asthma Management</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">Our pediatric providers are well-trained and confident in diagnosing and managing both acute asthma "attacks" as well as chronic asthma management.</p>
+                    </div>
                 </div>
 
                 <!-- ADHD Evaluation, Diagnosis, and Management -->
-                <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">ADHD Evaluation, Diagnosis, and Management</h3>
-                    <p class="text-gray-600 leading-relaxed mb-3">Concerned that your child may have ADHD? Be sure to print out and complete the following two forms (one to be completed by the child's parent, one by the child's teacher) prior to your child's initial ADHD evaluation appointment:</p>
-                    <a href="#" class="inline-block text-teal hover:text-navy font-semibold underline">Download Vanderbilt Initial Forms (PDF)</a>
+                <div class="service-card collapsed" data-expandable="true">
+                    <h3 class="text-xl font-bold text-navy">ADHD Evaluation, Diagnosis, and Management</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed mb-3">Concerned that your child may have ADHD? Be sure to print out and complete the following two forms (one to be completed by the child's parent, one by the child's teacher) prior to your child's initial ADHD evaluation appointment:</p>
+                        <a href="#" class="inline-block text-teal hover:text-navy font-semibold underline">Download Vanderbilt Initial Forms (PDF)</a>
+                    </div>
+                    <div class="expand-arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Mental Health Support -->
-                <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Mental Health Support</h3>
-                    <p class="text-gray-600 leading-relaxed">Anxiety and Depression Screenings are routinely administered to our adolescent and teenage patients. Our providers are passionate about managing both anxiety and depression, and we have a great referral network of locally trusted and caring mental health specialists.</p>
+                <div class="service-card collapsed" data-expandable="true">
+                    <h3 class="text-xl font-bold text-navy">Mental Health Support</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">Anxiety and Depression Screenings are routinely administered to our adolescent and teenage patients. Our providers are passionate about managing both anxiety and depression, and we have a great referral network of locally trusted and caring mental health specialists.</p>
+                    </div>
+                    <div class="expand-arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Telehealth Visits -->
                 <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Telehealth Visits</h3>
-                    <p class="text-gray-600 leading-relaxed">Convenient virtual appointments from the comfort of your home.</p>
+                    <h3 class="text-xl font-bold text-navy">Telehealth Visits</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">Convenient virtual appointments from the comfort of your home.</p>
+                    </div>
                 </div>
 
                 <!-- Ear Piercings -->
-                <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Ear Piercings</h3>
-                    <p class="text-gray-600 leading-relaxed">Ear piercings available for all children over 2 months old! Through our partnership with Blomdahl, we use nickel-free hypoallergenic medical-grade titanium earrings that come in a variety of beautiful, timeless designs.</p>
+                <div class="service-card collapsed" data-expandable="true">
+                    <h3 class="text-xl font-bold text-navy">Ear Piercings</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">Ear piercings available for all children over 2 months old! Through our partnership with Blomdahl, we use nickel-free hypoallergenic medical-grade titanium earrings that come in a variety of beautiful, timeless designs.</p>
+                    </div>
+                    <div class="expand-arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Wart Removal -->
                 <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Wart Removal</h3>
-                    <p class="text-gray-600 leading-relaxed">We use in-house cryotherapy to safely and effectively treat those pesky warts.</p>
+                    <h3 class="text-xl font-bold text-navy">Wart Removal</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">We use in-house cryotherapy to safely and effectively treat those pesky warts.</p>
+                    </div>
                 </div>
 
                 <!-- Medically Complex Care Management -->
                 <div class="service-card">
-                    <h3 class="text-xl font-bold text-navy mb-3">Medically Complex Care Management</h3>
-                    <p class="text-gray-600 leading-relaxed">Village Pediatrics is proud to serve as a medical home for our medically complex children, offering timely care and referral services, with up-to-date and comprehensive care.</p>
+                    <h3 class="text-xl font-bold text-navy">Medically Complex Care Management</h3>
+                    <div class="card-content">
+                        <p class="text-gray-600 leading-relaxed">Village Pediatrics is proud to serve as a medical home for our medically complex children, offering timely care and referral services, with up-to-date and comprehensive care.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1618,8 +1750,21 @@
                 });
             });
 
-            // Enhanced 3D tilt effect for service cards
+            // Expandable card functionality
+            document.querySelectorAll('.service-card[data-expandable="true"]').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Don't expand if clicking on a link
+                    if (e.target.tagName === 'A') return;
+
+                    this.classList.toggle('collapsed');
+                });
+            });
+
+            // Enhanced 3D tilt effect for service cards (only for non-expandable or when not hovering arrow)
             document.querySelectorAll('.service-card').forEach(card => {
+                // Skip tilt effect for expandable cards
+                if (card.dataset.expandable === 'true') return;
+
                 card.addEventListener('mousemove', function(e) {
                     const rect = this.getBoundingClientRect();
                     const x = e.clientX - rect.left;
