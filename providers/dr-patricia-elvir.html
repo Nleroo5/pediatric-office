@@ -99,6 +99,49 @@
             0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
             50% { transform: translateY(-30px) scale(1.1); opacity: 0.3; }
         }
+
+        /* Provider Photo Flip Animation */
+        .provider-flip-card {
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .provider-flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .provider-flip-card:hover .provider-flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .provider-flip-front,
+        .provider-flip-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 50%;
+        }
+
+        .provider-flip-front {
+            z-index: 2;
+        }
+
+        .provider-flip-back {
+            transform: rotateY(180deg);
+            z-index: 1;
+        }
+
+        /* Mobile: disable flip effect */
+        @media (max-width: 768px) {
+            .provider-flip-card:hover .provider-flip-inner {
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -243,8 +286,15 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-8 items-center">
                 <div class="flex justify-center order-1 lg:order-2">
-                    <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-white/30 shadow-2xl">
-                        <img src="../images/team/elvir.png" alt="Dr. Patricia Elvir" class="w-full h-full object-cover">
+                    <div class="provider-flip-card w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-white/30 shadow-2xl">
+                        <div class="provider-flip-inner">
+                            <div class="provider-flip-front">
+                                <img src="../images/team/elvir.png" alt="Dr. Patricia Elvir" class="w-full h-full object-cover">
+                            </div>
+                            <div class="provider-flip-back">
+                                <img src="../images/team/elvir-fun.png" alt="Dr. Patricia Elvir" class="w-full h-full object-cover">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="text-center lg:text-left order-2 lg:order-1">
