@@ -35,7 +35,7 @@
         @keyframes bubbleFloat{0%,100%{transform:translateY(0) scale(1);opacity:.6}50%{transform:translateY(-30px) scale(1.1);opacity:.3}}
         .provider-flip-card{perspective:1000px;position:relative}.provider-flip-inner{position:relative;width:100%;height:100%;transition:transform .8s;transform-style:preserve-3d}
         .provider-flip-card:hover .provider-flip-inner{transform:rotateY(180deg)}.provider-flip-front,.provider-flip-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:50%}
-        .provider-flip-front{z-index:2}.provider-flip-back{transform:rotateY(180deg);z-index:1}@media (max-width:768px){.provider-flip-card:hover .provider-flip-inner{transform:none}}
+        .provider-flip-front{z-index:2}.provider-flip-back{transform:rotateY(180deg);z-index:1}@media (max-width:768px){.provider-flip-card:hover .provider-flip-inner{transform:none}.provider-flip-card.flipped .provider-flip-inner{transform:rotateY(180deg)}}
     </style>
 </head>
 <body>
@@ -267,6 +267,7 @@
     <script>
         document.addEventListener('DOMContentLoaded',function(){const b=document.getElementById('mobile-menu-button'),c=document.getElementById('mobile-menu-close'),o=document.getElementById('mobile-menu-overlay'),h=document.querySelector('.hamburger-icon'),d=document.body;function open(){o.classList.add('active');h.classList.add('active');d.style.overflow='hidden'}function close(){o.classList.remove('active');h.classList.remove('active');d.style.overflow=''}b.addEventListener('click',open);c.addEventListener('click',close);o.addEventListener('click',function(e){if(e.target===o)close()});document.querySelectorAll('.mobile-menu-item').forEach(i=>{if(i.tagName!=='BUTTON')i.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&o.classList.contains('active'))close()})});
         function toggleTeamMenu(){const s=document.getElementById('team-submenu'),a=document.getElementById('team-arrow');if(s.classList.contains('hidden')){s.classList.remove('hidden');a.style.transform='rotate(180deg)'}else{s.classList.add('hidden');a.style.transform='rotate(0deg)'}}
+        if(window.innerWidth<=768){const f=document.querySelector('.provider-flip-card');if(f){f.addEventListener('click',function(){this.classList.toggle('flipped')})}}
     </script>
     <script src="../js/load-footer.js"></script>
 </body>

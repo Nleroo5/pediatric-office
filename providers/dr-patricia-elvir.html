@@ -134,10 +134,14 @@
             z-index: 1;
         }
 
-        /* Mobile: disable flip effect */
+        /* Mobile: disable hover flip, enable click flip */
         @media (max-width: 768px) {
             .provider-flip-card:hover .provider-flip-inner {
                 transform: none;
+            }
+
+            .provider-flip-card.flipped .provider-flip-inner {
+                transform: rotateY(180deg);
             }
         }
     </style>
@@ -544,6 +548,15 @@
             } else {
                 submenu.classList.add('hidden');
                 arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+        // Mobile flip card click functionality
+        if (window.innerWidth <= 768) {
+            const flipCard = document.querySelector('.provider-flip-card');
+            if (flipCard) {
+                flipCard.addEventListener('click', function() {
+                    this.classList.toggle('flipped');
+                });
             }
         }
     </script>
