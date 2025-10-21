@@ -317,12 +317,13 @@
         .flip-card-back {
             transform: rotateY(180deg);
             overflow: hidden;
-            background: white;
             border: 2px solid #feb92c;
             box-shadow:
                 0 15px 35px rgba(0, 0, 0, 0.1),
                 0 5px 15px rgba(59, 157, 132, 0.1);
             padding: 0;
+            position: relative;
+            background-repeat: no-repeat;
         }
 
         .flip-card-back img {
@@ -331,10 +332,8 @@
             object-fit: cover;
             border-radius: 22px;
             display: block;
+            padding: 0;
             margin: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
         }
 
         .accent-line {
@@ -1829,8 +1828,7 @@
                                             <p class="text-base text-black">Dr. Patricia Elvir established Village Pediatrics with a vision to serve St. Augustine families with compassionate care and medical excellence.</p>
                                         </div>
                                         <!-- Back of card -->
-                                        <div class="flip-card-back">
-                                            <img src="images/opening.jpg" alt="Village Pediatrics Opening">
+                                        <div class="flip-card-back" style="background-image: url('images/opening.jpg'); background-size: 110%; background-position: center;">
                                         </div>
                                     </div>
                                 </div>
