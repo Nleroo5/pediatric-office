@@ -339,87 +339,17 @@
             border-radius: 20px;
             transition: all 0.3s ease;
             position: relative;
-            perspective: 1000px;
-            transform-style: preserve-3d;
-            transform: translateZ(0px);
             padding: 1.5rem;
             cursor: pointer;
-            box-shadow:
-                0 15px 35px rgba(0, 0, 0, 0.12),
-                0 5px 15px rgba(0, 0, 0, 0.07),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             min-height: 200px;
         }
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg,
-                rgba(59, 157, 132, 0.05) 0%,
-                rgba(80, 179, 238, 0.05) 50%,
-                rgba(242, 177, 56, 0.05) 100%);
-            border-radius: 18px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-
-        .service-card:hover,
-        [class*="card"]:hover {
-            transform: translateY(-40px) scale(1.08) rotate(5deg);
-            border-color: rgba(0, 0, 0, 0.2);
-            box-shadow:
-                0 40px 80px rgba(0, 0, 0, 0.25),
-                0 20px 40px rgba(0, 0, 0, 0.18);
-            z-index: 10;
-        }
-
-
-        /* Active/Click state */
-        .service-card:active {
-            transform: translateY(-15px) scale(0.98) rotateX(5deg) rotateY(2deg) translateZ(30px);
-            transition: all 0.1s ease;
-        }
-
-        /* Floating effect on load */
-        @keyframes cardFloat {
-            0%, 100% {
-                transform: translateY(0px) translateZ(0px);
-            }
-            50% {
-                transform: translateY(-5px) translateZ(5px);
-            }
-        }
-
-        .service-card {
-        }
-
-        .service-card:nth-child(even) {
-            animation-delay: 1s;
-        }
-
-        .service-card:nth-child(3n) {
-            animation-delay: 2s;
-        }
-
-        /* Ripple animation */
-        @keyframes ripple {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(2);
-                opacity: 0;
-            }
+        .service-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-color: rgba(59, 157, 132, 0.3);
         }
 
 
@@ -1760,117 +1690,6 @@
                 });
             });
 
-            // Enhanced 3D tilt effect for service cards (only for non-expandable or when not hovering arrow)
-            document.querySelectorAll('.service-card').forEach(card => {
-                // Skip tilt effect for expandable cards
-                if (card.dataset.expandable === 'true') return;
-
-                card.addEventListener('mousemove', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (y - centerY) / 8;
-                    const rotateY = (centerX - x) / 8;
-
-                    this.style.transform = `translateY(-20px) scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(50px)`;
-                    this.style.transition = 'transform 0.1s ease';
-                });
-
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = '';
-                    this.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                });
-
-                // Add click ripple effect
-                card.addEventListener('click', function(e) {
-                    const ripple = document.createElement('span');
-                    const rect = this.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-
-                    ripple.style.cssText = `
-                        position: absolute;
-                        width: ${size}px;
-                        height: ${size}px;
-                        left: ${x}px;
-                        top: ${y}px;
-                        background: radial-gradient(circle, rgba(59, 157, 132, 0.3) 0%, transparent 70%);
-                        border-radius: 50%;
-                        pointer-events: none;
-            padding-top: 7px;
-            margin-top: -7px;
-                        animation: ripple 0.6s ease-out;
-                        z-index: 10;
-                    `;
-
-                    this.appendChild(ripple);
-                    setTimeout(() => ripple.remove(), 600);
-                });
-
-                // Add click animation
-                card.addEventListener('click', function() {
-                    this.style.transform = 'translateZ(5px) scale(0.98)';
-                    setTimeout(() => {
-                        this.style.transform = 'translateZ(10px)';
-                    }, 150);
-                });
-            });
-
-            // Intersection Observer for animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
-
-                        // Add staggered animation for cards
-                        if (entry.target.classList.contains('service-card')) {
-                            const cards = entry.target.parentNode.querySelectorAll('.service-card');
-                            cards.forEach((card, index) => {
-                                setTimeout(() => {
-                                    card.style.animation = 'slideInUp 0.6s ease-out forwards';
-                                }, index * 100);
-                            });
-                        }
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            // Observe all service cards
-            document.querySelectorAll('.service-card').forEach(card => {
-                observer.observe(card);
-            });
-
-            // Add click ripple effect
-            document.querySelectorAll('.ripple-effect').forEach(element => {
-                element.addEventListener('click', function(e) {
-                    const ripple = document.createElement('span');
-                    const rect = this.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-
-                    ripple.style.cssText = `
-                        position: absolute;
-                        border-radius: 50%;
-                        transform: scale(0);
-                        animation: rippleAnimation 0.6s linear;
-                        background-color: rgba(255, 255, 255, 0.6);
-                        width: ${size}px;
-                        height: ${size}px;
-                        left: ${x}px;
-                        top: ${y}px;
-                    `;
-
-                    this.appendChild(ripple);
-
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
-            });
 
         }
 
