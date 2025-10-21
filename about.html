@@ -1565,6 +1565,13 @@
             margin: 4px 0;
         }
 
+        /* Mobile: disable flip effect */
+        @media (max-width: 768px) {
+            .flip-card:hover .flip-card-inner {
+                transform: none;
+            }
+        }
+
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -1811,9 +1818,18 @@
 
                             <!-- Content Below Timeline -->
                             <div class="mt-16">
-                                <div class="modern-card p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                                    <h3 class="text-2xl font-semibold text-lionbrown mb-4">The Foundation</h3>
-                                    <p class="text-base text-black">Dr. Patricia Elvir established Village Pediatrics with a vision to serve St. Augustine families with compassionate care and medical excellence.</p>
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <!-- Front of card -->
+                                        <div class="flip-card-front modern-card p-8">
+                                            <h3 class="text-2xl font-semibold text-lionbrown mb-4">The Foundation</h3>
+                                            <p class="text-base text-black">Dr. Patricia Elvir established Village Pediatrics with a vision to serve St. Augustine families with compassionate care and medical excellence.</p>
+                                        </div>
+                                        <!-- Back of card -->
+                                        <div class="flip-card-back modern-card p-0">
+                                            <img src="images/opening.jpg" alt="Village Pediatrics Opening" class="w-full h-full object-cover rounded-2xl">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1890,8 +1906,7 @@
                 <!-- Holistic Care -->
                 <div class="modern-card p-10 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
                     <h3 class="text-2xl font-bold text-orange mb-4 font-fredoka">Comprehensive, Holistic Pediatric Care</h3>
-                    <p class="text-lg text-black leading-relaxed mb-4">At Village Pediatrics, we champion lifelong health and wellness by providing <strong>holistic and comprehensive pediatric care</strong> - not just treating a set of symptoms. Our approach is comprehensive, addressing <strong>everything from gut health to mental health</strong>, and beyond. We believe that true pediatric care means nurturing <strong>every aspect</strong> of a child's growth, development, and well-being.</p>
-                    <p class="text-lg text-black leading-relaxed font-semibold">Our mission is simple - to provide accessible, personalized, and evidence-based pediatric care for every child in St. Augustine.</p>
+                    <p class="text-lg text-black leading-relaxed">At Village Pediatrics, we champion lifelong health and wellness by providing <strong>holistic and comprehensive pediatric care</strong> - not just treating a set of symptoms. Our approach is comprehensive, addressing <strong>everything from gut health to mental health</strong>, and beyond. We believe that true pediatric care means nurturing <strong>every aspect</strong> of a child's growth, development, and well-being.</p>
                 </div>
             </div>
         </div>
