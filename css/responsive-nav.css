@@ -12,7 +12,7 @@
         height: 29px !important;
     }
 
-    .hero-bg .absolute.top-8.left-8 img {
+    .absolute.top-8.left-8 a img[src*="village-pediatrics-logo.png"] {
         width: 70px !important;
         height: 70px !important;
     }
@@ -59,7 +59,7 @@
         height: 36px !important;
     }
 
-    .hero-bg .absolute.top-8.left-8 img {
+    .absolute.top-8.left-8 a img[src*="village-pediatrics-logo.png"] {
         width: 80px !important;
         height: 80px !important;
     }
@@ -106,7 +106,7 @@
         height: 42px !important;
     }
 
-    .hero-bg .absolute.top-8.left-8 img {
+    .absolute.top-8.left-8 a img[src*="village-pediatrics-logo.png"] {
         width: 100px !important;
         height: 100px !important;
     }
@@ -151,7 +151,7 @@
         height: 52px !important;
     }
 
-    .hero-bg .absolute.top-8.left-8 img {
+    .absolute.top-8.left-8 a img[src*="village-pediatrics-logo.png"] {
         width: 120px !important;
         height: 120px !important;
     }
@@ -196,7 +196,7 @@
         height: 64px !important;
     }
 
-    .hero-bg .absolute.top-8.left-8 img {
+    .absolute.top-8.left-8 a img[src*="village-pediatrics-logo.png"] {
         width: 160px !important;
         height: 160px !important;
     }
