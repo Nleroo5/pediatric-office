@@ -2296,6 +2296,27 @@
                 arrow.style.transform = 'rotate(0deg)';
             }
         }
+
+        // Mobile click-to-flip functionality for timeline cards
+        document.addEventListener('DOMContentLoaded', function() {
+            // Only add click handlers on mobile/tablet (below 1024px)
+            if (window.innerWidth < 1024) {
+                const flipCards = document.querySelectorAll('.flip-card');
+
+                flipCards.forEach(card => {
+                    card.addEventListener('click', function() {
+                        const inner = this.querySelector('.flip-card-inner');
+
+                        // Toggle flipped state
+                        if (inner.style.transform === 'rotateY(180deg)') {
+                            inner.style.transform = 'rotateY(0deg)';
+                        } else {
+                            inner.style.transform = 'rotateY(180deg)';
+                        }
+                    });
+                });
+            }
+        });
     </script>
 
     <!-- Load shared footer component -->
