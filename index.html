@@ -544,6 +544,38 @@
             }
         }
 
+        /* Provider Photo Flip Animation - Desktop Only */
+        @media (min-width: 1024px) {
+            .provider-flip-container {
+                perspective: 1000px;
+            }
+
+            .provider-flip-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                transition: transform 0.6s;
+                transform-style: preserve-3d;
+            }
+
+            .provider-flip-container:hover .provider-flip-inner {
+                transform: rotateY(180deg);
+            }
+
+            .provider-flip-front,
+            .provider-flip-back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+            }
+
+            .provider-flip-back {
+                transform: rotateY(180deg);
+            }
+        }
+
     </style>
 
     <!-- Responsive Navigation CSS -->
@@ -785,8 +817,15 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Dr. Austin Dupont Card -->
                     <a href="providers/dr-austin-dupont.html" class="flex flex-col items-center text-center group cursor-pointer">
-                        <div class="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 rounded-full overflow-hidden mb-6 border-4 border-navy/20 group-hover:border-navy/60 transition-all duration-300 shadow-xl group-hover:shadow-2xl">
-                            <img src="images/team/dupont.png" alt="Dr. Austin Dupont" class="w-full h-full object-cover transform scale-110 group-hover:scale-120 transition-transform duration-500">
+                        <div class="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 rounded-full overflow-hidden mb-6 border-4 border-navy/20 group-hover:border-navy/60 transition-all duration-300 shadow-xl group-hover:shadow-2xl provider-flip-container">
+                            <div class="provider-flip-inner">
+                                <div class="provider-flip-front">
+                                    <img src="images/team/dupont.png" alt="Dr. Austin Dupont" class="w-full h-full object-cover transform scale-110">
+                                </div>
+                                <div class="provider-flip-back">
+                                    <img src="images/team/austin-fun.jpg" alt="Dr. Austin Dupont - Fun Photo" class="w-full h-full object-cover">
+                                </div>
+                            </div>
                         </div>
                         <h4 class="text-xl font-bold text-navy mb-2 font-fredoka group-hover:text-orange transition-colors duration-300">Dr. Austin Dupont, MD</h4>
                         <p class="text-teal font-medium text-sm font-poppins">Owner & Lead Pediatrician</p>
@@ -794,8 +833,15 @@
 
                     <!-- Dr. Patricia Elvir Card -->
                     <a href="providers/dr-patricia-elvir.html" class="flex flex-col items-center text-center group cursor-pointer">
-                        <div class="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 rounded-full overflow-hidden mb-6 border-4 border-teal/20 group-hover:border-teal/60 transition-all duration-300 shadow-xl group-hover:shadow-2xl">
-                            <img src="images/team/elvir.png" alt="Dr. Patricia Elvir" class="w-full h-full object-cover transform scale-105 group-hover:scale-115 transition-transform duration-500">
+                        <div class="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 rounded-full overflow-hidden mb-6 border-4 border-teal/20 group-hover:border-teal/60 transition-all duration-300 shadow-xl group-hover:shadow-2xl provider-flip-container">
+                            <div class="provider-flip-inner">
+                                <div class="provider-flip-front">
+                                    <img src="images/team/elvir.png" alt="Dr. Patricia Elvir" class="w-full h-full object-cover transform scale-105">
+                                </div>
+                                <div class="provider-flip-back">
+                                    <img src="images/team/elvir-fun.png" alt="Dr. Patricia Elvir - Fun Photo" class="w-full h-full object-cover">
+                                </div>
+                            </div>
                         </div>
                         <h4 class="text-xl font-bold text-navy mb-2 font-fredoka group-hover:text-orange transition-colors duration-300">Dr. Patricia Elvir, MD, FAAP, ABIHM</h4>
                         <p class="text-teal font-medium text-sm font-poppins">Founding Pediatrician & Mentor</p>
@@ -803,8 +849,15 @@
 
                     <!-- Trudy English Card -->
                     <a href="providers/trudy-english-arnp.html" class="flex flex-col items-center text-center group cursor-pointer">
-                        <div class="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 rounded-full overflow-hidden mb-6 border-4 border-lightblue/20 group-hover:border-lightblue/60 transition-all duration-300 shadow-xl group-hover:shadow-2xl">
-                            <img src="images/team/trudy.png" alt="Trudy English, ARNP" class="w-full h-full object-cover transform scale-105 group-hover:scale-115 transition-transform duration-500">
+                        <div class="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 rounded-full overflow-hidden mb-6 border-4 border-lightblue/20 group-hover:border-lightblue/60 transition-all duration-300 shadow-xl group-hover:shadow-2xl provider-flip-container">
+                            <div class="provider-flip-inner">
+                                <div class="provider-flip-front">
+                                    <img src="images/team/trudy.png" alt="Trudy English, ARNP" class="w-full h-full object-cover transform scale-105">
+                                </div>
+                                <div class="provider-flip-back">
+                                    <img src="images/team/trudy-fun.png" alt="Trudy English - Fun Photo" class="w-full h-full object-cover">
+                                </div>
+                            </div>
                         </div>
                         <h4 class="text-xl font-bold text-navy mb-2 font-fredoka group-hover:text-orange transition-colors duration-300">Trudy English, ARNP</h4>
                         <p class="text-teal font-medium text-sm font-poppins">Pediatric Nurse Practitioner</p>
@@ -812,8 +865,15 @@
 
                     <!-- Lindsay Wolf Card -->
                     <a href="providers/dr-lindsay-wolf.html" class="flex flex-col items-center text-center group cursor-pointer">
-                        <div class="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 rounded-full overflow-hidden mb-6 border-4 border-orange/20 group-hover:border-orange/60 transition-all duration-300 shadow-xl group-hover:shadow-2xl">
-                            <img src="images/team/wolf.png" alt="Lindsay Wolf" class="w-full h-full object-cover transform scale-110 group-hover:scale-120 transition-transform duration-500">
+                        <div class="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 rounded-full overflow-hidden mb-6 border-4 border-orange/20 group-hover:border-orange/60 transition-all duration-300 shadow-xl group-hover:shadow-2xl provider-flip-container">
+                            <div class="provider-flip-inner">
+                                <div class="provider-flip-front">
+                                    <img src="images/team/wolf.png" alt="Lindsay Wolf" class="w-full h-full object-cover transform scale-110">
+                                </div>
+                                <div class="provider-flip-back">
+                                    <img src="images/team/lindsey-fun.png" alt="Lindsay Wolf - Fun Photo" class="w-full h-full object-cover">
+                                </div>
+                            </div>
                         </div>
                         <h4 class="text-xl font-bold text-navy mb-2 font-fredoka group-hover:text-orange transition-colors duration-300">Lindsay Wolf, DNP</h4>
                         <p class="text-teal font-medium text-sm font-poppins">Pediatric Nurse Practitioner</p>
