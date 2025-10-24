@@ -1,5 +1,13 @@
 /* Responsive Navigation Sizing - Override Tailwind responsive classes */
 
+/* Mobile screens (below 768px) - Smaller logo for mobile */
+@media (max-width: 767px) {
+    .absolute.top-8.left-8 a img[src*="village-pediatrics-logo.png"] {
+        width: 50px !important;
+        height: 50px !important;
+    }
+}
+
 /* Extra small screens around 800px */
 @media (min-width: 768px) and (max-width: 850px) {
     .desktop-animal-nav .animal-nav-item img[src*="elephant"],
