@@ -708,29 +708,29 @@
     <!-- Desktop Animal Navigation (hidden on mobile) -->
     <nav class="desktop-animal-nav hidden lg:block absolute top-16 md:top-20 lg:top-24 xl:top-28 left-0 right-0 z-30 px-2" id="animal-nav" role="navigation" aria-label="Main navigation">
         <div class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 max-w-screen-sm mx-auto">
-            <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/elephant.png" alt="Home" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
-                <div class="bg-gray-600/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-yellow-400 group-hover:bg-gray-800 group-hover:border-yellow-400 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
-                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Home</span>
+            <a href="index.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300" aria-label="Navigate to Home page" role="button" tabindex="0">
+                <img src="images/animals/elephant.png" alt="Friendly elephant mascot for Home navigation" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase"><span class="sm:hidden">Home</span><span class="hidden sm:inline">Home</span></span>
                 </div>
             </a>
-            <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
-                <img src="images/animals/lion.png" alt="About Us" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
-                <div class="bg-navy/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-yellow-400 group-hover:bg-orange group-hover:border-yellow-400 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
-                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">About Us</span>
+            <a href="about.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300" aria-label="Navigate to About Us page" role="button" tabindex="0">
+                <img src="images/animals/lion.png" alt="Friendly lion mascot for About Us navigation" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs sm:text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase hidden sm:inline">About Us</span><span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase sm:hidden">About</span>
                 </div>
             </a>
             <a href="services.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
                 <img src="images/animals/zebra.png" alt="Services" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
-                <div class="bg-teal/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-yellow-400 group-hover:bg-lightblue group-hover:border-yellow-400 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
-                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Services</span>
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase">Services</span>
                 </div>
             </a>
             <div class="dropdown animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
                 <a href="team.html">
                     <img src="images/animals/alligator.png" alt="Our Team" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
-                    <div class="bg-lightblue/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-yellow-400 group-hover:bg-teal group-hover:border-yellow-400 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
-                        <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">Our Team</span>
+                    <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                        <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase hidden sm:inline">Our Team</span><span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase sm:hidden">Team</span>
                     </div>
                 </a>
                 <div class="dropdown-menu">
@@ -744,14 +744,14 @@
             </div>
             <a href="new-patients.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
                 <img src="images/animals/monkey.png" alt="New Patients" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
-                <div class="bg-orange/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-yellow-400 group-hover:bg-navy group-hover:border-yellow-400 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
-                    <span class="text-xs font-extrabold text-white font-poppins tracking-wider uppercase">New Patients</span>
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase hidden sm:inline">New Patients</span><span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase sm:hidden">New</span>
                 </div>
             </a>
             <a href="patient-portal.html" class="animal-nav-item flex flex-col items-center group hover:scale-110 transition-all duration-300">
                 <img src="images/animals/giraffe.png" alt="Patient Resources" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain mb-2 filter drop-shadow-lg">
-                <div class="bg-white px-4 py-2 rounded-full border-2 group-hover:bg-gray-100 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap" style="border-color: #654321;">
-                    <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase">Patient Resources</span>
+                <div class="bg-white px-4 py-2 rounded-full border-2 border-black group-hover:bg-gray-100 group-hover:border-gray-800 transition-all duration-300 min-w-[90px] text-center whitespace-nowrap">
+                    <span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase hidden sm:inline">Patient Resources</span><span class="text-xs font-extrabold text-black group-hover:text-gray-800 font-poppins tracking-wider uppercase sm:hidden">Portal</span>
                 </div>
             </a>
         </div>
