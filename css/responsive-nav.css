@@ -1,10 +1,10 @@
 /* Responsive Navigation Sizing - Override Tailwind responsive classes */
 
-/* Mobile screens (below 768px) - Smaller logo for mobile */
+/* Mobile screens (below 768px) - Mobile logo size */
 @media (max-width: 767px) {
     .absolute.top-8.left-8 a img[src*="village-pediatrics-logo.png"] {
-        width: 50px !important;
-        height: 50px !important;
+        width: 90px !important;
+        height: 90px !important;
     }
 }
 
