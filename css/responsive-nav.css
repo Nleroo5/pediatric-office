@@ -1,0 +1,220 @@
+/* Responsive Navigation Sizing - Override Tailwind responsive classes */
+
+/* Extra small screens around 800px */
+@media (min-width: 768px) and (max-width: 850px) {
+    .desktop-animal-nav .animal-nav-item img[src*="elephant"],
+    .desktop-animal-nav .animal-nav-item img[src*="lion"],
+    .desktop-animal-nav .animal-nav-item img[src*="zebra"],
+    .desktop-animal-nav .animal-nav-item img[src*="alligator"],
+    .desktop-animal-nav .animal-nav-item img[src*="monkey"],
+    .desktop-animal-nav .animal-nav-item img[src*="giraffe"] {
+        width: 29px !important;
+        height: 29px !important;
+    }
+
+    .hero-bg .absolute.top-8.left-8 img {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    /* NO GAP - Buttons right next to each other */
+    .desktop-animal-nav > div {
+        column-gap: 0 !important;
+        gap: 0 !important;
+    }
+
+    /* Extra small button labels */
+    .desktop-animal-nav .animal-nav-item .bg-white {
+        min-width: 37px !important;
+        padding: 3px 6px !important;
+    }
+
+    .desktop-animal-nav .animal-nav-item span {
+        font-size: 8px !important;
+    }
+
+    /* Center alligator over Our Team dropdown */
+    .dropdown.animal-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dropdown.animal-nav-item > a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Override md: classes (851px-899px) */
+@media (min-width: 851px) and (max-width: 899px) {
+    .desktop-animal-nav .animal-nav-item img[src*="elephant"],
+    .desktop-animal-nav .animal-nav-item img[src*="lion"],
+    .desktop-animal-nav .animal-nav-item img[src*="zebra"],
+    .desktop-animal-nav .animal-nav-item img[src*="alligator"],
+    .desktop-animal-nav .animal-nav-item img[src*="monkey"],
+    .desktop-animal-nav .animal-nav-item img[src*="giraffe"] {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    .hero-bg .absolute.top-8.left-8 img {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    /* NO GAP - Buttons right next to each other */
+    .desktop-animal-nav > div {
+        column-gap: 0 !important;
+        gap: 0 !important;
+    }
+
+    /* Shrink the button labels */
+    .desktop-animal-nav .animal-nav-item .bg-white {
+        min-width: 50px !important;
+        padding: 4px 8px !important;
+    }
+
+    .desktop-animal-nav .animal-nav-item span {
+        font-size: 9px !important;
+    }
+
+    /* Center alligator over Our Team dropdown */
+    .dropdown.animal-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dropdown.animal-nav-item > a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Extra small desktop (900px-1023px) */
+@media (min-width: 900px) and (max-width: 1023px) {
+    .desktop-animal-nav .animal-nav-item img[src*="elephant"],
+    .desktop-animal-nav .animal-nav-item img[src*="lion"],
+    .desktop-animal-nav .animal-nav-item img[src*="zebra"],
+    .desktop-animal-nav .animal-nav-item img[src*="alligator"],
+    .desktop-animal-nav .animal-nav-item img[src*="monkey"],
+    .desktop-animal-nav .animal-nav-item img[src*="giraffe"] {
+        width: 42px !important;
+        height: 42px !important;
+    }
+
+    .hero-bg .absolute.top-8.left-8 img {
+        width: 100px !important;
+        height: 100px !important;
+    }
+
+    .desktop-animal-nav > div {
+        column-gap: 0 !important;
+        gap: 0 !important;
+    }
+
+    /* Shrink the button labels */
+    .desktop-animal-nav .animal-nav-item .bg-white {
+        min-width: 60px !important;
+        padding: 5px 10px !important;
+    }
+
+    .desktop-animal-nav .animal-nav-item span {
+        font-size: 10px !important;
+    }
+
+    .dropdown.animal-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dropdown.animal-nav-item > a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Small desktop (1024px-1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .desktop-animal-nav .animal-nav-item img[src*="elephant"],
+    .desktop-animal-nav .animal-nav-item img[src*="lion"],
+    .desktop-animal-nav .animal-nav-item img[src*="zebra"],
+    .desktop-animal-nav .animal-nav-item img[src*="alligator"],
+    .desktop-animal-nav .animal-nav-item img[src*="monkey"],
+    .desktop-animal-nav .animal-nav-item img[src*="giraffe"] {
+        width: 52px !important;
+        height: 52px !important;
+    }
+
+    .hero-bg .absolute.top-8.left-8 img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    .desktop-animal-nav > div {
+        column-gap: 0 !important;
+        gap: 0 !important;
+    }
+
+    /* Shrink the button labels */
+    .desktop-animal-nav .animal-nav-item .bg-white {
+        min-width: 70px !important;
+        padding: 6px 12px !important;
+    }
+
+    .desktop-animal-nav .animal-nav-item span {
+        font-size: 11px !important;
+    }
+
+    .dropdown.animal-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dropdown.animal-nav-item > a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Large desktop (1280px+) */
+@media (min-width: 1280px) {
+    .desktop-animal-nav .animal-nav-item img[src*="elephant"],
+    .desktop-animal-nav .animal-nav-item img[src*="lion"],
+    .desktop-animal-nav .animal-nav-item img[src*="zebra"],
+    .desktop-animal-nav .animal-nav-item img[src*="alligator"],
+    .desktop-animal-nav .animal-nav-item img[src*="monkey"],
+    .desktop-animal-nav .animal-nav-item img[src*="giraffe"] {
+        width: 64px !important;
+        height: 64px !important;
+    }
+
+    .hero-bg .absolute.top-8.left-8 img {
+        width: 160px !important;
+        height: 160px !important;
+    }
+
+    .desktop-animal-nav > div {
+        column-gap: 0.25rem !important;
+        gap: 0.25rem !important;
+    }
+
+    .dropdown.animal-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dropdown.animal-nav-item > a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
