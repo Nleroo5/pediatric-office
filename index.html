@@ -438,7 +438,7 @@
         .testimonial-carousel-container {
             position: relative;
             width: 100%;
-            min-height: 400px;
+            min-height: 600px;
         }
 
         .testimonial-slide {
@@ -454,6 +454,19 @@
         .testimonial-slide.active {
             opacity: 1;
             pointer-events: auto;
+        }
+
+        /* Responsive container height */
+        @media (min-width: 768px) {
+            .testimonial-carousel-container {
+                min-height: 450px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .testimonial-carousel-container {
+                min-height: 400px;
+            }
         }
 
 
