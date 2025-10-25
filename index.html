@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Village Pediatrics - Pediatric Care in St. Augustine, FL</title>
+    <title>Village Pediatrics - Trusted Pediatric Care in St. Augustine, FL</title>
     <meta name="description" content="Village Pediatrics provides trusted pediatric care in St. Augustine, FL. Same-day appointments, 24/7 nursing support. Ages newborn to 21.">
     <meta name="keywords" content="pediatrician, St. Augustine, Florida, children's health, newborn care, teen medicine, immunizations, same-day appointments">
     <meta name="author" content="Village Pediatrics">
@@ -432,6 +432,23 @@
 
         .testimonial-card:hover {
             transform: translateY(-4px);
+        }
+
+        /* Testimonial Carousel Styles */
+        .testimonial-carousel-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .testimonial-slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .testimonial-slide.active {
+            display: flex;
+            opacity: 1;
         }
 
 
@@ -1012,24 +1029,97 @@
                         </div>
                     </div>
 
-                    <!-- Beth L. Testimonial (right column - narrower) -->
-                    <div class="md:col-span-5 bg-gradient-to-br from-blue-200 via-blue-100 to-yellow-100 p-8 rounded-2xl border-2 border-blue-300 shadow-lg hover:shadow-xl transition-all duration-300 testimonial-card flex flex-col justify-center">
-                        <div class="flex items-center justify-center mb-5">
-                            <div class="flex text-yellow-500 text-2xl stars">
-                                <span class="star">★</span>
-                                <span class="star">★</span>
-                                <span class="star">★</span>
-                                <span class="star">★</span>
-                                <span class="star">★</span>
+                    <!-- Testimonial Carousel (right column - narrower) -->
+                    <div class="md:col-span-5 relative">
+                        <!-- Review Cards Container -->
+                        <div class="testimonial-carousel-container overflow-hidden">
+                            <!-- Review 1: Beth L. -->
+                            <div class="testimonial-slide active bg-gradient-to-br from-blue-200 via-blue-100 to-yellow-100 p-8 rounded-2xl border-2 border-blue-300 shadow-lg hover:shadow-xl transition-all duration-300 testimonial-card flex flex-col justify-center">
+                                <div class="flex items-center justify-center mb-5">
+                                    <div class="flex text-yellow-500 text-2xl stars">
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-5 leading-relaxed font-poppins text-base text-center italic">
+                                    "From the moment we walked in we felt welcomed! Dr. Dupont was kind, thorough, and so great with my daughter. I felt actually heard by a medical professional!"
+                                </p>
+                                <div class="text-center">
+                                    <p class="font-bold text-navy text-lg font-fredoka">Beth L.</p>
+                                    <p class="text-sm text-gray-600 font-poppins mt-1">Google Review</p>
+                                </div>
+                            </div>
+
+                            <!-- Review 2: Miglena Komforti -->
+                            <div class="testimonial-slide bg-gradient-to-br from-blue-200 via-blue-100 to-yellow-100 p-8 rounded-2xl border-2 border-blue-300 shadow-lg hover:shadow-xl transition-all duration-300 testimonial-card flex flex-col justify-center">
+                                <div class="flex items-center justify-center mb-5">
+                                    <div class="flex text-yellow-500 text-2xl stars">
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-5 leading-relaxed font-poppins text-base text-center italic">
+                                    "So happy with Dr. DuPont! He is caring and fun and attentive. We were about to change pediatricians right before he took over, and now we are staying as patients. Appreciate the extended hours and flexibility he has provided for working parents. Also appreciate the time he took to educate us on properly taking care for our child! It's made all the difference!!!"
+                                </p>
+                                <div class="text-center">
+                                    <p class="font-bold text-navy text-lg font-fredoka">Miglena Komforti</p>
+                                    <p class="text-sm text-gray-600 font-poppins mt-1">Google Review</p>
+                                </div>
+                            </div>
+
+                            <!-- Review 3: Samantha Kisiel -->
+                            <div class="testimonial-slide bg-gradient-to-br from-blue-200 via-blue-100 to-yellow-100 p-8 rounded-2xl border-2 border-blue-300 shadow-lg hover:shadow-xl transition-all duration-300 testimonial-card flex flex-col justify-center">
+                                <div class="flex items-center justify-center mb-5">
+                                    <div class="flex text-yellow-500 text-2xl stars">
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-5 leading-relaxed font-poppins text-base text-center italic">
+                                    "Very very impressed. New to town and called cause my baby boy had been dealing with a bad cough. Was able to get a same day appointment! Front desk and nurses staff were incredibly enjoyable and kind. Dr. Dupont is the new owner and is very good at what he does. He was SO sweet to my boy, very thorough, knowledgeable and helped me get to the bottom of my boys excema/asthma issues. Can't say enough good things about my experience! My hope in pediatricians is restored!!"
+                                </p>
+                                <div class="text-center">
+                                    <p class="font-bold text-navy text-lg font-fredoka">Samantha Kisiel</p>
+                                    <p class="text-sm text-gray-600 font-poppins mt-1">Google Review</p>
+                                </div>
+                            </div>
+
+                            <!-- Review 4: Rabei Nina -->
+                            <div class="testimonial-slide bg-gradient-to-br from-blue-200 via-blue-100 to-yellow-100 p-8 rounded-2xl border-2 border-blue-300 shadow-lg hover:shadow-xl transition-all duration-300 testimonial-card flex flex-col justify-center">
+                                <div class="flex items-center justify-center mb-5">
+                                    <div class="flex text-yellow-500 text-2xl stars">
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                        <span class="star">★</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-5 leading-relaxed font-poppins text-base text-center italic">
+                                    "I highly recommend this practice, Dr Austin DuPont and his staff members are very professional, they take time with each patient and don't judge if you have opinions about vaccines schedule. I felt heard, understood and helped at this office."
+                                </p>
+                                <div class="text-center">
+                                    <p class="font-bold text-navy text-lg font-fredoka">Rabei Nina</p>
+                                    <p class="text-sm text-gray-600 font-poppins mt-1">Google Review</p>
+                                </div>
                             </div>
                         </div>
-                        <p class="text-gray-700 mb-5 leading-relaxed font-poppins text-base text-center italic">
-                            "From the moment we walked in we felt welcomed! Dr. Dupont was kind, thorough, and so great with my daughter. I felt actually heard by a medical professional!"
-                        </p>
-                        <div class="text-center">
-                            <p class="font-bold text-navy text-lg font-fredoka">Beth L.</p>
-                            <p class="text-sm text-gray-600 font-poppins mt-1">Google Review</p>
-                        </div>
+
+                        <!-- Right Arrow Navigation -->
+                        <button onclick="nextTestimonial()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-navy/80 hover:bg-navy text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 z-10" aria-label="Next review">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1169,6 +1259,21 @@
     <!-- Footer (loaded dynamically from components/footer.html) -->
     <div id="footer-placeholder"></div>
 
+
+    <!-- Testimonial Carousel Script -->
+    <script>
+        let currentTestimonial = 0;
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+
+        function nextTestimonial() {
+            testimonialSlides[currentTestimonial].classList.remove('active');
+            currentTestimonial = (currentTestimonial + 1) % testimonialSlides.length;
+            testimonialSlides[currentTestimonial].classList.add('active');
+        }
+
+        // Auto-advance every 8 seconds
+        setInterval(nextTestimonial, 8000);
+    </script>
 
     <!-- Animal Animation Script -->
     <script>
