@@ -194,6 +194,20 @@
             z-index: 1;
         }
 
+        /* Ensure mobile hero has same background as desktop */
+        @media (max-width: 768px) {
+            .clean-hero {
+                background: transparent;
+            }
+
+            .clean-hero::before {
+                background-image: url('backgrounds/services-background.png');
+                background-size: cover;
+                background-position: center;
+                opacity: 1;
+            }
+        }
+
 
 
 
